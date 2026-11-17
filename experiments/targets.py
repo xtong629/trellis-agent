@@ -1,8 +1,9 @@
 """Targets for the experiments, for `--target module:callable` (each takes the LLM client).
 
 A: ``a_single`` (one agent with every tool) vs ``a_planned`` (planner + research/compute workers).
-B: ``b_window`` (sliding window only) vs ``b_memory`` (same window plus tiered memory). The window
-size is the same, so the comparison is memory vs no memory at an equal working budget. With the
+B: ``b_window`` (sliding window only) vs ``b_memory`` (same window plus tiered memory), and
+``b_full`` (reference: the complete, untruncated history, no memory). The window size is the same
+for the first two, so that comparison is memory vs no memory at an equal working budget. With the
 offline mock model (``model == "mock"``) these use experiment-specific mocks instead."""
 
 from __future__ import annotations
@@ -104,6 +105,12 @@ def _chat_agent(llm: LLMClient, *, remember: bool) -> Conversation:
     )
     config = AgentConfig(system_prompt=B_SYSTEM_PROMPT)
     return Conversation(Agent(model, memory=memory, config=config))
+
+
+def b_full(llm: LLMClient) -> Conversation:
+    """Upper-bound reference: the whole conversation is sent every turn (no window, no memory)."""
+    model = mocks.mock(mocks.conversation_model, _meter(llm)) if _is_mock(llm) else llm
+    return Conversation(Agent(model, config=AgentConfig(system_prompt=B_SYSTEM_PROMPT)))
 
 
 def b_window(llm: LLMClient) -> Conversation:

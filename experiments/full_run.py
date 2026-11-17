@@ -24,7 +24,7 @@ import httpx
 
 from experiments.pilot import HttpObserver, summarize_http
 from experiments.scenarios import taskset_a, taskset_b
-from experiments.targets import a_planned, a_single, b_memory, b_window
+from experiments.targets import a_planned, a_single, b_full, b_memory, b_window
 from trellis_agent.cost import CostMeter
 from trellis_agent.env import load_dotenv
 from trellis_agent.eval import EvalReport, EvalRunner, parse_taskset, scorer_types
@@ -37,7 +37,9 @@ SYSTEMS = {
     "a_planned": ("a", a_planned),
     "b_window": ("b", b_window),
     "b_memory": ("b", b_memory),
+    "b_full": ("b", b_full),  # reference condition, run separately (--systems b_full)
 }
+DEFAULT_SYSTEMS = ["a_single", "a_planned", "b_window", "b_memory"]
 SCHEDULER_MAX = (
     4  # Scheduler's default max_concurrency (planner workers run in parallel up to this)
 )
@@ -46,9 +48,11 @@ BUDGET_WARN = 0.8
 EXIT_STOPPED = 3
 
 
-def chunk_plan(*, repeats: int, done: set[tuple[int, str]]) -> list[tuple[int, str]]:
+def chunk_plan(
+    *, repeats: int, done: set[tuple[int, str]], systems: Sequence[str] = DEFAULT_SYSTEMS
+) -> list[tuple[int, str]]:
     """Repeat-major order, so an early stop leaves the most even coverage."""
-    return [(r, s) for r in range(repeats) for s in SYSTEMS if (r, s) not in done]
+    return [(r, s) for r in range(repeats) for s in systems if (r, s) not in done]
 
 
 def stop_reason(
@@ -165,7 +169,7 @@ def merge_all(args: argparse.Namespace) -> dict[str, Any]:
     out.mkdir(parents=True, exist_ok=True)
     http_log: list[dict[str, Any]] = []
     calls = wall = spent_all = 0.0
-    for system in SYSTEMS:
+    for system in args.systems:
         reports, spent = [], []
         for r in range(args.repeats):
             report_path, meta_path = _chunk_paths(chunks_dir, system, r)
@@ -188,7 +192,12 @@ def merge_all(args: argparse.Namespace) -> dict[str, Any]:
     stats = summarize_http(http_log, model_calls=int(calls))
     stats |= {"observed_max_in_flight": stats["max_in_flight"], "sum_of_chunk_wall_s": wall,
               "spent_cny": spent_all}  # fmt: skip
-    (out / "exp_full_http.json").write_text(json.dumps(stats, indent=1))
+    name = (
+        "exp_full_http.json"
+        if args.systems == DEFAULT_SYSTEMS
+        else f"exp_{'_'.join(args.systems)}_http.json"
+    )
+    (out / name).write_text(json.dumps(stats, indent=1))
     return stats
 
 
@@ -198,7 +207,9 @@ async def run_all(args: argparse.Namespace) -> int:
     chunks_dir.mkdir(parents=True, exist_ok=True)  # noqa: ASYNC240
     spent = sum(json.loads(_chunk_paths(chunks_dir, s, r)[1].read_text())["spent"]
                 for r, s in _done(chunks_dir))  # fmt: skip
-    for repeat, system in chunk_plan(repeats=args.repeats, done=_done(chunks_dir)):
+    for repeat, system in chunk_plan(
+        repeats=args.repeats, done=_done(chunks_dir), systems=args.systems
+    ):
         meta = await run_chunk(args, repeat, system, args.budget - spent)
         spent += meta["spent"]
         print(f"chunk r{repeat} {system}: calls={meta['model_calls']} wall={meta['wall_s']}s "
@@ -218,6 +229,7 @@ def main() -> None:
     parser.add_argument("--reports-dir", required=True)
     parser.add_argument("--budget", type=float, default=5.0, help="CNY cap for the whole run")
     parser.add_argument("--repeats", type=int, default=5)
+    parser.add_argument("--systems", nargs="+", choices=list(SYSTEMS), default=DEFAULT_SYSTEMS)
     parser.add_argument("--concurrency", type=int, default=2)
     parser.add_argument("--max-requests", type=int, default=2000, help="hard cap per chunk")
     parser.add_argument("--run-date", default=time.strftime("%Y-%m-%d"))

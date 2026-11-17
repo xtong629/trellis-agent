@@ -25,6 +25,15 @@ def test_the_plan_is_repeat_major_over_the_four_systems_and_skips_finished_chunk
     ]
 
 
+def test_the_plan_can_be_limited_to_chosen_systems() -> None:
+    assert chunk_plan(repeats=2, done=set(), systems=["b_full"]) == [(0, "b_full"), (1, "b_full")]
+    assert chunk_plan(
+        repeats=1,
+        done=set(),
+        systems=["b_full"],
+    ) == [(0, "b_full")]
+
+
 def test_merging_chunks_renumbers_repeats_and_sums_costs_exactly() -> None:
     chunks = [
         report([case("t1", cost=0.05), case("t2", "failed", cost=0.05)], 0.1),
