@@ -1,5 +1,7 @@
 # Trellis
 
+[![CI](https://github.com/xtong629/trellis-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/xtong629/trellis-agent/actions/workflows/ci.yml)
+
 > A small agent framework where planning and memory are **measurable**: eval-first, cost-capped, mock-testable.
 
 **Status: early development.** The agent core and the evaluation harness work and are tested.
