@@ -27,7 +27,7 @@ Most agent demos show that something *can* work. Trellis is built around the har
 | Agent loop | one event loop (`stream`), `arun`/`run` collect it; tool calling with per-session history |
 | Tools | JSON Schema from type hints; arguments validated; errors fed back to the model, never crash the run |
 | LLM clients | OpenAI-compatible client (handles missing `usage`, malformed tool arguments, HTTP failures); scripted/rule mocks |
-| Cost | `PriceTable`, `CostMeter`, hard budgets, order-independent exact sums |
+| Cost | prices with currency and provenance (source, check date), `CostMeter` with budgets as amount + currency, declared-only FX conversion, order-independent exact sums |
 | Tracing | structured events, per-run traces, aggregate summaries |
 | Evaluation | task sets, 11 scorer types + `llm_judge`, runner with repeats and concurrency, reports, baseline `compare`, CLI |
 | Memory | working window within a token budget; episodic and semantic memories with relevance + recency decay + importance scoring; newer facts supersede older ones; write admission (duplicates, per-turn limit); consolidation and forgetting; optional, so an agent without memory behaves exactly as before |
@@ -65,8 +65,11 @@ body fields and recorded in the report config.
 
 To use a real model, copy `.env.example` to `.env`, set `LLM_BASE_URL`, `LLM_API_KEY` and
 `LLM_MODEL` (any OpenAI-compatible endpoint), and drop `--mock` / use `--llm openai`. Real runs need
-a price file for your model. `evals/prices.demo.yaml` shows the format; its numbers are
-**DEMO PRICES ONLY (仅为示例,非真实价格)** and do not correspond to any real model or vendor.
+a price file for your model and a budget with a currency, e.g. `--budget "10 CNY"` (or `BUDGET` in
+`.env`; `BUDGET_USD` still works as a deprecated USD alias). `evals/prices.demo.yaml` shows the
+format; its numbers are **DEMO PRICES ONLY (仅为示例,非真实价格)**, in a made-up currency, and do
+not correspond to any real model or vendor. `evals/prices.glm.yaml` has one real model's list
+prices; its banner explains that report costs from it are reference values, not actual spend.
 
 ## Results
 
@@ -127,6 +130,9 @@ Known, accepted, and tested where possible:
   with tool results in some modes but does not say what happens if it is not. Trellis does not keep
   or pass back `reasoning_content`; multi-turn tool loops worked without it in a small live check,
   and the effect on answer quality was not measured.
+* **Prices.** Prices are read from files you provide and are only as good as their `source` and
+  `checked_on`. There is no tiered pricing, no discount handling, no web updates and no built-in
+  exchange rate; a cost in another currency is an error unless the file declares an FX rate.
 * **Mocks.** All offline runs use rule-based fake models. They exercise the code and say nothing
   about real-model quality; no experiment results exist yet.
 

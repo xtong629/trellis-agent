@@ -60,6 +60,11 @@ class EvalRunner:
         self.clock = clock
         self.extra_config = dict(config or {})
 
+    def _budget_config(self) -> dict[str, Any] | None:
+        if self.budget_usd is None:
+            return None
+        return {"amount": self.budget_usd, "currency": self.meter.currency if self.meter else None}
+
     async def run(self, taskset: TaskSet) -> EvalReport:
         # Build every scorer first: a typo in a task file fails fast, before any money is spent.
         scorers = {
@@ -99,11 +104,14 @@ class EvalRunner:
             config={
                 "repeats": self.repeats,
                 "concurrency": self.concurrency,
-                "budget_usd": self.budget_usd,
+                "budget": self._budget_config(),
                 **self.extra_config,
             },
             cases=ordered,
-            meter_total_usd=None if self.meter is None else self.meter.total_usd,
+            meter_total_usd=None if self.meter is None else self.meter.total,
+            currency=None if self.meter is None else self.meter.currency,
+            cost_by_currency={} if self.meter is None else self.meter.by_currency,
+            fx_applied=[] if self.meter is None else self.meter.fx_applied,
             aborted_by_budget=stopped,
             timing=timing if self.include_timing else None,
         )

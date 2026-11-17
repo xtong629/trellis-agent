@@ -39,7 +39,7 @@ def test_03_cost_and_budget() -> None:
     out = run_example("03_cost_and_budget.py")
     assert "DEMO prices" in out  # never pass demo prices off as real ones
     assert "stop_reason: budget_exceeded" in out
-    assert "spent: $1.800000 of $1.500000" in out
+    assert "spent: 1.800000 of 1.500000 DEMO" in out
 
 
 def test_04_planned_agent() -> None:

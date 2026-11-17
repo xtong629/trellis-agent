@@ -1,11 +1,11 @@
 {
   "cases": [
     {
-      "agent_cost_usd": 0.00036,
+      "agent_cost": 0.00036,
       "content": "The answer is 5.",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -16,7 +16,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -26,7 +26,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "number_match(5)",
@@ -36,7 +36,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "contains('answer is 5')",
@@ -46,7 +46,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "tool_called('add')",
@@ -56,7 +56,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "stop_reason('end_turn')",
@@ -80,11 +80,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00036,
+      "agent_cost": 0.00036,
       "content": "The answer is 42.",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -95,7 +95,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -105,7 +105,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "number_match(42)",
@@ -115,7 +115,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "tool_called('multiply')",
@@ -139,11 +139,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00036,
+      "agent_cost": 0.00036,
       "content": "The capital of France is Paris.",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -154,7 +154,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -164,7 +164,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "contains('Paris')",
@@ -174,7 +174,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "tool_called('lookup_capital')",
@@ -198,11 +198,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00018,
+      "agent_cost": 0.00018,
       "content": "Hello! How can I help?",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -213,7 +213,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -223,7 +223,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "regex('^Hello')",
@@ -233,7 +233,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "tool_forbidden('add')",
@@ -243,7 +243,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "max_tokens(500)",
@@ -265,11 +265,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00018,
+      "agent_cost": 0.00018,
       "content": "I can't help with that.",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -280,7 +280,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -290,7 +290,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "contains(\"can't help\")",
@@ -300,7 +300,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "not_contains('password')",
@@ -322,11 +322,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00018,
+      "agent_cost": 0.00018,
       "content": "Refunds are reviewed within three business days.",
       "error": null,
       "judge_calls": 1,
-      "judge_cost_usd": 0.00035,
+      "judge_cost": 0.00035,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 25,
@@ -337,7 +337,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -347,7 +347,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "contains('three business days')",
@@ -357,7 +357,7 @@
           "usage": null
         },
         {
-          "cost_usd": 0.00035,
+          "cost": 0.00035,
           "error": false,
           "judge": true,
           "name": "llm_judge('The answer states that refunds are revie')",
@@ -384,11 +384,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00018,
+      "agent_cost": 0.00018,
       "content": "I don't know.",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -399,7 +399,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -409,7 +409,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "contains(\"don't know\")",
@@ -431,11 +431,11 @@
       }
     },
     {
-      "agent_cost_usd": 0.00036,
+      "agent_cost": 0.00036,
       "content": "The answer is 30.",
       "error": null,
       "judge_calls": 0,
-      "judge_cost_usd": 0.0,
+      "judge_cost": 0.0,
       "judge_usage": {
         "cached_tokens": 0,
         "completion_tokens": 0,
@@ -446,7 +446,7 @@
       "repeat": 0,
       "scores": [
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "run_succeeded",
@@ -456,7 +456,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "number_match(30)",
@@ -466,7 +466,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "max_tokens(400)",
@@ -476,7 +476,7 @@
           "usage": null
         },
         {
-          "cost_usd": null,
+          "cost": null,
           "error": false,
           "judge": false,
           "name": "max_cost_usd(0.01)",
@@ -501,13 +501,29 @@
     }
   ],
   "config": {
-    "budget_usd": null,
+    "budget": null,
     "concurrency": 4,
     "judge_model": "mock-judge",
     "llm": "mock",
     "model": "mock",
+    "price_table": {
+      "mock": {
+        "currency": "DEMO",
+        "input_per_million": 1.0,
+        "note": "made-up demo price",
+        "output_per_million": 2.0,
+        "per": "1M tokens"
+      },
+      "mock-judge": {
+        "currency": "DEMO",
+        "input_per_million": 1.0,
+        "note": "made-up demo price",
+        "output_per_million": 2.0,
+        "per": "1M tokens"
+      }
+    },
     "prices_file": "prices.demo.yaml",
-    "prices_sha256": "415e1b2c7ae6",
+    "prices_sha256": "f0394d7943e6",
     "repeats": 1,
     "target": "trellis_agent.eval.demo:make_target"
   },
@@ -515,22 +531,27 @@
   "summary": {
     "aborted_by_budget": false,
     "aborted_jobs": 0,
-    "agent_cost_usd": 0.00216,
+    "agent_cost": 0.00216,
     "completed_jobs": 8,
+    "cost": 0.00251,
+    "cost_by_currency": {
+      "DEMO": 0.00251
+    },
     "cost_complete": true,
     "cost_per_success": 0.00031375,
-    "cost_usd": 0.00251,
+    "currency": "DEMO",
     "estimated_usage": false,
     "failed": 0,
-    "judge_cost_usd": 0.00035,
+    "fx_applied": [],
+    "judge_cost": 0.00035,
     "judge_usage": {
       "cached_tokens": 0,
       "completion_tokens": 25,
       "estimated": false,
       "prompt_tokens": 300
     },
-    "meter_discrepancy_usd": 0.0,
-    "meter_total_usd": 0.00251,
+    "meter_discrepancy": 0.0,
+    "meter_total": 0.00251,
     "model_requests": 12,
     "not_run_jobs": 0,
     "pass_rate": 1.0,

@@ -50,7 +50,7 @@ class ScoreResult:
             judge=bool(raw.get("judge", False)),
             error=bool(raw.get("error", False)),
             usage=None if usage is None else Usage.from_dict(usage),
-            cost_usd=raw.get("cost_usd"),
+            cost_usd=raw.get("cost", raw.get("cost_usd")),  # old key: cost_usd
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,7 +62,7 @@ class ScoreResult:
             "judge": self.judge,
             "error": self.error,
             "usage": None if self.usage is None else self.usage.to_dict(),
-            "cost_usd": self.cost_usd,
+            "cost": self.cost_usd,
         }
 
 

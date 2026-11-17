@@ -103,13 +103,14 @@ class Comparison:
         return f" ({diff:+.1f} pp; limit {self.max_pass_drop * 100:.1f} pp)"
 
     def _cost_text(self, b: dict[str, Any], c: dict[str, Any]) -> str:
-        bc, cc = b["cost_usd"], c["cost_usd"]
+        bc, cc = b["cost"], c["cost"]
         pct = self.max_cost_increase_pct
         limit = "none" if pct is None else f"{pct:.1f}%"
         if bc is None or cc is None:
             return f"unknown (no price); limit {limit}"
         change = f"{(cc - bc) / bc * 100:+.1f}%; " if bc > 0 else ""
-        return f"${bc:.6f} -> ${cc:.6f} ({change}limit {limit})"
+        cur = self.current.currency or "?"
+        return f"{bc:.6f} {cur} -> {cc:.6f} {cur} ({change}limit {limit})"
 
 
 def _label(report: EvalReport) -> str:
@@ -181,6 +182,11 @@ def compare(
             "the tasks are not the same, so results are not comparable. "
             "Re-run the baseline on the new task set and save it before comparing"
         )
+    if baseline.currency and current.currency and baseline.currency != current.currency:
+        stop(
+            f"cost currencies differ: baseline {baseline.currency}, current {current.currency}; "
+            "costs in different currencies are never compared"
+        )
     if (why := _incomplete(baseline)) is not None:
         stop(f"baseline is incomplete: {why}; save a complete baseline")
     if (why := _incomplete(current)) is not None:
@@ -229,7 +235,7 @@ def compare(
             )
 
     if max_cost_increase_pct is not None:
-        bc, cc = b["cost_usd"], c["cost_usd"]
+        bc, cc = b["cost"], c["cost"]
         if bc is None or cc is None:
             found.append(
                 Finding(

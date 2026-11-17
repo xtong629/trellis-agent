@@ -1,7 +1,7 @@
 """Evaluation results: per-case records, run-level summary, and (de)serialisation.
 
 Cost accounting rules (see docs/EVAL.md):
-* agent and judge spend are separate fields and both roll up into ``cost_usd``;
+* agent and judge spend are separate fields and both roll up into ``cost`` (in ``currency``);
 * every figure comes from the per-call responses (``LLMResponse.cost_usd``), including the call
   that crossed a budget, and is reconciled against the shared ``CostMeter`` when there is one;
 * an unknown cost (model without a price) is ``None`` and flips ``cost_complete`` to False; it is
@@ -86,8 +86,8 @@ class CaseResult:
             scores=[ScoreResult.from_dict(x) for x in raw.get("scores", [])],
             usage=Usage.from_dict(raw.get("usage", {})),
             judge_usage=Usage.from_dict(raw.get("judge_usage", {})),
-            agent_cost_usd=raw.get("agent_cost_usd"),
-            judge_cost_usd=raw.get("judge_cost_usd"),
+            agent_cost_usd=raw.get("agent_cost", raw.get("agent_cost_usd")),  # old key: *_usd
+            judge_cost_usd=raw.get("judge_cost", raw.get("judge_cost_usd")),
             judge_calls=int(raw.get("judge_calls", 0)),
             model_requests=int(raw.get("model_requests", 0)),
             tool_calls=list(raw.get("tool_calls", [])),
@@ -104,8 +104,8 @@ class CaseResult:
             "scores": [s.to_dict() for s in self.scores],
             "usage": self.usage.to_dict(),
             "judge_usage": self.judge_usage.to_dict(),
-            "agent_cost_usd": self.agent_cost_usd,
-            "judge_cost_usd": self.judge_cost_usd,
+            "agent_cost": self.agent_cost_usd,
+            "judge_cost": self.judge_cost_usd,
             "judge_calls": self.judge_calls,
             "model_requests": self.model_requests,
             "tool_calls": list(self.tool_calls),
@@ -129,6 +129,9 @@ class EvalReport:
     meter_total_usd: float | None = None
     aborted_by_budget: bool = False
     timing: dict[str, float] | None = None
+    currency: str | None = None  # the one currency every cost figure in this report is in
+    cost_by_currency: dict[str, float] = field(default_factory=dict)  # native, never added up
+    fx_applied: list[dict[str, Any]] = field(default_factory=list)  # conversions behind the totals
 
     def summary(self) -> dict[str, Any]:
         cases = self.cases
@@ -185,13 +188,16 @@ class EvalReport:
             "judge_usage": judge_usage.to_dict(),
             "estimated_usage": usage.estimated or judge_usage.estimated,
             "model_requests": sum(c.model_requests for c in ran),
-            "agent_cost_usd": agent_cost if priced else None,
-            "judge_cost_usd": judge_cost if priced else None,
-            "cost_usd": total_cost,
+            "currency": self.currency,
+            "cost_by_currency": self.cost_by_currency,
+            "fx_applied": self.fx_applied,
+            "agent_cost": agent_cost if priced else None,
+            "judge_cost": judge_cost if priced else None,
+            "cost": total_cost,
             "cost_complete": complete,
             "cost_per_success": cost_per_success,
-            "meter_total_usd": self.meter_total_usd,
-            "meter_discrepancy_usd": (
+            "meter_total": self.meter_total_usd,
+            "meter_discrepancy": (
                 None
                 if self.meter_total_usd is None or total_cost is None
                 # rounded: both sums are exact, but they may differ in the last bit
@@ -247,9 +253,12 @@ class EvalReport:
             taskset_hash=str(taskset["hash"]),
             config=dict(data.get("config", {})),
             cases=[CaseResult.from_dict(c) for c in data["cases"]],
-            meter_total_usd=summary.get("meter_total_usd"),
+            meter_total_usd=summary.get("meter_total", summary.get("meter_total_usd")),
             aborted_by_budget=bool(summary.get("aborted_by_budget", False)),
             timing=data.get("timing_ms"),
+            currency=summary.get("currency"),  # None for reports that predate currencies
+            cost_by_currency=dict(summary.get("cost_by_currency", {})),
+            fx_applied=list(summary.get("fx_applied", [])),
         )
 
     @classmethod
@@ -268,14 +277,17 @@ class EvalReport:
     def render_markdown(self) -> str:
         s = self.summary()
 
+        label = self.currency or "(unknown currency)"
+
         def money(value: float | None) -> str:
-            return "unknown (no price)" if value is None else f"${value:.6f}"
+            return "unknown (no price)" if value is None else f"{value:.6f} {label}"
 
         def tokens(u: Mapping[str, Any]) -> str:
             return f"{u['prompt_tokens']} in / {u['completion_tokens']} out"
 
         rate = "n/a" if s["pass_rate"] is None else f"{s['pass_rate']:.1%}"
         per_success = "n/a" if s["cost_per_success"] is None else money(s["cost_per_success"])
+        native = ", ".join(f"{c} {v:.6f}" for c, v in self.cost_by_currency.items())
         extra = "".join(
             f", {s[key]} {label}"
             for key, label in (("aborted_jobs", "aborted"), ("not_run_jobs", "not run"))
@@ -312,9 +324,11 @@ class EvalReport:
                 else []
             ),
             f"| Judge tokens (separate) | {tokens(s['judge_usage'])} |",
-            f"| Agent cost | {money(s['agent_cost_usd'])} |",
-            f"| Judge cost (separate) | {money(s['judge_cost_usd'])} |",
-            f"| Total cost | {money(s['cost_usd'])} |",
+            f"| Currency | {label} |",
+            f"| Agent cost | {money(s['agent_cost'])} |",
+            f"| Judge cost (separate) | {money(s['judge_cost'])} |",
+            f"| Total cost | {money(s['cost'])} |",
+            *([f"| Cost by price currency | {native} |"] if len(self.cost_by_currency) > 1 else []),
             f"| Cost per success | {per_success} |",
             "",
         ]
@@ -324,11 +338,31 @@ class EvalReport:
                 "totals are lower bounds.",
                 "",
             ]
+        for fx in self.fx_applied:
+            lines += [
+                f"> Costs were converted with declared FX rates: {fx['from_currency']}->"
+                f"{fx['to_currency']} {fx['rate']} (source {fx['source']}, as of "
+                f"{fx['as_of']}).",
+                "",
+            ]
         if s["estimated_usage"]:
             lines += [
                 "> NOTE: token counts are estimated for some calls (provider reported no usage).",
                 "",
             ]
+        prices = self.config.get("price_table") or {}
+        if prices:
+            lines += ["## Prices used", ""]
+            for model, e in prices.items():
+                unit = f"{e['currency']} per {e['per']}"
+                nums = f"input {e['input_per_million']}, output {e['output_per_million']}, "
+                nums += f"cached {e.get('cached_input_per_million', 'n/a')}"
+                origin = f"source {e.get('source', 'n/a')}; checked {e.get('checked_on', 'n/a')}"
+                lines.append(
+                    f"- {model}: {unit}: {nums}; {origin}"
+                    + (f"; {e['note']}" if e.get("note") else "")
+                )
+            lines.append("")
         lines += [
             "## Cases",
             "",

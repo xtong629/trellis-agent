@@ -34,6 +34,7 @@ def case(
 def report(
     *cases: CaseResult, hash_: str = "a" * 64, name: str = "demo", version: str = "1", **kw: object
 ) -> EvalReport:
+    kw.setdefault("currency", "USD")
     return EvalReport(name, version, hash_, {}, list(cases), **kw)  # type: ignore[arg-type]
 
 
@@ -132,7 +133,7 @@ def test_cost_gate() -> None:
     assert blocked.exit_code == 1
     text = blocked.render()
     assert "cost rose 25.0%" in text and "limit 10.0%" in text
-    assert "$0.002000 -> $0.002500" in text
+    assert "0.002000 USD -> 0.002500 USD" in text
 
 
 def test_cost_gate_fails_closed_when_cost_is_unknown() -> None:
@@ -153,3 +154,15 @@ def test_findings_are_in_a_stable_order() -> None:
     cur = report(case("z", ok=False), case("a", ok=False), case("m", ok=False))
     ids = [f.task_id for f in compare(base, cur).findings if f.kind == "regression"]
     assert ids == ["z", "a", "m"]  # task-set order, not alphabetical or random
+
+
+def test_costs_in_different_currencies_cannot_be_compared() -> None:
+    cny = report(case("add"), currency="CNY")
+    result = compare(report(case("add"), currency="USD"), cny)
+    assert result.exit_code == 2
+    text = result.render()
+    assert "currencies differ" in text and "USD" in text and "CNY" in text
+
+
+def test_a_missing_currency_on_either_side_is_not_treated_as_a_mismatch() -> None:
+    assert compare(report(case("add"), currency=None), report(case("add"), currency="USD")).ok

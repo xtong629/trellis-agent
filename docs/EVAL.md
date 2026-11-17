@@ -76,28 +76,64 @@ decide, and treat judge scores as evidence, not truth.
 
 ## Cost accounting
 
-Every figure in a report comes from the per-call `LLMResponse.cost_usd`, which the LLM client
-computes from **your** price table (`--prices FILE`, USD per million tokens, optional cached-input
-price). Trellis ships **no** real vendor prices; `evals/prices.demo.yaml` is **DEMO PRICES ONLY
-(仅为示例,非真实价格)**: its numbers do not correspond to any real model or vendor and exist only
-to price the offline mock models.
+Every figure in a report comes from the per-call cost the LLM client computes from **your** price
+file (`--prices FILE`). Trellis ships **no** real vendor prices: `evals/prices.demo.yaml` is
+**DEMO PRICES ONLY (仅为示例,非真实价格)** in a made-up currency called `DEMO`, and
+`evals/prices.glm.yaml` holds *list* prices for one model (see its banner: the author actually uses a
+free token package, so those costs are reference values, not spend).
+
+### Price file
+
+```yaml
+models:
+  glm-5.3-flash:
+    currency: CNY          # required: a price never guesses its currency
+    per: 1M tokens         # required; the only supported unit
+    input: 0.8
+    output: 2.8
+    cached_input: 0.23     # optional
+    source: https://...    # where the numbers were read
+    checked_on: 2026-11-17 # when they were checked against the source
+    note: free text        # optional
+    effective_from: ...    # optional
+fx:                        # optional; there are no built-in rates
+  - {from: USD, to: CNY, rate: ..., source: https://..., as_of: 2026-11-17}
+```
+
+The metadata travels into every report (`config.price_table`, and a "Prices used" section in the
+Markdown) so each cost number can be traced to a source and a date. The old flat format (model names
+at the top level, `input_per_million` keys) is rejected with a pointer to `models:`.
+
+### Currencies
+
+All amounts in one run are in **one currency**: the budget's, or else the first priced call's.
+`cost_by_currency` always lists the native totals per price currency and is never added across
+currencies. A call priced in another currency is **converted only if the file declares that exact
+FX pair** (no inverse or cross rate is inferred); every conversion used is listed in `fx_applied`
+and the Markdown says the costs were converted. Without a declared rate a cross-currency cost is an
+error (up front in the CLI, or `CurrencyMismatchError` in the library) and is never added silently.
+`compare` refuses to compare costs in different currencies. Reports written before currencies
+existed carry no currency; they load with `currency: null` (unknown), not an assumed USD.
 
 | Field | Meaning |
 | --- | --- |
-| `agent_cost_usd`, `usage` | what the system under test spent |
-| `judge_cost_usd`, `judge_usage` | what LLM judges spent (separate, so judging cost is visible) |
-| `cost_usd` | agent + judge |
-| `cost_per_success` | `cost_usd / passed`: a better way to compare systems than raw cost |
+| `agent_cost`, `usage` | what the system under test spent |
+| `judge_cost`, `judge_usage` | what LLM judges spent (separate, so judging cost is visible) |
+| `cost` | agent + judge, in `currency` |
+| `currency`, `cost_by_currency`, `fx_applied` | the report currency; native totals per price currency; the FX rates used (empty when none) |
+| `cost_per_success` | `cost / passed`: a better way to compare systems than raw cost |
 | `cost_complete` | false if any call had no price; totals are then lower bounds |
 | `usage.reasoning_tokens`, `reasoning_share` | hidden reasoning tokens (part of the output) and their share of it; present only when the provider reports them; a lower bound if only some calls did |
 | `estimated_usage` | true if the provider reported no usage and tokens were estimated (chars/4) |
-| `meter_total_usd`, `meter_discrepancy_usd` | the shared `CostMeter`'s own total, and report minus meter (should be 0) |
+| `meter_total`, `meter_discrepancy` | the shared `CostMeter`'s own total, and report minus meter (should be 0) |
 
 An unknown cost is `null`, never `0`.
 
 ### Budgets, and the call that crosses the line
 
-A hard budget (`--budget-usd`, or `CostMeter(budget_usd=...)`) works at two levels:
+A hard budget is an amount **and a currency** (`--budget "10 CNY"` or the `BUDGET` environment variable;
+`CostMeter(budget=10, currency="CNY")`; `--budget-usd` / `BUDGET_USD` remain as deprecated USD aliases).
+Real runs must have one: there is no implicit default. It works at two levels:
 
 1. **Per call.** `CostMeter.record` books the spend of every call, then raises `BudgetExceeded` if
    the total passed the budget. The call that crossed the line *has already been paid for*, so the
@@ -108,12 +144,12 @@ A hard budget (`--budget-usd`, or `CostMeter(budget_usd=...)`) works at two leve
 What happens to the over-budget call depends on who made it:
 
 * **Agent call:** the agent stops (`stop_reason="budget_exceeded"`), does *not* use the reply, but
-  *does* add its tokens and cost to the run's `usage`/`cost_usd` and records a `model_request`
+  *does* add its tokens and cost to the run's `usage`/cost and records a `model_request`
   trace event flagged `over_budget`. The case is `aborted`.
 * **Judge call:** the judge's cost is attached to the case as a judge cost, the case is `aborted`.
 
 Consequently the report's cost equals the meter's cost, including the final over-budget call
-(`meter_discrepancy_usd` is 0). The runner's job-level check is soft: with concurrency N, up to N
+(`meter_discrepancy` is 0). The runner's job-level check is soft: with concurrency N, up to N
 jobs already in flight may finish after the budget is reached, so the final spend can exceed the
 budget by about N cases. Use `--concurrency 1` for the tightest cap.
 
@@ -121,8 +157,9 @@ Case statuses: `passed`, `failed`, `aborted` (budget hit mid-case), `not_run` (b
 Pass rates are computed over `passed + failed` only; the report states how many jobs were aborted
 or not run, and `compare` / `save-baseline` refuse incomplete reports.
 
-A budget **requires prices** for every model in use (the CLI checks up front): a limit cannot be
-enforced on calls whose price is unknown.
+A budget **requires prices** for every model in use, in the budget's currency or in one with a
+declared FX rate (the CLI checks up front): a limit cannot be enforced on calls whose price is
+unknown or cannot be converted.
 
 ## Determinism
 
@@ -186,3 +223,12 @@ exit code 1
 * A small task set measures *those tasks*. Report the sample size next to any rate.
 * Costs are only as accurate as the price table you supply, and are estimates, not billing records.
 * Judge scores are noisy; one repeat of one task says little about a real model.
+
+## Future extensions (not implemented)
+
+Descriptions only; none of this exists in the code:
+
+* **Tiered prices** (for example different rates above an input-length threshold).
+* **Time-limited discounts** and effective-dated price changes; `effective_from` is recorded but not
+  yet used to pick between several prices of one model.
+* **Updating prices from the web.** Prices are only ever read from a file you control.

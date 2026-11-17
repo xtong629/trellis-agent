@@ -29,7 +29,6 @@ from .scorers import ScorerConfigError, scorer_types
 from .taskset import TaskSetError, load_taskset
 
 EXIT_OK, EXIT_REGRESSION, EXIT_ERROR, EXIT_BUDGET = 0, 1, 2, 3
-DEFAULT_REAL_BUDGET_USD = 5.0
 
 TargetMaker = Callable[[LLMClient], Runnable]
 
@@ -68,6 +67,33 @@ def _parse_extra_params(items: list[str]) -> dict[str, Any]:
     return check_extra_params(extra)
 
 
+def _parse_budget(text: str) -> tuple[float, str]:
+    """ "10 CNY" -> (10.0, "CNY"). A budget without a currency is ambiguous, so it is refused."""
+    amount, _, currency = text.strip().partition(" ")
+    try:
+        value = float(amount)
+    except ValueError:
+        value = -1.0
+    if value < 0 or not currency.strip():
+        raise CLIError(f"a budget is an amount and a currency, e.g. '10 CNY'; got {text!r}")
+    return value, currency.strip()
+
+
+def _budget(args: argparse.Namespace) -> tuple[float, str] | None:
+    """--budget, else --budget-usd (deprecated), else BUDGET, else BUDGET_USD (deprecated)."""
+    if args.budget:
+        return _parse_budget(args.budget)
+    if args.budget_usd is not None:
+        return args.budget_usd, "USD"
+    if args.llm == "mock":
+        return None
+    if os.environ.get("BUDGET"):
+        return _parse_budget(os.environ["BUDGET"])
+    if os.environ.get("BUDGET_USD"):
+        return float(os.environ["BUDGET_USD"]), "USD"
+    raise CLIError("real runs need a budget: pass --budget '10 CNY' or set BUDGET (e.g. '10 CNY')")
+
+
 def _prices(path: str | None) -> tuple[PriceTable, dict[str, Any]]:
     if path is None:
         return PriceTable(), {}
@@ -87,10 +113,11 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
     uses_judge = any(s.type == "llm_judge" for t in taskset.tasks for s in t.scorers)
 
     prices, price_info = _prices(args.prices)
-    budget = args.budget_usd
-    if budget is None and args.llm == "openai":
-        budget = float(os.environ.get("BUDGET_USD") or DEFAULT_REAL_BUDGET_USD)
-    meter = CostMeter(prices, budget_usd=budget)
+    if args.llm == "openai":
+        load_dotenv()  # BUDGET may live in .env
+    limit = _budget(args)
+    budget = None if limit is None else limit[0]
+    meter = CostMeter(prices, budget=budget, currency=None if limit is None else limit[1])
     extra = _parse_extra_params(args.extra_param)
 
     clients: list[LLMClient] = []
@@ -110,12 +137,21 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
             judge = OpenAICompatClient.from_env(meter, model=os.environ.get("LLM_JUDGE_MODEL"))
         clients.append(judge)
 
-    if budget is not None:  # a budget cannot be enforced on calls whose price is unknown
+    if (
+        limit is not None
+    ):  # a budget cannot be enforced on unpriced calls or unconvertible currencies
         for client in clients:
-            if prices.get(client.model) is None:
+            price = prices.get(client.model)
+            if price is None:
                 raise CLIError(
                     f"cannot enforce the budget: no price for model {client.model!r} "
                     "(pass --prices FILE with that model's prices)"
+                )
+            if price.currency != limit[1] and prices.fx_rate(price.currency, limit[1]) is None:
+                raise CLIError(
+                    f"model {client.model!r} is priced in {price.currency} but the budget is in "
+                    f"{limit[1]}; use a budget in {price.currency} or declare an fx rate "
+                    f"{price.currency}->{limit[1]} (with a source and date) in the price file"
                 )
 
     make = _load_target(args.target)
@@ -133,6 +169,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
             "judge_model": None if judge is None else judge.model,
             "target": args.target or "trellis_agent.eval.demo:make_target",
             **({"extra_params": extra} if extra else {}),
+            "price_table": {c.model: p.to_dict() for c in clients if (p := prices.get(c.model))},
             **price_info,
         },
     )
@@ -203,7 +240,8 @@ def _parser() -> argparse.ArgumentParser:
     )
     run.add_argument("--repeats", type=int, default=1)
     run.add_argument("--concurrency", type=int, default=4)
-    run.add_argument("--budget-usd", type=float, help="hard cap; needs prices for every model")
+    run.add_argument("--budget", help="hard cap: an amount and a currency, e.g. '10 CNY'")
+    run.add_argument("--budget-usd", type=float, help="deprecated: same as --budget 'N USD'")
     run.add_argument("--out", help="write the JSON report here")
     run.add_argument("--md", help="write the Markdown report here")
     run.add_argument("--include-timing", action="store_true", help="record wall-clock per case")
