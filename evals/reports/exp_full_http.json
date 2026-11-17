@@ -1,0 +1,21 @@
+{
+ "http_requests": 4251,
+ "model_calls": 4251,
+ "extra_http_requests": 0,
+ "status_counts": {
+  "200": 4251
+ },
+ "rate_limited": 0,
+ "retry_after_seen": [],
+ "max_in_flight": 6,
+ "latency_s": {
+  "mean": 2.48,
+  "p50": 1.528,
+  "p90": 4.719,
+  "p99": 6.647,
+  "max": 37.788
+ },
+ "observed_max_in_flight": 6,
+ "sum_of_chunk_wall_s": 4706.800000000001,
+ "spent_cny": 1.1419699200000002
+}

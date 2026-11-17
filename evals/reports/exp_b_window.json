@@ -1,0 +1,5169 @@
+{
+  "cases": [
+    {
+      "agent_cost": 0.0014368,
+      "content": "I can't determine that — you haven't told me which ingredient you're allergic to.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": false,
+          "reason": "output does not contain 'kelpberry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 240,
+        "estimated": false,
+        "prompt_tokens": 956,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.001822,
+      "content": "I don't have that information — please tell me about your allergy first!",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": false,
+          "reason": "output does not contain 'zandal nut'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 305,
+        "estimated": false,
+        "prompt_tokens": 1210,
+        "reasoning_tokens": 48
+      }
+    },
+    {
+      "agent_cost": 0.0019328,
+      "content": "I don't have any information about what you ate or your symptoms — please share details and I'll help identify it.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": false,
+          "reason": "output does not contain 'moonroot'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 346,
+        "estimated": false,
+        "prompt_tokens": 1205,
+        "reasoning_tokens": 57
+      }
+    },
+    {
+      "agent_cost": 0.001892,
+      "content": "I don't have that information — you haven't told me your allergies yet.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": false,
+          "reason": "output does not contain 'fenwick plum'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 270,
+        "estimated": false,
+        "prompt_tokens": 1420,
+        "reasoning_tokens": 48
+      }
+    },
+    {
+      "agent_cost": 0.0021495999999999998,
+      "content": "I don't know — you haven't told me your allergies!",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": false,
+          "reason": "output does not contain 'ashgrain'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 320,
+        "estimated": false,
+        "prompt_tokens": 1567,
+        "reasoning_tokens": 77
+      }
+    },
+    {
+      "agent_cost": 0.0019708,
+      "content": "I don't have any information about your allergies, so I can't say.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": false,
+          "reason": "output does not contain 'tarn seed'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 251,
+        "estimated": false,
+        "prompt_tokens": 1585,
+        "reasoning_tokens": 79
+      }
+    },
+    {
+      "agent_cost": 0.002448,
+      "content": "I don't have that information — no deadline was provided. Could you tell me the context?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": false,
+          "reason": "output does not contain 'June 19'",
+          "score": 0.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 416,
+        "estimated": false,
+        "prompt_tokens": 1604,
+        "reasoning_tokens": 104
+      }
+    },
+    {
+      "agent_cost": 0.002208,
+      "content": "**July 2** — as updated earlier.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 358,
+        "estimated": false,
+        "prompt_tokens": 1507,
+        "reasoning_tokens": 63
+      }
+    },
+    {
+      "agent_cost": 0.0023068,
+      "content": "**May 30**",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 381,
+        "estimated": false,
+        "prompt_tokens": 1550,
+        "reasoning_tokens": 60
+      }
+    },
+    {
+      "agent_cost": 0.0014315999999999999,
+      "content": "I don't have that information — no deadline was provided.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": false,
+          "reason": "output does not contain 'August 11'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 205,
+        "estimated": false,
+        "prompt_tokens": 1072,
+        "reasoning_tokens": 44
+      }
+    },
+    {
+      "agent_cost": 0.001422,
+      "content": "I don't have the deadline information — could you share the report details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": false,
+          "reason": "output does not contain 'September 3'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 213,
+        "estimated": false,
+        "prompt_tokens": 1032,
+        "reasoning_tokens": 52
+      }
+    },
+    {
+      "agent_cost": 0.0017988,
+      "content": "抱歉，您在本次对话中没有提供过退款单号，我无法回答。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": false,
+          "reason": "output does not contain 'RF-4821'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 337,
+        "estimated": false,
+        "prompt_tokens": 1069,
+        "reasoning_tokens": 28
+      }
+    },
+    {
+      "agent_cost": 0.0014844,
+      "content": "您之前没有提到过退款单号。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": false,
+          "reason": "output does not contain 'RF-7305'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 293,
+        "estimated": false,
+        "prompt_tokens": 830,
+        "reasoning_tokens": 49
+      }
+    },
+    {
+      "agent_cost": 0.0014743999999999998,
+      "content": "抱歉，我们之前的对话中没有提到任何退款单号。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": false,
+          "reason": "output does not contain 'RF-1196'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 268,
+        "estimated": false,
+        "prompt_tokens": 905,
+        "reasoning_tokens": 35
+      }
+    },
+    {
+      "agent_cost": 0.0004392,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 88,
+        "estimated": false,
+        "prompt_tokens": 241,
+        "reasoning_tokens": 23
+      }
+    },
+    {
+      "agent_cost": 0.0004336,
+      "content": "brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 84,
+        "estimated": false,
+        "prompt_tokens": 248,
+        "reasoning_tokens": 17
+      }
+    },
+    {
+      "agent_cost": 0.0005055999999999999,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 112,
+        "estimated": false,
+        "prompt_tokens": 240,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.0012396,
+      "content": "17 plus 25 equals 42.\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 207,
+        "estimated": false,
+        "prompt_tokens": 825,
+        "reasoning_tokens": 46
+      }
+    },
+    {
+      "agent_cost": 0.001258,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 209,
+        "estimated": false,
+        "prompt_tokens": 841,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.0012284,
+      "content": "36 plus 27 equals 63.\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 237,
+        "estimated": false,
+        "prompt_tokens": 706,
+        "reasoning_tokens": 28
+      }
+    },
+    {
+      "agent_cost": 0.0015412,
+      "content": "I can't tell — you haven't shared any information about your allergy. What ingredient do you suspect?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": false,
+          "reason": "output does not contain 'kelpberry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 269,
+        "estimated": false,
+        "prompt_tokens": 985,
+        "reasoning_tokens": 55
+      }
+    },
+    {
+      "agent_cost": 0.00199,
+      "content": "I don't know — you haven't told me your allergies.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": false,
+          "reason": "output does not contain 'zandal nut'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 395,
+        "estimated": false,
+        "prompt_tokens": 1105,
+        "reasoning_tokens": 86
+      }
+    },
+    {
+      "agent_cost": 0.0017652,
+      "content": "I can't tell—you haven't shared what you ate or any allergy information. Please provide details.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": false,
+          "reason": "output does not contain 'moonroot'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 297,
+        "estimated": false,
+        "prompt_tokens": 1167,
+        "reasoning_tokens": 38
+      }
+    },
+    {
+      "agent_cost": 0.0018528,
+      "content": "I don't have any information about your allergies.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": false,
+          "reason": "output does not contain 'fenwick plum'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 262,
+        "estimated": false,
+        "prompt_tokens": 1399,
+        "reasoning_tokens": 41
+      }
+    },
+    {
+      "agent_cost": 0.0021984,
+      "content": "I don't have that information — I can't know your allergies. Please check with a doctor or allergist!",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": false,
+          "reason": "output does not contain 'ashgrain'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 342,
+        "estimated": false,
+        "prompt_tokens": 1551,
+        "reasoning_tokens": 41
+      }
+    },
+    {
+      "agent_cost": 0.0020452,
+      "content": "I don't have any information about your allergies—could you tell me more?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": false,
+          "reason": "output does not contain 'tarn seed'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 271,
+        "estimated": false,
+        "prompt_tokens": 1608,
+        "reasoning_tokens": 43
+      }
+    },
+    {
+      "agent_cost": 0.0021164,
+      "content": "June 19",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 325,
+        "estimated": false,
+        "prompt_tokens": 1508,
+        "reasoning_tokens": 66
+      }
+    },
+    {
+      "agent_cost": 0.0021412000000000002,
+      "content": "I don't have that information—no deadline was mentioned in our conversation.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": false,
+          "reason": "output does not contain 'July 2'",
+          "score": 0.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 325,
+        "estimated": false,
+        "prompt_tokens": 1539,
+        "reasoning_tokens": 93
+      }
+    },
+    {
+      "agent_cost": 0.0018872,
+      "content": "May 30",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 268,
+        "estimated": false,
+        "prompt_tokens": 1421,
+        "reasoning_tokens": 63
+      }
+    },
+    {
+      "agent_cost": 0.001432,
+      "content": "I don't have that information — no deadline was mentioned in our conversation.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": false,
+          "reason": "output does not contain 'August 11'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 208,
+        "estimated": false,
+        "prompt_tokens": 1062,
+        "reasoning_tokens": 35
+      }
+    },
+    {
+      "agent_cost": 0.0014432,
+      "content": "I don't have information about the deadline—could you share the context?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": false,
+          "reason": "output does not contain 'September 3'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 202,
+        "estimated": false,
+        "prompt_tokens": 1097,
+        "reasoning_tokens": 35
+      }
+    },
+    {
+      "agent_cost": 0.0015384,
+      "content": "您之前的对话中没有提供过退款单号，我无法回答。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": false,
+          "reason": "output does not contain 'RF-4821'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 256,
+        "estimated": false,
+        "prompt_tokens": 1027,
+        "reasoning_tokens": 43
+      }
+    },
+    {
+      "agent_cost": 0.0015752,
+      "content": "您之前没有提到过退款单号。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": false,
+          "reason": "output does not contain 'RF-7305'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 284,
+        "estimated": false,
+        "prompt_tokens": 975,
+        "reasoning_tokens": 36
+      }
+    },
+    {
+      "agent_cost": 0.0016052,
+      "content": "抱歉，我们的对话中没有提到过任何退款单号，我无法提供。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": false,
+          "reason": "output does not contain 'RF-1196'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 311,
+        "estimated": false,
+        "prompt_tokens": 918,
+        "reasoning_tokens": 51
+      }
+    },
+    {
+      "agent_cost": 0.0005572,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 115,
+        "estimated": false,
+        "prompt_tokens": 294,
+        "reasoning_tokens": 21
+      }
+    },
+    {
+      "agent_cost": 0.0005516,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 121,
+        "estimated": false,
+        "prompt_tokens": 266,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.000678,
+      "content": "I can't tell without more information—please share the allergy details or list of ingredients.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": false,
+          "reason": "output does not contain 'dun berry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 163,
+        "estimated": false,
+        "prompt_tokens": 277,
+        "reasoning_tokens": 32
+      }
+    },
+    {
+      "agent_cost": 0.0012724,
+      "content": "17 + 25 = 42\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 205,
+        "estimated": false,
+        "prompt_tokens": 873,
+        "reasoning_tokens": 34
+      }
+    },
+    {
+      "agent_cost": 0.001318,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 245,
+        "estimated": false,
+        "prompt_tokens": 790,
+        "reasoning_tokens": 31
+      }
+    },
+    {
+      "agent_cost": 0.0013323999999999999,
+      "content": "36 + 27 = 63\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 243,
+        "estimated": false,
+        "prompt_tokens": 815,
+        "reasoning_tokens": 30
+      }
+    },
+    {
+      "agent_cost": 0.001496,
+      "content": "I don't have any information about your allergies. Please share the context or details first.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": false,
+          "reason": "output does not contain 'kelpberry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 250,
+        "estimated": false,
+        "prompt_tokens": 995,
+        "reasoning_tokens": 49
+      }
+    },
+    {
+      "agent_cost": 0.0015539999999999998,
+      "content": "I don't have any information about your allergies — could you share more context?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": false,
+          "reason": "output does not contain 'zandal nut'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 263,
+        "estimated": false,
+        "prompt_tokens": 1022,
+        "reasoning_tokens": 31
+      }
+    },
+    {
+      "agent_cost": 0.0018188,
+      "content": "I don't have any information about your allergies — could you tell me more?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": false,
+          "reason": "output does not contain 'moonroot'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 299,
+        "estimated": false,
+        "prompt_tokens": 1227,
+        "reasoning_tokens": 86
+      }
+    },
+    {
+      "agent_cost": 0.0019768,
+      "content": "I can't determine that — you haven't told me your allergy or any symptoms.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": false,
+          "reason": "output does not contain 'fenwick plum'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 314,
+        "estimated": false,
+        "prompt_tokens": 1372,
+        "reasoning_tokens": 66
+      }
+    },
+    {
+      "agent_cost": 0.0020168,
+      "content": "I can't know without more information—please share the details.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": false,
+          "reason": "output does not contain 'ashgrain'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 280,
+        "estimated": false,
+        "prompt_tokens": 1541,
+        "reasoning_tokens": 65
+      }
+    },
+    {
+      "agent_cost": 0.002144,
+      "content": "I don't have any information about your allergies.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": false,
+          "reason": "output does not contain 'tarn seed'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 310,
+        "estimated": false,
+        "prompt_tokens": 1595,
+        "reasoning_tokens": 67
+      }
+    },
+    {
+      "agent_cost": 0.0020404,
+      "content": "June 19.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 311,
+        "estimated": false,
+        "prompt_tokens": 1462,
+        "reasoning_tokens": 91
+      }
+    },
+    {
+      "agent_cost": 0.0021384,
+      "content": "July 2",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 348,
+        "estimated": false,
+        "prompt_tokens": 1455,
+        "reasoning_tokens": 80
+      }
+    },
+    {
+      "agent_cost": 0.0020724,
+      "content": "May 30",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 345,
+        "estimated": false,
+        "prompt_tokens": 1383,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.001352,
+      "content": "I don't have the deadline information—please share the report details.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": false,
+          "reason": "output does not contain 'August 11'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 190,
+        "estimated": false,
+        "prompt_tokens": 1025,
+        "reasoning_tokens": 54
+      }
+    },
+    {
+      "agent_cost": 0.0015172,
+      "content": "I don't have any information about a report deadline — no date was provided in our conversation. Could you share more details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": false,
+          "reason": "output does not contain 'September 3'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 233,
+        "estimated": false,
+        "prompt_tokens": 1081,
+        "reasoning_tokens": 36
+      }
+    },
+    {
+      "agent_cost": 0.0015044,
+      "content": "抱歉，我们的对话中没有提到过退款单号，我无法提供。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": false,
+          "reason": "output does not contain 'RF-4821'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 245,
+        "estimated": false,
+        "prompt_tokens": 1023,
+        "reasoning_tokens": 57
+      }
+    },
+    {
+      "agent_cost": 0.0016496,
+      "content": "抱歉，我们之前的对话中没有提到过任何退款单号。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": false,
+          "reason": "output does not contain 'RF-7305'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 342,
+        "estimated": false,
+        "prompt_tokens": 865,
+        "reasoning_tokens": 46
+      }
+    },
+    {
+      "agent_cost": 0.00131,
+      "content": "抱歉，您之前没有提供过退款单号，我无法回答。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": false,
+          "reason": "output does not contain 'RF-1196'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 193,
+        "estimated": false,
+        "prompt_tokens": 962,
+        "reasoning_tokens": 18
+      }
+    },
+    {
+      "agent_cost": 0.000406,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 77,
+        "estimated": false,
+        "prompt_tokens": 238,
+        "reasoning_tokens": 16
+      }
+    },
+    {
+      "agent_cost": 0.000548,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 126,
+        "estimated": false,
+        "prompt_tokens": 244,
+        "reasoning_tokens": 58
+      }
+    },
+    {
+      "agent_cost": 0.0006368000000000001,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 148,
+        "estimated": false,
+        "prompt_tokens": 278,
+        "reasoning_tokens": 28
+      }
+    },
+    {
+      "agent_cost": 0.0013056,
+      "content": "17 + 25 = 42\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 216,
+        "estimated": false,
+        "prompt_tokens": 876,
+        "reasoning_tokens": 37
+      }
+    },
+    {
+      "agent_cost": 0.0012648,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 212,
+        "estimated": false,
+        "prompt_tokens": 839,
+        "reasoning_tokens": 33
+      }
+    },
+    {
+      "agent_cost": 0.0012828,
+      "content": "36 + 27 = 63\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 255,
+        "estimated": false,
+        "prompt_tokens": 711,
+        "reasoning_tokens": 24
+      }
+    },
+    {
+      "agent_cost": 0.0014648,
+      "content": "I don't have any information about your allergies — you haven't told me your ingredients or symptoms.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": false,
+          "reason": "output does not contain 'kelpberry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 246,
+        "estimated": false,
+        "prompt_tokens": 970,
+        "reasoning_tokens": 69
+      }
+    },
+    {
+      "agent_cost": 0.0015528,
+      "content": "I don't have any information about your allergies, so I can't tell. Please share the details.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": false,
+          "reason": "output does not contain 'zandal nut'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 240,
+        "estimated": false,
+        "prompt_tokens": 1101,
+        "reasoning_tokens": 53
+      }
+    },
+    {
+      "agent_cost": 0.0016488,
+      "content": "I don't have information about your allergies. Could you share the details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": false,
+          "reason": "output does not contain 'moonroot'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 244,
+        "estimated": false,
+        "prompt_tokens": 1207,
+        "reasoning_tokens": 57
+      }
+    },
+    {
+      "agent_cost": 0.0019148,
+      "content": "I don't have any information about what you're allergic to — could you tell me more?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": false,
+          "reason": "output does not contain 'fenwick plum'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 283,
+        "estimated": false,
+        "prompt_tokens": 1403,
+        "reasoning_tokens": 50
+      }
+    },
+    {
+      "agent_cost": 0.0020484,
+      "content": "I don't have enough information — you haven't told me your allergy yet.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": false,
+          "reason": "output does not contain 'ashgrain'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 317,
+        "estimated": false,
+        "prompt_tokens": 1451,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.0021156,
+      "content": "I don't have that information—please tell me more.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": false,
+          "reason": "output does not contain 'tarn seed'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 287,
+        "estimated": false,
+        "prompt_tokens": 1640,
+        "reasoning_tokens": 61
+      }
+    },
+    {
+      "agent_cost": 0.0024584,
+      "content": "I don't have that information — I don't know your report deadline. Could you share more details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": false,
+          "reason": "output does not contain 'June 19'",
+          "score": 0.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 416,
+        "estimated": false,
+        "prompt_tokens": 1617,
+        "reasoning_tokens": 75
+      }
+    },
+    {
+      "agent_cost": 0.0020596,
+      "content": "July 2",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 305,
+        "estimated": false,
+        "prompt_tokens": 1507,
+        "reasoning_tokens": 62
+      }
+    },
+    {
+      "agent_cost": 0.0019804,
+      "content": "May 30",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 287,
+        "estimated": false,
+        "prompt_tokens": 1471,
+        "reasoning_tokens": 58
+      }
+    },
+    {
+      "agent_cost": 0.0013468,
+      "content": "I don't have that information — no report details were provided.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": false,
+          "reason": "output does not contain 'August 11'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 187,
+        "estimated": false,
+        "prompt_tokens": 1029,
+        "reasoning_tokens": 33
+      }
+    },
+    {
+      "agent_cost": 0.0015568000000000001,
+      "content": "I don't have that information—no report deadline was provided. Could you share the details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": false,
+          "reason": "output does not contain 'September 3'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 246,
+        "estimated": false,
+        "prompt_tokens": 1085,
+        "reasoning_tokens": 70
+      }
+    },
+    {
+      "agent_cost": 0.0013012,
+      "content": "抱歉，我们的对话中没有提到过退款单号，我无法提供。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": false,
+          "reason": "output does not contain 'RF-4821'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 185,
+        "estimated": false,
+        "prompt_tokens": 979,
+        "reasoning_tokens": 39
+      }
+    },
+    {
+      "agent_cost": 0.0015548,
+      "content": "您之前没有提供过退款单号，我无法回答。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": false,
+          "reason": "output does not contain 'RF-7305'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 285,
+        "estimated": false,
+        "prompt_tokens": 946,
+        "reasoning_tokens": 49
+      }
+    },
+    {
+      "agent_cost": 0.0015296,
+      "content": "抱歉，我们的对话中没有提到任何退款单号，我无法提供。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": false,
+          "reason": "output does not contain 'RF-1196'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 288,
+        "estimated": false,
+        "prompt_tokens": 904,
+        "reasoning_tokens": 40
+      }
+    },
+    {
+      "agent_cost": 0.000416,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 80,
+        "estimated": false,
+        "prompt_tokens": 240,
+        "reasoning_tokens": 21
+      }
+    },
+    {
+      "agent_cost": 0.0005344,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 118,
+        "estimated": false,
+        "prompt_tokens": 255,
+        "reasoning_tokens": 51
+      }
+    },
+    {
+      "agent_cost": 0.0004336,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 90,
+        "estimated": false,
+        "prompt_tokens": 227,
+        "reasoning_tokens": 29
+      }
+    },
+    {
+      "agent_cost": 0.0012836,
+      "content": "17 + 25 = 42\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 211,
+        "estimated": false,
+        "prompt_tokens": 866,
+        "reasoning_tokens": 19
+      }
+    },
+    {
+      "agent_cost": 0.001316,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 224,
+        "estimated": false,
+        "prompt_tokens": 861,
+        "reasoning_tokens": 30
+      }
+    },
+    {
+      "agent_cost": 0.0010968,
+      "content": "36 plus 27 equals 63.\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 174,
+        "estimated": false,
+        "prompt_tokens": 762,
+        "reasoning_tokens": 56
+      }
+    },
+    {
+      "agent_cost": 0.001456,
+      "content": "I don't have information about your allergies — could you tell me more?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": false,
+          "reason": "output does not contain 'kelpberry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 246,
+        "estimated": false,
+        "prompt_tokens": 959,
+        "reasoning_tokens": 27
+      }
+    },
+    {
+      "agent_cost": 0.0016703999999999998,
+      "content": "I can't tell — you haven't shared any details about your allergy.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": false,
+          "reason": "output does not contain 'zandal nut'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 280,
+        "estimated": false,
+        "prompt_tokens": 1108,
+        "reasoning_tokens": 52
+      }
+    },
+    {
+      "agent_cost": 0.0018792,
+      "content": "I don't have any information about your allergies — please share the details!",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": false,
+          "reason": "output does not contain 'moonroot'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 314,
+        "estimated": false,
+        "prompt_tokens": 1250,
+        "reasoning_tokens": 44
+      }
+    },
+    {
+      "agent_cost": 0.0018484,
+      "content": "I can't tell without more information.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": false,
+          "reason": "output does not contain 'fenwick plum'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 267,
+        "estimated": false,
+        "prompt_tokens": 1376,
+        "reasoning_tokens": 92
+      }
+    },
+    {
+      "agent_cost": 0.0018872,
+      "content": "I don't have that information — could you tell me your symptoms or the food involved?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": false,
+          "reason": "output does not contain 'ashgrain'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 254,
+        "estimated": false,
+        "prompt_tokens": 1470,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.0022588,
+      "content": "I don't have any information about your allergies, so I can't identify the ingredient. Could you share more details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": false,
+          "reason": "output does not contain 'tarn seed'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 349,
+        "estimated": false,
+        "prompt_tokens": 1602,
+        "reasoning_tokens": 93
+      }
+    },
+    {
+      "agent_cost": 0.002016,
+      "content": "June 19.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 290,
+        "estimated": false,
+        "prompt_tokens": 1505,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.0019144000000000001,
+      "content": "July 2.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 268,
+        "estimated": false,
+        "prompt_tokens": 1455,
+        "reasoning_tokens": 49
+      }
+    },
+    {
+      "agent_cost": 0.002052,
+      "content": "May 30.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 338,
+        "estimated": false,
+        "prompt_tokens": 1382,
+        "reasoning_tokens": 49
+      }
+    },
+    {
+      "agent_cost": 0.0014064,
+      "content": "I don't have information about the report deadline. Could you share the relevant details?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": false,
+          "reason": "output does not contain 'August 11'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 204,
+        "estimated": false,
+        "prompt_tokens": 1044,
+        "reasoning_tokens": 33
+      }
+    },
+    {
+      "agent_cost": 0.0014868,
+      "content": "I don't have the deadline information—no report details were provided. Could you share the relevant document?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": false,
+          "reason": "output does not contain 'September 3'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 231,
+        "estimated": false,
+        "prompt_tokens": 1050,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.0014528,
+      "content": "您没有提供过退款单号，我无法回答。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": false,
+          "reason": "output does not contain 'RF-4821'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 248,
+        "estimated": false,
+        "prompt_tokens": 948,
+        "reasoning_tokens": 63
+      }
+    },
+    {
+      "agent_cost": 0.0015179999999999998,
+      "content": "抱歉，我们的对话中没有提到过任何退款单号，我无法提供。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": false,
+          "reason": "output does not contain 'RF-7305'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 277,
+        "estimated": false,
+        "prompt_tokens": 928,
+        "reasoning_tokens": 43
+      }
+    },
+    {
+      "agent_cost": 0.0015099999999999998,
+      "content": "抱歉，您之前没有提供过退款单号。",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": false,
+          "reason": "output does not contain 'RF-1196'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 291,
+        "estimated": false,
+        "prompt_tokens": 869,
+        "reasoning_tokens": 29
+      }
+    },
+    {
+      "agent_cost": 0.0005775999999999999,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 132,
+        "estimated": false,
+        "prompt_tokens": 260,
+        "reasoning_tokens": 52
+      }
+    },
+    {
+      "agent_cost": 0.00044360000000000005,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 87,
+        "estimated": false,
+        "prompt_tokens": 250,
+        "reasoning_tokens": 20
+      }
+    },
+    {
+      "agent_cost": 0.0006940000000000001,
+      "content": "I can't determine that — no ingredients or context were provided. Please share more information.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": false,
+          "reason": "output does not contain 'dun berry'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 173,
+        "estimated": false,
+        "prompt_tokens": 262,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.001362,
+      "content": "17 + 25 = 42.\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 241,
+        "estimated": false,
+        "prompt_tokens": 859,
+        "reasoning_tokens": 54
+      }
+    },
+    {
+      "agent_cost": 0.0014128,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 270,
+        "estimated": false,
+        "prompt_tokens": 821,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.0012536000000000001,
+      "content": "36 + 27 = 63\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 244,
+        "estimated": false,
+        "prompt_tokens": 713,
+        "reasoning_tokens": 17
+      }
+    }
+  ],
+  "config": {
+    "budget": {
+      "amount": 5.0,
+      "currency": "CNY"
+    },
+    "concurrency": {
+      "jobs": 2,
+      "scheduler_max_concurrency": 1,
+      "theoretical_max_in_flight": 2
+    },
+    "extra_params": {
+      "reasoning_effort": "low"
+    },
+    "llm": "openai",
+    "meta": {
+      "experiment": "b-full",
+      "reasoning_effort": "low",
+      "repeats": "5",
+      "run_date": "2026-11-18",
+      "system": "b_window",
+      "taskset_version": "2"
+    },
+    "model": "glm-5.3-flash",
+    "price_table": {
+      "glm-5.3-flash": {
+        "cached_input_per_million": 0.23,
+        "checked_on": "2026-11-17",
+        "currency": "CNY",
+        "input_per_million": 0.8,
+        "note": "List price, limited-time discount ignored. I actually use a free new-user token resource package, so report costs are list-price reference values, not actual spend.",
+        "output_per_million": 2.8,
+        "per": "1M tokens",
+        "source": "https://docs.bigmodel.cn/cn/guide/start/pricing.md"
+      }
+    },
+    "prices_file": "prices.glm.yaml",
+    "prices_sha256": "dad4039c29e0",
+    "repeats": 1,
+    "target": "experiments.targets:b_window"
+  },
+  "schema_version": 1,
+  "summary": {
+    "aborted_by_budget": false,
+    "aborted_jobs": 0,
+    "agent_cost": 0.1514716,
+    "completed_jobs": 100,
+    "cost": 0.1514716,
+    "cost_by_currency": {
+      "CNY": 0.15147159999999998
+    },
+    "cost_complete": true,
+    "cost_per_success": 0.0037867900000000004,
+    "currency": "CNY",
+    "estimated_usage": false,
+    "failed": 60,
+    "fx_applied": [],
+    "judge_cost": 0.0,
+    "judge_usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "estimated": false,
+      "prompt_tokens": 0
+    },
+    "meter_discrepancy": 0.0,
+    "meter_total": 0.15147159999999998,
+    "model_requests": 855,
+    "not_run_jobs": 0,
+    "pass_rate": 0.4,
+    "pass_rate_by_repeat": [
+      0.4,
+      0.35,
+      0.45,
+      0.4,
+      0.4
+    ],
+    "pass_rate_mean": 0.4,
+    "pass_rate_std": 0.03535533905932739,
+    "passed": 40,
+    "planned_jobs": 100,
+    "reasoning_share": 0.1900405280686971,
+    "tasks": [
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "allergy-01"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "allergy-02"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "allergy-03"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "allergy-04"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "allergy-05"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "allergy-06"
+      },
+      {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "repeats_completed": 5,
+        "task_id": "deadline-01"
+      },
+      {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "repeats_completed": 5,
+        "task_id": "deadline-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "deadline-03"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "deadline-05"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "deadline-06"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "refund-zh-01"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "refund-zh-02"
+      },
+      {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "repeats_completed": 5,
+        "task_id": "refund-zh-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "fits-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "fits-02"
+      },
+      {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "repeats_completed": 5,
+        "task_id": "fits-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "irrelevant-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "irrelevant-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "irrelevant-03"
+      }
+    ],
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 24921,
+      "estimated": false,
+      "prompt_tokens": 102116,
+      "reasoning_tokens": 4736
+    }
+  },
+  "taskset": {
+    "hash": "1c1a372d823ceace4a835616cdf64ca33c3ac08c00d2c99b63d21bd25ba9294f",
+    "name": "exp-b-memory",
+    "version": "2"
+  }
+}
