@@ -507,7 +507,7 @@
     "llm": "mock",
     "model": "mock",
     "prices_file": "prices.demo.yaml",
-    "prices_sha256": "c5addd401e9b",
+    "prices_sha256": "415e1b2c7ae6",
     "repeats": 1,
     "target": "trellis_agent.eval.demo:make_target"
   },

@@ -54,8 +54,8 @@ python -m trellis_agent.eval compare evals/baselines/smoke.json runs/smoke.json
 
 To use a real model, copy `.env.example` to `.env`, set `LLM_BASE_URL`, `LLM_API_KEY` and
 `LLM_MODEL` (any OpenAI-compatible endpoint), and drop `--mock` / use `--llm openai`. Real runs need
-a price file for your model; `evals/prices.demo.yaml` shows the format and holds **made-up** numbers
-for the mock models only.
+a price file for your model. `evals/prices.demo.yaml` shows the format; its numbers are
+**DEMO PRICES ONLY (仅为示例,非真实价格)** and do not correspond to any real model or vendor.
 
 ## Results
 

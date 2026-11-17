@@ -1,5 +1,11 @@
-# DEMO prices for the offline mock models only. These are NOT real vendor prices.
-# For a real model, create your own file with the model's name and the prices from your
+# ==========================================================
+# DEMO PRICES ONLY / 仅为示例,非真实价格
+# These numbers do not correspond to any real model or vendor.
+# 这些数字不对应任何真实模型或厂商。
+# ==========================================================
+#
+# They exist only so the offline mock models ("mock", "mock-judge") have something to price.
+# For a real model, create your own file with that model's name and the prices from your
 # provider's pricing page (USD per million tokens), and note the date you looked them up.
 mock:
   input_per_million: 1.0

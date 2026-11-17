@@ -78,8 +78,9 @@ decide, and treat judge scores as evidence, not truth.
 
 Every figure in a report comes from the per-call `LLMResponse.cost_usd`, which the LLM client
 computes from **your** price table (`--prices FILE`, USD per million tokens, optional cached-input
-price). Trellis ships **no** real vendor prices; `evals/prices.demo.yaml` contains made-up numbers
-for the offline mock models only.
+price). Trellis ships **no** real vendor prices; `evals/prices.demo.yaml` is **DEMO PRICES ONLY
+(仅为示例,非真实价格)**: its numbers do not correspond to any real model or vendor and exist only
+to price the offline mock models.
 
 | Field | Meaning |
 | --- | --- |
