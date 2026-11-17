@@ -63,6 +63,9 @@ Provider-specific request fields (for example a reasoning level) can be set per 
 `--extra-param reasoning_effort=low` (repeatable, JSON values allowed); they are sent as top-level
 body fields and recorded in the report config.
 
+Labels such as the run date can be added with `--meta run_date=2026-11-18` (repeatable); they are
+recorded in the report config, and only when given.
+
 To use a real model, copy `.env.example` to `.env`, set `LLM_BASE_URL`, `LLM_API_KEY` and
 `LLM_MODEL` (any OpenAI-compatible endpoint), and drop `--mock` / use `--llm openai`. Real runs need
 a price file for your model and a budget with a currency, e.g. `--budget "10 CNY"` (or `BUDGET` in

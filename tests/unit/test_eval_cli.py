@@ -446,3 +446,25 @@ def test_the_glm_prices_are_the_official_cny_list_prices_with_provenance() -> No
     assert not {"USD", "0.15", "0.50", "0.03"} & set(
         path.read_text(encoding="utf-8").split()
     )  # old USD figures are gone
+
+
+# ----------------------------------------------------------------- --meta
+def test_meta_pairs_are_recorded_in_the_report_config(tmp_path: Path) -> None:
+    out = tmp_path / "r.json"
+    assert run_smoke(out, "--meta", "run_date=2026-11-18", "--meta", "experiment=smoke-check") == 0
+    assert load(out)["config"]["meta"] == {"run_date": "2026-11-18", "experiment": "smoke-check"}
+
+
+def test_meta_values_stay_strings_and_are_absent_when_not_given(tmp_path: Path) -> None:
+    out = tmp_path / "r.json"
+    assert run_smoke(out, "--meta", "build=007") == 0
+    assert load(out)["config"]["meta"] == {"build": "007"}  # not parsed: "007" must stay "007"
+    plain = tmp_path / "plain.json"
+    assert run_smoke(plain) == 0
+    assert "meta" not in load(plain)["config"]  # keeps existing baselines valid
+
+
+@pytest.mark.parametrize("bad", ["noequals", "=value"])
+def test_bad_meta_exits_2(capsys: pytest.CaptureFixture[str], bad: str) -> None:
+    assert main(["run", str(SMOKE), "--llm", "mock", "--meta", bad]) == 2
+    assert "--meta" in capsys.readouterr().err
