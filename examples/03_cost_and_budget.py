@@ -1,0 +1,75 @@
+"""Example 03: cost accounting and a hard budget.
+
+Mock mode uses made-up DEMO prices so the arithmetic is easy to follow; they are NOT real prices.
+For a real model, set PRICE_INPUT_PER_M / PRICE_OUTPUT_PER_M (USD per million tokens, from your
+provider's pricing page) and optionally BUDGET_USD (default 5). With a budget set, a model without a
+price is rejected ("fail closed"): a budget cannot be enforced on unknown prices.
+
+    python examples/03_cost_and_budget.py --mock
+"""
+
+import asyncio
+import os
+
+from _common import check_llm_env, parse_args, real_client
+
+from trellis_agent.agent import Agent, AgentConfig
+from trellis_agent.cost import CostMeter, ModelPrice, PriceTable
+from trellis_agent.llm import LLMClient, RuleLLM
+from trellis_agent.tools import ToolRegistry, tool
+from trellis_agent.types import Message, ToolCall, Usage
+
+
+@tool
+def lookup(topic: str) -> str:
+    """Look something up."""
+    return f"notes about {topic}"
+
+
+async def main() -> None:
+    args = parse_args(__doc__ or "")
+    llm: LLMClient
+    if args.mock:
+        print("Using DEMO prices (not real): $1.00 in / $2.00 out per million tokens")
+        meter = CostMeter(PriceTable({"mock": ModelPrice(1.0, 2.0)}), budget_usd=1.5)
+        # Every call "uses" 400k in + 100k out = $0.60, and the model never stops asking for tools.
+        llm = RuleLLM(
+            lambda m, t: Message.assistant(
+                None, (ToolCall(f"c{len(m)}", "lookup", {"topic": "x"}),)
+            ),
+            usage_per_call=Usage(400_000, 100_000),
+            meter=meter,
+        )
+    else:
+        check_llm_env()
+        model = os.environ["LLM_MODEL"]
+        try:
+            prices = PriceTable(
+                {
+                    model: ModelPrice(
+                        float(os.environ["PRICE_INPUT_PER_M"]),
+                        float(os.environ["PRICE_OUTPUT_PER_M"]),
+                    )
+                }
+            )
+        except KeyError as exc:
+            raise SystemExit(
+                f"set {exc.args[0]} (USD per million tokens) to enable cost tracking"
+            ) from exc
+        meter = CostMeter(prices, budget_usd=float(os.environ.get("BUDGET_USD", "5")))
+        llm = real_client(meter)
+
+    agent = Agent(llm, tools=ToolRegistry([lookup]), config=AgentConfig(max_steps=20))
+    result = await agent.arun("Research everything about the topic.")
+    print(f"stop_reason: {result.stop_reason}")
+    print(f"model calls: {meter.calls}")
+    print(f"tokens: {meter.usage.prompt_tokens} in / {meter.usage.completion_tokens} out")
+    if result.error:
+        budget = meter.budget_usd or 0.0
+        print(f"spent: ${meter.total_usd:.6f} of ${budget:.6f}")
+    else:
+        print(f"spent: ${meter.total_usd:.6f}")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

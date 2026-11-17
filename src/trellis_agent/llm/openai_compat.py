@@ -1,0 +1,194 @@
+"""Client for any OpenAI-compatible chat-completions endpoint (OpenAI, DeepSeek, Qwen, vLLM, ...).
+
+Real providers are sloppy in small ways, and each is handled here rather than crashing the agent:
+missing ``usage`` (estimated and flagged), tool-call arguments that are not valid JSON objects
+(surfaced via ``ToolCall.arguments_error`` so the model can retry), missing tool-call ids
+(synthesised), and transport/HTTP failures (wrapped as ``LLMError``).
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import time
+from collections.abc import Sequence
+from typing import Any
+
+import httpx
+import openai
+from openai import AsyncOpenAI
+
+from ..cost import CostMeter
+from ..types import Message, ToolCall, ToolSchema, Usage
+from .base import LLMError, LLMResponse
+
+
+def _estimate_tokens(text: str) -> int:
+    """Rough chars/4 heuristic; only used when the provider reports no usage."""
+    return max(1, len(text) // 4)
+
+
+def _to_wire(message: Message) -> dict[str, Any]:
+    if message.role == "tool":
+        return {"role": "tool", "tool_call_id": message.tool_call_id, "content": message.content}
+    wire: dict[str, Any] = {"role": message.role, "content": message.content}
+    if message.tool_calls:
+        wire["tool_calls"] = [
+            {
+                "id": call.id,
+                "type": "function",
+                "function": {
+                    "name": call.name,
+                    # Unparseable arguments are replayed as "{}": strict providers reject invalid
+                    # JSON in history, and the error text in the tool message already carries the
+                    # original string for the model.
+                    "arguments": json.dumps(call.arguments, ensure_ascii=False),
+                },
+            }
+            for call in message.tool_calls
+        ]
+    return wire
+
+
+def _parse_arguments(raw: str | None) -> tuple[dict[str, Any], str | None]:
+    if raw is None or not raw.strip():
+        return {}, None  # some providers send "" for a tool that takes no arguments
+    try:
+        value = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        return {}, str(exc)
+    if not isinstance(value, dict):
+        return {}, f"arguments must be a JSON object, got {type(value).__name__}"
+    return value, None
+
+
+class OpenAICompatClient:
+    def __init__(
+        self,
+        *,
+        base_url: str,
+        api_key: str,
+        model: str,
+        meter: CostMeter | None = None,
+        timeout: float = 60.0,
+        max_retries: int = 2,
+        http_client: httpx.AsyncClient | None = None,
+    ) -> None:
+        self.model = model
+        self.meter = meter
+        self.base_url = base_url
+        self._client = AsyncOpenAI(
+            base_url=base_url,
+            api_key=api_key,
+            timeout=timeout,
+            max_retries=max_retries,
+            http_client=http_client,
+        )
+
+    @classmethod
+    def from_env(cls, meter: CostMeter | None = None, **kwargs: Any) -> OpenAICompatClient:
+        """Build from ``LLM_BASE_URL`` / ``LLM_API_KEY`` / ``LLM_MODEL`` (see ``.env.example``)."""
+        missing = [k for k in ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL") if not os.environ.get(k)]
+        if missing:
+            raise LLMError(f"missing environment variables: {', '.join(missing)}")
+        return cls(
+            base_url=os.environ["LLM_BASE_URL"],
+            api_key=os.environ["LLM_API_KEY"],
+            model=os.environ["LLM_MODEL"],
+            meter=meter,
+            **kwargs,
+        )
+
+    async def aclose(self) -> None:
+        await self._client.close()
+
+    async def chat(
+        self,
+        messages: Sequence[Message],
+        *,
+        tools: Sequence[ToolSchema] | None = None,
+        temperature: float = 0.0,
+        max_tokens: int | None = None,
+        tag: str = "",
+    ) -> LLMResponse:
+        wire = [_to_wire(m) for m in messages]
+        params: dict[str, Any] = {
+            "model": self.model,
+            "messages": wire,
+            "temperature": temperature,
+        }
+        if max_tokens is not None:
+            params["max_tokens"] = max_tokens
+        if tools:
+            params["tools"] = [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": t.name,
+                        "description": t.description,
+                        "parameters": t.parameters,
+                    },
+                }
+                for t in tools
+            ]
+
+        started = time.perf_counter()
+        try:
+            completion = await self._client.chat.completions.create(**params)
+        except openai.APITimeoutError as exc:
+            raise LLMError(f"request timed out: {exc}") from exc
+        except openai.APIConnectionError as exc:
+            raise LLMError(f"could not connect to {self.base_url}: {exc}") from exc
+        except openai.APIStatusError as exc:
+            raise LLMError(f"HTTP {exc.status_code}: {exc.message}") from exc
+        except (openai.OpenAIError, ValueError) as exc:
+            raise LLMError(f"unusable response from provider: {exc}") from exc
+        latency_ms = (time.perf_counter() - started) * 1000
+
+        if not completion.choices:
+            raise LLMError("provider response contained no choices")
+        choice = completion.choices[0]
+        raw_message = choice.message
+
+        calls: list[ToolCall] = []
+        for index, item in enumerate(raw_message.tool_calls or []):
+            function = getattr(item, "function", None)
+            if function is None:
+                continue  # non-function tool call types are not supported
+            arguments, problem = _parse_arguments(function.arguments)
+            calls.append(
+                ToolCall(
+                    id=item.id or f"call_{index}",
+                    name=function.name,
+                    arguments=arguments,
+                    raw_arguments=function.arguments if problem else None,
+                    arguments_error=problem,
+                )
+            )
+        message = Message.assistant(raw_message.content, tuple(calls))
+
+        usage = self._usage(completion.usage, wire, message)
+        cost = self.meter.record(self.model, usage, tag=tag) if self.meter else None
+        return LLMResponse(
+            message=message,
+            usage=usage,
+            latency_ms=latency_ms,
+            finish_reason=choice.finish_reason or "stop",
+            model=self.model,
+            cost_usd=cost,
+        )
+
+    @staticmethod
+    def _usage(raw: Any, wire: list[dict[str, Any]], reply: Message) -> Usage:
+        if raw is not None and raw.prompt_tokens is not None and raw.completion_tokens is not None:
+            details = getattr(raw, "prompt_tokens_details", None)
+            cached = getattr(details, "cached_tokens", 0) or 0
+            return Usage(raw.prompt_tokens, raw.completion_tokens, min(cached, raw.prompt_tokens))
+        completion_text = (reply.content or "") + "".join(
+            c.name + json.dumps(c.arguments) for c in reply.tool_calls
+        )
+        return Usage(
+            _estimate_tokens(json.dumps(wire, ensure_ascii=False)),
+            _estimate_tokens(completion_text),
+            estimated=True,
+        )
