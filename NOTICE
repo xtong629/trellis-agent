@@ -1,0 +1,9 @@
+Trellis
+Copyright 2026 Chen Xingtong
+
+This project is an independent implementation inspired by the architecture of
+LightAgent (https://github.com/wanxingai/LightAgent), licensed under the
+Apache License 2.0. Studied reference: commit f8083ab03badffe3331bfc0d35e3ac6dab6812c8
+(version 1.0.0). Ideas such as hook lifecycles, memory write admission and
+verification-gated tasks informed our design; the code here is written
+from scratch.
