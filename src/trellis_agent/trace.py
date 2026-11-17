@@ -82,7 +82,7 @@ class TraceSummary:
     unpriced_model_requests: int = 0
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        data: dict[str, Any] = {
             "event_count": self.event_count,
             "model_request_count": self.model_request_count,
             "model_latency_ms": self.model_latency_ms,
@@ -96,17 +96,13 @@ class TraceSummary:
             "cost_usd": self.cost_usd,
             "unpriced_model_requests": self.unpriced_model_requests,
         }
+        if self.usage.reasoning_share is not None:  # only when the provider reported it
+            data["reasoning_share"] = self.usage.reasoning_share
+        return data
 
 
 def _usage_from_dict(raw: Any) -> Usage:
-    if not isinstance(raw, dict):
-        return Usage()
-    return Usage(
-        int(raw.get("prompt_tokens", 0)),
-        int(raw.get("completion_tokens", 0)),
-        int(raw.get("cached_tokens", 0)),
-        bool(raw.get("estimated", False)),
-    )
+    return Usage.from_dict(raw) if isinstance(raw, dict) else Usage()
 
 
 def summarize(events: Iterable[TraceEvent]) -> TraceSummary:
