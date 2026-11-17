@@ -169,7 +169,7 @@ class EvalReport:
         cost_per_success = total_cost / passed if total_cost is not None and passed else None
         usage = _sum_usage([c.usage for c in ran])
         judge_usage = _sum_usage([c.judge_usage for c in ran])
-        return {
+        data: dict[str, Any] = {
             "planned_jobs": len(cases),
             "completed_jobs": len(done),
             "aborted_jobs": counts[ABORTED],
@@ -199,6 +199,9 @@ class EvalReport:
             ),
             "aborted_by_budget": self.aborted_by_budget,
         }
+        if usage.reasoning_share is not None:  # only when the provider reported reasoning tokens
+            data["reasoning_share"] = usage.reasoning_share
+        return data
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {
@@ -300,6 +303,14 @@ class EvalReport:
             )
         lines += [
             f"| Agent tokens | {tokens(s['usage'])} |",
+            *(
+                [
+                    f"| Reasoning tokens | {s['usage']['reasoning_tokens']} "
+                    f"({s['reasoning_share']:.1%} of agent output) |"
+                ]
+                if "reasoning_share" in s
+                else []
+            ),
             f"| Judge tokens (separate) | {tokens(s['judge_usage'])} |",
             f"| Agent cost | {money(s['agent_cost_usd'])} |",
             f"| Judge cost (separate) | {money(s['judge_cost_usd'])} |",

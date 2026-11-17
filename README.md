@@ -119,6 +119,14 @@ Known, accepted, and tested where possible:
   tokens (counted and shown in the trace) and can miss or invent facts.
 * **Vectors.** The vector index is in-memory, pure Python and not persisted; only a deterministic
   hash embedder is included (no real embedding client yet), and embedding cost is an estimate.
+* **Reasoning models.** Some providers always think (for example glm-5.3-flash, whose thinking
+  cannot be switched off) and bill the hidden reasoning as output; it is reported as
+  `reasoning_tokens` and as a share of the output when the provider returns it. Observed with one
+  provider: at the `low` level the response contained no `reasoning_content` at all, even though
+  reasoning tokens were counted. Its documentation says reasoning content should be passed back
+  with tool results in some modes but does not say what happens if it is not. Trellis does not keep
+  or pass back `reasoning_content`; multi-turn tool loops worked without it in a small live check,
+  and the effect on answer quality was not measured.
 * **Mocks.** All offline runs use rule-based fake models. They exercise the code and say nothing
   about real-model quality; no experiment results exist yet.
 
