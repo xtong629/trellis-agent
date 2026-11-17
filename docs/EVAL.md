@@ -47,9 +47,9 @@ A task passes only if the built-in `run_succeeded` check **and** every listed sc
 | Type | Parameters | Passes when |
 | --- | --- | --- |
 | `exact_match` | `value`, `strip`=true, `casefold`=false | output equals `value` |
-| `contains` / `not_contains` | `value`, `casefold`=false | output does / does not contain `value` |
+| `contains` / `not_contains` | `value`, `casefold`=true | output does / does not contain `value` |
 | `regex` | `pattern`, `ignore_case`=false | `re.search` finds a match |
-| `number_match` | `value`, `tolerance`=0, `which`=any\|last | a number in the output equals `value` (handles `1,234.5`) |
+| `number_match` | `value`, `tolerance`=0, `which`=any\|last\|marked, `marker`=`ANSWER:` | a number in the output equals `value` (handles `1,234.5`); `marked` reads the first number on the last line starting with the marker, so working shown elsewhere cannot change the verdict |
 | `tool_called` | `name`, `min_times`=1 | the trace has that many calls of the tool |
 | `tool_forbidden` | `name` | the tool was never called |
 | `max_tokens` | `value` | total agent tokens <= `value` |

@@ -81,7 +81,7 @@ def _first_user(messages: list[Message]) -> str:
 
 
 def _answer(value: float) -> Message:
-    return Message.assistant(f"The answer is {round(value, 4):g}.")
+    return Message.assistant(f"Worked it out.\nANSWER: {round(value, 4):g}")
 
 
 def solver(messages: list[Message], tools: list[ToolSchema] | None) -> Message:
@@ -176,7 +176,7 @@ def conversation_model(messages: list[Message], tools: list[ToolSchema] | None) 
         return Message.assistant(json.dumps({"facts": facts}))
     question = next(m.content or "" for m in reversed(messages) if m.role == "user")
     if m := re.search(r"What is (\d+) plus (\d+)\?", question):
-        return Message.assistant(f"{int(m.group(1)) + int(m.group(2))}")
+        return Message.assistant(f"ANSWER: {int(m.group(1)) + int(m.group(2))}")
     visible = "\n".join(m.content or "" for m in messages if m.role in ("system", "user"))
     visible = visible.replace(question, "")
     known = _facts_in(visible)

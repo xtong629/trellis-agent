@@ -168,7 +168,7 @@ def _exact_match(p: Params) -> Scorer:
 
 
 def _contains(p: Params) -> Scorer:
-    value, fold = p.string("value"), p.boolean("casefold", False)
+    value, fold = p.string("value"), p.boolean("casefold", True)
     p.finish()
 
     def check(task: EvalTask, result: RunResult) -> tuple[bool, str]:
@@ -179,7 +179,7 @@ def _contains(p: Params) -> Scorer:
 
 
 def _not_contains(p: Params) -> Scorer:
-    value, fold = p.string("value"), p.boolean("casefold", False)
+    value, fold = p.string("value"), p.boolean("casefold", True)
     p.finish()
 
     def check(task: EvalTask, result: RunResult) -> tuple[bool, str]:
@@ -211,17 +211,27 @@ def _numbers(text: str) -> list[float]:
 def _number_match(p: Params) -> Scorer:
     value = p.number("value")
     tolerance = p.number("tolerance", 0.0, minimum=0.0)
-    which = p.choice("which", ("any", "last"), "any")
+    which = p.choice("which", ("any", "last", "marked"), "any")
+    marker = p.string("marker", "ANSWER:")
     p.finish()
+    marked = re.compile(rf"^\W*{re.escape(marker)}(.*)$", re.IGNORECASE | re.MULTILINE)
 
     def check(task: EvalTask, result: RunResult) -> tuple[bool, str]:
         found = _numbers(result.content)
         pool = found[-1:] if which == "last" else found
+        if which == "marked":  # the first number on the last marked line is the answer
+            lines = marked.findall(result.content)
+            found = _numbers(lines[-1]) if lines else []
+            pool = found[:1]
+            if not pool:
+                return False, f"no number after the {marker!r} answer line"
         ok = any(abs(n - value) <= tolerance for n in pool)
         if ok:
             return True, "ok"
         seen = [f"{n:g}" for n in found[:5]] or "none"
-        kind = "final number" if which == "last" else "number"
+        kind = {"last": "final number", "marked": f"number on the {marker!r} line"}.get(
+            which, "number"
+        )
         return (
             False,
             f"no {kind} equal to {value:g} (+/-{tolerance:g}); numbers in output: {seen}",

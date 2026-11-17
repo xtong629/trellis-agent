@@ -13,6 +13,7 @@ from typing import Any
 from experiments import mocks
 from experiments.scenarios import SEPARATOR
 from experiments.tools import make_tools
+from experiments.window import B_SYSTEM_PROMPT
 from trellis_agent.agent import Agent, AgentConfig
 from trellis_agent.llm import LLMClient
 from trellis_agent.memory.extract import Extraction, FactExtractor, LLMExtractor
@@ -22,7 +23,7 @@ from trellis_agent.planner import PlannedAgent, Planner, Scheduler, WorkerSpec
 from trellis_agent.tools import Tool, ToolRegistry
 from trellis_agent.types import Message, RunResult
 
-WINDOW_TOKENS = 100  # the working window for both B variants (about 400 characters)
+WINDOW_TOKENS = 150  # derived by experiments/window.py (rule in docs/EXPERIMENTS.md); not tunable
 _SPECS = [
     WorkerSpec("research", "looks up prices, stock, populations and exchange rates"),
     WorkerSpec("compute", "does arithmetic on numbers found by other tasks, using the calculator"),
@@ -101,7 +102,7 @@ def _chat_agent(llm: LLMClient, *, remember: bool) -> Conversation:
     memory = MemoryManager(
         MemoryStore(), extractor, MemoryConfig(working_token_budget=WINDOW_TOKENS)
     )
-    config = AgentConfig(system_prompt="You are a helpful assistant.")
+    config = AgentConfig(system_prompt=B_SYSTEM_PROMPT)
     return Conversation(Agent(model, memory=memory, config=config))
 
 
