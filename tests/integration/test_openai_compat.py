@@ -359,3 +359,51 @@ async def test_budget_exceeded_carries_the_paid_for_response_over_http(
     response = info.value.response
     assert response is not None and response.message.content == "costly"
     assert response.cost_usd == pytest.approx(2.0) and response.usage.prompt_tokens == 2_000_000
+
+
+# ----------------------------------------------------------------- extra request parameters
+async def test_extra_params_are_sent_as_top_level_body_fields(
+    fake_openai: FakeOpenAI, make_client: type
+) -> None:
+    fake_openai.reply({"content": "ok"})
+    client = make_client(extra_params={"reasoning_effort": "low", "thinking": {"type": "enabled"}})
+    await client.chat([Message.user("q")])
+    body = fake_openai.requests[0]
+    assert body["reasoning_effort"] == "low" and body["thinking"] == {"type": "enabled"}
+    assert body["model"] == "fake-model" and "extra_body" not in body  # merged, not nested
+
+
+async def test_per_call_extra_params_override_the_client_defaults(
+    fake_openai: FakeOpenAI, make_client: type
+) -> None:
+    fake_openai.reply({"content": "a"})
+    fake_openai.reply({"content": "b"})
+    client = make_client(extra_params={"reasoning_effort": "low", "keep": 1})
+    await client.chat([Message.user("q")], extra_params={"reasoning_effort": "high"})
+    await client.chat([Message.user("q")])
+    assert (
+        fake_openai.requests[0]["reasoning_effort"] == "high"
+        and fake_openai.requests[0]["keep"] == 1
+    )
+    assert fake_openai.requests[1]["reasoning_effort"] == "low"
+
+
+async def test_no_extra_params_means_no_extra_fields(
+    fake_openai: FakeOpenAI, make_client: type
+) -> None:
+    fake_openai.reply({"content": "ok"})
+    await make_client().chat([Message.user("q")])
+    assert set(fake_openai.requests[0]) == {"model", "messages", "temperature"}
+
+
+@pytest.mark.parametrize(
+    "name", ["model", "messages", "tools", "temperature", "max_tokens", "stream"]
+)
+async def test_extra_params_cannot_override_what_the_client_controls(
+    make_client: type, name: str
+) -> None:
+    with pytest.raises(ValueError, match=name):
+        make_client(extra_params={name: 1})
+    client = make_client()
+    with pytest.raises(ValueError, match=name):
+        await client.chat([Message.user("q")], extra_params={name: 1})

@@ -8,8 +8,9 @@ from __future__ import annotations
 import hashlib
 import math
 import re
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
+from typing import Any
 
 from ..cost import BudgetExceeded, CostMeter
 from ..types import Message, ToolSchema, Usage
@@ -28,6 +29,7 @@ class CallRecord:
     tools: tuple[ToolSchema, ...] | None
     temperature: float
     tag: str
+    extra_params: dict[str, Any] | None = None
 
 
 class _MockLLM:
@@ -56,10 +58,11 @@ class _MockLLM:
         tools: Sequence[ToolSchema] | None,
         temperature: float,
         tag: str,
+        extra_params: Mapping[str, Any] | None = None,
     ) -> None:
-        self.calls.append(
-            CallRecord(tuple(messages), None if tools is None else tuple(tools), temperature, tag)
-        )
+        extra = None if extra_params is None else dict(extra_params)
+        tools_t = None if tools is None else tuple(tools)
+        self.calls.append(CallRecord(tuple(messages), tools_t, temperature, tag, extra))
 
 
 class ScriptedLLM(_MockLLM):
@@ -85,8 +88,9 @@ class ScriptedLLM(_MockLLM):
         temperature: float = 0.0,
         max_tokens: int | None = None,
         tag: str = "",
+        extra_params: Mapping[str, Any] | None = None,
     ) -> LLMResponse:
-        self._record(messages, tools, temperature, tag)
+        self._record(messages, tools, temperature, tag, extra_params)
         if self._next >= len(self._script):
             raise ScriptExhausted(f"script has only {len(self._script)} replies; asked for more")
         item = self._script[self._next]
@@ -117,8 +121,9 @@ class RuleLLM(_MockLLM):
         temperature: float = 0.0,
         max_tokens: int | None = None,
         tag: str = "",
+        extra_params: Mapping[str, Any] | None = None,
     ) -> LLMResponse:
-        self._record(messages, tools, temperature, tag)
+        self._record(messages, tools, temperature, tag, extra_params)
         message = self._fn(list(messages), None if tools is None else list(tools))
         return self._respond(message, tag)
 
