@@ -91,3 +91,16 @@ def test_the_committed_files_equal_what_the_generator_produces() -> None:
         assert committed.content_hash == generated.content_hash, (
             f"{directory.name} differs from the generator"
         )
+
+
+def test_the_task_sets_are_frozen() -> None:
+    """Editing a task changes its hash. After the freeze, only bug fixes are allowed and each one
+    must update experiments/FROZEN.json in the same commit (and trigger a full re-run)."""
+    import json
+
+    frozen = json.loads((ROOT / "experiments" / "FROZEN.json").read_text())
+    for directory in ("exp_a_planner", "exp_b_memory"):
+        entry = frozen[directory]
+        loaded = load_taskset(ROOT / "evals" / directory)
+        assert loaded.content_hash == entry["content_hash"], f"{directory} changed after the freeze"
+        assert len(loaded.tasks) == entry["tasks"]
