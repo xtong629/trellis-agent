@@ -19,6 +19,7 @@ TARGETS = {
     "a-planned": ("a", "experiments.targets:a_planned"),
     "b-window": ("b", "experiments.targets:b_window"),
     "b-memory": ("b", "experiments.targets:b_memory"),
+    "b-full": ("b", "experiments.targets:b_full"),
 }
 
 
@@ -83,6 +84,15 @@ def test_the_window_baseline_forgets_early_facts_and_memory_keeps_them(
     assert window["allergy"][0] < 6 and window["deadline"][0] < 5
     assert memory["allergy"] == (6, 6) and memory["deadline"] == (5, 5)
     assert memory["refund-zh"] == (3, 3)
+
+
+def test_the_full_history_reference_keeps_everything_and_costs_the_most_input(
+    reports: dict[str, EvalReport],
+) -> None:
+    full = reports["b-full"]
+    assert all(c.status == "passed" for c in full.cases)  # nothing is ever truncated
+    tokens = {n: sum(c.usage.prompt_tokens for c in r.cases) for n, r in reports.items()}
+    assert tokens["b-full"] > tokens["b-window"]  # untruncated history is longer than the window
 
 
 def test_no_benefit_families_pass_in_both_and_memory_costs_more(
