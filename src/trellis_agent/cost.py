@@ -171,8 +171,11 @@ class BudgetExceeded(RuntimeError):
     no call was involved) so callers can still account for its tokens and cost.
     """
 
-    def __init__(self, spent: float, budget: float, *, call_cost: float | None = None) -> None:
-        super().__init__(f"budget exceeded: spent ${spent:.6f} of ${budget:.6f}")
+    def __init__(
+        self, spent: float, budget: float, *, call_cost: float | None = None, currency: str = "USD"
+    ) -> None:
+        super().__init__(f"budget exceeded: spent {spent:.6f} of {budget:.6f} {currency}")
+        self.currency = currency
         self.spent = spent
         self.budget = budget
         self.call_cost = call_cost
@@ -183,22 +186,44 @@ class UnpricedModelError(ValueError):
     """A budget is set but the model has no price, so the budget cannot be enforced."""
 
 
+class CurrencyMismatchError(ValueError):
+    """A cost is in a currency other than the meter's and no exchange rate was declared."""
+
+
 class CostMeter:
     """Accumulates spend across calls; enforces an optional hard budget.
 
-    ``record`` always books the spend first and only then raises, because the call has already
-    happened and its cost must show up in reports.
+    All amounts are in one currency: the budget's, or else the first priced call's. A call priced
+    in another currency is converted only with an FX rate declared in the price file (and the
+    conversion is listed in ``fx_applied``); otherwise it is an error. Native per-currency totals
+    are always kept in ``by_currency``. ``record`` books the spend first and only then raises,
+    because the call has already happened and its cost must show up in reports.
     """
 
-    def __init__(self, prices: PriceTable, budget_usd: float | None = None) -> None:
-        if budget_usd is not None and budget_usd < 0:
+    def __init__(
+        self,
+        prices: PriceTable,
+        budget_usd: float | None = None,
+        *,
+        budget: float | None = None,
+        currency: str | None = None,
+    ) -> None:
+        if budget_usd is not None and budget is not None:
+            raise ValueError("pass budget or budget_usd, not both")
+        if budget is not None and not currency:
+            raise ValueError("a budget needs a currency, e.g. budget=10, currency='CNY'")
+        amount = budget if budget is not None else budget_usd
+        if amount is not None and amount < 0:
             raise ValueError("budget must be non-negative")
         self.prices = prices
-        self.budget_usd = budget_usd
+        self.budget = amount
+        self.currency: str | None = (currency or "USD") if amount is not None else None
         # Per-call costs are kept and summed with math.fsum (exactly rounded, order-independent):
         # a running float total would depend on the order concurrent calls finish in.
         self._costs: list[float] = []
+        self._native: dict[str, list[float]] = {}
         self._tag_costs: dict[str, list[float]] = {}
+        self._fx: dict[tuple[str, str], FxRate] = {}
         self.usage = Usage()
         self.calls = 0
         self.unpriced_calls = 0
@@ -206,9 +231,14 @@ class CostMeter:
         self._lock = threading.Lock()
 
     @property
-    def total_usd(self) -> float:
+    def total(self) -> float:
         with self._lock:
             return math.fsum(self._costs)
+
+    total_usd = (
+        total  # legacy alias: the amount is in ``currency``, which is only USD for USD prices
+    )
+    budget_usd = property(lambda self: self.budget)  # legacy alias
 
     @property
     def by_tag(self) -> dict[str, float]:
@@ -216,33 +246,62 @@ class CostMeter:
             return {tag: math.fsum(costs) for tag, costs in self._tag_costs.items()}
 
     @property
-    def remaining_usd(self) -> float | None:
-        return None if self.budget_usd is None else self.budget_usd - self.total_usd
+    def by_currency(self) -> dict[str, float]:
+        """Spend per price currency, exactly as priced (never converted or added together)."""
+        with self._lock:
+            return {cur: math.fsum(costs) for cur, costs in self._native.items()}
+
+    @property
+    def fx_applied(self) -> list[dict[str, Any]]:
+        return [rate.to_dict() for rate in self._fx.values()]
+
+    @property
+    def remaining(self) -> float | None:
+        return None if self.budget is None else self.budget - self.total
+
+    remaining_usd = remaining  # legacy alias
 
     @property
     def exhausted(self) -> bool:
-        return self.budget_usd is not None and self.total_usd >= self.budget_usd
+        return self.budget is not None and self.total >= self.budget
 
     def check(self) -> None:
         """Raise if nothing is left to spend; call before starting new work."""
         if self.exhausted:
-            assert self.budget_usd is not None
-            raise BudgetExceeded(self.total_usd, self.budget_usd)
+            assert self.budget is not None
+            raise BudgetExceeded(self.total, self.budget, currency=self.currency or "USD")
 
     def record(self, model: str, usage: Usage, *, tag: str = "") -> float | None:
-        cost = self.prices.cost(model, usage)
+        """Book one call; returns its cost in the meter's currency (None if unpriced)."""
+        price, cost, amount = self.prices.get(model), self.prices.cost(model, usage), None
         with self._lock:
             self.calls += 1
             self.usage = self.usage + usage
             self.any_estimated = self.any_estimated or usage.estimated
-            if cost is None:
+            if cost is None or price is None:
                 self.unpriced_calls += 1
             else:
-                self._costs.append(cost)
-                self._tag_costs.setdefault(tag, []).append(cost)
+                self._native.setdefault(price.currency, []).append(cost)
+                self.currency = self.currency or price.currency
+                if price.currency == self.currency:
+                    amount = cost
+                elif (rate := self.prices.fx_rate(price.currency, self.currency)) is not None:
+                    amount = cost * rate.rate
+                    self._fx[(rate.from_currency, rate.to_currency)] = rate
+                if amount is not None:
+                    self._costs.append(amount)
+                    self._tag_costs.setdefault(tag, []).append(amount)
             total = math.fsum(self._costs)
-        if cost is None and self.budget_usd is not None:
+        if cost is None and self.budget is not None:
             raise UnpricedModelError(f"no price for model {model!r}; cannot enforce the budget")
-        if self.budget_usd is not None and total > self.budget_usd:
-            raise BudgetExceeded(total, self.budget_usd, call_cost=cost)
-        return cost
+        if price is not None and cost is not None and amount is None:
+            raise CurrencyMismatchError(
+                f"model {model!r} is priced in {price.currency} but this run's currency is "
+                f"{self.currency}; declare an fx rate {price.currency}->{self.currency} (with a "
+                "source and date) in the price file, or price every model in one currency"
+            )
+        if self.budget is not None and total > self.budget:
+            raise BudgetExceeded(
+                total, self.budget, call_cost=amount, currency=self.currency or "USD"
+            )
+        return amount

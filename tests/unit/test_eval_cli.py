@@ -21,6 +21,16 @@ PRICES = ROOT / "evals" / "prices.demo.yaml"
 BASELINE = ROOT / "evals" / "baselines" / "smoke.json"
 
 
+@pytest.fixture(autouse=True)
+def _isolated_cwd(
+    tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The CLI reads ./.env in real mode: never let a developer's real .env leak into a test."""
+    monkeypatch.chdir(tmp_path_factory.mktemp("cwd"))
+    for name in ("BUDGET", "BUDGET_USD"):
+        monkeypatch.delenv(name, raising=False)
+
+
 FAKE_PRICES = (
     "models:\n  fake-model:\n    currency: USD\n    per: 1M tokens\n"
     "    input: 1.0\n    output: 2.0\n"
@@ -154,7 +164,7 @@ def test_budget_abort_exits_3_and_is_flagged(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
     out = tmp_path / "r.json"
-    code = run_smoke(out, "--budget-usd", "0.0003", "--concurrency", "1")
+    code = run_smoke(out, "--budget", "0.0003 DEMO", "--concurrency", "1")
     assert code == 3
     summary = load(out)["summary"]
     assert summary["aborted_by_budget"] is True
@@ -167,7 +177,16 @@ def test_budget_abort_exits_3_and_is_flagged(
 
 def test_a_budget_requires_prices(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
     code = main(
-        ["run", str(SMOKE), "--llm", "mock", "--budget-usd", "1", "--out", str(tmp_path / "r.json")]
+        [
+            "run",
+            str(SMOKE),
+            "--llm",
+            "mock",
+            "--budget",
+            "1 DEMO",
+            "--out",
+            str(tmp_path / "r.json"),
+        ]
     )
     assert code != 0  # fail closed: the budget cannot be enforced on unpriced calls
 
@@ -197,7 +216,7 @@ def test_configuration_errors_exit_2_with_a_message(
     for var in ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL"):
         monkeypatch.delenv(var, raising=False)
     monkeypatch.chdir(tmp_path)  # no .env here either
-    assert main(["run", str(SMOKE), "--llm", "openai"]) == 2
+    assert main(["run", str(SMOKE), "--llm", "openai", "--budget", "1 USD"]) == 2
     assert "LLM_BASE_URL" in capsys.readouterr().err
 
     assert main(["compare", str(tmp_path / "a.json"), str(tmp_path / "b.json")]) == 2
@@ -289,7 +308,7 @@ def test_extra_params_reach_the_server_and_are_recorded_in_the_report_config(
     prices.write_text(FAKE_PRICES)
     out = tmp_path / "r.json"
     argv = ["run", str(_one_task(tmp_path)), "--llm", "openai", "--prices", str(prices)]
-    argv += ["--extra-param", "reasoning_effort=low", "--out", str(out)]
+    argv += ["--budget", "1 USD", "--extra-param", "reasoning_effort=low", "--out", str(out)]
     argv += ["--extra-param", 'thinking={"type": "enabled"}']
     assert main(argv) == 0
     body = fake_openai.requests[0]
@@ -318,3 +337,64 @@ def test_bad_extra_params_exit_2(
 ) -> None:
     code = main(["run", str(SMOKE), "--llm", "mock", "--extra-param", bad])
     assert code == 2 and capsys.readouterr().err.startswith("error:")
+
+
+# --- budgets are amounts in a currency
+def test_a_budget_without_a_currency_is_rejected(capsys: pytest.CaptureFixture[str]) -> None:
+    assert main(["run", str(SMOKE), "--llm", "mock", "--prices", str(PRICES), "--budget", "5"]) == 2
+    assert "currency" in capsys.readouterr().err
+
+
+def test_a_budget_in_another_currency_than_the_prices_is_refused_up_front(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    argv = ["run", str(SMOKE), "--llm", "mock", "--prices", str(PRICES), "--budget", "5 USD"]
+    assert main(argv) == 2
+    err = capsys.readouterr().err
+    assert "DEMO" in err and "USD" in err and "fx" in err
+
+
+def test_a_declared_fx_rate_makes_a_cross_currency_budget_work_and_is_recorded(
+    tmp_path: Path,
+) -> None:
+    prices = tmp_path / "prices.yaml"
+    prices.write_text(
+        PRICES.read_text(encoding="utf-8") + "fx:\n  - from: DEMO\n    to: USD\n    rate: 0.5\n"
+        "    source: https://example.test/fx\n    as_of: 2026-11-17\n"
+    )
+    argv = ["run", str(SMOKE), "--llm", "mock", "--prices", str(prices), "--budget", "100 USD"]
+    assert main([*argv, "--out", str(tmp_path / "r.json")]) == 0
+
+
+def test_the_old_usd_flag_and_env_var_still_work_as_deprecated_aliases(
+    tmp_path: Path, fake_openai: FakeOpenAI, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _live_env(monkeypatch, fake_openai)
+    monkeypatch.setenv("BUDGET_USD", "1")
+    monkeypatch.delenv("BUDGET", raising=False)
+    prices = tmp_path / "prices.yaml"
+    prices.write_text(FAKE_PRICES)
+    fake_openai.reply({"content": "hello there"})
+    argv = ["run", str(_one_task(tmp_path)), "--llm", "openai", "--prices", str(prices)]
+    out = tmp_path / "r.json"
+    assert main([*argv, "--out", str(out)]) == 0  # budget came from BUDGET_USD = 1 USD
+
+
+def test_the_new_budget_env_var_takes_precedence_and_real_runs_need_some_budget(
+    tmp_path: Path,
+    fake_openai: FakeOpenAI,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    _live_env(monkeypatch, fake_openai)
+    prices = tmp_path / "prices.yaml"
+    prices.write_text(FAKE_PRICES)
+    argv = ["run", str(_one_task(tmp_path)), "--llm", "openai", "--prices", str(prices)]
+    monkeypatch.delenv("BUDGET", raising=False)
+    monkeypatch.delenv("BUDGET_USD", raising=False)
+    assert main(argv) == 2  # no implicit default budget: a currency must be chosen explicitly
+    assert "BUDGET" in capsys.readouterr().err
+    monkeypatch.setenv("BUDGET_USD", "0.0000001")
+    monkeypatch.setenv("BUDGET", "5 USD")  # wins over the alias
+    fake_openai.reply({"content": "hello there"})
+    assert main([*argv, "--out", str(tmp_path / "r.json")]) == 0

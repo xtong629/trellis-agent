@@ -5,6 +5,7 @@ import pytest
 from trellis_agent.cost import (
     BudgetExceeded,
     CostMeter,
+    CurrencyMismatchError,
     ModelPrice,
     PriceTable,
     UnpricedModelError,
@@ -237,3 +238,88 @@ def test_every_fx_rate_needs_a_source_and_a_date_and_must_be_sane(
 ) -> None:
     with pytest.raises(ValueError):
         PriceTable.from_dict({"models": {"m": FULL}, "fx": [{**FX, **change}]})
+
+
+# ----------------------------------------------------------------- currencies in the meter
+def two_currency_table(with_fx: bool) -> PriceTable:
+    def entry(cur: str) -> dict[str, object]:
+        return {"currency": cur, "per": "1M tokens", "input": 1.0, "output": 0.0}
+
+    data: dict[str, object] = {"models": {"cny-model": entry("CNY"), "usd-model": entry("USD")}}
+    if with_fx:
+        data["fx"] = [{**FX, "rate": 7.0}]  # 1 USD = 7 CNY
+    return PriceTable.from_dict(data)
+
+
+def test_the_meter_works_in_the_currency_of_the_first_priced_call() -> None:
+    meter = CostMeter(two_currency_table(False))
+    assert meter.currency is None
+    assert meter.record("cny-model", Usage(prompt_tokens=1_000_000)) == pytest.approx(1.0)
+    assert meter.currency == "CNY" and meter.total == pytest.approx(1.0)
+    assert meter.by_currency == {"CNY": pytest.approx(1.0)} and meter.fx_applied == []
+
+
+def test_a_second_currency_without_a_declared_rate_is_an_error_and_is_never_added() -> None:
+    meter = CostMeter(two_currency_table(False))
+    meter.record("cny-model", Usage(prompt_tokens=1_000_000))
+    with pytest.raises(CurrencyMismatchError, match=r"USD.*CNY.*fx"):
+        meter.record("usd-model", Usage(prompt_tokens=1_000_000))
+    assert meter.total == pytest.approx(1.0)  # the dollars did NOT leak into the yuan total
+    assert meter.by_currency == {
+        "CNY": pytest.approx(1.0),
+        "USD": pytest.approx(1.0),
+    }  # but are kept
+
+
+def test_with_a_declared_rate_the_amount_is_converted_and_the_conversion_is_annotated() -> None:
+    meter = CostMeter(two_currency_table(True))
+    meter.record("cny-model", Usage(prompt_tokens=1_000_000))
+    converted = meter.record("usd-model", Usage(prompt_tokens=1_000_000))
+    assert converted == pytest.approx(7.0)  # returned in the meter's currency
+    assert meter.total == pytest.approx(8.0)
+    assert meter.by_currency == {
+        "CNY": pytest.approx(1.0),
+        "USD": pytest.approx(1.0),
+    }  # native, apart
+    assert [
+        (r["from_currency"], r["to_currency"], r["rate"], r["source"]) for r in meter.fx_applied
+    ] == [("USD", "CNY", 7.0, FX["source"])]
+    assert meter.by_tag == {"": pytest.approx(8.0)}
+
+
+def test_a_budget_is_an_amount_in_a_currency() -> None:
+    meter = CostMeter(two_currency_table(False), budget=1.5, currency="CNY")
+    meter.record("cny-model", Usage(prompt_tokens=1_000_000))
+    assert meter.remaining == pytest.approx(0.5) and meter.currency == "CNY"
+    with pytest.raises(BudgetExceeded, match="CNY"):
+        meter.record("cny-model", Usage(prompt_tokens=1_000_000))
+
+
+def test_a_cost_outside_the_budget_currency_is_an_error_unless_a_rate_is_declared() -> None:
+    meter = CostMeter(two_currency_table(False), budget=10, currency="CNY")
+    with pytest.raises(CurrencyMismatchError):
+        meter.record("usd-model", Usage(prompt_tokens=1_000_000))
+    converted = CostMeter(two_currency_table(True), budget=10, currency="CNY")
+    assert converted.record("usd-model", Usage(prompt_tokens=1_000_000)) == pytest.approx(7.0)
+    with pytest.raises(BudgetExceeded):  # budget is enforced on the converted amount
+        converted.record("usd-model", Usage(prompt_tokens=1_000_000))
+
+
+def test_the_legacy_usd_budget_is_a_usd_budget_and_does_not_accept_yuan() -> None:
+    meter = CostMeter(two_currency_table(False), budget_usd=5.0)
+    assert meter.currency == "USD" and meter.budget_usd == 5.0
+    with pytest.raises(CurrencyMismatchError):
+        meter.record("cny-model", Usage(prompt_tokens=1_000_000))
+
+
+def test_a_budget_needs_a_currency_and_only_one_budget_style() -> None:
+    with pytest.raises(ValueError, match="currency"):
+        CostMeter(PriceTable(), budget=5.0)
+    with pytest.raises(ValueError, match="not both"):
+        CostMeter(PriceTable(), budget_usd=1.0, budget=1.0, currency="USD")
+
+
+def test_unknown_models_still_fail_closed_under_a_currency_budget() -> None:
+    meter = CostMeter(two_currency_table(False), budget=10, currency="CNY")
+    with pytest.raises(UnpricedModelError):
+        meter.record("mystery", Usage(prompt_tokens=10))
