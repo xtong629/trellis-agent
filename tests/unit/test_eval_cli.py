@@ -58,12 +58,10 @@ def test_smoke_run_passes_and_reports_agent_and_judge_cost_separately(
     assert (
         summary["pass_rate"] == 1.0 and summary["failed"] == 0 and not summary["aborted_by_budget"]
     )
-    assert summary["agent_cost_usd"] > 0 and summary["judge_cost_usd"] > 0
-    assert summary["cost_usd"] == pytest.approx(
-        summary["agent_cost_usd"] + summary["judge_cost_usd"]
-    )
+    assert summary["agent_cost"] > 0 and summary["judge_cost"] > 0
+    assert summary["cost"] == pytest.approx(summary["agent_cost"] + summary["judge_cost"])
     assert summary["judge_usage"]["prompt_tokens"] > 0
-    assert summary["meter_discrepancy_usd"] == pytest.approx(0.0)  # report cost == meter cost
+    assert summary["meter_discrepancy"] == pytest.approx(0.0)  # report cost == meter cost
     stdout = capsys.readouterr().out
     assert "# Eval report: smoke" in stdout and "Judge cost (separate)" in stdout
     assert (tmp_path / "r.md").read_text(encoding="utf-8") == stdout
@@ -276,7 +274,7 @@ def test_openai_mode_runs_through_the_real_client_against_a_local_server(
     data = load(out)
     assert data["summary"]["passed"] == 1
     assert data["summary"]["usage"]["prompt_tokens"] == 12  # the server's own usage numbers
-    assert data["summary"]["cost_usd"] == pytest.approx((12 * 1.0 + 7 * 2.0) / 1_000_000)
+    assert data["summary"]["cost"] == pytest.approx((12 * 1.0 + 7 * 2.0) / 1_000_000)
     assert data["config"]["model"] == "fake-model" and data["config"]["llm"] == "openai"
     assert fake_openai.headers[0]["authorization"] == "Bearer sk-test"
 
@@ -363,7 +361,14 @@ def test_a_declared_fx_rate_makes_a_cross_currency_budget_work_and_is_recorded(
         "    source: https://example.test/fx\n    as_of: 2026-11-17\n"
     )
     argv = ["run", str(SMOKE), "--llm", "mock", "--prices", str(prices), "--budget", "100 USD"]
-    assert main([*argv, "--out", str(tmp_path / "r.json")]) == 0
+    out = tmp_path / "r.json"
+    assert main([*argv, "--out", str(out)]) == 0
+    summary = load(out)["summary"]
+    assert summary["currency"] == "USD"  # the budget's currency: DEMO costs were converted into it
+    (fx,) = summary["fx_applied"]
+    assert (fx["from_currency"], fx["to_currency"], fx["rate"]) == ("DEMO", "USD", 0.5)
+    assert summary["cost_by_currency"]["DEMO"] > 0  # the native amount is kept apart
+    assert summary["cost"] == pytest.approx(summary["cost_by_currency"]["DEMO"] * 0.5)
 
 
 def test_the_old_usd_flag_and_env_var_still_work_as_deprecated_aliases(
@@ -378,6 +383,7 @@ def test_the_old_usd_flag_and_env_var_still_work_as_deprecated_aliases(
     argv = ["run", str(_one_task(tmp_path)), "--llm", "openai", "--prices", str(prices)]
     out = tmp_path / "r.json"
     assert main([*argv, "--out", str(out)]) == 0  # budget came from BUDGET_USD = 1 USD
+    assert load(out)["summary"]["currency"] == "USD"
 
 
 def test_the_new_budget_env_var_takes_precedence_and_real_runs_need_some_budget(
@@ -398,3 +404,45 @@ def test_the_new_budget_env_var_takes_precedence_and_real_runs_need_some_budget(
     monkeypatch.setenv("BUDGET", "5 USD")  # wins over the alias
     fake_openai.reply({"content": "hello there"})
     assert main([*argv, "--out", str(tmp_path / "r.json")]) == 0
+
+
+# ----------------------------------------------------------------- the price files in the repo
+def test_a_report_records_which_prices_produced_its_numbers(tmp_path: Path) -> None:
+    out = tmp_path / "r.json"
+    assert run_smoke(out, "--md", str(tmp_path / "r.md")) == 0
+    data = load(out)
+    assert data["summary"]["currency"] == "DEMO" and data["summary"]["fx_applied"] == []
+    assert data["config"]["price_table"]["mock"]["currency"] == "DEMO"
+    assert set(data["config"]["price_table"]) == {"mock", "mock-judge"}
+    md = (tmp_path / "r.md").read_text(encoding="utf-8")
+    assert "## Prices used" in md and "Currency | DEMO" in md and "$" not in md
+
+
+def test_the_demo_prices_are_in_a_made_up_currency_with_the_banner() -> None:
+    from trellis_agent.cost import PriceTable
+
+    text = PRICES.read_text(encoding="utf-8")
+    assert "DEMO PRICES ONLY" in text and "仅为示例,非真实价格" in text
+    table = PriceTable.from_yaml(PRICES)
+    assert {table.get(m).currency for m in ("mock", "mock-judge")} == {"DEMO"}  # type: ignore[union-attr]
+
+
+def test_the_glm_prices_are_the_official_cny_list_prices_with_provenance() -> None:
+    from trellis_agent.cost import PriceTable
+
+    path = ROOT / "evals" / "prices.glm.yaml"
+    price = PriceTable.from_yaml(path).get("glm-5.3-flash")
+    assert price is not None and price.currency == "CNY" and price.per == "1M tokens"
+    assert (price.input_per_million, price.output_per_million, price.cached_input_per_million) == (
+        0.8,
+        2.8,
+        0.23,
+    )
+    assert price.source == "https://docs.bigmodel.cn/cn/guide/start/pricing.md"
+    assert price.checked_on == "2026-11-17"
+    assert "resource package" in (price.note or "") and "not actual spend" in (price.note or "")
+    banner = path.read_text(encoding="utf-8")
+    assert "NOT actual spend" in banner and "不是实际支出" in banner
+    assert not {"USD", "0.15", "0.50", "0.03"} & set(
+        path.read_text(encoding="utf-8").split()
+    )  # old USD figures are gone

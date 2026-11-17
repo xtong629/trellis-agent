@@ -54,6 +54,7 @@ def make_report(**overrides: object) -> EvalReport:
         "config": {"repeats": 1, "concurrency": 4, "budget_usd": None},
         "cases": cases,
         "meter_total_usd": 0.0029,
+        "currency": "USD",
     }
     fields.update(overrides)
     return EvalReport(**fields)  # type: ignore[arg-type]
@@ -133,11 +134,11 @@ def test_markdown_separates_agent_and_judge_cost_and_lists_failures() -> None:
     assert md.startswith("# Eval report: demo v1")
     assert "aaaaaaaaaaaa" in md  # short hash
     assert "Pass rate | 50.0% (1/2 completed)" in md
-    assert "Agent cost | $0.002500" in md
-    assert "Judge cost (separate) | $0.000400" in md
-    assert "Total cost | $0.002900" in md
+    assert "Agent cost | 0.002500 USD" in md
+    assert "Judge cost (separate) | 0.000400 USD" in md
+    assert "Total cost | 0.002900 USD" in md
     assert "Judge tokens (separate) | 200 in / 20 out" in md
-    assert "Cost per success | $0.002900" in md
+    assert "Cost per success | 0.002900 USD" in md
     assert "| math | 0 | failed |" in md and "number_match(5): no number equal to 5" in md
     assert "| refund | 0 | passed |" in md
 
@@ -204,3 +205,107 @@ def test_a_report_written_before_this_field_existed_still_loads(tmp_path: Path) 
     make_report().save(path)
     assert "reasoning" not in path.read_text(encoding="utf-8")
     assert EvalReport.load(path).cases[0].usage.reasoning_tokens is None
+
+
+# ----------------------------------------------------------------- currencies and provenance
+PRICE_ENTRY = {
+    "currency": "CNY",
+    "per": "1M tokens",
+    "input_per_million": 0.8,
+    "output_per_million": 2.8,
+    "cached_input_per_million": 0.23,
+    "source": "https://example.test/pricing",
+    "checked_on": "2026-11-17",
+    "note": "list price",
+}
+
+
+def _priced_report(**kw: object) -> EvalReport:
+    config = {"price_table": {"glm-5.3-flash": PRICE_ENTRY}}
+    return make_report(currency="CNY", config=config, cost_by_currency={"CNY": 0.0029}, **kw)
+
+
+def test_costs_are_labelled_with_their_currency_and_never_with_a_dollar_sign() -> None:
+    md = _priced_report().render_markdown()
+    assert "Currency | CNY" in md and "Total cost | 0.002900 CNY" in md and "$" not in md
+
+
+def test_the_summary_names_the_currency_and_lists_native_totals() -> None:
+    s = _priced_report().summary()
+    assert s["currency"] == "CNY" and s["cost_by_currency"] == {"CNY": 0.0029}
+    assert s["fx_applied"] == [] and "cost" in s and "cost_usd" not in s
+
+
+def test_the_saved_json_has_no_currency_named_cost_keys(tmp_path: Path) -> None:
+    path = tmp_path / "r.json"
+    _priced_report().save(path)
+    text = path.read_text(encoding="utf-8")
+    assert "_usd" not in text and '"agent_cost"' in text and '"currency": "CNY"' in text
+
+
+def test_the_markdown_lists_the_prices_that_produced_the_numbers() -> None:
+    md = _priced_report().render_markdown()
+    assert "## Prices used" in md and "glm-5.3-flash" in md
+    for needle in (
+        "CNY",
+        "0.8",
+        "2.8",
+        "0.23",
+        "https://example.test/pricing",
+        "2026-11-17",
+        "list price",
+    ):
+        assert needle in md
+
+
+def test_converted_costs_are_annotated_and_native_totals_stay_apart() -> None:
+    fx = {
+        "from_currency": "USD",
+        "to_currency": "CNY",
+        "rate": 7.0,
+        "source": "https://example.test/fx",
+        "as_of": "2026-11-17",
+    }
+    md = make_report(
+        currency="CNY", cost_by_currency={"CNY": 1.0, "USD": 2.0}, fx_applied=[fx]
+    ).render_markdown()
+    assert "converted with declared FX rates" in md and "USD->CNY 7.0" in md
+    assert "https://example.test/fx" in md and "2026-11-17" in md
+    assert "Cost by price currency | CNY 1.000000, USD 2.000000" in md
+
+
+def test_without_fx_there_is_no_conversion_note() -> None:
+    assert "converted" not in _priced_report().render_markdown()
+
+
+def test_a_report_without_a_currency_says_so_instead_of_guessing(tmp_path: Path) -> None:
+    md = make_report(currency=None).render_markdown()
+    assert "unknown currency" in md and "USD" not in md.split("Total cost")[1].split("\n")[0]
+
+
+def test_reports_written_with_the_old_usd_named_keys_still_load(tmp_path: Path) -> None:
+    data = make_report().to_dict()
+    for key, old in (("agent_cost", "agent_cost_usd"), ("judge_cost", "judge_cost_usd")):
+        for case in data["cases"]:
+            case[old] = case.pop(key)
+    data["summary"]["meter_total_usd"] = data["summary"].pop("meter_total")
+    data["summary"].pop("currency", None)
+    path = tmp_path / "old.json"
+    path.write_text(json.dumps(data))
+    loaded = EvalReport.load(path)
+    assert loaded.cases[0].agent_cost_usd == 0.002 and loaded.cases[0].judge_cost_usd == 0.0004
+    assert loaded.meter_total_usd == 0.0029 and loaded.currency is None  # unknown, not assumed
+
+
+def test_new_fields_survive_save_and_load(tmp_path: Path) -> None:
+    fx = {"from_currency": "USD", "to_currency": "CNY", "rate": 7.0, "source": "s", "as_of": "d"}
+    report = _priced_report(fx_applied=[fx])
+    path = tmp_path / "r.json"
+    report.save(path)
+    loaded = EvalReport.load(path)
+    assert (loaded.currency, loaded.cost_by_currency, loaded.fx_applied) == (
+        "CNY",
+        {"CNY": 0.0029},
+        [fx],
+    )
+    assert loaded.to_dict() == report.to_dict()

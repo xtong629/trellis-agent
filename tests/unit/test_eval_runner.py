@@ -231,7 +231,12 @@ async def test_config_is_recorded_in_the_report() -> None:
     make, _ = factory_of(lambda q, s: result())
     runner = EvalRunner(make, repeats=2, concurrency=3, budget_usd=1.5, config={"model": "m"})
     report = await runner.run(taskset(task("a")))
-    assert report.config == {"repeats": 2, "concurrency": 3, "budget_usd": 1.5, "model": "m"}
+    assert report.config == {
+        "repeats": 2,
+        "concurrency": 3,
+        "budget": {"amount": 1.5, "currency": None},  # no meter: the currency is not known
+        "model": "m",
+    }
 
 
 # --- cost: agent vs judge, reconciliation
@@ -268,12 +273,12 @@ async def test_judge_tokens_and_cost_are_reported_separately_and_reconcile_with_
     assert case.usage == Usage(1_000_000, 0) and case.judge_usage == Usage(500_000, 0)
     assert case.cost_usd == pytest.approx(2.0)
     s = report.summary()
-    assert s["agent_cost_usd"] == pytest.approx(1.0) and s["judge_cost_usd"] == pytest.approx(1.0)
-    assert s["cost_usd"] == pytest.approx(2.0) and s["cost_complete"] is True
+    assert s["agent_cost"] == pytest.approx(1.0) and s["judge_cost"] == pytest.approx(1.0)
+    assert s["cost"] == pytest.approx(2.0) and s["cost_complete"] is True
     assert s["usage"]["prompt_tokens"] == 1_000_000 and s["judge_usage"]["prompt_tokens"] == 500_000
     assert s["cost_per_success"] == pytest.approx(2.0)
     assert report.meter_total_usd == pytest.approx(meter.total_usd) == pytest.approx(2.0)
-    assert s["meter_discrepancy_usd"] == pytest.approx(0.0)
+    assert s["meter_discrepancy"] == pytest.approx(0.0)
     assert meter.by_tag["judge"] == pytest.approx(1.0)
 
 
@@ -285,7 +290,7 @@ async def test_cost_per_success_divides_total_cost_by_passes() -> None:
         task("no", "q", {"type": "contains", "value": "zzz"}),
     )
     s = (await EvalRunner(make, meter=meter).run(ts)).summary()
-    assert s["cost_usd"] == pytest.approx(2.0) and s["passed"] == 1
+    assert s["cost"] == pytest.approx(2.0) and s["passed"] == 1
     assert s["cost_per_success"] == pytest.approx(2.0)
 
 
@@ -301,7 +306,7 @@ async def test_no_passes_means_no_cost_per_success() -> None:
 async def test_unpriced_models_are_flagged_not_counted_as_free() -> None:
     llm = RuleLLM(lambda m, t: Message.assistant("x"))  # no meter, so no cost
     s = (await EvalRunner(lambda: Agent(llm)).run(taskset(task("a")))).summary()
-    assert s["cost_usd"] is None and s["cost_complete"] is False
+    assert s["cost"] is None and s["cost_complete"] is False
 
 
 async def test_judge_is_skipped_when_the_run_itself_failed() -> None:
@@ -336,7 +341,7 @@ async def test_runner_budget_stops_starting_new_jobs() -> None:
     assert report.aborted_by_budget is True and s["aborted_by_budget"] is True
     assert (s["completed_jobs"], s["not_run_jobs"], s["planned_jobs"]) == (3, 3, 6)
     assert s["pass_rate"] == 1.0  # rates cover completed jobs only; the gap is explicit above
-    assert s["cost_usd"] == pytest.approx(3.0)
+    assert s["cost"] == pytest.approx(3.0)
 
 
 async def test_budget_hit_inside_the_agent_aborts_the_case_and_counts_the_final_call() -> None:
@@ -348,7 +353,7 @@ async def test_budget_hit_inside_the_agent_aborts_the_case_and_counts_the_final_
     aborted = report.cases[1]
     assert aborted.stop_reason == "budget_exceeded"
     assert aborted.agent_cost_usd == pytest.approx(1.0)  # the call that crossed the line is counted
-    assert report.summary()["cost_usd"] == pytest.approx(meter.total_usd) == pytest.approx(2.0)
+    assert report.summary()["cost"] == pytest.approx(meter.total_usd) == pytest.approx(2.0)
     assert report.aborted_by_budget and report.summary()["aborted_jobs"] == 1
 
 
@@ -361,10 +366,34 @@ async def test_budget_hit_inside_the_judge_counts_the_judges_final_call() -> Non
     case = report.cases[0]
     assert case.agent_cost_usd == pytest.approx(1.0) and case.judge_cost_usd == pytest.approx(1.0)
     assert case.scores[-1].error and "budget" in case.scores[-1].reason
-    assert report.summary()["cost_usd"] == pytest.approx(meter.total_usd) == pytest.approx(2.0)
-    assert report.summary()["meter_discrepancy_usd"] == pytest.approx(0.0)
+    assert report.summary()["cost"] == pytest.approx(meter.total_usd) == pytest.approx(2.0)
+    assert report.summary()["meter_discrepancy"] == pytest.approx(0.0)
 
 
 def test_unused_imports_guard() -> None:
     # keeps EvalTask / ScorerSpec importable from the public module path used in docs
     assert EvalTask and ScorerSpec
+
+
+# --- two currencies through the runner
+async def test_an_agent_in_one_currency_and_a_judge_in_another_need_a_declared_rate() -> None:
+    def entry(cur: str, rate: float) -> dict[str, object]:
+        return {"currency": cur, "per": "1M tokens", "input": rate, "output": rate}
+
+    models = {"agent-m": entry("CNY", 1.0), "judge-m": entry("USD", 2.0)}
+    fx = [
+        {"from": "USD", "to": "CNY", "rate": 7.0, "source": "https://example.test/fx", "as_of": "d"}
+    ]
+    meter = CostMeter(
+        PriceTable.from_dict({"models": models, "fx": fx}), budget=100, currency="CNY"
+    )
+    make, judge = agent_and_judge(meter)
+    ts = taskset(task("a", "q", {"type": "llm_judge", "rubric": "good answer"}))
+    report = await EvalRunner(make, judge_llm=judge, meter=meter).run(ts)
+    s = report.summary()
+    assert s["currency"] == "CNY" and [r["rate"] for r in s["fx_applied"]] == [7.0]
+    assert s["cost_by_currency"] == {"CNY": pytest.approx(1.0), "USD": pytest.approx(1.0)}
+    assert s["agent_cost"] == pytest.approx(1.0) and s["judge_cost"] == pytest.approx(
+        7.0
+    )  # converted
+    assert s["cost"] == pytest.approx(8.0) and s["meter_discrepancy"] == pytest.approx(0.0)

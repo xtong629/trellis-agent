@@ -169,6 +169,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
             "judge_model": None if judge is None else judge.model,
             "target": args.target or "trellis_agent.eval.demo:make_target",
             **({"extra_params": extra} if extra else {}),
+            "price_table": {c.model: p.to_dict() for c in clients if (p := prices.get(c.model))},
             **price_info,
         },
     )
