@@ -94,6 +94,17 @@ def _budget(args: argparse.Namespace) -> tuple[float, str] | None:
     raise CLIError("real runs need a budget: pass --budget '10 CNY' or set BUDGET (e.g. '10 CNY')")
 
 
+def _parse_meta(items: list[str]) -> dict[str, str]:
+    """KEY=VALUE labels for a run (date, experiment name, ...). Values stay strings."""
+    meta: dict[str, str] = {}
+    for item in items:
+        key, sep, value = item.partition("=")
+        if not sep or not key.strip():
+            raise CLIError(f"--meta must look like KEY=VALUE, got {item!r}")
+        meta[key.strip()] = value
+    return meta
+
+
 def _prices(path: str | None) -> tuple[PriceTable, dict[str, Any]]:
     if path is None:
         return PriceTable(), {}
@@ -119,6 +130,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
     budget = None if limit is None else limit[0]
     meter = CostMeter(prices, budget=budget, currency=None if limit is None else limit[1])
     extra = _parse_extra_params(args.extra_param)
+    meta = _parse_meta(args.meta)
 
     clients: list[LLMClient] = []
     judge: LLMClient | None = None
@@ -169,6 +181,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
             "judge_model": None if judge is None else judge.model,
             "target": args.target or "trellis_agent.eval.demo:make_target",
             **({"extra_params": extra} if extra else {}),
+            **({"meta": meta} if meta else {}),
             "price_table": {c.model: p.to_dict() for c in clients if (p := prices.get(c.model))},
             **price_info,
         },
@@ -237,6 +250,13 @@ def _parser() -> argparse.ArgumentParser:
         metavar="KEY=VALUE",
         help="extra request field for the main model, e.g. reasoning_effort=low (repeatable); "
         "recorded in the report config",
+    )
+    run.add_argument(
+        "--meta",
+        action="append",
+        default=[],
+        metavar="KEY=VALUE",
+        help="label recorded in the report config, e.g. run_date=2026-11-18 (repeatable)",
     )
     run.add_argument("--repeats", type=int, default=1)
     run.add_argument("--concurrency", type=int, default=4)
