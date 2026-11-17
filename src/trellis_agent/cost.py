@@ -238,7 +238,6 @@ class CostMeter:
     total_usd = (
         total  # legacy alias: the amount is in ``currency``, which is only USD for USD prices
     )
-    budget_usd = property(lambda self: self.budget)  # legacy alias
 
     @property
     def by_tag(self) -> dict[str, float]:
@@ -258,8 +257,6 @@ class CostMeter:
     @property
     def remaining(self) -> float | None:
         return None if self.budget is None else self.budget - self.total
-
-    remaining_usd = remaining  # legacy alias
 
     @property
     def exhausted(self) -> bool:

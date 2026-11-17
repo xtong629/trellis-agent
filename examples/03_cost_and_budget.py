@@ -1,9 +1,9 @@
 """Example 03: cost accounting and a hard budget.
 
 Mock mode uses made-up DEMO prices so the arithmetic is easy to follow; they are NOT real prices.
-For a real model, set PRICE_INPUT_PER_M / PRICE_OUTPUT_PER_M (USD per million tokens, from your
-provider's pricing page) and optionally BUDGET_USD (default 5). With a budget set, a model without a
-price is rejected ("fail closed"): a budget cannot be enforced on unknown prices.
+For a real model, set PRICE_INPUT_PER_M / PRICE_OUTPUT_PER_M (per million tokens, from your
+provider's pricing page), PRICE_CURRENCY (e.g. CNY) and BUDGET (an amount in that currency).
+A model without a price is rejected ("fail closed"): a budget cannot be enforced on unknown prices.
 
     python examples/03_cost_and_budget.py --mock
 """
@@ -30,9 +30,11 @@ async def main() -> None:
     args = parse_args(__doc__ or "")
     llm: LLMClient
     if args.mock:
-        print("Using DEMO prices (not real): $1.00 in / $2.00 out per million tokens")
-        meter = CostMeter(PriceTable({"mock": ModelPrice(1.0, 2.0)}), budget_usd=1.5)
-        # Every call "uses" 400k in + 100k out = $0.60, and the model never stops asking for tools.
+        print("Using DEMO prices (not real): 1.00 in / 2.00 out DEMO per million tokens")
+        meter = CostMeter(
+            PriceTable({"mock": ModelPrice(1.0, 2.0, currency="DEMO")}), budget=1.5, currency="DEMO"
+        )
+        # Every call "uses" 400k in + 100k out = 0.60 DEMO; the model never stops using tools.
         llm = RuleLLM(
             lambda m, t: Message.assistant(
                 None, (ToolCall(f"c{len(m)}", "lookup", {"topic": "x"}),)
@@ -44,19 +46,17 @@ async def main() -> None:
         check_llm_env()
         model = os.environ["LLM_MODEL"]
         try:
-            prices = PriceTable(
-                {
-                    model: ModelPrice(
-                        float(os.environ["PRICE_INPUT_PER_M"]),
-                        float(os.environ["PRICE_OUTPUT_PER_M"]),
-                    )
-                }
+            currency = os.environ["PRICE_CURRENCY"]
+            price = ModelPrice(
+                float(os.environ["PRICE_INPUT_PER_M"]),
+                float(os.environ["PRICE_OUTPUT_PER_M"]),
+                currency=currency,
             )
         except KeyError as exc:
-            raise SystemExit(
-                f"set {exc.args[0]} (USD per million tokens) to enable cost tracking"
-            ) from exc
-        meter = CostMeter(prices, budget_usd=float(os.environ.get("BUDGET_USD", "5")))
+            raise SystemExit(f"set {exc.args[0]} to enable cost tracking") from exc
+        meter = CostMeter(
+            PriceTable({model: price}), budget=float(os.environ["BUDGET"]), currency=currency
+        )
         llm = real_client(meter)
 
     agent = Agent(llm, tools=ToolRegistry([lookup]), config=AgentConfig(max_steps=20))
@@ -65,10 +65,9 @@ async def main() -> None:
     print(f"model calls: {meter.calls}")
     print(f"tokens: {meter.usage.prompt_tokens} in / {meter.usage.completion_tokens} out")
     if result.error:
-        budget = meter.budget_usd or 0.0
-        print(f"spent: ${meter.total_usd:.6f} of ${budget:.6f}")
+        print(f"spent: {meter.total:.6f} of {meter.budget:.6f} {meter.currency}")
     else:
-        print(f"spent: ${meter.total_usd:.6f}")
+        print(f"spent: {meter.total:.6f} {meter.currency}")
 
 
 if __name__ == "__main__":

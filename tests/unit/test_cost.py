@@ -110,8 +110,8 @@ def test_meter_tracks_estimated_usage() -> None:
 def test_meter_remaining_budget() -> None:
     meter = CostMeter(PRICES, budget_usd=5.0)
     meter.record("m", Usage(prompt_tokens=1_000_000))
-    assert meter.remaining_usd == pytest.approx(3.0)
-    assert CostMeter(PRICES).remaining_usd is None
+    assert meter.remaining == pytest.approx(3.0)
+    assert CostMeter(PRICES).remaining is None
 
 
 def test_budget_exceeded_reports_the_cost_of_the_call_that_crossed_it() -> None:
@@ -307,7 +307,7 @@ def test_a_cost_outside_the_budget_currency_is_an_error_unless_a_rate_is_declare
 
 def test_the_legacy_usd_budget_is_a_usd_budget_and_does_not_accept_yuan() -> None:
     meter = CostMeter(two_currency_table(False), budget_usd=5.0)
-    assert meter.currency == "USD" and meter.budget_usd == 5.0
+    assert meter.currency == "USD" and meter.budget == 5.0
     with pytest.raises(CurrencyMismatchError):
         meter.record("cny-model", Usage(prompt_tokens=1_000_000))
 
