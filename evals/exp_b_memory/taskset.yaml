@@ -31,7 +31,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: kelpberry
@@ -75,7 +75,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: zandal nut
@@ -123,7 +123,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: moonroot
@@ -175,7 +175,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: fenwick plum
@@ -231,7 +231,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: ashgrain
@@ -291,7 +291,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: tarn seed
@@ -693,7 +693,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: quillnut
@@ -713,7 +713,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: brack leaf
@@ -733,7 +733,7 @@ tasks:
 
     ---
 
-    Which ingredient must you never put in a snack for me? Name it and nothing else.'
+    Which ingredient am I allergic to? Answer with the ingredient only.'
   scorers:
   - type: contains
     value: dun berry

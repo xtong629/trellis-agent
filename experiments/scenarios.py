@@ -146,7 +146,7 @@ def taskset_b() -> dict[str, Any]:
         text = _script(
             f"For the record: I am allergic to {allergen}.",
             *_fillers(6 + i, i),
-            "Which ingredient must you never put in a snack for me? Name it and nothing else.",
+            "Which ingredient am I allergic to? Answer with the ingredient only.",
         )
         tasks.append(
             _task(
@@ -203,7 +203,7 @@ def taskset_b() -> dict[str, Any]:
         text = _script(
             f"For the record: I am allergic to {allergen}.",
             _FILLER[i],
-            "Which ingredient must you never put in a snack for me? Name it and nothing else.",
+            "Which ingredient am I allergic to? Answer with the ingredient only.",
         )
         tasks.append(
             _task(
