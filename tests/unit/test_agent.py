@@ -217,3 +217,22 @@ async def test_concurrent_runs_get_separate_traces() -> None:
         "run_start", "model_request", "run_end",
     ]  # fmt: skip
     assert r1.trace[0].data["query"] == "a" and r2.trace[0].data["query"] == "b"
+
+
+async def test_budget_exceeded_run_still_reports_the_final_call() -> None:
+    # The call that crosses the budget was paid for: its usage/cost must be in the run's totals,
+    # even though its reply is discarded (the run is aborted, not continued).
+    meter = CostMeter(PriceTable({"mock": ModelPrice(1.0, 1.0)}), budget_usd=1.5)
+    llm = ScriptedLLM(
+        [calls(add_call()), calls(add_call("c2")), Message.assistant("never")],
+        usage_per_call=Usage(1_000_000, 0),
+        meter=meter,
+    )
+    result = await Agent(llm, tools=ToolRegistry([add])).arun("q")
+    assert result.stop_reason == "budget_exceeded" and len(llm.calls) == 2
+    assert result.usage == Usage(2_000_000, 0)
+    assert result.cost_usd == pytest.approx(2.0) == meter.total_usd
+    assert summarize(result.trace).cost_usd == pytest.approx(2.0)
+    over = [e for e in result.trace if e.type == "model_request" and e.data.get("over_budget")]
+    assert len(over) == 1
+    assert result.messages[-1].role == "tool"  # the over-budget reply is not appended

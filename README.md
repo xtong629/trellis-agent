@@ -1,13 +1,97 @@
 # Trellis
 
-> A small agent framework where planning and memory are measurable: eval-first, cost-capped, mock-testable.
+> A small agent framework where planning and memory are **measurable**: eval-first, cost-capped, mock-testable.
 
-**Status: pre-alpha (M0 scaffold).** Nothing here is usable yet; see the roadmap below.
+**Status: early development.** The agent core and the evaluation harness work and are tested.
+Planning/scheduling and tiered memory are planned next; they will be added together with the
+experiments that show whether they actually help. See [Roadmap](#roadmap).
+
+## Why
+
+Most agent demos show that something *can* work. Trellis is built around the harder question:
+*did this change make the system better, and what did it cost?*
+
+* **Eval-first.** Versioned, content-hashed task sets; rule and LLM-judge scorers; a baseline
+  regression gate whose failures say which task failed, which check, and why.
+* **Cost-capped.** Per-call cost accounting from *your* price table, agent and judge cost reported
+  separately, a hard budget that also counts the call that crossed it.
+* **Mock-testable.** Deterministic mock models make the whole stack testable offline; the test
+  suite blocks the network entirely. Two runs of an evaluation are byte-identical.
+
+## What works today
+
+| Area | What you get |
+| --- | --- |
+| Agent loop | one event loop (`stream`), `arun`/`run` collect it; tool calling with per-session history |
+| Tools | JSON Schema from type hints; arguments validated; errors fed back to the model, never crash the run |
+| LLM clients | OpenAI-compatible client (handles missing `usage`, malformed tool arguments, HTTP failures); scripted/rule mocks |
+| Cost | `PriceTable`, `CostMeter`, hard budgets, order-independent exact sums |
+| Tracing | structured events, per-run traces, aggregate summaries |
+| Evaluation | task sets, 11 scorer types + `llm_judge`, runner with repeats and concurrency, reports, baseline `compare`, CLI |
+
+Details of the evaluation harness, cost rules and the budget mechanism: [`docs/EVAL.md`](docs/EVAL.md).
+
+## Quick start
+
+Requires Python 3.11+.
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+
+pytest                                        # offline; the network is blocked during tests
+python examples/02_tools_agent.py --mock      # a tool-using agent, no API key needed
+python examples/03_cost_and_budget.py --mock  # cost accounting and a hard budget
+```
+
+Run the evaluation smoke suite and the regression gate:
+
+```bash
+python -m trellis_agent.eval run evals/smoke --llm mock \
+    --prices evals/prices.demo.yaml --out runs/smoke.json
+python -m trellis_agent.eval compare evals/baselines/smoke.json runs/smoke.json
+```
+
+To use a real model, copy `.env.example` to `.env`, set `LLM_BASE_URL`, `LLM_API_KEY` and
+`LLM_MODEL` (any OpenAI-compatible endpoint), and drop `--mock` / use `--llm openai`. Real runs need
+a price file for your model; `evals/prices.demo.yaml` shows the format and holds **made-up** numbers
+for the mock models only.
+
+## Results
+
+**No experiment results yet.** The planned comparisons (planner on/off, tiered memory on/off, same
+tasks, success rate / tokens / cost) have not been run. Numbers will be added here only after they
+have been measured, with the task set hash, model, price table and sample size next to them.
+Offline mock runs only exercise the code; they say nothing about real-model performance.
+
+## Roadmap
+
+| Milestone | Scope | State |
+| --- | --- | --- |
+| M0 | project scaffold, lint/type/test/CI | done |
+| M1 | agent loop, tools, tracing, cost accounting, LLM clients | done |
+| M2 | evaluation and cost control | done |
+| M3 | LLM planner + event-driven scheduler with multi-role workers | planned |
+| M4 | tiered memory + Chinese/English hybrid retrieval | planned |
+| M5 | experiments and write-up | planned |
+
+## Project layout
+
+```text
+src/trellis_agent/   agent, tools, llm/, cost, trace, eval/   (planner/, memory/, retrieval/ to come)
+tests/               unit/ and integration/ (fake OpenAI-compatible HTTP server for client contracts)
+evals/               smoke task set, demo prices, committed baseline
+examples/            runnable examples (all support --mock)
+docs/                EVAL.md
+```
 
 ## Acknowledgements
 
-Trellis is inspired by [LightAgent](https://github.com/wanxingai/LightAgent) (Apache-2.0). I studied its design (reference commit `f8083ab`) and am writing an independent implementation focused on evaluation, planning/scheduling and tiered memory. Trellis is not affiliated with or endorsed by the LightAgent authors. See `NOTICE`.
+Trellis is inspired by [LightAgent](https://github.com/wanxingai/LightAgent) (Apache-2.0). I studied
+its design (reference commit `f8083ab`) and am writing an independent implementation focused on
+evaluation, planning/scheduling and tiered memory. Trellis is not affiliated with or endorsed by the
+LightAgent authors. See [`NOTICE`](NOTICE).
 
 ## License
 
-Apache License 2.0 — see `LICENSE` and `NOTICE`.
+Apache License 2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).

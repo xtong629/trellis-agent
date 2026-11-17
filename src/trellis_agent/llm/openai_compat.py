@@ -18,7 +18,7 @@ import httpx
 import openai
 from openai import AsyncOpenAI
 
-from ..cost import CostMeter
+from ..cost import BudgetExceeded, CostMeter
 from ..types import Message, ToolCall, ToolSchema, Usage
 from .base import LLMError, LLMResponse
 
@@ -86,15 +86,20 @@ class OpenAICompatClient:
         )
 
     @classmethod
-    def from_env(cls, meter: CostMeter | None = None, **kwargs: Any) -> OpenAICompatClient:
-        """Build from ``LLM_BASE_URL`` / ``LLM_API_KEY`` / ``LLM_MODEL`` (see ``.env.example``)."""
+    def from_env(
+        cls, meter: CostMeter | None = None, *, model: str | None = None, **kwargs: Any
+    ) -> OpenAICompatClient:
+        """Build from ``LLM_BASE_URL`` / ``LLM_API_KEY`` / ``LLM_MODEL`` (see ``.env.example``).
+
+        ``model`` overrides ``LLM_MODEL`` (e.g. to use a different model as a judge).
+        """
         missing = [k for k in ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL") if not os.environ.get(k)]
         if missing:
             raise LLMError(f"missing environment variables: {', '.join(missing)}")
         return cls(
             base_url=os.environ["LLM_BASE_URL"],
             api_key=os.environ["LLM_API_KEY"],
-            model=os.environ["LLM_MODEL"],
+            model=model or os.environ["LLM_MODEL"],
             meter=meter,
             **kwargs,
         )
@@ -168,15 +173,18 @@ class OpenAICompatClient:
         message = Message.assistant(raw_message.content, tuple(calls))
 
         usage = self._usage(completion.usage, wire, message)
-        cost = self.meter.record(self.model, usage, tag=tag) if self.meter else None
-        return LLMResponse(
-            message=message,
-            usage=usage,
-            latency_ms=latency_ms,
-            finish_reason=choice.finish_reason or "stop",
-            model=self.model,
-            cost_usd=cost,
-        )
+        finish = choice.finish_reason or "stop"
+        cost: float | None = None
+        if self.meter is not None:
+            try:
+                cost = self.meter.record(self.model, usage, tag=tag)
+            except BudgetExceeded as exc:
+                # The call is already paid for: hand the response to the caller for accounting.
+                exc.response = LLMResponse(
+                    message, usage, latency_ms, finish, self.model, exc.call_cost
+                )
+                raise
+        return LLMResponse(message, usage, latency_ms, finish, self.model, cost)
 
     @staticmethod
     def _usage(raw: Any, wire: list[dict[str, Any]], reply: Message) -> Usage:

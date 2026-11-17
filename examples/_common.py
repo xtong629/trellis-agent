@@ -5,9 +5,9 @@ from __future__ import annotations
 import argparse
 import os
 import sys
-from pathlib import Path
 
 from trellis_agent.cost import CostMeter
+from trellis_agent.env import load_dotenv
 from trellis_agent.llm import LLMClient, LLMError
 from trellis_agent.llm.openai_compat import OpenAICompatClient
 
@@ -20,18 +20,6 @@ def parse_args(description: str) -> argparse.Namespace:
         help="use a scripted fake model (no key, no network); else read LLM_* from env/.env",
     )
     return parser.parse_args()
-
-
-def load_dotenv(path: str = ".env") -> None:
-    """Tiny .env reader (KEY=VALUE lines); never overrides variables already set."""
-    file = Path(path)
-    if not file.is_file():
-        return
-    for line in file.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if line and not line.startswith("#") and "=" in line:
-            key, _, value = line.partition("=")
-            os.environ.setdefault(key.strip(), value.strip().strip("'\""))
 
 
 def check_llm_env() -> None:

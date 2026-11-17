@@ -6,15 +6,19 @@ so missing prices cannot silently look like "free".
 
 from __future__ import annotations
 
+import math
 import threading
 from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import yaml
 
 from .types import Usage
+
+if TYPE_CHECKING:  # annotation only; llm imports cost at runtime
+    from .llm.base import LLMResponse
 
 _MILLION = 1_000_000
 
@@ -69,10 +73,19 @@ class PriceTable:
 
 
 class BudgetExceeded(RuntimeError):
-    def __init__(self, spent: float, budget: float) -> None:
+    """Spending passed the budget.
+
+    The call that crossed the line has already been paid for. ``call_cost`` is its price, and the
+    LLM client attaches the full ``response`` (``None`` when raised by ``CostMeter.check`` or when
+    no call was involved) so callers can still account for its tokens and cost.
+    """
+
+    def __init__(self, spent: float, budget: float, *, call_cost: float | None = None) -> None:
         super().__init__(f"budget exceeded: spent ${spent:.6f} of ${budget:.6f}")
         self.spent = spent
         self.budget = budget
+        self.call_cost = call_cost
+        self.response: LLMResponse | None = None
 
 
 class UnpricedModelError(ValueError):
@@ -91,13 +104,25 @@ class CostMeter:
             raise ValueError("budget must be non-negative")
         self.prices = prices
         self.budget_usd = budget_usd
-        self.total_usd = 0.0
-        self.by_tag: dict[str, float] = {}
+        # Per-call costs are kept and summed with math.fsum (exactly rounded, order-independent):
+        # a running float total would depend on the order concurrent calls finish in.
+        self._costs: list[float] = []
+        self._tag_costs: dict[str, list[float]] = {}
         self.usage = Usage()
         self.calls = 0
         self.unpriced_calls = 0
         self.any_estimated = False
         self._lock = threading.Lock()
+
+    @property
+    def total_usd(self) -> float:
+        with self._lock:
+            return math.fsum(self._costs)
+
+    @property
+    def by_tag(self) -> dict[str, float]:
+        with self._lock:
+            return {tag: math.fsum(costs) for tag, costs in self._tag_costs.items()}
 
     @property
     def remaining_usd(self) -> float | None:
@@ -122,11 +147,11 @@ class CostMeter:
             if cost is None:
                 self.unpriced_calls += 1
             else:
-                self.total_usd += cost
-                self.by_tag[tag] = self.by_tag.get(tag, 0.0) + cost
-            total = self.total_usd
+                self._costs.append(cost)
+                self._tag_costs.setdefault(tag, []).append(cost)
+            total = math.fsum(self._costs)
         if cost is None and self.budget_usd is not None:
             raise UnpricedModelError(f"no price for model {model!r}; cannot enforce the budget")
         if self.budget_usd is not None and total > self.budget_usd:
-            raise BudgetExceeded(total, self.budget_usd)
+            raise BudgetExceeded(total, self.budget_usd, call_cost=cost)
         return cost

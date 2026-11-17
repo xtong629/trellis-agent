@@ -34,11 +34,17 @@ jobs:
         run: mypy
       - name: Test (network disabled, no secrets)
         run: pytest --cov --cov-report=term-missing --cov-report=xml
-      # M2 adds: python -m trellis_agent.eval run evals/smoke --llm mock + compare with committed baseline
+      - name: Evaluation smoke run and regression gate (mock model, no network)
+        run: |
+          python -m trellis_agent.eval run evals/smoke --llm mock \
+            --prices evals/prices.demo.yaml --out runs/smoke.json
+          python -m trellis_agent.eval compare evals/baselines/smoke.json runs/smoke.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
-          name: coverage-py${{ matrix.python-version }}
-          path: coverage.xml
+          name: reports-py${{ matrix.python-version }}
+          path: |
+            coverage.xml
+            runs/smoke.json
           if-no-files-found: ignore
           retention-days: 14

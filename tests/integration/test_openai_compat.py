@@ -344,3 +344,18 @@ async def test_timeout_becomes_llm_error(
     monkeypatch.setattr(client._client.chat.completions, "create", slow)
     with pytest.raises(LLMError, match="timed out"):
         await client.chat([Message.user("q")])
+
+
+async def test_budget_exceeded_carries_the_paid_for_response_over_http(
+    fake_openai: FakeOpenAI, make_client: type
+) -> None:
+    fake_openai.reply(
+        {"content": "costly"},
+        usage={"prompt_tokens": 2_000_000, "completion_tokens": 0, "total_tokens": 2_000_000},
+    )
+    meter = CostMeter(PriceTable({"fake-model": ModelPrice(1.0, 1.0)}), budget_usd=1.0)
+    with pytest.raises(BudgetExceeded) as info:
+        await make_client(meter=meter).chat([Message.user("q")], tag="judge")
+    response = info.value.response
+    assert response is not None and response.message.content == "costly"
+    assert response.cost_usd == pytest.approx(2.0) and response.usage.prompt_tokens == 2_000_000

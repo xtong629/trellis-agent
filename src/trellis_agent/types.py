@@ -40,6 +40,15 @@ class Usage:
             self.estimated or other.estimated,
         )
 
+    @classmethod
+    def from_dict(cls, raw: dict[str, Any]) -> Usage:
+        return cls(
+            int(raw.get("prompt_tokens", 0)),
+            int(raw.get("completion_tokens", 0)),
+            int(raw.get("cached_tokens", 0)),
+            bool(raw.get("estimated", False)),
+        )
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "prompt_tokens": self.prompt_tokens,

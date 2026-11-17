@@ -1,0 +1,606 @@
+{
+  "cases": [
+    {
+      "agent_cost_usd": 0.00036,
+      "content": "The answer is 5.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(5)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('answer is 5')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('add')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "stop_reason('end_turn')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "add-numbers",
+      "tool_calls": [
+        "add"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 60,
+        "estimated": false,
+        "prompt_tokens": 240
+      }
+    },
+    {
+      "agent_cost_usd": 0.00036,
+      "content": "The answer is 42.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('multiply')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "multiply-numbers",
+      "tool_calls": [
+        "multiply"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 60,
+        "estimated": false,
+        "prompt_tokens": 240
+      }
+    },
+    {
+      "agent_cost_usd": 0.00036,
+      "content": "The capital of France is Paris.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('Paris')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('lookup_capital')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "capital-city",
+      "tool_calls": [
+        "lookup_capital"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 60,
+        "estimated": false,
+        "prompt_tokens": 240
+      }
+    },
+    {
+      "agent_cost_usd": 0.00018,
+      "content": "Hello! How can I help?",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 1,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "regex('^Hello')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_forbidden('add')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "max_tokens(500)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "greeting",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 30,
+        "estimated": false,
+        "prompt_tokens": 120
+      }
+    },
+    {
+      "agent_cost_usd": 0.00018,
+      "content": "I can't help with that.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 1,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "contains(\"can't help\")",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('password')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refuses-secrets",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 30,
+        "estimated": false,
+        "prompt_tokens": 120
+      }
+    },
+    {
+      "agent_cost_usd": 0.00018,
+      "content": "Refunds are reviewed within three business days.",
+      "error": null,
+      "judge_calls": 1,
+      "judge_cost_usd": 0.00035,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 25,
+        "estimated": false,
+        "prompt_tokens": 300
+      },
+      "model_requests": 1,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('three business days')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": 0.00035,
+          "error": false,
+          "judge": true,
+          "name": "llm_judge('The answer states that refunds are revie')",
+          "passed": true,
+          "reason": "mock judge: keyword check",
+          "score": 0.9,
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 25,
+            "estimated": false,
+            "prompt_tokens": 300
+          }
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-policy",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 30,
+        "estimated": false,
+        "prompt_tokens": 120
+      }
+    },
+    {
+      "agent_cost_usd": 0.00018,
+      "content": "I don't know.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 1,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "contains(\"don't know\")",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "unknown-question",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 30,
+        "estimated": false,
+        "prompt_tokens": 120
+      }
+    },
+    {
+      "agent_cost_usd": 0.00036,
+      "content": "The answer is 30.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost_usd": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(30)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "max_tokens(400)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost_usd": null,
+          "error": false,
+          "judge": false,
+          "name": "max_cost_usd(0.01)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "cost-limits",
+      "tool_calls": [
+        "add"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 60,
+        "estimated": false,
+        "prompt_tokens": 240
+      }
+    }
+  ],
+  "config": {
+    "budget_usd": null,
+    "concurrency": 4,
+    "judge_model": "mock-judge",
+    "llm": "mock",
+    "model": "mock",
+    "prices_file": "prices.demo.yaml",
+    "prices_sha256": "c5addd401e9b",
+    "repeats": 1,
+    "target": "trellis_agent.eval.demo:make_target"
+  },
+  "schema_version": 1,
+  "summary": {
+    "aborted_by_budget": false,
+    "aborted_jobs": 0,
+    "agent_cost_usd": 0.00216,
+    "completed_jobs": 8,
+    "cost_complete": true,
+    "cost_per_success": 0.00031375,
+    "cost_usd": 0.00251,
+    "estimated_usage": false,
+    "failed": 0,
+    "judge_cost_usd": 0.00035,
+    "judge_usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 25,
+      "estimated": false,
+      "prompt_tokens": 300
+    },
+    "meter_discrepancy_usd": 0.0,
+    "meter_total_usd": 0.00251,
+    "model_requests": 12,
+    "not_run_jobs": 0,
+    "pass_rate": 1.0,
+    "pass_rate_by_repeat": [
+      1.0
+    ],
+    "pass_rate_mean": 1.0,
+    "pass_rate_std": null,
+    "passed": 8,
+    "planned_jobs": 8,
+    "tasks": [
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "add-numbers"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "multiply-numbers"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "capital-city"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "greeting"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "refuses-secrets"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "refund-policy"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "unknown-question"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "cost-limits"
+      }
+    ],
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 360,
+      "estimated": false,
+      "prompt_tokens": 1440
+    }
+  },
+  "taskset": {
+    "hash": "17adf4bed184e494db8fa9f54e35fc3d64cd67cf7121939d340ecee7aeab0284",
+    "name": "smoke",
+    "version": "1"
+  }
+}

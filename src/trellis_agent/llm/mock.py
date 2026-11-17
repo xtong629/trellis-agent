@@ -11,7 +11,7 @@ import re
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 
-from ..cost import CostMeter
+from ..cost import BudgetExceeded, CostMeter
 from ..types import Message, ToolSchema, Usage
 from .base import LLMResponse
 
@@ -38,8 +38,16 @@ class _MockLLM:
         self.calls: list[CallRecord] = []
 
     def _respond(self, message: Message, tag: str) -> LLMResponse:
-        cost = self.meter.record(self.model, self.usage_per_call, tag=tag) if self.meter else None
         finish = "tool_calls" if message.tool_calls else "stop"
+        cost: float | None = None
+        if self.meter is not None:
+            try:
+                cost = self.meter.record(self.model, self.usage_per_call, tag=tag)
+            except BudgetExceeded as exc:
+                exc.response = LLMResponse(
+                    message, self.usage_per_call, 0.0, finish, self.model, exc.call_cost
+                )
+                raise
         return LLMResponse(message, self.usage_per_call, 0.0, finish, self.model, cost)
 
     def _record(

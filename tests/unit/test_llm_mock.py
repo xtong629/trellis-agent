@@ -95,3 +95,16 @@ async def test_hash_embedder_shared_words_are_more_similar() -> None:
 async def test_hash_embedder_handles_empty_text() -> None:
     (v,) = await HashEmbedder(dim=8).embed([""])
     assert v == [0.0] * 8
+
+
+async def test_budget_exceeded_carries_the_response_that_was_paid_for() -> None:
+    meter = CostMeter(PriceTable({"mock": ModelPrice(1.0, 1.0)}), budget_usd=0.5)
+    llm = RuleLLM(
+        lambda m, t: Message.assistant("x"), usage_per_call=Usage(1_000_000, 0), meter=meter
+    )
+    with pytest.raises(BudgetExceeded) as info:
+        await llm.chat([Message.user("q")])
+    response = info.value.response
+    assert response is not None
+    assert response.message.content == "x" and response.usage == Usage(1_000_000, 0)
+    assert response.cost_usd == pytest.approx(1.0) == meter.total_usd

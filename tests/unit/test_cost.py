@@ -110,3 +110,31 @@ def test_meter_remaining_budget() -> None:
     meter.record("m", Usage(prompt_tokens=1_000_000))
     assert meter.remaining_usd == pytest.approx(3.0)
     assert CostMeter(PRICES).remaining_usd is None
+
+
+def test_budget_exceeded_reports_the_cost_of_the_call_that_crossed_it() -> None:
+    meter = CostMeter(PRICES, budget_usd=3.0)
+    meter.record("m", Usage(prompt_tokens=1_000_000))
+    with pytest.raises(BudgetExceeded) as info:
+        meter.record("m", Usage(prompt_tokens=1_000_000))
+    assert info.value.call_cost == pytest.approx(2.0)
+    assert info.value.response is None  # only the client knows the response; it attaches it
+
+
+def test_total_does_not_depend_on_the_order_calls_finish() -> None:
+    # Float addition is not associative, and with concurrent calls the finish order varies. The
+    # meter must sum order-independently or two identical evaluations produce different reports.
+    import itertools
+
+    prices = PriceTable({"m": ModelPrice(input_per_million=100_000.0, output_per_million=0.0)})
+    tokens = [1, 2, 3, 7, 100_001, 5, 123_457]  # irregular per-call costs (0.1 per token)
+    totals: set[float] = set()
+    tagged: set[float] = set()
+    for order in itertools.permutations(tokens):
+        meter = CostMeter(prices)
+        for t in order:
+            meter.record("m", Usage(prompt_tokens=t), tag="x")
+        totals.add(meter.total_usd)
+        tagged.add(meter.by_tag["x"])
+    assert len(totals) == 1 and len(tagged) == 1
+    assert totals == tagged  # the per-tag figure and the grand total agree exactly

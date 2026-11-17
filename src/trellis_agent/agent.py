@@ -101,6 +101,21 @@ class Agent:
                 )
             except BudgetExceeded as exc:
                 stop_reason, error = "budget_exceeded", str(exc)
+                paid = exc.response
+                if paid is not None:  # paid for, so it counts, even though the run stops here
+                    usage = usage + paid.usage
+                    if paid.cost_usd is not None:
+                        costs.append(paid.cost_usd)
+                    tracer.emit(
+                        "model_request",
+                        step=steps,
+                        model=paid.model,
+                        latency_ms=paid.latency_ms,
+                        usage=paid.usage.to_dict(),
+                        cost_usd=paid.cost_usd,
+                        finish_reason=paid.finish_reason,
+                        over_budget=True,
+                    )
                 tracer.emit("error", category="budget_exceeded", message=error, step=steps)
                 break
             except Exception as exc:
