@@ -42,8 +42,18 @@ def test_03_cost_and_budget() -> None:
     assert "spent: $1.800000 of $1.500000" in out
 
 
+def test_04_planned_agent() -> None:
+    out = run_example("04_planned.py")
+    assert "Answer: The total price is 60." in out
+    for row in ("t1 | research", "t2 | research", "t3 | compute"):
+        assert row in out
+    assert out.count("| done |") == 3  # every task finished
+    assert "workers: researcher, calculator" in out
+
+
 @pytest.mark.parametrize(
-    "name", ["01_single_agent.py", "02_tools_agent.py", "03_cost_and_budget.py"]
+    "name",
+    ["01_single_agent.py", "02_tools_agent.py", "03_cost_and_budget.py", "04_planned.py"],
 )
 def test_examples_without_mock_need_credentials(name: str, tmp_path: Path) -> None:
     done = subprocess.run(

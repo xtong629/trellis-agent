@@ -8,10 +8,9 @@ is a *scorer error*, never a silent pass. Prefer rule scorers wherever a rule ca
 
 from __future__ import annotations
 
-import json
-import re
 from typing import Any
 
+from ..jsonutil import extract_json
 from ..llm import LLMClient, LLMError
 from ..types import Message, RunResult
 from .scorers import Params, ScorerConfigError, ScoreResult
@@ -22,21 +21,6 @@ _SYSTEM = (
     'Reply with ONLY a JSON object: {"score": <number from 0 to 1>, "reason": "<one sentence>"}. '
     "1 means the rubric is fully satisfied, 0 means not at all."
 )
-_FENCE = re.compile(r"```(?:json)?\s*(.*?)```", re.DOTALL)
-
-
-def _extract_json_object(text: str) -> dict[str, Any] | None:
-    fenced = _FENCE.search(text)
-    candidate = fenced.group(1) if fenced else text
-    decoder = json.JSONDecoder()
-    for match in re.finditer(r"\{", candidate):
-        try:
-            value, _ = decoder.raw_decode(candidate[match.start() :])
-        except json.JSONDecodeError:
-            continue
-        if isinstance(value, dict):
-            return value
-    return None
 
 
 class LLMJudge:
@@ -90,7 +74,7 @@ class LLMJudge:
             )
         except LLMError as exc:  # BudgetExceeded is deliberately NOT caught: the runner aborts
             return self._error(f"judge model failed: {exc}")
-        verdict = _extract_json_object(response.message.content or "")
+        verdict = extract_json(response.message.content or "")
         raw = None if verdict is None else verdict.get("score")
         if isinstance(raw, bool) or not isinstance(raw, int | float):
             return self._error("judge output had no numeric 'score'", response)

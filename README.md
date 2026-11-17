@@ -5,8 +5,8 @@
 > A small agent framework where planning and memory are **measurable**: eval-first, cost-capped, mock-testable.
 
 **Status: early development.** The agent core and the evaluation harness work and are tested.
-Planning/scheduling and tiered memory are planned next; they will be added together with the
-experiments that show whether they actually help. See [Roadmap](#roadmap).
+Planning/scheduling is implemented; tiered memory is planned next. Both are meant to be added
+together with the experiments that show whether they actually help. See [Roadmap](#roadmap).
 
 ## Why
 
@@ -30,6 +30,7 @@ Most agent demos show that something *can* work. Trellis is built around the har
 | Cost | `PriceTable`, `CostMeter`, hard budgets, order-independent exact sums |
 | Tracing | structured events, per-run traces, aggregate summaries |
 | Evaluation | task sets, 11 scorer types + `llm_judge`, runner with repeats and concurrency, reports, baseline `compare`, CLI |
+| Planning | LLM planner whose plans are validated and sent back for repair; event-driven scheduler with dependencies, parallelism, retry with backoff, failure policies (skip dependents / fail fast / replan), budgets; role-specific worker agents dispatched by task kind |
 
 Details of the evaluation harness, cost rules and the budget mechanism: [`docs/EVAL.md`](docs/EVAL.md).
 
@@ -44,6 +45,7 @@ pip install -e ".[dev]"
 pytest                                        # offline; the network is blocked during tests
 python examples/02_tools_agent.py --mock      # a tool-using agent, no API key needed
 python examples/03_cost_and_budget.py --mock  # cost accounting and a hard budget
+python examples/04_planned.py --mock          # planner + researcher/calculator worker agents
 ```
 
 Run the evaluation smoke suite and the regression gate:
@@ -73,14 +75,14 @@ Offline mock runs only exercise the code; they say nothing about real-model perf
 | M0 | project scaffold, lint/type/test/CI | done |
 | M1 | agent loop, tools, tracing, cost accounting, LLM clients | done |
 | M2 | evaluation and cost control | done |
-| M3 | LLM planner + event-driven scheduler with multi-role workers | planned |
+| M3 | LLM planner + event-driven scheduler with multi-role workers | done |
 | M4 | tiered memory + Chinese/English hybrid retrieval | planned |
 | M5 | experiments and write-up | planned |
 
 ## Project layout
 
 ```text
-src/trellis_agent/   agent, tools, llm/, cost, trace, eval/   (planner/, memory/, retrieval/ to come)
+src/trellis_agent/   agent, tools, llm/, cost, trace, eval/, planner/   (memory/, retrieval/ to come)
 tests/               unit/ and integration/ (fake OpenAI-compatible HTTP server for client contracts)
 evals/               smoke task set, demo prices, committed baseline
 examples/            runnable examples (all support --mock)
