@@ -89,6 +89,7 @@ to price the offline mock models.
 | `cost_usd` | agent + judge |
 | `cost_per_success` | `cost_usd / passed`: a better way to compare systems than raw cost |
 | `cost_complete` | false if any call had no price; totals are then lower bounds |
+| `usage.reasoning_tokens`, `reasoning_share` | hidden reasoning tokens (part of the output) and their share of it; present only when the provider reports them; a lower bound if only some calls did |
 | `estimated_usage` | true if the provider reported no usage and tokens were estimated (chars/4) |
 | `meter_total_usd`, `meter_discrepancy_usd` | the shared `CostMeter`'s own total, and report minus meter (should be 0) |
 

@@ -44,3 +44,37 @@ def test_tool_message_requires_call_id() -> None:
 def test_toolcall_defaults_have_no_argument_error() -> None:
     call = ToolCall(id="c1", name="add", arguments={})
     assert call.arguments_error is None and call.raw_arguments is None
+
+
+# ----------------------------------------------------------------- reasoning tokens
+def test_reasoning_tokens_are_optional_and_none_by_default() -> None:
+    assert Usage(10, 5).reasoning_tokens is None
+    assert (
+        "reasoning_tokens" not in Usage(10, 5).to_dict()
+    )  # absent when unknown: old reports unchanged
+
+
+def test_reasoning_tokens_add_up_and_unknown_stays_unknown() -> None:
+    assert (
+        Usage(1, 10, reasoning_tokens=4) + Usage(1, 10, reasoning_tokens=6)
+    ).reasoning_tokens == 10
+    assert (Usage(1, 10) + Usage(1, 10)).reasoning_tokens is None  # nothing known: still None
+    mixed = Usage(1, 10, reasoning_tokens=4) + Usage(1, 10)
+    assert mixed.reasoning_tokens == 4  # the known part is kept (a lower bound), not discarded
+
+
+def test_reasoning_share_is_a_fraction_of_the_output() -> None:
+    assert Usage(1, 40, reasoning_tokens=30).reasoning_share == 0.75
+    assert Usage(1, 40).reasoning_share is None
+    assert Usage(1, 0, reasoning_tokens=0).reasoning_share is None  # no output: no share
+
+
+def test_reasoning_tokens_round_trip_and_validate() -> None:
+    usage = Usage(5, 9, 2, reasoning_tokens=7)
+    assert usage.to_dict()["reasoning_tokens"] == 7 and Usage.from_dict(usage.to_dict()) == usage
+    assert Usage.from_dict({"prompt_tokens": 1, "completion_tokens": 2}).reasoning_tokens is None
+    for bad in (-1,):
+        with pytest.raises(ValueError):
+            Usage(1, 2, reasoning_tokens=bad)
+    with pytest.raises(ValueError):
+        Usage(1, 2, reasoning_tokens=3)  # cannot exceed the completion tokens it is part of

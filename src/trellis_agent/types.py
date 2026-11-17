@@ -21,12 +21,26 @@ class Usage:
     completion_tokens: int = 0
     cached_tokens: int = 0
     estimated: bool = False
+    # Part of completion_tokens spent on hidden reasoning; None when the provider did not say.
+    # In a sum it is a lower bound if some of the summed calls did not report it.
+    reasoning_tokens: int | None = None
 
     def __post_init__(self) -> None:
         if self.prompt_tokens < 0 or self.completion_tokens < 0 or self.cached_tokens < 0:
             raise ValueError("token counts must be non-negative")
         if self.cached_tokens > self.prompt_tokens:
             raise ValueError("cached_tokens cannot exceed prompt_tokens")
+        if (
+            self.reasoning_tokens is not None
+            and not 0 <= self.reasoning_tokens <= self.completion_tokens
+        ):
+            raise ValueError("reasoning_tokens must be between 0 and completion_tokens")
+
+    @property
+    def reasoning_share(self) -> float | None:
+        if self.reasoning_tokens is None or self.completion_tokens == 0:
+            return None
+        return self.reasoning_tokens / self.completion_tokens
 
     @property
     def total_tokens(self) -> int:
@@ -38,6 +52,9 @@ class Usage:
             self.completion_tokens + other.completion_tokens,
             self.cached_tokens + other.cached_tokens,
             self.estimated or other.estimated,
+            None
+            if self.reasoning_tokens is None and other.reasoning_tokens is None
+            else (self.reasoning_tokens or 0) + (other.reasoning_tokens or 0),
         )
 
     @classmethod
@@ -47,15 +64,19 @@ class Usage:
             int(raw.get("completion_tokens", 0)),
             int(raw.get("cached_tokens", 0)),
             bool(raw.get("estimated", False)),
+            raw.get("reasoning_tokens"),
         )
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        data: dict[str, Any] = {
             "prompt_tokens": self.prompt_tokens,
             "completion_tokens": self.completion_tokens,
             "cached_tokens": self.cached_tokens,
             "estimated": self.estimated,
         }
+        if self.reasoning_tokens is not None:  # omitted when unknown, so old reports are unchanged
+            data["reasoning_tokens"] = self.reasoning_tokens
+        return data
 
 
 @dataclass(frozen=True)

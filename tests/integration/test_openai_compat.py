@@ -407,3 +407,58 @@ async def test_extra_params_cannot_override_what_the_client_controls(
     client = make_client()
     with pytest.raises(ValueError, match=name):
         await client.chat([Message.user("q")], extra_params={name: 1})
+
+
+# ----------------------------------------------------------------- reasoning tokens
+async def test_reasoning_tokens_are_read_from_the_usage_details(
+    fake_openai: FakeOpenAI, make_client: type
+) -> None:
+    fake_openai.reply(
+        {"content": "ok"},
+        usage={
+            "prompt_tokens": 20,
+            "completion_tokens": 50,
+            "total_tokens": 70,
+            "completion_tokens_details": {"reasoning_tokens": 40, "audio_tokens": None},
+            "prompt_tokens_details": {"cached_tokens": 4},
+        },
+    )
+    usage = (await make_client().chat([Message.user("q")])).usage
+    assert usage == Usage(20, 50, 4, reasoning_tokens=40) and usage.reasoning_share == 0.8
+
+
+@pytest.mark.parametrize(
+    "details",
+    [None, {}, {"reasoning_tokens": None}],
+    ids=["no-details", "empty-details", "null-reasoning"],
+)
+async def test_missing_reasoning_tokens_stay_none(
+    fake_openai: FakeOpenAI, make_client: type, details: object
+) -> None:
+    usage: dict[str, object] = {"prompt_tokens": 3, "completion_tokens": 2, "total_tokens": 5}
+    if details is not None:
+        usage["completion_tokens_details"] = details
+    fake_openai.reply({"content": "ok"}, usage=usage)
+    assert (await make_client().chat([Message.user("q")])).usage.reasoning_tokens is None
+
+
+async def test_estimated_usage_never_claims_reasoning_tokens(
+    fake_openai: FakeOpenAI, make_client: type
+) -> None:
+    choice = {
+        "index": 0,
+        "message": {"role": "assistant", "content": "hi"},
+        "finish_reason": "stop",
+    }
+    fake_openai.raw(
+        200,
+        {
+            "id": "x",
+            "object": "chat.completion",
+            "created": 0,
+            "model": "fake-model",
+            "choices": [choice],
+        },
+    )  # no usage object at all
+    usage = (await make_client().chat([Message.user("q")])).usage
+    assert usage.estimated and usage.reasoning_tokens is None

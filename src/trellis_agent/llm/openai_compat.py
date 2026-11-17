@@ -206,7 +206,17 @@ class OpenAICompatClient:
         if raw is not None and raw.prompt_tokens is not None and raw.completion_tokens is not None:
             details = getattr(raw, "prompt_tokens_details", None)
             cached = getattr(details, "cached_tokens", 0) or 0
-            return Usage(raw.prompt_tokens, raw.completion_tokens, min(cached, raw.prompt_tokens))
+            reasoning = getattr(
+                getattr(raw, "completion_tokens_details", None), "reasoning_tokens", None
+            )
+            return Usage(
+                raw.prompt_tokens,
+                raw.completion_tokens,
+                min(cached, raw.prompt_tokens),
+                reasoning_tokens=None
+                if reasoning is None
+                else min(reasoning, raw.completion_tokens),
+            )
         completion_text = (reply.content or "") + "".join(
             c.name + json.dumps(c.arguments) for c in reply.tool_calls
         )

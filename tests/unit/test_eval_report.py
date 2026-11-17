@@ -159,3 +159,48 @@ def test_markdown_for_an_empty_run_does_not_divide_by_zero() -> None:
         cases=[CaseResult("a", 0, "not_run")], aborted_by_budget=True
     ).render_markdown()
     assert "Pass rate | n/a" in md
+
+
+# ----------------------------------------------------------------- reasoning tokens
+def _with_reasoning() -> EvalReport:
+    cases = [
+        CaseResult(
+            "a", 0, "passed", usage=Usage(100, 40, reasoning_tokens=30), agent_cost_usd=0.001
+        ),
+        CaseResult(
+            "b", 0, "passed", usage=Usage(100, 60, reasoning_tokens=10), agent_cost_usd=0.001
+        ),
+    ]
+    return make_report(cases=cases, meter_total_usd=None)
+
+
+def test_the_summary_reports_reasoning_tokens_and_their_share_of_the_output() -> None:
+    s = _with_reasoning().summary()
+    assert s["usage"]["reasoning_tokens"] == 40 and s["usage"]["completion_tokens"] == 100
+    assert s["reasoning_share"] == 0.4
+
+
+def test_without_reasoning_data_the_summary_has_no_reasoning_keys() -> None:
+    s = make_report().summary()
+    assert "reasoning_share" not in s and "reasoning_tokens" not in s["usage"]
+
+
+def test_markdown_shows_the_reasoning_row_only_when_known() -> None:
+    assert "Reasoning tokens | 40 (40.0% of agent output)" in _with_reasoning().render_markdown()
+    assert "Reasoning tokens" not in make_report().render_markdown()
+
+
+def test_reasoning_tokens_survive_save_and_load(tmp_path: Path) -> None:
+    path = tmp_path / "r.json"
+    _with_reasoning().save(path)
+    loaded = EvalReport.load(path)
+    assert (
+        loaded.cases[0].usage.reasoning_tokens == 30 and loaded.summary()["reasoning_share"] == 0.4
+    )
+
+
+def test_a_report_written_before_this_field_existed_still_loads(tmp_path: Path) -> None:
+    path = tmp_path / "old.json"
+    make_report().save(path)
+    assert "reasoning" not in path.read_text(encoding="utf-8")
+    assert EvalReport.load(path).cases[0].usage.reasoning_tokens is None

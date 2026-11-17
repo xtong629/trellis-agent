@@ -124,3 +124,22 @@ def test_summarize_empty_has_no_cost() -> None:
     s = summarize([])
     assert s.cost_usd is None and s.event_count == 0
     assert s.to_dict()["usage"]["prompt_tokens"] == 0
+
+
+def test_summarize_aggregates_reasoning_tokens_and_shows_the_share() -> None:
+    tracer = make_tracer()
+    for reasoning in (30, 10):
+        usage = {"prompt_tokens": 5, "completion_tokens": 40, "reasoning_tokens": reasoning}
+        tracer.emit("model_request", usage=usage, latency_ms=1.0, cost_usd=None)
+    s = summarize(tracer.events)
+    assert s.usage.reasoning_tokens == 40 and s.usage.reasoning_share == 0.5
+    assert s.to_dict()["reasoning_share"] == 0.5
+
+
+def test_summary_has_no_share_when_reasoning_is_unknown() -> None:
+    tracer = make_tracer()
+    tracer.emit(
+        "model_request", usage={"prompt_tokens": 5, "completion_tokens": 40}, latency_ms=1.0
+    )
+    d = summarize(tracer.events).to_dict()
+    assert d["usage"].get("reasoning_tokens") is None and "reasoning_share" not in d
