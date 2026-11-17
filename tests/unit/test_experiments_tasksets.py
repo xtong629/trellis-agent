@@ -21,13 +21,13 @@ def families(doc: dict) -> Counter[str]:  # type: ignore[type-arg]
 
 def test_experiment_a_has_thirty_tasks_in_four_families() -> None:
     doc = taskset_a()
-    assert (doc["name"], len(doc["tasks"])) == ("exp-a-planner", 30)
+    assert (doc["name"], doc["version"], len(doc["tasks"])) == ("exp-a-planner", "2", 30)
     assert families(doc) == {"serial": 8, "fanout": 8, "flaky": 6, "single": 8}
 
 
 def test_experiment_b_has_twenty_scripts_in_five_families() -> None:
     doc = taskset_b()
-    assert (doc["name"], len(doc["tasks"])) == ("exp-b-memory", 20)
+    assert (doc["name"], doc["version"], len(doc["tasks"])) == ("exp-b-memory", "2", 20)
     assert families(doc) == {
         "allergy": 6,
         "deadline": 5,
@@ -93,14 +93,42 @@ def test_the_committed_files_equal_what_the_generator_produces() -> None:
         )
 
 
-def test_the_task_sets_are_frozen() -> None:
+def test_the_task_sets_are_frozen_at_v2_and_v1_is_kept_on_record() -> None:
     """Editing a task changes its hash. After the freeze, only bug fixes are allowed and each one
     must update experiments/FROZEN.json in the same commit (and trigger a full re-run)."""
     import json
 
     frozen = json.loads((ROOT / "experiments" / "FROZEN.json").read_text())
+    assert frozen["v1"]["exp_a_planner"]["content_hash"].startswith("25c438fe84a9")
+    assert frozen["v1"]["exp_b_memory"]["content_hash"].startswith("76c0056431fc")
     for directory in ("exp_a_planner", "exp_b_memory"):
-        entry = frozen[directory]
+        entry = frozen["v2"][directory]
         loaded = load_taskset(ROOT / "evals" / directory)
         assert loaded.content_hash == entry["content_hash"], f"{directory} changed after the freeze"
-        assert len(loaded.tasks) == entry["tasks"]
+        assert (loaded.version, len(loaded.tasks)) == ("2", entry["tasks"])
+        assert entry["content_hash"] != frozen["v1"][directory]["content_hash"]
+
+
+def test_numeric_answers_are_marked_and_the_prompt_asks_for_the_marker() -> None:
+    tasks = [*taskset_a()["tasks"], *[t for t in taskset_b()["tasks"] if "irrelevant" in t["id"]]]
+    assert len(tasks) == 33
+    for t in tasks:
+        number = next(s for s in t["scorers"] if s["type"] == "number_match")
+        assert number["which"] == "marked", t["id"]
+        assert t["input"].rstrip().endswith("ANSWER: <number>'."), t["id"]
+
+
+def test_the_memory_window_follows_the_stated_rule() -> None:
+    from experiments.targets import WINDOW_TOKENS
+    from experiments.window import conversation_tokens, derive_window
+
+    doc = taskset_b()
+    window = derive_window(doc)
+    assert window == WINDOW_TOKENS  # the value in use is the derived one, not a tuned one
+    for t in doc["tasks"]:
+        size = conversation_tokens(t["input"])
+        if t["metadata"]["family"] == "fits":
+            assert size <= window, t["id"]
+        else:
+            assert size > window, t["id"]  # every other script overflows the window
+    assert window % 10 == 0

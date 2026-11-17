@@ -122,8 +122,8 @@ async def run_pilot(args: argparse.Namespace) -> dict[str, Any]:
     out.mkdir(parents=True, exist_ok=True)  # noqa: ASYNC240
     sets = {"a": taskset_a(), "b": taskset_b()}
     parents = {
-        "a": frozen["exp_a_planner"]["content_hash"],
-        "b": frozen["exp_b_memory"]["content_hash"],
+        "a": frozen["v2"]["exp_a_planner"]["content_hash"],
+        "b": frozen["v2"]["exp_b_memory"]["content_hash"],
     }
     started = time.perf_counter()
     summary: dict[str, Any] = {"systems": {}}

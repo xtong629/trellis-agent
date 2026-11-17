@@ -13,6 +13,7 @@ from experiments.tools import CITIES, ITEMS, RATES, STOCK, WAREHOUSES
 
 SEPARATOR = "\n---\n"
 _TOL = 0.01
+ASK = "End your reply with a line of the form 'ANSWER: <number>'."
 
 
 def _task(
@@ -28,7 +29,7 @@ def _task(
 
 
 def _answer(value: float) -> dict[str, Any]:
-    return {"type": "number_match", "value": round(value, 4), "tolerance": _TOL, "which": "last"}
+    return {"type": "number_match", "value": round(value, 4), "tolerance": _TOL, "which": "marked"}
 
 
 def _called(name: str) -> dict[str, Any]:
@@ -49,7 +50,7 @@ def taskset_a() -> dict[str, Any]:
             _task(
                 f"serial-{i + 1:02d}",
                 f"A {item} is listed at its price in {a}. Look the price up, then tell me what it "
-                f"costs in {b} (use the exchange rate service). Answer with the number.",
+                f"costs in {b} (use the exchange rate service). {ASK}",
                 "serial", "benefit", why,
                 [_answer(ITEMS[item] * rate), _called("get_price"), _called("get_exchange_rate")],
             )
@@ -60,7 +61,7 @@ def taskset_a() -> dict[str, Any]:
             _task(
                 f"serial-{i:02d}",
                 f"Look up the price of {qty} {item}s and add 5 for handling. "
-                "Use the calculator for the arithmetic. Answer with the number.",
+                f"Use the calculator for the arithmetic. {ASK}",
                 "serial", "benefit", why,
                 [_answer(ITEMS[item] * qty + 5), _called("get_price"), _called("calculate")],
             )
@@ -74,7 +75,7 @@ def taskset_a() -> dict[str, Any]:
             _task(
                 f"fanout-{i:02d}",
                 f"How many {item}s are in stock in total across the warehouses {names}? "
-                "Check each warehouse. Answer with the number.",
+                f"Check each warehouse. {ASK}",
                 "fanout", "benefit", why,
                 [_answer(total), _called("get_stock")],
             )
@@ -87,7 +88,7 @@ def taskset_a() -> dict[str, Any]:
             _task(
                 f"fanout-{i + 5:02d}",
                 f"What is the combined population, in millions, of {', '.join(trio)}? "
-                "Answer with the number.",
+                f"{ASK}",
                 "fanout", "benefit", why,
                 [_answer(total), _called("get_population")],
             )
@@ -99,7 +100,7 @@ def taskset_a() -> dict[str, Any]:
             _task(
                 f"flaky-{i:02d}",
                 f"Convert the price of one {item} from {a} to {b}: look up the price, then the "
-                "exchange rate. If a service is busy, try again. Answer with the number.",
+                f"exchange rate. If a service is busy, try again. {ASK}",
                 "flaky", "benefit", why,
                 [_answer(ITEMS[item] * RATES[(a, b)]), _called("get_exchange_rate")],
             )
@@ -110,12 +111,12 @@ def taskset_a() -> dict[str, Any]:
         tasks.append(
             _task(
                 f"single-{i:02d}",
-                f"What is the unit price of a {item}? Answer with the number.",
+                f"What is the unit price of a {item}? {ASK}",
                 "single", "no-benefit", why,
                 [_answer(ITEMS[item]), _called("get_price")],
             )
         )  # fmt: skip
-    return {"name": "exp-a-planner", "version": "1", "tasks": tasks}
+    return {"name": "exp-a-planner", "version": "2", "tasks": tasks}
 
 
 def _script(*turns: str) -> str:
@@ -217,12 +218,12 @@ def taskset_b() -> dict[str, Any]:
         text = _script(
             f"For the record: I am allergic to {allergens[i]}.",
             *_fillers(5, i),
-            f"What is {a} plus {b}? Answer with the number.",
+            f"What is {a} plus {b}? {ASK}",
         )
         tasks.append(
             _task(
                 f"irrelevant-{i + 1:02d}", text, "irrelevant", "no-benefit", why,
-                [{"type": "number_match", "value": a + b, "which": "last"}],
+                [{"type": "number_match", "value": a + b, "which": "marked"}],
             )
         )  # fmt: skip
-    return {"name": "exp-b-memory", "version": "1", "tasks": tasks}
+    return {"name": "exp-b-memory", "version": "2", "tasks": tasks}
