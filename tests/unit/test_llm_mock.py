@@ -108,3 +108,16 @@ async def test_budget_exceeded_carries_the_response_that_was_paid_for() -> None:
     assert response is not None
     assert response.message.content == "x" and response.usage == Usage(1_000_000, 0)
     assert response.cost_usd == pytest.approx(1.0) == meter.total_usd
+
+
+async def test_mocks_record_the_extra_params_they_were_given() -> None:
+    llm = ScriptedLLM([Message.assistant("a"), Message.assistant("b")])
+    await llm.chat([Message.user("q")], extra_params={"reasoning_effort": "low"})
+    await llm.chat([Message.user("q")])
+    assert (
+        llm.calls[0].extra_params == {"reasoning_effort": "low"}
+        and llm.calls[1].extra_params is None
+    )
+    rule = RuleLLM(lambda m, t: Message.assistant("x"))
+    await rule.chat([Message.user("q")], extra_params={"k": 1})
+    assert rule.calls[0].extra_params == {"k": 1}

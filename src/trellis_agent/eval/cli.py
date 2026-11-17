@@ -10,6 +10,7 @@ import argparse
 import asyncio
 import hashlib
 import importlib
+import json
 import os
 import sys
 from collections.abc import Callable, Sequence
@@ -19,7 +20,7 @@ from typing import Any
 from ..cost import CostMeter, PriceTable, UnpricedModelError
 from ..env import load_dotenv
 from ..llm import LLMClient, LLMError
-from ..llm.openai_compat import OpenAICompatClient
+from ..llm.openai_compat import OpenAICompatClient, check_extra_params
 from . import demo
 from .baseline import compare
 from .report import EvalReport, ReportError, short_hash
@@ -53,6 +54,20 @@ def _load_target(spec: str | None) -> TargetMaker:
     return target  # type: ignore[no-any-return]
 
 
+def _parse_extra_params(items: list[str]) -> dict[str, Any]:
+    """KEY=VALUE pairs; VALUE is parsed as JSON when possible (so objects and numbers work)."""
+    extra: dict[str, Any] = {}
+    for item in items:
+        key, sep, raw = item.partition("=")
+        if not sep or not key.strip():
+            raise CLIError(f"--extra-param must look like KEY=VALUE, got {item!r}")
+        try:
+            extra[key.strip()] = json.loads(raw)
+        except json.JSONDecodeError:
+            extra[key.strip()] = raw
+    return check_extra_params(extra)
+
+
 def _prices(path: str | None) -> tuple[PriceTable, dict[str, Any]]:
     if path is None:
         return PriceTable(), {}
@@ -76,6 +91,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
     if budget is None and args.llm == "openai":
         budget = float(os.environ.get("BUDGET_USD") or DEFAULT_REAL_BUDGET_USD)
     meter = CostMeter(prices, budget_usd=budget)
+    extra = _parse_extra_params(args.extra_param)
 
     clients: list[LLMClient] = []
     judge: LLMClient | None = None
@@ -83,7 +99,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
         llm: LLMClient = demo.make_mock_llm(meter)
     else:
         load_dotenv()
-        llm = OpenAICompatClient.from_env(meter)
+        llm = OpenAICompatClient.from_env(meter, extra_params=extra)
     clients.append(llm)
     judge_kind = args.judge_llm if args.judge_llm != "auto" else args.llm
     if uses_judge and judge_kind != "none":
@@ -116,6 +132,7 @@ async def _run_async(args: argparse.Namespace) -> EvalReport:
             "model": llm.model,
             "judge_model": None if judge is None else judge.model,
             "target": args.target or "trellis_agent.eval.demo:make_target",
+            **({"extra_params": extra} if extra else {}),
             **price_info,
         },
     )
@@ -176,6 +193,14 @@ def _parser() -> argparse.ArgumentParser:
     run.add_argument("--judge-llm", choices=["auto", "mock", "openai", "none"], default="auto")
     run.add_argument("--target", help="module:callable taking an LLMClient, returning a runnable")
     run.add_argument("--prices", help="YAML of per-model prices (USD per million tokens)")
+    run.add_argument(
+        "--extra-param",
+        action="append",
+        default=[],
+        metavar="KEY=VALUE",
+        help="extra request field for the main model, e.g. reasoning_effort=low (repeatable); "
+        "recorded in the report config",
+    )
     run.add_argument("--repeats", type=int, default=1)
     run.add_argument("--concurrency", type=int, default=4)
     run.add_argument("--budget-usd", type=float, help="hard cap; needs prices for every model")

@@ -1,0 +1,19 @@
+# ==========================================================================
+# REFERENCE PRICES ONLY / 仅为"参考价格",不是实际扣费价格
+#
+# EN: These are reference prices for glm-5.3-flash, in USD per million tokens.
+#     The numbers come from third-party material and have NOT been checked against the
+#     vendor's official price page yet; they will be updated once verified.
+#     I am actually using a free token resource package granted to new users, so no real
+#     money is charged. Costs in reports are converted at these reference prices;
+#     they are NOT actual spend.
+#
+# 中文:以下是 glm-5.3-flash 的参考价格,单位为美元每百万 token。
+#     数字来源是第三方资料,尚未与智谱官网核对,核对后会更新。
+#     实际使用的是智谱新用户赠送的 token 资源包,并未产生真实扣费。
+#     报告中的成本是按参考价折算的数字,不是实际支出。
+# ==========================================================================
+glm-5.3-flash:
+  input_per_million: 0.15
+  output_per_million: 0.50
+  cached_input_per_million: 0.03

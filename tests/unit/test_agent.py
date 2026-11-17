@@ -236,3 +236,16 @@ async def test_budget_exceeded_run_still_reports_the_final_call() -> None:
     over = [e for e in result.trace if e.type == "model_request" and e.data.get("over_budget")]
     assert len(over) == 1
     assert result.messages[-1].role == "tool"  # the over-budget reply is not appended
+
+
+async def test_agent_config_extra_params_reach_every_model_call() -> None:
+    llm = ScriptedLLM([calls(add_call()), Message.assistant("5")])
+    cfg = AgentConfig(extra_params={"reasoning_effort": "low"})
+    await Agent(llm, tools=ToolRegistry([add]), config=cfg).arun("q")
+    assert [c.extra_params for c in llm.calls] == [{"reasoning_effort": "low"}] * 2
+
+
+async def test_without_extra_params_the_model_gets_none() -> None:
+    llm = ScriptedLLM([Message.assistant("x")])
+    await Agent(llm).arun("q")
+    assert llm.calls[0].extra_params is None

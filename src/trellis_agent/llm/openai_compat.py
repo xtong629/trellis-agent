@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from typing import Any
 
 import httpx
@@ -21,6 +21,15 @@ from openai import AsyncOpenAI
 from ..cost import BudgetExceeded, CostMeter
 from ..types import Message, ToolCall, ToolSchema, Usage
 from .base import LLMError, LLMResponse
+
+_RESERVED = {"model", "messages", "tools", "temperature", "max_tokens", "stream", "extra_body"}
+
+
+def check_extra_params(extra: Mapping[str, Any] | None) -> dict[str, Any]:
+    clash = sorted(set(extra or {}) & _RESERVED)
+    if clash:
+        raise ValueError(f"extra_params cannot override fields the client controls: {clash}")
+    return dict(extra or {})
 
 
 def _estimate_tokens(text: str) -> int:
@@ -73,8 +82,10 @@ class OpenAICompatClient:
         timeout: float = 60.0,
         max_retries: int = 2,
         http_client: httpx.AsyncClient | None = None,
+        extra_params: Mapping[str, Any] | None = None,
     ) -> None:
         self.model = model
+        self.extra_params = check_extra_params(extra_params)  # e.g. {"reasoning_effort": "low"}
         self.meter = meter
         self.base_url = base_url
         self._client = AsyncOpenAI(
@@ -115,6 +126,7 @@ class OpenAICompatClient:
         temperature: float = 0.0,
         max_tokens: int | None = None,
         tag: str = "",
+        extra_params: Mapping[str, Any] | None = None,
     ) -> LLMResponse:
         wire = [_to_wire(m) for m in messages]
         params: dict[str, Any] = {
@@ -124,6 +136,9 @@ class OpenAICompatClient:
         }
         if max_tokens is not None:
             params["max_tokens"] = max_tokens
+        extra = {**self.extra_params, **check_extra_params(extra_params)}
+        if extra:
+            params["extra_body"] = extra  # the SDK merges these into the top level of the body
         if tools:
             params["tools"] = [
                 {

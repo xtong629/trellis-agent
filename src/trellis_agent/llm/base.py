@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Any, Protocol
 
 from ..types import Message, ToolSchema, Usage
 
@@ -36,6 +36,7 @@ class LLMClient(Protocol):
         temperature: float = 0.0,
         max_tokens: int | None = None,
         tag: str = "",
+        extra_params: Mapping[str, Any] | None = None,
     ) -> LLMResponse: ...
 
 
