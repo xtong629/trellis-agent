@@ -51,9 +51,24 @@ def test_04_planned_agent() -> None:
     assert "workers: researcher, calculator" in out
 
 
+def test_05_memory() -> None:
+    out = run_example("05_memory.py")
+    assert "older messages trimmed from the window" in out
+    assert "memory note: - 截止日期改到周二了" in out  # the updated value, recalled from memory
+    assert "周五" not in out.split("memory note:")[1].split("answer:")[0]  # not the old one
+    assert "answer: 我记得:截止日期改到周二了" in out
+    assert "superseded (kept as history, never recalled): 1" in out
+
+
 @pytest.mark.parametrize(
     "name",
-    ["01_single_agent.py", "02_tools_agent.py", "03_cost_and_budget.py", "04_planned.py"],
+    [
+        "01_single_agent.py",
+        "02_tools_agent.py",
+        "03_cost_and_budget.py",
+        "04_planned.py",
+        "05_memory.py",
+    ],
 )
 def test_examples_without_mock_need_credentials(name: str, tmp_path: Path) -> None:
     done = subprocess.run(

@@ -5,8 +5,8 @@
 > A small agent framework where planning and memory are **measurable**: eval-first, cost-capped, mock-testable.
 
 **Status: early development.** The agent core and the evaluation harness work and are tested.
-Planning/scheduling is implemented; tiered memory is planned next. Both are meant to be added
-together with the experiments that show whether they actually help. See [Roadmap](#roadmap).
+Planning/scheduling and tiered memory are implemented; the experiments that show whether they
+actually help come next. See [Roadmap](#roadmap) and [Limitations](#limitations).
 
 ## Why
 
@@ -30,6 +30,8 @@ Most agent demos show that something *can* work. Trellis is built around the har
 | Cost | `PriceTable`, `CostMeter`, hard budgets, order-independent exact sums |
 | Tracing | structured events, per-run traces, aggregate summaries |
 | Evaluation | task sets, 11 scorer types + `llm_judge`, runner with repeats and concurrency, reports, baseline `compare`, CLI |
+| Memory | working window within a token budget; episodic and semantic memories with relevance + recency decay + importance scoring; newer facts supersede older ones; write admission (duplicates, per-turn limit); consolidation and forgetting; optional, so an agent without memory behaves exactly as before |
+| Retrieval | jieba-segmented Chinese + stemmed English full-text search on SQLite FTS5 (BM25, OR-ed terms); optional vector index fused with RRF |
 | Planning | LLM planner whose plans are validated and sent back for repair; event-driven scheduler with dependencies, parallelism, retry with backoff, failure policies (skip dependents / fail fast / replan), budgets; role-specific worker agents dispatched by task kind |
 
 Details of the evaluation harness, cost rules and the budget mechanism: [`docs/EVAL.md`](docs/EVAL.md).
@@ -46,6 +48,7 @@ pytest                                        # offline; the network is blocked 
 python examples/02_tools_agent.py --mock      # a tool-using agent, no API key needed
 python examples/03_cost_and_budget.py --mock  # cost accounting and a hard budget
 python examples/04_planned.py --mock          # planner + researcher/calculator worker agents
+python examples/05_memory.py --mock           # recall after the working window, updated facts
 ```
 
 Run the evaluation smoke suite and the regression gate:
@@ -76,18 +79,44 @@ Offline mock runs only exercise the code; they say nothing about real-model perf
 | M1 | agent loop, tools, tracing, cost accounting, LLM clients | done |
 | M2 | evaluation and cost control | done |
 | M3 | LLM planner + event-driven scheduler with multi-role workers | done |
-| M4 | tiered memory + Chinese/English hybrid retrieval | planned |
+| M4 | tiered memory + Chinese/English hybrid retrieval | done |
 | M5 | experiments and write-up | planned |
 
 ## Project layout
 
 ```text
-src/trellis_agent/   agent, tools, llm/, cost, trace, eval/, planner/   (memory/, retrieval/ to come)
+src/trellis_agent/   agent, tools, llm/, cost, trace, eval/, planner/, memory/, retrieval/
 tests/               unit/ and integration/ (fake OpenAI-compatible HTTP server for client contracts)
 evals/               smoke task set, demo prices, committed baseline
 examples/            runnable examples (all support --mock)
 docs/                EVAL.md
 ```
+
+## Limitations
+
+Known, accepted, and tested where possible:
+
+* **Scheduler.** A task that is waiting to retry still occupies a concurrency slot. Only a global
+  budget exists (the shared `CostMeter`); there is no per-task budget. Single process, no
+  persistence, no per-task timeout.
+* **Stemming.** The Porter stemmer maps `verify` to `verifi` and `verification` to `verif`, so a
+  search for "verify" does not find "verification" (an `xfail` test records it). Prefix matching
+  would not fix `retries`/`retry` and would add noise.
+* **Chinese segmentation.** jieba splits words it does not know: "单号" becomes "单" + "号". Domain
+  terms need a user dictionary (`Tokenizer(user_dict=...)`).
+* **Token estimates.** The working window and estimated embedding usage count characters / 4,
+  which under-counts Chinese text, so the real token count of a window can exceed its budget.
+* **Recall.** Only semantic memories are recalled; raw episodes become recallable once
+  consolidated. A consolidated summary is not reconciled with later corrections, so it can still
+  contain an old value.
+* **Scope.** Facts are shared by everything that uses one `MemoryManager`; they are not scoped
+  per user or per session (the session id is stored but not used to filter).
+* **Extraction.** `RuleExtractor` is a toy ("X是Y" / "my X is Y" statements); `LLMExtractor` costs
+  tokens (counted and shown in the trace) and can miss or invent facts.
+* **Vectors.** The vector index is in-memory, pure Python and not persisted; only a deterministic
+  hash embedder is included (no real embedding client yet), and embedding cost is an estimate.
+* **Mocks.** All offline runs use rule-based fake models. They exercise the code and say nothing
+  about real-model quality; no experiment results exist yet.
 
 ## Acknowledgements
 

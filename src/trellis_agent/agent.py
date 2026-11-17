@@ -16,6 +16,7 @@ from typing import Any, Literal
 
 from .cost import BudgetExceeded
 from .llm import LLMClient
+from .memory.manager import MemoryManager, Overhead
 from .tools import ToolRegistry
 from .trace import Tracer
 from .types import Message, RunResult, TraceEvent, Usage
@@ -55,11 +56,13 @@ class Agent:
         tools: ToolRegistry | None = None,
         config: AgentConfig | None = None,
         trace_sink: Callable[[TraceEvent], None] | None = None,
+        memory: MemoryManager | None = None,
     ) -> None:
         self.llm = llm
         self.tools = tools or ToolRegistry()
         self.config = config or AgentConfig()
         self._trace_sink = trace_sink
+        self.memory = memory  # optional; without it the agent is exactly the plain agent
         self._sessions: dict[str, list[Message]] = {}
 
     async def arun(self, query: str, *, session_id: str = "default") -> RunResult:
@@ -77,20 +80,38 @@ class Agent:
             return asyncio.run(self.arun(query, session_id=session_id))
         raise RuntimeError("run() cannot be called from a running event loop; use arun()")
 
+    @staticmethod
+    def _absorb(overhead: Overhead, tracer: Tracer, costs: list[float]) -> Usage:
+        for kind, data in overhead.events:
+            tracer.emit(kind, **data)
+        costs += [c for c in overhead.costs if c is not None]
+        return overhead.usage
+
     async def stream(self, query: str, *, session_id: str = "default") -> AsyncIterator[AgentEvent]:
         cfg = self.config
         tracer = Tracer(sink=self._trace_sink)  # one tracer per run keeps concurrent runs apart
         started = time.perf_counter()
-        messages = [*self._sessions.get(session_id, []), Message.user(query)]
-        system = [Message.system(cfg.system_prompt)] if cfg.system_prompt else []
-        schemas = self.tools.schemas() or None
+        full_history = self._sessions.get(session_id, [])
+        history, notes = full_history, []
         usage = Usage()
         costs: list[float] = []
+        tracer.emit("run_start", session_id=session_id, query=query)
+        if self.memory is not None:
+            try:  # a failing memory degrades to "no memory", never to a failed run
+                context = await self.memory.build_context(session_id, query, full_history)
+                history, notes = context.history, context.system
+                usage = usage + self._absorb(context.overhead, tracer, costs)
+            except Exception as exc:
+                tracer.emit(
+                    "error", category="memory_error", message=f"{type(exc).__name__}: {exc}"
+                )
+        messages = [*history, Message.user(query)]
+        system = ([Message.system(cfg.system_prompt)] if cfg.system_prompt else []) + notes
+        schemas = self.tools.schemas() or None
         stop_reason = "max_steps"
         error: str | None = f"max_steps ({cfg.max_steps}) reached without a final answer"
         steps = 0
 
-        tracer.emit("run_start", session_id=session_id, query=query)
         for steps in range(1, cfg.max_steps + 1):
             try:
                 response = await self.llm.chat(
@@ -165,9 +186,19 @@ class Agent:
                     },
                 )
 
+        if self.memory is not None and stop_reason != "budget_exceeded":
+            try:  # remembering must never fail the run
+                observed = await self.memory.observe(session_id, messages[len(history) :])
+                usage = usage + self._absorb(observed.overhead, tracer, costs)
+            except Exception as exc:
+                tracer.emit(
+                    "error", category="memory_error", message=f"{type(exc).__name__}: {exc}"
+                )
+
         duration_ms = (time.perf_counter() - started) * 1000
         tracer.emit("run_end", stop_reason=stop_reason, steps=steps, duration_ms=duration_ms)
-        self._sessions[session_id] = messages  # committed only if the run was not cancelled
+        # The full history is kept; the working window is only a per-turn view of it.
+        self._sessions[session_id] = [*full_history, *messages[len(history) :]]
         final_text = next(
             (m.content for m in reversed(messages) if m.role == "assistant" and m.content), ""
         )

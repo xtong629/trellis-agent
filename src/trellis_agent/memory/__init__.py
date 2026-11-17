@@ -1,1 +1,1 @@
-"""memory subpackage (populated in a later milestone)."""
+"""Tiered memory: working window, plus episodic and semantic memories that can be forgotten."""
