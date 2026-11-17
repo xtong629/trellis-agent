@@ -1,0 +1,5169 @@
+{
+  "cases": [
+    {
+      "agent_cost": 0.0018052,
+      "content": "Kelpberry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 243,
+        "estimated": false,
+        "prompt_tokens": 1406,
+        "reasoning_tokens": 47
+      }
+    },
+    {
+      "agent_cost": 0.0025068,
+      "content": "Zandal nut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 309,
+        "estimated": false,
+        "prompt_tokens": 2052,
+        "reasoning_tokens": 48
+      }
+    },
+    {
+      "agent_cost": 0.0023204,
+      "content": "Moonroot",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 263,
+        "estimated": false,
+        "prompt_tokens": 1980,
+        "reasoning_tokens": 70
+      }
+    },
+    {
+      "agent_cost": 0.0027984,
+      "content": "Fenwick plum",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 296,
+        "estimated": false,
+        "prompt_tokens": 2462,
+        "reasoning_tokens": 76
+      }
+    },
+    {
+      "agent_cost": 0.002558,
+      "content": "Ashgrain",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 243,
+        "estimated": false,
+        "prompt_tokens": 2347,
+        "reasoning_tokens": 39
+      }
+    },
+    {
+      "agent_cost": 0.0035072000000000002,
+      "content": "Tarn seed",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 346,
+        "estimated": false,
+        "prompt_tokens": 3173,
+        "reasoning_tokens": 60
+      }
+    },
+    {
+      "agent_cost": 0.0031116000000000004,
+      "content": "June 19",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 309,
+        "estimated": false,
+        "prompt_tokens": 2808,
+        "reasoning_tokens": 68
+      }
+    },
+    {
+      "agent_cost": 0.0034936000000000004,
+      "content": "**July 2**",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 340,
+        "estimated": false,
+        "prompt_tokens": 3177,
+        "reasoning_tokens": 37
+      }
+    },
+    {
+      "agent_cost": 0.0028740000000000003,
+      "content": "May 30",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 285,
+        "estimated": false,
+        "prompt_tokens": 2595,
+        "reasoning_tokens": 52
+      }
+    },
+    {
+      "agent_cost": 0.0015808,
+      "content": "August 11.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 184,
+        "estimated": false,
+        "prompt_tokens": 1332,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.001664,
+      "content": "September 3.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 194,
+        "estimated": false,
+        "prompt_tokens": 1401,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.00191,
+      "content": "RF-4821",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 255,
+        "estimated": false,
+        "prompt_tokens": 1495,
+        "reasoning_tokens": 64
+      }
+    },
+    {
+      "agent_cost": 0.0019984,
+      "content": "RF-7305",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 250,
+        "estimated": false,
+        "prompt_tokens": 1623,
+        "reasoning_tokens": 20
+      }
+    },
+    {
+      "agent_cost": 0.0019964,
+      "content": "RF-1196",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 259,
+        "estimated": false,
+        "prompt_tokens": 1589,
+        "reasoning_tokens": 33
+      }
+    },
+    {
+      "agent_cost": 0.0005476,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 121,
+        "estimated": false,
+        "prompt_tokens": 261,
+        "reasoning_tokens": 48
+      }
+    },
+    {
+      "agent_cost": 0.00044199999999999996,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 87,
+        "estimated": false,
+        "prompt_tokens": 248,
+        "reasoning_tokens": 19
+      }
+    },
+    {
+      "agent_cost": 0.0004976,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 104,
+        "estimated": false,
+        "prompt_tokens": 258,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.001524,
+      "content": "17 plus 25 is 42.\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 224,
+        "estimated": false,
+        "prompt_tokens": 1121,
+        "reasoning_tokens": 47
+      }
+    },
+    {
+      "agent_cost": 0.0019644,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 301,
+        "estimated": false,
+        "prompt_tokens": 1402,
+        "reasoning_tokens": 44
+      }
+    },
+    {
+      "agent_cost": 0.001318,
+      "content": "The sum is 63.\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 183,
+        "estimated": false,
+        "prompt_tokens": 1007,
+        "reasoning_tokens": 39
+      }
+    },
+    {
+      "agent_cost": 0.00177,
+      "content": "Kelpberry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 233,
+        "estimated": false,
+        "prompt_tokens": 1397,
+        "reasoning_tokens": 44
+      }
+    },
+    {
+      "agent_cost": 0.0018264,
+      "content": "Zandal nut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 210,
+        "estimated": false,
+        "prompt_tokens": 1548,
+        "reasoning_tokens": 32
+      }
+    },
+    {
+      "agent_cost": 0.0021216,
+      "content": "moonroot",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 226,
+        "estimated": false,
+        "prompt_tokens": 1861,
+        "reasoning_tokens": 49
+      }
+    },
+    {
+      "agent_cost": 0.002584,
+      "content": "Fenwick plum",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 290,
+        "estimated": false,
+        "prompt_tokens": 2215,
+        "reasoning_tokens": 76
+      }
+    },
+    {
+      "agent_cost": 0.0025352,
+      "content": "Ashgrain",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 236,
+        "estimated": false,
+        "prompt_tokens": 2343,
+        "reasoning_tokens": 51
+      }
+    },
+    {
+      "agent_cost": 0.0030584,
+      "content": "Tarn seed",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 292,
+        "estimated": false,
+        "prompt_tokens": 2801,
+        "reasoning_tokens": 58
+      }
+    },
+    {
+      "agent_cost": 0.00311,
+      "content": "June 19.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 313,
+        "estimated": false,
+        "prompt_tokens": 2792,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.0028740000000000003,
+      "content": "July 2.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 285,
+        "estimated": false,
+        "prompt_tokens": 2595,
+        "reasoning_tokens": 56
+      }
+    },
+    {
+      "agent_cost": 0.0036172,
+      "content": "May 30.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 353,
+        "estimated": false,
+        "prompt_tokens": 3286,
+        "reasoning_tokens": 41
+      }
+    },
+    {
+      "agent_cost": 0.0014828,
+      "content": "August 11.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 163,
+        "estimated": false,
+        "prompt_tokens": 1283,
+        "reasoning_tokens": 29
+      }
+    },
+    {
+      "agent_cost": 0.0017312,
+      "content": "September 3.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 206,
+        "estimated": false,
+        "prompt_tokens": 1443,
+        "reasoning_tokens": 63
+      }
+    },
+    {
+      "agent_cost": 0.0018224,
+      "content": "RF-4821",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 228,
+        "estimated": false,
+        "prompt_tokens": 1480,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.0024128,
+      "content": "RF-7305",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 320,
+        "estimated": false,
+        "prompt_tokens": 1896,
+        "reasoning_tokens": 38
+      }
+    },
+    {
+      "agent_cost": 0.0015532,
+      "content": "RF-1196",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 193,
+        "estimated": false,
+        "prompt_tokens": 1266,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.00041359999999999997,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 78,
+        "estimated": false,
+        "prompt_tokens": 244,
+        "reasoning_tokens": 14
+      }
+    },
+    {
+      "agent_cost": 0.0005591999999999999,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 120,
+        "estimated": false,
+        "prompt_tokens": 279,
+        "reasoning_tokens": 31
+      }
+    },
+    {
+      "agent_cost": 0.0006688,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 152,
+        "estimated": false,
+        "prompt_tokens": 304,
+        "reasoning_tokens": 26
+      }
+    },
+    {
+      "agent_cost": 0.00154,
+      "content": "17 plus 25 equals 42.\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 238,
+        "estimated": false,
+        "prompt_tokens": 1092,
+        "reasoning_tokens": 67
+      }
+    },
+    {
+      "agent_cost": 0.0019328,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 292,
+        "estimated": false,
+        "prompt_tokens": 1394,
+        "reasoning_tokens": 34
+      }
+    },
+    {
+      "agent_cost": 0.0013331999999999999,
+      "content": "36 + 27 = 63.\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 177,
+        "estimated": false,
+        "prompt_tokens": 1047,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.001866,
+      "content": "Kelpberry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 239,
+        "estimated": false,
+        "prompt_tokens": 1496,
+        "reasoning_tokens": 27
+      }
+    },
+    {
+      "agent_cost": 0.0023184,
+      "content": "Zandal nut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 282,
+        "estimated": false,
+        "prompt_tokens": 1911,
+        "reasoning_tokens": 39
+      }
+    },
+    {
+      "agent_cost": 0.0025524000000000002,
+      "content": "Moonroot",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 281,
+        "estimated": false,
+        "prompt_tokens": 2207,
+        "reasoning_tokens": 36
+      }
+    },
+    {
+      "agent_cost": 0.0032868000000000003,
+      "content": "Fenwick plum",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 369,
+        "estimated": false,
+        "prompt_tokens": 2817,
+        "reasoning_tokens": 100
+      }
+    },
+    {
+      "agent_cost": 0.00334,
+      "content": "Ashgrain",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 366,
+        "estimated": false,
+        "prompt_tokens": 2894,
+        "reasoning_tokens": 95
+      }
+    },
+    {
+      "agent_cost": 0.0034984,
+      "content": "Tarn seed",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 356,
+        "estimated": false,
+        "prompt_tokens": 3127,
+        "reasoning_tokens": 72
+      }
+    },
+    {
+      "agent_cost": 0.0030052000000000004,
+      "content": "June 19.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 307,
+        "estimated": false,
+        "prompt_tokens": 2682,
+        "reasoning_tokens": 50
+      }
+    },
+    {
+      "agent_cost": 0.0038724000000000002,
+      "content": "**July 2**",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 389,
+        "estimated": false,
+        "prompt_tokens": 3479,
+        "reasoning_tokens": 44
+      }
+    },
+    {
+      "agent_cost": 0.0037448,
+      "content": "May 30.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 370,
+        "estimated": false,
+        "prompt_tokens": 3386,
+        "reasoning_tokens": 96
+      }
+    },
+    {
+      "agent_cost": 0.0018176,
+      "content": "August 11.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 220,
+        "estimated": false,
+        "prompt_tokens": 1502,
+        "reasoning_tokens": 53
+      }
+    },
+    {
+      "agent_cost": 0.0017264,
+      "content": "September 3.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 204,
+        "estimated": false,
+        "prompt_tokens": 1444,
+        "reasoning_tokens": 27
+      }
+    },
+    {
+      "agent_cost": 0.0021348,
+      "content": "RF-4821",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 295,
+        "estimated": false,
+        "prompt_tokens": 1636,
+        "reasoning_tokens": 30
+      }
+    },
+    {
+      "agent_cost": 0.0023196,
+      "content": "RF-7305",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 309,
+        "estimated": false,
+        "prompt_tokens": 1818,
+        "reasoning_tokens": 41
+      }
+    },
+    {
+      "agent_cost": 0.0020128,
+      "content": "RF-1196",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 254,
+        "estimated": false,
+        "prompt_tokens": 1627,
+        "reasoning_tokens": 38
+      }
+    },
+    {
+      "agent_cost": 0.0004456,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 92,
+        "estimated": false,
+        "prompt_tokens": 235,
+        "reasoning_tokens": 33
+      }
+    },
+    {
+      "agent_cost": 0.000548,
+      "content": "Basil",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": false,
+          "reason": "output does not contain 'brack leaf'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 126,
+        "estimated": false,
+        "prompt_tokens": 244,
+        "reasoning_tokens": 61
+      }
+    },
+    {
+      "agent_cost": 0.0006204,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 139,
+        "estimated": false,
+        "prompt_tokens": 289,
+        "reasoning_tokens": 17
+      }
+    },
+    {
+      "agent_cost": 0.0014260000000000002,
+      "content": "17 + 25 = 42\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 195,
+        "estimated": false,
+        "prompt_tokens": 1100,
+        "reasoning_tokens": 20
+      }
+    },
+    {
+      "agent_cost": 0.0013264,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 192,
+        "estimated": false,
+        "prompt_tokens": 986,
+        "reasoning_tokens": 55
+      }
+    },
+    {
+      "agent_cost": 0.001272,
+      "content": "36 plus 27 equals 63.\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 174,
+        "estimated": false,
+        "prompt_tokens": 981,
+        "reasoning_tokens": 32
+      }
+    },
+    {
+      "agent_cost": 0.0016548,
+      "content": "Kelpberry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 201,
+        "estimated": false,
+        "prompt_tokens": 1365,
+        "reasoning_tokens": 19
+      }
+    },
+    {
+      "agent_cost": 0.002338,
+      "content": "Zandal nut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 281,
+        "estimated": false,
+        "prompt_tokens": 1939,
+        "reasoning_tokens": 34
+      }
+    },
+    {
+      "agent_cost": 0.003216,
+      "content": "Moonroot",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 374,
+        "estimated": false,
+        "prompt_tokens": 2711,
+        "reasoning_tokens": 29
+      }
+    },
+    {
+      "agent_cost": 0.0025268,
+      "content": "Fenwick plum",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 259,
+        "estimated": false,
+        "prompt_tokens": 2252,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.002656,
+      "content": "Ashgrain",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 254,
+        "estimated": false,
+        "prompt_tokens": 2431,
+        "reasoning_tokens": 39
+      }
+    },
+    {
+      "agent_cost": 0.003614,
+      "content": "Tarn seed",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 347,
+        "estimated": false,
+        "prompt_tokens": 3303,
+        "reasoning_tokens": 86
+      }
+    },
+    {
+      "agent_cost": 0.0031868,
+      "content": "June 19.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 319,
+        "estimated": false,
+        "prompt_tokens": 2867,
+        "reasoning_tokens": 39
+      }
+    },
+    {
+      "agent_cost": 0.0029164,
+      "content": "July 2.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 289,
+        "estimated": false,
+        "prompt_tokens": 2634,
+        "reasoning_tokens": 63
+      }
+    },
+    {
+      "agent_cost": 0.0035483999999999997,
+      "content": "**May 30**",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 349,
+        "estimated": false,
+        "prompt_tokens": 3214,
+        "reasoning_tokens": 62
+      }
+    },
+    {
+      "agent_cost": 0.0018872000000000001,
+      "content": "August 11.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 228,
+        "estimated": false,
+        "prompt_tokens": 1561,
+        "reasoning_tokens": 32
+      }
+    },
+    {
+      "agent_cost": 0.0018752,
+      "content": "September 3.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 240,
+        "estimated": false,
+        "prompt_tokens": 1504,
+        "reasoning_tokens": 43
+      }
+    },
+    {
+      "agent_cost": 0.0022324,
+      "content": "RF-4821",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 299,
+        "estimated": false,
+        "prompt_tokens": 1744,
+        "reasoning_tokens": 53
+      }
+    },
+    {
+      "agent_cost": 0.0023716,
+      "content": "RF-7305",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 301,
+        "estimated": false,
+        "prompt_tokens": 1911,
+        "reasoning_tokens": 15
+      }
+    },
+    {
+      "agent_cost": 0.0021224,
+      "content": "RF-1196",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 256,
+        "estimated": false,
+        "prompt_tokens": 1757,
+        "reasoning_tokens": 21
+      }
+    },
+    {
+      "agent_cost": 0.0005748,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 127,
+        "estimated": false,
+        "prompt_tokens": 274,
+        "reasoning_tokens": 37
+      }
+    },
+    {
+      "agent_cost": 0.0004971999999999999,
+      "content": "Brack leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 101,
+        "estimated": false,
+        "prompt_tokens": 268,
+        "reasoning_tokens": 20
+      }
+    },
+    {
+      "agent_cost": 0.000426,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 85,
+        "estimated": false,
+        "prompt_tokens": 235,
+        "reasoning_tokens": 18
+      }
+    },
+    {
+      "agent_cost": 0.0015592,
+      "content": "17 + 25 = 42\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 220,
+        "estimated": false,
+        "prompt_tokens": 1179,
+        "reasoning_tokens": 32
+      }
+    },
+    {
+      "agent_cost": 0.0025372,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 377,
+        "estimated": false,
+        "prompt_tokens": 1852,
+        "reasoning_tokens": 52
+      }
+    },
+    {
+      "agent_cost": 0.0015572,
+      "content": "36 plus 27 equals 63.\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 3,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 209,
+        "estimated": false,
+        "prompt_tokens": 1215,
+        "reasoning_tokens": 21
+      }
+    },
+    {
+      "agent_cost": 0.0018556,
+      "content": "Kelpberry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('kelpberry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 239,
+        "estimated": false,
+        "prompt_tokens": 1483,
+        "reasoning_tokens": 35
+      }
+    },
+    {
+      "agent_cost": 0.0024168,
+      "content": "Zandal nut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('zandal nut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 302,
+        "estimated": false,
+        "prompt_tokens": 1964,
+        "reasoning_tokens": 47
+      }
+    },
+    {
+      "agent_cost": 0.00247,
+      "content": "Moonroot",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 10,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('moonroot')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 279,
+        "estimated": false,
+        "prompt_tokens": 2111,
+        "reasoning_tokens": 45
+      }
+    },
+    {
+      "agent_cost": 0.00237,
+      "content": "Fenwick plum",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 11,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('fenwick plum')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-04",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 253,
+        "estimated": false,
+        "prompt_tokens": 2077,
+        "reasoning_tokens": 69
+      }
+    },
+    {
+      "agent_cost": 0.0025340000000000002,
+      "content": "Ashgrain",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('ashgrain')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 233,
+        "estimated": false,
+        "prompt_tokens": 2352,
+        "reasoning_tokens": 29
+      }
+    },
+    {
+      "agent_cost": 0.0031248,
+      "content": "Tarn seed",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 13,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('tarn seed')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "allergy-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 292,
+        "estimated": false,
+        "prompt_tokens": 2884,
+        "reasoning_tokens": 54
+      }
+    },
+    {
+      "agent_cost": 0.003466,
+      "content": "June 19",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('June 19')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('March 4')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 365,
+        "estimated": false,
+        "prompt_tokens": 3055,
+        "reasoning_tokens": 57
+      }
+    },
+    {
+      "agent_cost": 0.0036888,
+      "content": "July 2.",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('July 2')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('May 8')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 360,
+        "estimated": false,
+        "prompt_tokens": 3351,
+        "reasoning_tokens": 50
+      }
+    },
+    {
+      "agent_cost": 0.0028116,
+      "content": "May 30",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 12,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('May 30')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "not_contains('April 22')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 279,
+        "estimated": false,
+        "prompt_tokens": 2538,
+        "reasoning_tokens": 54
+      }
+    },
+    {
+      "agent_cost": 0.0014124,
+      "content": "August 11",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('August 11')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-05",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 159,
+        "estimated": false,
+        "prompt_tokens": 1209,
+        "reasoning_tokens": 35
+      }
+    },
+    {
+      "agent_cost": 0.0017056,
+      "content": "September 3",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('September 3')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deadline-06",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 196,
+        "estimated": false,
+        "prompt_tokens": 1446,
+        "reasoning_tokens": 23
+      }
+    },
+    {
+      "agent_cost": 0.001702,
+      "content": "RF-4821",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-4821')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 205,
+        "estimated": false,
+        "prompt_tokens": 1410,
+        "reasoning_tokens": 59
+      }
+    },
+    {
+      "agent_cost": 0.0024472,
+      "content": "RF-7305",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-7305')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 326,
+        "estimated": false,
+        "prompt_tokens": 1918,
+        "reasoning_tokens": 72
+      }
+    },
+    {
+      "agent_cost": 0.001918,
+      "content": "RF-1196",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 8,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('RF-1196')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "refund-zh-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 237,
+        "estimated": false,
+        "prompt_tokens": 1568,
+        "reasoning_tokens": 60
+      }
+    },
+    {
+      "agent_cost": 0.0005356,
+      "content": "Quillnut",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('quillnut')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 111,
+        "estimated": false,
+        "prompt_tokens": 281,
+        "reasoning_tokens": 23
+      }
+    },
+    {
+      "agent_cost": 0.0004508,
+      "content": "Bay leaf",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('brack leaf')",
+          "passed": false,
+          "reason": "output does not contain 'brack leaf'",
+          "score": 0.0,
+          "usage": null
+        }
+      ],
+      "status": "failed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 89,
+        "estimated": false,
+        "prompt_tokens": 252,
+        "reasoning_tokens": 28
+      }
+    },
+    {
+      "agent_cost": 0.0007656,
+      "content": "Dun berry",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "contains('dun berry')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "fits-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 180,
+        "estimated": false,
+        "prompt_tokens": 327,
+        "reasoning_tokens": 33
+      }
+    },
+    {
+      "agent_cost": 0.0015052000000000002,
+      "content": "17 + 25 = 42\n\nANSWER: 42",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(42)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-01",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 221,
+        "estimated": false,
+        "prompt_tokens": 1108,
+        "reasoning_tokens": 41
+      }
+    },
+    {
+      "agent_cost": 0.001474,
+      "content": "48 + 19 = 67\n\nANSWER: 67",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(67)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-02",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 211,
+        "estimated": false,
+        "prompt_tokens": 1104,
+        "reasoning_tokens": 36
+      }
+    },
+    {
+      "agent_cost": 0.0017008000000000001,
+      "content": "63\n\nANSWER: 63",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 4,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(63)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "irrelevant-03",
+      "tool_calls": [],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 230,
+        "estimated": false,
+        "prompt_tokens": 1321,
+        "reasoning_tokens": 65
+      }
+    }
+  ],
+  "config": {
+    "budget": {
+      "amount": 5.0,
+      "currency": "CNY"
+    },
+    "concurrency": {
+      "jobs": 2,
+      "scheduler_max_concurrency": 1,
+      "theoretical_max_in_flight": 2
+    },
+    "extra_params": {
+      "reasoning_effort": "low"
+    },
+    "llm": "openai",
+    "meta": {
+      "experiment": "b-full",
+      "reasoning_effort": "low",
+      "repeats": "5",
+      "run_date": "2026-11-18",
+      "system": "b_full",
+      "taskset_version": "2"
+    },
+    "model": "glm-5.3-flash",
+    "price_table": {
+      "glm-5.3-flash": {
+        "cached_input_per_million": 0.23,
+        "checked_on": "2026-11-17",
+        "currency": "CNY",
+        "input_per_million": 0.8,
+        "note": "List price, limited-time discount ignored. I actually use a free new-user token resource package, so report costs are list-price reference values, not actual spend.",
+        "output_per_million": 2.8,
+        "per": "1M tokens",
+        "source": "https://docs.bigmodel.cn/cn/guide/start/pricing.md"
+      }
+    },
+    "prices_file": "prices.glm.yaml",
+    "prices_sha256": "dad4039c29e0",
+    "repeats": 1,
+    "target": "experiments.targets:b_full"
+  },
+  "schema_version": 1,
+  "summary": {
+    "aborted_by_budget": false,
+    "aborted_jobs": 0,
+    "agent_cost": 0.2061516,
+    "completed_jobs": 100,
+    "cost": 0.2061516,
+    "cost_by_currency": {
+      "CNY": 0.2061516
+    },
+    "cost_complete": true,
+    "cost_per_success": 0.002103587755102041,
+    "currency": "CNY",
+    "estimated_usage": false,
+    "failed": 2,
+    "fx_applied": [],
+    "judge_cost": 0.0,
+    "judge_usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "estimated": false,
+      "prompt_tokens": 0
+    },
+    "meter_discrepancy": 0.0,
+    "meter_total": 0.2061516,
+    "model_requests": 855,
+    "not_run_jobs": 0,
+    "pass_rate": 0.98,
+    "pass_rate_by_repeat": [
+      1.0,
+      1.0,
+      0.95,
+      1.0,
+      0.95
+    ],
+    "pass_rate_mean": 0.9800000000000001,
+    "pass_rate_std": 0.02738612787525833,
+    "passed": 98,
+    "planned_jobs": 100,
+    "reasoning_share": 0.18123798224440535,
+    "tasks": [
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "allergy-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "allergy-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "allergy-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "allergy-04"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "allergy-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "allergy-06"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "deadline-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "deadline-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "deadline-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "deadline-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "deadline-06"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "refund-zh-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "refund-zh-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "refund-zh-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "fits-01"
+      },
+      {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "repeats_completed": 5,
+        "task_id": "fits-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "fits-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "irrelevant-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "irrelevant-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "repeats_completed": 5,
+        "task_id": "irrelevant-03"
+      }
+    ],
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 24443,
+      "estimated": false,
+      "prompt_tokens": 172139,
+      "reasoning_tokens": 4430
+    }
+  },
+  "taskset": {
+    "hash": "1c1a372d823ceace4a835616cdf64ca33c3ac08c00d2c99b63d21bd25ba9294f",
+    "name": "exp-b-memory",
+    "version": "2"
+  }
+}
