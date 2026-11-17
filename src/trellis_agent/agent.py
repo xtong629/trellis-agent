@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import asyncio
 import time
-from collections.abc import AsyncIterator, Callable
+from collections.abc import AsyncIterator, Callable, Mapping
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
@@ -28,6 +28,9 @@ class AgentConfig:
     max_steps: int = 8
     temperature: float = 0.0
     max_tokens: int | None = None
+    extra_params: Mapping[str, Any] | None = (
+        None  # sent with every model call, e.g. reasoning_effort
+    )
 
     def __post_init__(self) -> None:
         if self.max_steps < 1:
@@ -119,6 +122,7 @@ class Agent:
                     tools=schemas,
                     temperature=cfg.temperature,
                     max_tokens=cfg.max_tokens,
+                    extra_params=cfg.extra_params,
                 )
             except BudgetExceeded as exc:
                 stop_reason, error = "budget_exceeded", str(exc)
