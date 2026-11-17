@@ -25,7 +25,7 @@ from .base import LLMError, LLMResponse
 _RESERVED = {"model", "messages", "tools", "temperature", "max_tokens", "stream", "extra_body"}
 
 
-def _check_extra(extra: Mapping[str, Any] | None) -> dict[str, Any]:
+def check_extra_params(extra: Mapping[str, Any] | None) -> dict[str, Any]:
     clash = sorted(set(extra or {}) & _RESERVED)
     if clash:
         raise ValueError(f"extra_params cannot override fields the client controls: {clash}")
@@ -85,7 +85,7 @@ class OpenAICompatClient:
         extra_params: Mapping[str, Any] | None = None,
     ) -> None:
         self.model = model
-        self.extra_params = _check_extra(extra_params)  # e.g. {"reasoning_effort": "low"}
+        self.extra_params = check_extra_params(extra_params)  # e.g. {"reasoning_effort": "low"}
         self.meter = meter
         self.base_url = base_url
         self._client = AsyncOpenAI(
@@ -136,7 +136,7 @@ class OpenAICompatClient:
         }
         if max_tokens is not None:
             params["max_tokens"] = max_tokens
-        extra = {**self.extra_params, **_check_extra(extra_params)}
+        extra = {**self.extra_params, **check_extra_params(extra_params)}
         if extra:
             params["extra_body"] = extra  # the SDK merges these into the top level of the body
         if tools:

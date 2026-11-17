@@ -254,3 +254,61 @@ def test_openai_mode_runs_through_the_real_client_against_a_local_server(
     assert data["summary"]["cost_usd"] == pytest.approx((12 * 1.0 + 7 * 2.0) / 1_000_000)
     assert data["config"]["model"] == "fake-model" and data["config"]["llm"] == "openai"
     assert fake_openai.headers[0]["authorization"] == "Bearer sk-test"
+
+
+# ----------------------------------------------------------------- --extra-param
+def _live_env(monkeypatch: pytest.MonkeyPatch, fake: FakeOpenAI) -> None:
+    monkeypatch.setenv("LLM_BASE_URL", fake.base_url)
+    monkeypatch.setenv("LLM_API_KEY", "sk-test")
+    monkeypatch.setenv("LLM_MODEL", "fake-model")
+    monkeypatch.setenv("NO_PROXY", "127.0.0.1")
+    monkeypatch.setenv("no_proxy", "127.0.0.1")
+
+
+def _one_task(tmp_path: Path) -> Path:
+    path = tmp_path / "ts.yaml"
+    path.write_text(
+        "name: x\nversion: 1\ntasks:\n"
+        "  - id: hi\n    input: say hi\n    scorers: [{type: contains, value: hello}]\n"
+    )
+    return path
+
+
+def test_extra_params_reach_the_server_and_are_recorded_in_the_report_config(
+    tmp_path: Path, fake_openai: FakeOpenAI, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _live_env(monkeypatch, fake_openai)
+    fake_openai.reply({"content": "hello there"})
+    prices = tmp_path / "prices.yaml"
+    prices.write_text("fake-model:\n  input_per_million: 1.0\n  output_per_million: 2.0\n")
+    out = tmp_path / "r.json"
+    argv = ["run", str(_one_task(tmp_path)), "--llm", "openai", "--prices", str(prices)]
+    argv += ["--extra-param", "reasoning_effort=low", "--out", str(out)]
+    argv += ["--extra-param", 'thinking={"type": "enabled"}']
+    assert main(argv) == 0
+    body = fake_openai.requests[0]
+    assert body["reasoning_effort"] == "low" and body["thinking"] == {"type": "enabled"}
+    assert load(out)["config"]["extra_params"] == {
+        "reasoning_effort": "low",
+        "thinking": {"type": "enabled"},
+    }
+
+
+def test_without_extra_params_the_config_has_no_such_key(tmp_path: Path) -> None:
+    out = tmp_path / "r.json"
+    assert run_smoke(out) == 0
+    assert "extra_params" not in load(out)["config"]  # keeps existing baselines valid
+
+
+def test_a_mock_run_records_the_extra_params_too(tmp_path: Path) -> None:
+    out = tmp_path / "r.json"
+    assert run_smoke(out, "--extra-param", "reasoning_effort=low") == 0
+    assert load(out)["config"]["extra_params"] == {"reasoning_effort": "low"}
+
+
+@pytest.mark.parametrize("bad", ["noequals", "=value", "model=other"])
+def test_bad_extra_params_exit_2(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str], bad: str
+) -> None:
+    code = main(["run", str(SMOKE), "--llm", "mock", "--extra-param", bad])
+    assert code == 2 and capsys.readouterr().err.startswith("error:")
