@@ -8,8 +8,8 @@ from __future__ import annotations
 
 import math
 import threading
-from collections.abc import Mapping
-from dataclasses import dataclass
+from collections.abc import Mapping, Sequence
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -25,32 +25,123 @@ _MILLION = 1_000_000
 
 @dataclass(frozen=True)
 class ModelPrice:
-    """USD per million tokens."""
+    """Price per million tokens in ``currency``, with where the number came from."""
 
     input_per_million: float
     output_per_million: float
     cached_input_per_million: float | None = None
+    currency: str = "USD"
+    per: str = "1M tokens"  # the only unit supported; kept so a file says what its numbers mean
+    source: str | None = None  # link to the page the numbers were read from
+    checked_on: str | None = None  # date it was checked against the source
+    note: str | None = None
+    effective_from: str | None = None
 
     def __post_init__(self) -> None:
         values = (self.input_per_million, self.output_per_million, self.cached_input_per_million)
         if any(v is not None and v < 0 for v in values):
             raise ValueError("prices must be non-negative")
+        if not self.currency.strip():
+            raise ValueError("a price needs a currency")
+        if self.per != "1M tokens":
+            raise ValueError(f"unsupported price unit {self.per!r}; only '1M tokens' is supported")
+
+    def to_dict(self) -> dict[str, Any]:
+        """The fields that went into a cost number, for reports (unset metadata is left out)."""
+        return {k: v for k, v in asdict(self).items() if v is not None}
+
+
+@dataclass(frozen=True)
+class FxRate:
+    """A declared exchange rate: 1 ``from_currency`` = ``rate`` ``to_currency``. Never built in."""
+
+    from_currency: str
+    to_currency: str
+    rate: float
+    source: str
+    as_of: str
+
+    def __post_init__(self) -> None:
+        if self.from_currency == self.to_currency or not self.from_currency or not self.to_currency:
+            raise ValueError("an fx rate needs two different currencies")
+        if not isinstance(self.rate, int | float) or isinstance(self.rate, bool) or self.rate <= 0:
+            raise ValueError("an fx rate must be a positive number")
+        if not self.source.strip() or not self.as_of.strip():
+            raise ValueError("every fx rate needs a source and an as_of date")
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+_ENTRY_KEYS = {
+    "currency",
+    "per",
+    "input",
+    "output",
+    "cached_input",
+    "source",
+    "checked_on",
+    "note",
+    "effective_from",
+}
+
+
+def _text(value: Any) -> str | None:
+    return None if value is None else str(value)  # YAML turns 2026-11-17 into a date
+
+
+def _parse_price(name: str, entry: Mapping[str, Any]) -> ModelPrice:
+    unknown = sorted(set(entry) - _ENTRY_KEYS)
+    if unknown:
+        raise ValueError(f"price for {name!r} has unknown field(s) {unknown}")
+    for required in ("currency", "per", "input", "output"):
+        if entry.get(required) in (None, ""):
+            raise ValueError(f"price for {name!r} is missing {required!r}")
+    return ModelPrice(
+        entry["input"], entry["output"], entry.get("cached_input"), str(entry["currency"]),
+        str(entry["per"]), _text(entry.get("source")), _text(entry.get("checked_on")),
+        _text(entry.get("note")), _text(entry.get("effective_from")),
+    )  # fmt: skip
 
 
 class PriceTable:
-    def __init__(self, prices: Mapping[str, ModelPrice] | None = None) -> None:
+    def __init__(
+        self, prices: Mapping[str, ModelPrice] | None = None, fx: Sequence[FxRate] = ()
+    ) -> None:
         self._prices = dict(prices or {})
+        self.fx = tuple(fx)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Mapping[str, Any]]) -> PriceTable:
-        return cls({model: ModelPrice(**dict(fields)) for model, fields in data.items()})
+    def from_dict(cls, data: Mapping[str, Any]) -> PriceTable:
+        models = data.get("models")
+        if not isinstance(models, Mapping):
+            raise ValueError("price file needs a 'models' mapping (model name -> price entry)")
+        unknown = sorted(set(data) - {"models", "fx"})
+        if unknown:
+            raise ValueError(f"price file has unknown top-level key(s) {unknown}")
+        fx = [
+            FxRate(r["from"], r["to"], r["rate"], str(r.get("source", "")), str(r.get("as_of", "")))
+            for r in data.get("fx") or []
+        ]
+        return cls({name: _parse_price(name, entry) for name, entry in models.items()}, fx)
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> PriceTable:
         loaded = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
         if not isinstance(loaded, dict):
-            raise ValueError("price file must be a mapping of model name to prices")
+            raise ValueError("price file must be a mapping with a 'models' section")
         return cls.from_dict(loaded)
+
+    def fx_rate(self, from_currency: str, to_currency: str) -> FxRate | None:
+        """Only an explicitly declared pair; no inverse or cross rate is ever inferred."""
+        return next(
+            (
+                r
+                for r in self.fx
+                if (r.from_currency, r.to_currency) == (from_currency, to_currency)
+            ),
+            None,
+        )
 
     def get(self, model: str) -> ModelPrice | None:
         return self._prices.get(model)

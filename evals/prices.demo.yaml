@@ -5,11 +5,19 @@
 # ==========================================================
 #
 # They exist only so the offline mock models ("mock", "mock-judge") have something to price.
-# For a real model, create your own file with that model's name and the prices from your
-# provider's pricing page (USD per million tokens), and note the date you looked them up.
-mock:
-  input_per_million: 1.0
-  output_per_million: 2.0
-mock-judge:
-  input_per_million: 1.0
-  output_per_million: 2.0
+# The currency "DEMO" is made up on purpose: it can never be mistaken for real money.
+# For a real model, create your own file (see evals/prices.glm.yaml for the format) with the
+# model's name, its currency, and the prices and source from your provider's pricing page.
+models:
+  mock:
+    currency: DEMO
+    per: 1M tokens
+    input: 1.0
+    output: 2.0
+    note: made-up demo price
+  mock-judge:
+    currency: DEMO
+    per: 1M tokens
+    input: 1.0
+    output: 2.0
+    note: made-up demo price

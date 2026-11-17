@@ -48,14 +48,15 @@ def test_negative_price_rejected() -> None:
 
 
 def test_price_table_from_dict_and_yaml(tmp_path: Path) -> None:
-    data = {"m": {"input_per_million": 1.0, "output_per_million": 3.0}}
+    data = {"models": {"m": {"currency": "USD", "per": "1M tokens", "input": 1.0, "output": 3.0}}}
     assert PriceTable.from_dict(data).cost("m", Usage(1_000_000, 1_000_000)) == pytest.approx(4.0)
     path = tmp_path / "prices.yaml"
     path.write_text(
-        "m:\n  input_per_million: 1.0\n  output_per_million: 3.0\n  cached_input_per_million: 0.1\n"
+        "models:\n  m:\n    currency: USD\n    per: 1M tokens\n"
+        "    input: 1.0\n    output: 3.0\n    cached_input: 0.1\n"
     )
     table = PriceTable.from_yaml(path)
-    assert table.get("m") == ModelPrice(1.0, 3.0, 0.1)
+    assert table.get("m") == ModelPrice(1.0, 3.0, 0.1, currency="USD")
 
 
 def test_meter_accumulates_by_tag() -> None:
@@ -138,3 +139,101 @@ def test_total_does_not_depend_on_the_order_calls_finish() -> None:
         tagged.add(meter.by_tag["x"])
     assert len(totals) == 1 and len(tagged) == 1
     assert totals == tagged  # the per-tag figure and the grand total agree exactly
+
+
+# ----------------------------------------------------------------- price metadata and file format
+FULL = {
+    "currency": "CNY",
+    "per": "1M tokens",
+    "input": 0.8,
+    "output": 2.8,
+    "cached_input": 0.23,
+    "source": "https://example.test/pricing",
+    "checked_on": "2026-11-17",
+    "note": "list price",
+    "effective_from": "2026-01-01",
+}
+
+
+def test_a_price_carries_its_currency_and_provenance() -> None:
+    price = PriceTable.from_dict({"models": {"m": FULL}}).get("m")
+    assert price is not None and price.currency == "CNY"
+    assert price.to_dict() == {
+        "currency": "CNY",
+        "per": "1M tokens",
+        "input_per_million": 0.8,
+        "output_per_million": 2.8,
+        "cached_input_per_million": 0.23,
+        "source": "https://example.test/pricing",
+        "checked_on": "2026-11-17",
+        "note": "list price",
+        "effective_from": "2026-01-01",
+    }
+
+
+def test_yaml_dates_become_strings(tmp_path: Path) -> None:
+    path = tmp_path / "p.yaml"
+    path.write_text(
+        "models:\n  m:\n    currency: CNY\n    per: 1M tokens\n    input: 1\n    output: 2\n"
+        "    checked_on: 2026-11-17\n"
+    )
+    price = PriceTable.from_yaml(path).get("m")
+    assert price is not None and price.checked_on == "2026-11-17"
+
+
+@pytest.mark.parametrize(
+    ("entry", "fragment"),
+    [
+        ({"per": "1M tokens", "input": 1, "output": 1}, "currency"),  # never guess a currency
+        ({"currency": "USD", "input": 1, "output": 1}, "per"),
+        ({"currency": "USD", "per": "1K tokens", "input": 1, "output": 1}, "1M tokens"),
+        ({"currency": "", "per": "1M tokens", "input": 1, "output": 1}, "currency"),
+        ({"currency": "USD", "per": "1M tokens", "input": 1}, "output"),
+        ({"currency": "USD", "per": "1M tokens", "input": 1, "output": 1, "inptu": 2}, "inptu"),
+        ({"currency": "USD", "per": "1M tokens", "input": -1, "output": 1}, "non-negative"),
+    ],
+)
+def test_invalid_price_entries_are_rejected_with_the_reason(
+    entry: dict[str, object], fragment: str
+) -> None:
+    with pytest.raises(ValueError, match=fragment):
+        PriceTable.from_dict({"models": {"m": entry}})
+
+
+def test_the_old_flat_format_is_rejected_with_a_migration_hint() -> None:
+    with pytest.raises(ValueError, match="models"):
+        PriceTable.from_dict({"m": {"input_per_million": 1.0, "output_per_million": 3.0}})
+
+
+FX = {
+    "from": "USD",
+    "to": "CNY",
+    "rate": 7.0,
+    "source": "https://example.test/fx",
+    "as_of": "2026-11-17",
+}
+
+
+def test_declared_fx_rates_are_available_only_for_the_declared_pair() -> None:
+    table = PriceTable.from_dict({"models": {"m": FULL}, "fx": [FX]})
+    rate = table.fx_rate("USD", "CNY")
+    assert rate is not None and (rate.rate, rate.source, rate.as_of) == (
+        7.0,
+        FX["source"],
+        "2026-11-17",
+    )
+    assert table.fx_rate("CNY", "USD") is None  # no inverse is guessed
+    assert (
+        PriceTable.from_dict({"models": {"m": FULL}}).fx_rate("USD", "CNY") is None
+    )  # none built in
+
+
+@pytest.mark.parametrize(
+    "change",
+    [{"source": ""}, {"as_of": ""}, {"rate": 0}, {"rate": -1}, {"to": "USD"}, {"rate": "x"}],
+)
+def test_every_fx_rate_needs_a_source_and_a_date_and_must_be_sane(
+    change: dict[str, object],
+) -> None:
+    with pytest.raises(ValueError):
+        PriceTable.from_dict({"models": {"m": FULL}, "fx": [{**FX, **change}]})

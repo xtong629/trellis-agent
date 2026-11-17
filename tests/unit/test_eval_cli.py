@@ -21,6 +21,12 @@ PRICES = ROOT / "evals" / "prices.demo.yaml"
 BASELINE = ROOT / "evals" / "baselines" / "smoke.json"
 
 
+FAKE_PRICES = (
+    "models:\n  fake-model:\n    currency: USD\n    per: 1M tokens\n"
+    "    input: 1.0\n    output: 2.0\n"
+)
+
+
 def run_smoke(out: Path, *extra: str) -> int:
     return main(
         ["run", str(SMOKE), "--llm", "mock", "--prices", str(PRICES), "--out", str(out), *extra]
@@ -225,7 +231,7 @@ def test_openai_mode_runs_through_the_real_client_against_a_local_server(
     monkeypatch.setenv("NO_PROXY", "127.0.0.1")
     monkeypatch.setenv("no_proxy", "127.0.0.1")
     prices = tmp_path / "prices.yaml"
-    prices.write_text("fake-model:\n  input_per_million: 1.0\n  output_per_million: 2.0\n")
+    prices.write_text(FAKE_PRICES)
     taskset = tmp_path / "ts.yaml"
     taskset.write_text(
         "name: live-ish\nversion: 1\ntasks:\n"
@@ -280,7 +286,7 @@ def test_extra_params_reach_the_server_and_are_recorded_in_the_report_config(
     _live_env(monkeypatch, fake_openai)
     fake_openai.reply({"content": "hello there"})
     prices = tmp_path / "prices.yaml"
-    prices.write_text("fake-model:\n  input_per_million: 1.0\n  output_per_million: 2.0\n")
+    prices.write_text(FAKE_PRICES)
     out = tmp_path / "r.json"
     argv = ["run", str(_one_task(tmp_path)), "--llm", "openai", "--prices", str(prices)]
     argv += ["--extra-param", "reasoning_effort=low", "--out", str(out)]
