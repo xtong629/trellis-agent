@@ -11,8 +11,8 @@ Ideas taken from LightAgent that Trellis implements:
   - validating tool-call arguments against JSON Schema and reporting errors back to the model;
   - deterministic, assertion-based regression evaluation of outputs, tool use and cost,
     run with fake models in CI;
-  - pinning GitHub Actions to commit SHAs (the pinned SHAs in .github/workflows/ci.yml
-    were copied from LightAgent's workflow file).
+  - pinning GitHub Actions to commit SHAs (the practice; the SHAs in .github/workflows/ci.yml
+    come from each action's official repository).
 
 Ideas taken from LightAgent that are planned for later milestones (not implemented yet):
   - dependency-graph validation by topological sort, and fail-fast / continue-independent
