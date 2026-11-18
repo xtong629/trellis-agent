@@ -9,7 +9,7 @@ import trellis_agent
 
 
 def test_package_exposes_version() -> None:
-    assert trellis_agent.__version__ == "0.0.1"
+    assert trellis_agent.__version__ == "0.1.0"
 
 
 def test_subpackages_import() -> None:
