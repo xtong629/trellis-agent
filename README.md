@@ -36,6 +36,37 @@ Most agent demos show that something *can* work. Trellis is built around the har
 | Planning | LLM planner whose plans are validated and sent back for repair; event-driven scheduler with dependencies, parallelism, retry with backoff, failure policies (skip dependents / fail fast / replan), budgets; role-specific worker agents dispatched by task kind |
 
 Details of the evaluation harness, cost rules and the budget mechanism: [`docs/EVAL.md`](docs/EVAL.md).
+Design decisions, the module map and what is *not* implemented: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+## 30-second example
+
+A tool-using agent, run offline with a rule-based stand-in for a model (no API key, no network):
+
+```python
+from trellis_agent.agent import Agent
+from trellis_agent.llm import RuleLLM
+from trellis_agent.tools import ToolRegistry, tool
+from trellis_agent.types import Message, ToolCall
+
+
+@tool
+def add(a: int, b: int) -> int:
+    """Add two integers."""
+    return a + b
+
+
+def rule(messages, tools):  # a rule-based stand-in for a model
+    if not any(m.role == "tool" for m in messages):
+        return Message.assistant(None, (ToolCall("c1", "add", {"a": 18, "b": 7}),))
+    return Message.assistant("18 + 7 = 25")
+
+
+result = Agent(RuleLLM(rule), tools=ToolRegistry([add])).run("What is 18 + 7?")
+print(result.content, result.stop_reason)
+```
+
+It prints `18 + 7 = 25 end_turn`. Swap `RuleLLM(rule)` for `OpenAICompatClient.from_env(...)` to use a
+real model; see [Quick start](#quick-start).
 
 ## Quick start
 
@@ -122,12 +153,14 @@ tests/               unit/ and integration/ (fake OpenAI-compatible HTTP server 
 evals/               smoke task set, experiment task sets, committed reports and baseline, price files
 experiments/         experiment tools, targets, mocks, drivers and the results-table generator
 examples/            runnable examples (all support --mock)
-docs/                EVAL.md, EXPERIMENTS.md
+docs/                ARCHITECTURE.md, EVAL.md, EXPERIMENTS.md
 ```
 
 ## Limitations
 
 Known, accepted, and tested where possible:
+
+Not implemented (see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)): hooks, guardrails, agent handoff, token streaming, persistent sessions, MCP.
 
 * **Scheduler.** A task that is waiting to retry still occupies a concurrency slot. Only a global
   budget exists (the shared `CostMeter`); there is no per-task budget. Single process, no
