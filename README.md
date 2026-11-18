@@ -4,9 +4,10 @@
 
 > A small agent framework where planning and memory are **measurable**: eval-first, cost-capped, mock-testable.
 
-**Status: early development.** The agent core and the evaluation harness work and are tested.
-Planning/scheduling and tiered memory are implemented; the experiments that show whether they
-actually help come next. See [Roadmap](#roadmap) and [Limitations](#limitations).
+**Status: research prototype.** The agent core, evaluation harness, planner/scheduler and tiered
+memory are implemented and tested, and a first pair of experiments has been run on one model with
+fictional tasks (see [Results](#results)). Not a production library. See [Roadmap](#roadmap) and
+[Limitations](#limitations).
 
 ## Why
 
@@ -76,10 +77,28 @@ prices; its banner explains that report costs from it are reference values, not 
 
 ## Results
 
-**No experiment results yet.** The planned comparisons (planner on/off, tiered memory on/off, same
-tasks, success rate / tokens / cost) have not been run. Numbers will be added here only after they
-have been measured, with the task set hash, model, price table and sample size next to them.
-Offline mock runs only exercise the code; they say nothing about real-model performance.
+Two experiments, run once on `glm-5.3-flash` (`reasoning_effort=low`) with fictional data, 5
+repeats each, 2026-11-18. Success rate is mean±sd over the 5 repeats. Costs are CNY list-price
+reference values, not actual spend. Full tables, method and limitations:
+[`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); every number is in `evals/reports/`.
+
+| Experiment | System | Tasks x repeats | Success | Cost (CNY, list) |
+| --- | --- | --- | --- | --- |
+| A: planner | single agent | 30 x 5 | 0.987±0.018 | 0.2331 |
+| | planner | 30 x 5 | 0.993±0.015 | 0.4877 |
+| B: memory | sliding window (150 tokens) | 20 x 5 | 0.400±0.035 | 0.1515 |
+| | tiered memory | 20 x 5 | 0.980±0.027 | 0.2697 |
+| | full history (reference) | 20 x 5 | 0.980±0.027 | 0.2062 |
+
+* On this task set and model the planner brought no measurable accuracy gain (the single agent was
+  already at 0.987, a ceiling) and cost about 2.1 times as much.
+* On the scripts where a fact falls out of a 150-token window, memory recalled it in 0.986±0.032 of
+  70 runs against 0.171±0.039 for the window; full history scored 1.000±0.000, at lower cost than
+  memory on these short conversations. The size of that gap depends on the window size chosen.
+  By the code path, recall can only come from facts the LLM extractor wrote (raw messages are not
+  searched); how many answers rested on such a fact was not counted.
+* One model, fictional tasks, small samples, no significance tests; read the limitations before
+  drawing conclusions. Offline mock runs only exercise the code.
 
 ## Roadmap
 
@@ -90,16 +109,17 @@ Offline mock runs only exercise the code; they say nothing about real-model perf
 | M2 | evaluation and cost control | done |
 | M3 | LLM planner + event-driven scheduler with multi-role workers | done |
 | M4 | tiered memory + Chinese/English hybrid retrieval | done |
-| M5 | experiments and write-up | planned |
+| M5 | experiments and write-up | done |
 
 ## Project layout
 
 ```text
 src/trellis_agent/   agent, tools, llm/, cost, trace, eval/, planner/, memory/, retrieval/
 tests/               unit/ and integration/ (fake OpenAI-compatible HTTP server for client contracts)
-evals/               smoke task set, demo prices, committed baseline
+evals/               smoke task set, experiment task sets, committed reports and baseline, price files
+experiments/         experiment tools, targets, mocks, drivers and the results-table generator
 examples/            runnable examples (all support --mock)
-docs/                EVAL.md
+docs/                EVAL.md, EXPERIMENTS.md
 ```
 
 ## Limitations
@@ -137,7 +157,7 @@ Known, accepted, and tested where possible:
   `checked_on`. There is no tiered pricing, no discount handling, no web updates and no built-in
   exchange rate; a cost in another currency is an error unless the file declares an FX rate.
 * **Mocks.** All offline runs use rule-based fake models. They exercise the code and say nothing
-  about real-model quality; no experiment results exist yet.
+  about real-model quality; the experiment results above come from live runs on one model.
 
 ## Acknowledgements
 
