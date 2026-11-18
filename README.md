@@ -95,6 +95,8 @@ reference values, not actual spend. Full tables, method and limitations:
 * On the scripts where a fact falls out of a 150-token window, memory recalled it in 0.986±0.032 of
   70 runs against 0.171±0.039 for the window; full history scored 1.000±0.000, at lower cost than
   memory on these short conversations. The size of that gap depends on the window size chosen.
+  By the code path, recall can only come from facts the LLM extractor wrote (raw messages are not
+  searched); how many answers rested on such a fact was not counted.
 * One model, fictional tasks, small samples, no significance tests; read the limitations before
   drawing conclusions. Offline mock runs only exercise the code.
 
@@ -155,7 +157,7 @@ Known, accepted, and tested where possible:
   `checked_on`. There is no tiered pricing, no discount handling, no web updates and no built-in
   exchange rate; a cost in another currency is an error unless the file declares an FX rate.
 * **Mocks.** All offline runs use rule-based fake models. They exercise the code and say nothing
-  about real-model quality; no experiment results exist yet.
+  about real-model quality; the experiment results above come from live runs on one model.
 
 ## Acknowledgements
 

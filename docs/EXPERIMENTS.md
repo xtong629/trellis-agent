@@ -164,6 +164,17 @@ Experiment B by family:
   correction sentences do not. This did not affect the reported runs, but the scripts are not
   independent of the library's own sentence patterns, and the offline mock memory path is coupled to
   the script wording by construction.
+* **Where memory's recall came from.** In the real runs the extractor was the LLM one (see above), so
+  the 8-of-23 figure for `RuleExtractor` does not describe them. By the code in
+  `src/trellis_agent/memory/manager.py`, every turn is also stored as a raw *episodic* item, but
+  retrieval (`_search`) returns only *semantic* items (the facts the extractor wrote); episodic items
+  are never searched in these runs, and no consolidation ran. So a recalled fact can only have come
+  from an extracted semantic item, not from a stored raw message. Consistent with that, the
+  extractor ran on every turn (memory made 1,710 model requests, twice the window's 855). What was
+  **not confirmed**: the reports hold no memory traces, so the number of runs whose answer rested on a
+  semantic item, per group or in total, was not counted, and how many of the 23 statements the LLM
+  extractor wrote down was not measured. The explanation rests on the code path and on the 0.986 vs
+  0.171 recall gap, not on a per-run count.
 * **Lexical retrieval is favoured by construction.** B's final questions share a word with the stored
   fact (for example "allergic", "deadline", the Chinese term for refund number). Retrieval is lexical
   (full-text search); paraphrased questions were not tested.
