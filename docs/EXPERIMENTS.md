@@ -145,6 +145,32 @@ Experiment B by family:
 * **No-benefit groups.** Window, memory and full history are within noise of each other on `fits` and
   `irrelevant` (30 runs in total per system; the standard deviations are 0.07 to 0.09).
 
+## Supplementary measurement: wall-clock time on the fanout family
+
+This is a separate, small run, **not part of the main results above** and not merged into them. The
+main run recorded no per-case timing and ran two tasks at a time, so it cannot say how long a group
+takes. Report: `evals/reports/exp_a_fanout_timing.json`; driver: `experiments/fanout_timing.py`.
+
+* Design: only the 8 fanout tasks of task set A v2, taken unmodified (a test checks this); single
+  agent and planner, 3 repeats each, one task at a time (concurrency 1), the two systems alternating
+  repeat by repeat. The planner keeps its default of up to 4 parallel workers inside a task, since
+  that is part of what is being timed. Same model and `reasoning_effort=low`; budget cap 1 CNY, spent
+  0.1401 CNY at list price (0.0365 single, 0.1036 planner); all 325 requests returned status 200.
+
+| system | runs | passed | mean s per task | median s | min-max s | sd s | model requests |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| single agent | 24 | 23 | 13.23 | 11.29 | 7.68-27.17 | 4.93 | 66 |
+| planner | 24 | 24 | 27.36 | 25.20 | 20.99-44.01 | 5.59 | 259 |
+
+* On this group the planner took about 2.1 times as long per task by the mean (27.36 vs 13.23 s) and
+  2.2 times by the median, and made about 3.9 times the model requests (259 vs 66). The planner's
+  fastest run (20.99 s) was slower than 22 of the single agent's 24 runs; the other 2 single runs
+  (up to 27.17 s) overlap the planner's range.
+* Limits: 24 runs per system, from one session on one day, so API latency drift is possible
+  (alternation reduces but does not remove it). The causes of the gap (extra sequential model
+  calls for planning and synthesis, worker overhead) were not separated. It says nothing about
+  other task families or longer tasks. One single-agent run failed (fanout-01, repeat 1); timings include it.
+
 ## Limitations and conclusions that cannot be drawn
 
 * **Ceiling effect in A.** The single agent solved about 99% of the tasks, so this set cannot show a
@@ -192,9 +218,9 @@ Experiment B by family:
   to retrieve the stock counts.
 * **Costs are reference values.** CNY list prices; a free token package was used, so no real money was
   spent. Reported cost per success is cost divided by passed runs.
-* **Wall-clock time is not reported.** The reports were produced without per-case timing, so there is
-  no wall-clock comparison by group (for example fanout) and no claim is made about latency. Only the
-  total chunk wall time of the main run is recorded (4,707 s, `exp_full_http.json`).
+* **Wall-clock time.** The main run has no per-case timing (two tasks ran at a time), so it supports
+  no latency claim; only the total chunk wall time is recorded (4,707 s, `exp_full_http.json`). The
+  fanout-only supplementary run above gives timings for that group alone, with its own limits.
 * **The pilot informed the v2 fixes.** v2 changed scoring and window sizing after a 19-task pilot; the
   reasons are recorded above and no task or scoring change was made after the v2 freeze.
 

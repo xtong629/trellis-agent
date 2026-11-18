@@ -92,6 +92,9 @@ reference values, not actual spend. Full tables, method and limitations:
 
 * On this task set and model the planner brought no measurable accuracy gain (the single agent was
   already at 0.987, a ceiling) and cost about 2.1 times as much.
+* A separate, small timing run on the fanout group only (one task at a time, 3 repeats) found the
+  planner took about 2.1 times as long per task as the single agent (27.36 vs 13.23 s mean); see
+  [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md). It is not part of the main results.
 * On the scripts where a fact falls out of a 150-token window, memory recalled it in 0.986±0.032 of
   70 runs against 0.171±0.039 for the window; full history scored 1.000±0.000, at lower cost than
   memory on these short conversations. The size of that gap depends on the window size chosen.

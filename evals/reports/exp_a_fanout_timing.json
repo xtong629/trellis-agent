@@ -1,0 +1,551 @@
+{
+ "note": "Supplementary measurement, not part of the main results. Fanout family only.",
+ "design": {
+  "tasks": "the 8 fanout tasks of frozen task set A v2, unmodified",
+  "fanout_subset_hash": "950245bb046c29b3e6daa3ffce0b31c19ae3e20c8bc806955e19c9a223b6c69d",
+  "repeats": 3,
+  "concurrency": 1,
+  "planner_scheduler_max_concurrency": 4,
+  "alternation": "single, planner per repeat",
+  "model": "glm-5.3-flash",
+  "reasoning_effort": "low",
+  "run_date": "2026-11-18",
+  "budget_cny": 1.0
+ },
+ "arms": {
+  "a_single": {
+   "passed": 23,
+   "runs": 24,
+   "wall": {
+    "runs": 24,
+    "mean_s": 13.23,
+    "median_s": 11.29,
+    "min_s": 7.68,
+    "max_s": 27.17,
+    "sd_s": 4.93
+   },
+   "per_task": {
+    "fanout-01": {
+     "runs": 3,
+     "mean_s": 15.94,
+     "median_s": 11.06,
+     "min_s": 9.59,
+     "max_s": 27.17,
+     "sd_s": 9.75
+    },
+    "fanout-02": {
+     "runs": 3,
+     "mean_s": 9.18,
+     "median_s": 9.75,
+     "min_s": 7.68,
+     "max_s": 10.1,
+     "sd_s": 1.31
+    },
+    "fanout-03": {
+     "runs": 3,
+     "mean_s": 14.86,
+     "median_s": 9.6,
+     "min_s": 9.35,
+     "max_s": 25.62,
+     "sd_s": 9.32
+    },
+    "fanout-04": {
+     "runs": 3,
+     "mean_s": 11.9,
+     "median_s": 9.23,
+     "min_s": 8.95,
+     "max_s": 17.52,
+     "sd_s": 4.87
+    },
+    "fanout-05": {
+     "runs": 3,
+     "mean_s": 12.34,
+     "median_s": 11.05,
+     "min_s": 10.81,
+     "max_s": 15.16,
+     "sd_s": 2.45
+    },
+    "fanout-06": {
+     "runs": 3,
+     "mean_s": 15.47,
+     "median_s": 14.36,
+     "min_s": 14.34,
+     "max_s": 17.71,
+     "sd_s": 1.94
+    },
+    "fanout-07": {
+     "runs": 3,
+     "mean_s": 11.95,
+     "median_s": 11.53,
+     "min_s": 9.94,
+     "max_s": 14.38,
+     "sd_s": 2.25
+    },
+    "fanout-08": {
+     "runs": 3,
+     "mean_s": 14.2,
+     "median_s": 13.46,
+     "min_s": 13.36,
+     "max_s": 15.77,
+     "sd_s": 1.36
+    }
+   },
+   "spent_cny": 0.0365,
+   "http": {
+    "http_requests": 66,
+    "model_calls": 66,
+    "extra_http_requests": 0,
+    "status_counts": {
+     "200": 66
+    },
+    "rate_limited": 0,
+    "retry_after_seen": [],
+    "max_in_flight": 1,
+    "latency_s": {
+     "mean": 4.797,
+     "p50": 4.784,
+     "p90": 5.812,
+     "p99": 9.882,
+     "max": 9.882
+    }
+   },
+   "cases": [
+    {
+     "task_id": "fanout-01",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 9.59,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-02",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 7.68,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-03",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 9.6,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-04",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 17.52,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-05",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 11.05,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-06",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 14.36,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-07",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 14.38,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-08",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 13.46,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-01",
+     "repeat": 1,
+     "status": "failed",
+     "wall_s": 27.17,
+     "model_requests": 5
+    },
+    {
+     "task_id": "fanout-02",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 10.1,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-03",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 25.62,
+     "model_requests": 5
+    },
+    {
+     "task_id": "fanout-04",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 9.23,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-05",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 10.81,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-06",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 17.71,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-07",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 11.53,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-08",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 15.77,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-01",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 11.06,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-02",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 9.75,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-03",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 9.35,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-04",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 8.95,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-05",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 15.16,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-06",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 14.34,
+     "model_requests": 3
+    },
+    {
+     "task_id": "fanout-07",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 9.94,
+     "model_requests": 2
+    },
+    {
+     "task_id": "fanout-08",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 13.36,
+     "model_requests": 3
+    }
+   ]
+  },
+  "a_planned": {
+   "passed": 24,
+   "runs": 24,
+   "wall": {
+    "runs": 24,
+    "mean_s": 27.36,
+    "median_s": 25.2,
+    "min_s": 20.99,
+    "max_s": 44.01,
+    "sd_s": 5.59
+   },
+   "per_task": {
+    "fanout-01": {
+     "runs": 3,
+     "mean_s": 26.6,
+     "median_s": 27.26,
+     "min_s": 23.58,
+     "max_s": 28.96,
+     "sd_s": 2.75
+    },
+    "fanout-02": {
+     "runs": 3,
+     "mean_s": 23.46,
+     "median_s": 24.06,
+     "min_s": 20.99,
+     "max_s": 25.32,
+     "sd_s": 2.23
+    },
+    "fanout-03": {
+     "runs": 3,
+     "mean_s": 39.01,
+     "median_s": 40.94,
+     "min_s": 32.07,
+     "max_s": 44.01,
+     "sd_s": 6.2
+    },
+    "fanout-04": {
+     "runs": 3,
+     "mean_s": 27.47,
+     "median_s": 26.71,
+     "min_s": 24.62,
+     "max_s": 31.08,
+     "sd_s": 3.3
+    },
+    "fanout-05": {
+     "runs": 3,
+     "mean_s": 27.51,
+     "median_s": 25.07,
+     "min_s": 24.27,
+     "max_s": 33.18,
+     "sd_s": 4.93
+    },
+    "fanout-06": {
+     "runs": 3,
+     "mean_s": 24.71,
+     "median_s": 24.36,
+     "min_s": 23.82,
+     "max_s": 25.96,
+     "sd_s": 1.11
+    },
+    "fanout-07": {
+     "runs": 3,
+     "mean_s": 26.55,
+     "median_s": 26.56,
+     "min_s": 23.15,
+     "max_s": 29.94,
+     "sd_s": 3.4
+    },
+    "fanout-08": {
+     "runs": 3,
+     "mean_s": 23.59,
+     "median_s": 23.59,
+     "min_s": 23.16,
+     "max_s": 24.03,
+     "sd_s": 0.44
+    }
+   },
+   "spent_cny": 0.1036,
+   "http": {
+    "http_requests": 259,
+    "model_calls": 259,
+    "extra_http_requests": 0,
+    "status_counts": {
+     "200": 259
+    },
+    "rate_limited": 0,
+    "retry_after_seen": [],
+    "max_in_flight": 3,
+    "latency_s": {
+     "mean": 4.412,
+     "p50": 4.527,
+     "p90": 6.103,
+     "p99": 9.442,
+     "max": 13.557
+    }
+   },
+   "cases": [
+    {
+     "task_id": "fanout-01",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 23.58,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-02",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 25.32,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-03",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 44.01,
+     "model_requests": 13
+    },
+    {
+     "task_id": "fanout-04",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 31.08,
+     "model_requests": 12
+    },
+    {
+     "task_id": "fanout-05",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 33.18,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-06",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 23.82,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-07",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 26.56,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-08",
+     "repeat": 0,
+     "status": "passed",
+     "wall_s": 23.59,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-01",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 28.96,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-02",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 20.99,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-03",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 40.94,
+     "model_requests": 18
+    },
+    {
+     "task_id": "fanout-04",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 24.62,
+     "model_requests": 11
+    },
+    {
+     "task_id": "fanout-05",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 25.07,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-06",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 25.96,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-07",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 23.15,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-08",
+     "repeat": 1,
+     "status": "passed",
+     "wall_s": 23.16,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-01",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 27.26,
+     "model_requests": 11
+    },
+    {
+     "task_id": "fanout-02",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 24.06,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-03",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 32.07,
+     "model_requests": 14
+    },
+    {
+     "task_id": "fanout-04",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 26.71,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-05",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 24.27,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-06",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 24.36,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-07",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 29.94,
+     "model_requests": 10
+    },
+    {
+     "task_id": "fanout-08",
+     "repeat": 2,
+     "status": "passed",
+     "wall_s": 24.03,
+     "model_requests": 10
+    }
+   ]
+  }
+ }
+}
