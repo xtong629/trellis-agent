@@ -198,3 +198,10 @@ def c1_solver(messages: list[Message], tools: list[ToolSchema] | None) -> Messag
         return Message.assistant(None, (ToolCall("c0", "get_item", {"item": item}),))
     price = json.loads(done[-1].content or "{}").get("price", 0)
     return _answer(float(price))
+
+
+def c1_checker(messages: list[Message], tools: list[ToolSchema] | None) -> Message:
+    """Wiring-only checker: rejects an answer of 0, accepts anything else."""
+    answer = _first_user(messages).rsplit("FINAL ANSWER:", 1)[-1]
+    ok = re.search(r"ANSWER:\s*0(?:\.0)?\s*$", answer) is None
+    return Message.assistant(json.dumps({"ok": ok} if ok else {"ok": False, "reason": "zero?"}))

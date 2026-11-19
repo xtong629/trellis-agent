@@ -80,3 +80,43 @@ async def test_c1_baseline_runs_offline_with_the_mock() -> None:
     rates = v02_run.family_rates(report)
     assert rates["easy"] == "6/6"  # the wiring mock only knows how to answer the control family
     assert all(c.tool_calls == ["get_item"] for c in report.cases if c.task_id.startswith("easy"))
+
+
+async def test_c1_reflect_runs_offline_and_records_every_run() -> None:
+    from dataclasses import asdict
+
+    from experiments.targets import c1_reflect
+
+    llm = RuleLLM(lambda m, t: Message.assistant("unused"), model="mock")
+    taskset = parse_taskset(taskset_c1(2), known_scorers=scorer_types())
+    records: list[Any] = []
+    report = await EvalRunner(lambda: c1_reflect(llm, records.append), concurrency=2).run(taskset)
+    assert v02_run.family_rates(report)["easy"] == "6/6"
+    assert all(c.model_requests == 3 for c in report.cases)  # lookup, answer, one check
+    sidecar = await v02_run.attempts_report(taskset, [[asdict(r) for r in records]])
+    totals = sidecar["totals"]
+    assert (totals["runs"], totals["checked"], totals["retried"]) == (24, 24, 0)
+    assert sidecar["by_family"]["easy"]["first_correct"] == 6 and totals["harm"] == 0
+
+
+def _record(task_id: str, first: str, final: str, ok: bool | None) -> dict[str, Any]:
+    return {"session_id": f"{task_id}#0", "query": "q", "first_answer": first,
+            "first_stop_reason": "end_turn", "checked": ok is not None, "verdict_ok": ok,
+            "reason": "", "parsed": None if ok is None else True, "retried": ok is False,
+            "final_answer": final, "final_stop_reason": "end_turn"}  # fmt: skip
+
+
+async def test_attempt_counts_follow_the_pre_registered_definitions() -> None:
+    taskset = parse_taskset(taskset_c1(2), known_scorers=scorer_types())
+    right = {t.id: t.metadata["answer"] for t in taskset.tasks}
+    records = [
+        _record("easy-01", "ANSWER: 1", f"ANSWER: {right['easy-01']}", False),  # fix
+        _record("easy-02", f"ANSWER: {right['easy-02']}", "ANSWER: 1", False),  # harm, false reject
+        _record("easy-03", "ANSWER: 1", "ANSWER: 1", True),  # false accept
+        _record("easy-04", f"ANSWER: {right['easy-04']}", f"ANSWER: {right['easy-04']}", True),
+        _record("deep-01", "", "", None),  # not checked (no final answer)
+    ]
+    totals = (await v02_run.attempts_report(taskset, [records]))["totals"]
+    assert totals == {"runs": 5, "checked": 4, "rejected": 2, "retried": 2,
+                      "unparsed_verdicts": 0, "first_correct": 2, "final_correct": 2, "fix": 1,
+                      "harm": 1, "false_accept": 1, "false_reject": 1}  # fmt: skip

@@ -8,7 +8,7 @@ offline mock model (``model == "mock"``) these use experiment-specific mocks ins
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from typing import Any
 
 from experiments import mocks
@@ -22,6 +22,7 @@ from trellis_agent.memory.extract import Extraction, FactExtractor, LLMExtractor
 from trellis_agent.memory.manager import MemoryConfig, MemoryManager
 from trellis_agent.memory.store import MemoryStore
 from trellis_agent.planner import PlannedAgent, Planner, Scheduler, WorkerSpec
+from trellis_agent.reflect import LLMReflector, ReflectingAgent, ReflectionRecord
 from trellis_agent.tools import Tool, ToolRegistry
 from trellis_agent.types import Message, RunResult
 
@@ -136,3 +137,11 @@ def c1_agent(llm: LLMClient) -> Agent:
 def c1_baseline(llm: LLMClient) -> Agent:
     """C1 without reflection: one agent with all C1 tools."""
     return c1_agent(llm)
+
+
+def c1_reflect(
+    llm: LLMClient, on_record: Callable[[ReflectionRecord], None] | None = None
+) -> ReflectingAgent:
+    """C1 with reflection: the same agent, checked by the same model, at most one retry."""
+    checker = mocks.mock(mocks.c1_checker, _meter(llm)) if _is_mock(llm) else llm
+    return ReflectingAgent(c1_agent(llm), LLMReflector(checker), on_record=on_record)
