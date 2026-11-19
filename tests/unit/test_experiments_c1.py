@@ -163,3 +163,20 @@ async def test_a_full_width_colon_is_not_read_as_the_marker() -> None:
     are in English and ask for 'ANSWER:', so a full-width colon counts as a format failure."""
     scorer = await _number_scorer(taskset_c1(1)["tasks"][0])
     assert not (await scorer.score(None, _result("ANSWER\uff1a216"))).passed
+
+
+def test_c1_is_frozen_at_the_level_chosen_by_the_band_rule() -> None:
+    """The committed file equals the generator at FROZEN_LEVEL, and its hash is the frozen one."""
+    from pathlib import Path
+
+    from experiments.c1_tasks import FROZEN_LEVEL
+
+    from trellis_agent.eval import load_taskset
+
+    root = Path(__file__).resolve().parents[2]
+    entry = json.loads((root / "experiments" / "FROZEN.json").read_text())["v0.2"]["exp_c1_reflect"]
+    committed = load_taskset(root / "evals" / "exp_c1_reflect")
+    assert FROZEN_LEVEL == entry["level"] == 2
+    assert committed.content_hash == entry["content_hash"]
+    assert committed.content_hash == parse_taskset(taskset_c1(FROZEN_LEVEL)).content_hash
+    assert (committed.version, len(committed.tasks)) == ("1-level2", entry["tasks"])

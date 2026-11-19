@@ -110,3 +110,23 @@ answer fails; **false reject** = verdict not ok but the first answer passes.
 gain); the checker rejects right answers and the retry breaks them (harm); the retry repeats the same
 mistake; cost roughly doubles with no gain; a gain on one family only; the baseline lands outside the
 band (not run as designed).
+
+### C1 trial record and freeze (added after the trials; the text above is unchanged)
+
+Trial reports (baseline only, 1 repeat, 2026-11-19; not results):
+`evals/reports/trials/exp_c1_trial_level1_baseline.json` and `..._level2_baseline.json`.
+
+* **Level 1:** 18 of 18 benefit tasks passed (and 6 of 6 `easy`), above the band. Following the rule,
+  the knob moved once, to level 2.
+* **Level 2:** 15 of 18 benefit tasks passed (0.83), still above the band. Following the rule, level 2
+  is frozen anyway; no further move is allowed. The three failures were read one by one and are model
+  errors, not scoring bugs: `deep-06` converted ovo to sett by dividing instead of multiplying;
+  `constraint-03` chose an item with no stock in the named warehouse; `constraint-02` gave the right
+  item and amount but no `ANSWER:` line (a format failure, scored the same for every system).
+  No reply was found that the scorers misjudged, so no task or scorer was changed.
+* **Frozen:** `exp-c1-reflect` version `1-level2`, 24 tasks, content hash
+  `5b6967ea267d2b476938483bb5caafc3b0db63d5e3a446ceeda6490be9485291` (`experiments/FROZEN.json`,
+  key `v0.2`; file `evals/exp_c1_reflect/taskset.yaml`).
+* **Consequence, stated before the full run:** if the full-run baseline also stays above 0.7 on the
+  benefit tasks, C1 is reported as **not run as designed** (ceiling not avoided) and H1 is not decided,
+  as pre-registered. The trials used 120,427 tokens (0.1096 CNY at list price).

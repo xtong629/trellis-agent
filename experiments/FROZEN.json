@@ -26,5 +26,14 @@
       "tasks": 20,
       "content_hash": "1c1a372d823ceace4a835616cdf64ca33c3ac08c00d2c99b63d21bd25ba9294f"
     }
+  },
+  "v0.2": {
+    "exp_c1_reflect": {
+      "name": "exp-c1-reflect",
+      "version": "1-level2",
+      "tasks": 24,
+      "level": 2,
+      "content_hash": "5b6967ea267d2b476938483bb5caafc3b0db63d5e3a446ceeda6490be9485291"
+    }
   }
 }

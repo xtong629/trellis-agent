@@ -25,6 +25,7 @@ from typing import Any
 from trellis_agent.tools import Tool, tool
 
 NAME = "exp-c1-reflect"
+FROZEN_LEVEL = 2  # set by the pre-registered band rule after the trials (EXPERIMENTS_V02.md)
 ASK = "End your reply with a line of the form 'ANSWER: <number>'."
 _TOL = 0.01
 

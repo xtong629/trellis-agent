@@ -1,0 +1,1989 @@
+{
+  "cases": [
+    {
+      "agent_cost": 0.0032296,
+      "content": "Rivet costs 3 quill/unit from Orvane (10% discount → 2.7 quill/unit). 10 units = 27 quill. Converting via marr (×2 ×4): 27 × 8 = 216 sett.\n\nANSWER: 216",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 5,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(216.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_supplier')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_rate')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deep-01",
+      "tool_calls": [
+        "get_item",
+        "get_supplier",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 174,
+        "estimated": false,
+        "prompt_tokens": 3428,
+        "reasoning_tokens": 44
+      }
+    },
+    {
+      "agent_cost": 0.0058776,
+      "content": "Price: 5 quill/unit, Orvane gives 10% discount → 4.5 quill/unit × 8 = 36 quill. Converting via quill→marr (×2) → sett (×4) → ovo (×0.5): 36 × 2 × 4 × 0.5 = 144.\n\nANSWER: 144",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 9,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(144.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_supplier')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_rate')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deep-02",
+      "tool_calls": [
+        "get_item",
+        "get_supplier",
+        "get_supplier",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 242,
+        "estimated": false,
+        "prompt_tokens": 6500,
+        "reasoning_tokens": 116
+      }
+    },
+    {
+      "agent_cost": 0.0040252,
+      "content": "Grommet: 7 sett/unit from Pelling, 25% discount → 5.25 sett each, 6 units = 31.5 sett. Converting via marr: 31.5 × 0.25 = 7.875 marr × 0.5 = 3.9375 quill.\n\nANSWER: 3.9375",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 6,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(3.9375)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_supplier')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_rate')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deep-03",
+      "tool_calls": [
+        "get_item",
+        "get_supplier",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 243,
+        "estimated": false,
+        "prompt_tokens": 4181,
+        "reasoning_tokens": 42
+      }
+    },
+    {
+      "agent_cost": 0.0032004,
+      "content": "Lead: 12 marr/unit, supplier Kestrel (0% discount). 5 units = 60 marr → 60 × 4.0 = 240 sett → 240 × 0.5 = 120 ovo.\n\nANSWER: 120",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 5,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(120.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_supplier')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_rate')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deep-04",
+      "tool_calls": [
+        "get_item",
+        "get_supplier",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 167,
+        "estimated": false,
+        "prompt_tokens": 3416,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0038644,
+      "content": "Tube costs 9 ovo per unit from supplier Tamsin. With Tamsin's 20% discount, 10 units cost 72 ovo. Converting via the chain ovo → sett (×2.0) → marr (×0.25) gives 72 × 0.5 = 36 marr.\n\nANSWER: 36",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 6,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(36.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_supplier')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_rate')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deep-05",
+      "tool_calls": [
+        "get_item",
+        "get_supplier",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 193,
+        "estimated": false,
+        "prompt_tokens": 4155,
+        "reasoning_tokens": 28
+      }
+    },
+    {
+      "agent_cost": 0.0045872000000000005,
+      "content": "Globe: 30 ovo/unit from Tamsin (20% discount → 24 ovo/unit). 4 units = 96 ovo → ×2 sett/ovo = 192 sett → ×0.25 = 48 marr → ×0.5 = 24 quill.\n\nANSWER: 24",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 7,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(24.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_supplier')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_rate')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "deep-06",
+      "tool_calls": [
+        "get_item",
+        "get_supplier",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "get_rate",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 212,
+        "estimated": false,
+        "prompt_tokens": 4992,
+        "reasoning_tokens": 63
+      }
+    },
+    {
+      "agent_cost": 0.0025876,
+      "content": "Bolt: 24 quill per pack of 12 → 2 quill/unit. Anchor: 5 quill/unit. Lowest is the bolt.\n\nANSWER: 2",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 4,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(2.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('list_items')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_stock')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "constraint-01",
+      "tool_calls": [
+        "list_items",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_item",
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 169,
+        "estimated": false,
+        "prompt_tokens": 2643,
+        "reasoning_tokens": 27
+      }
+    },
+    {
+      "agent_cost": 0.0026108,
+      "content": "Gasket: 40 sett for a pack of 8 = 5 sett/unit. Grommet: 7 sett/unit. Lowest is gasket.\n\nANSWER: 5",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 4,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(5.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('list_items')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_stock')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "constraint-02",
+      "tool_calls": [
+        "list_items",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_item",
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 175,
+        "estimated": false,
+        "prompt_tokens": 2651,
+        "reasoning_tokens": 121
+      }
+    },
+    {
+      "agent_cost": 0.0026696000000000003,
+      "content": "Eligible items (≥5 units in North): tube (6) and strip (18). Tube costs 9 ovo per unit; strip costs 48 ovo per pack of 6 = 8 ovo per unit. Both are from Tamsin (ovo). Strip has the lowest per-unit price.\n\nANSWER: 8",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 4,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(8.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('list_items')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_stock')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "constraint-03",
+      "tool_calls": [
+        "list_items",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_item",
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 200,
+        "estimated": false,
+        "prompt_tokens": 2637,
+        "reasoning_tokens": 46
+      }
+    },
+    {
+      "agent_cost": 0.0027,
+      "content": "Qualifying items (≥10 units in South): oring (48) and shim (20).\n- oring: 36 sett per pack of 24 → 1.5 sett per unit\n- shim: 2 sett per unit\n\nCheapest per unit is the oring at 1.5 sett.\n\nANSWER: 1.5",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 4,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(1.5)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('list_items')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_stock')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "constraint-04",
+      "tool_calls": [
+        "list_items",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_item",
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 208,
+        "estimated": false,
+        "prompt_tokens": 2647,
+        "reasoning_tokens": 50
+      }
+    },
+    {
+      "agent_cost": 0.0025888,
+      "content": "Bulb: 16 ovo for a pack of 4 → 4 ovo per unit. Globe: 30 ovo per unit. Bulb is lowest.\n\nANSWER: 4",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 4,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(4.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('list_items')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_stock')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "constraint-05",
+      "tool_calls": [
+        "list_items",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_item",
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 170,
+        "estimated": false,
+        "prompt_tokens": 2641,
+        "reasoning_tokens": 22
+      }
+    },
+    {
+      "agent_cost": 0.0026336,
+      "content": "- Lead: 7 units in North, price 12 marr per unit.\n- Clip: 25 units in North, price 20 marr per pack of 5 → 4 marr per unit.\n\nLowest per-unit price is clip at 4 marr.\n\nANSWER: 4",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 4,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(4.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('list_items')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_stock')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "constraint-06",
+      "tool_calls": [
+        "list_items",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_stock",
+        "get_item",
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 188,
+        "estimated": false,
+        "prompt_tokens": 2634,
+        "reasoning_tokens": 43
+      }
+    },
+    {
+      "agent_cost": 0.0016432,
+      "content": "Each pack of 12 bolts costs 24 quill, so 36 units = 3 packs = 72 quill before discount.\n\nANSWER: 72",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(72.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "trap-01",
+      "tool_calls": [
+        "get_item",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 84,
+        "estimated": false,
+        "prompt_tokens": 1760,
+        "reasoning_tokens": 21
+      }
+    },
+    {
+      "agent_cost": 0.0015824,
+      "content": "A pack of 10 screws costs 15 quill from Orvane, so 50 units cost 75 quill before any discount.\n\nANSWER: 75",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(75.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "trap-02",
+      "tool_calls": [
+        "get_item",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 62,
+        "estimated": false,
+        "prompt_tokens": 1761,
+        "reasoning_tokens": 24
+      }
+    },
+    {
+      "agent_cost": 0.0016484,
+      "content": "Gaskets come from Pelling at 40 sett per pack of 8, so a single unit is 5 sett. 24 units cost 120 sett before discount.\n\nANSWER: 120",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(120.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "trap-03",
+      "tool_calls": [
+        "get_item",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 85,
+        "estimated": false,
+        "prompt_tokens": 1763,
+        "reasoning_tokens": 26
+      }
+    },
+    {
+      "agent_cost": 0.0016464000000000001,
+      "content": "Braid is priced at 90 marr per pack of 10 units, so 30 units = 3 packs × 90 = 270 marr before any discount.\n\nANSWER: 270",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(270.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "trap-04",
+      "tool_calls": [
+        "get_item",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 84,
+        "estimated": false,
+        "prompt_tokens": 1764,
+        "reasoning_tokens": 15
+      }
+    },
+    {
+      "agent_cost": 0.0016312000000000002,
+      "content": "A pack of 5 clips costs 20 marr, so 15 single units = 3 packs = 60 marr before any discount.\n\nANSWER: 60",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(60.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "trap-05",
+      "tool_calls": [
+        "get_item",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 80,
+        "estimated": false,
+        "prompt_tokens": 1759,
+        "reasoning_tokens": 27
+      }
+    },
+    {
+      "agent_cost": 0.0016352,
+      "content": "A strip is sold by supplier Tamsin at 48 ovo per pack of 6. Twelve single units = 2 packs = 96 ovo, before discount.\n\nANSWER: 96",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(96.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "trap-06",
+      "tool_calls": [
+        "get_item",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 82,
+        "estimated": false,
+        "prompt_tokens": 1757,
+        "reasoning_tokens": 12
+      }
+    },
+    {
+      "agent_cost": 0.0010188,
+      "content": "The rivet's supplier is Orvane, and the listed price is 3 quill per rivet.\n\nANSWER: 3",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(3.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "easy-01",
+      "tool_calls": [
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 43,
+        "estimated": false,
+        "prompt_tokens": 1123,
+        "reasoning_tokens": 12
+      }
+    },
+    {
+      "agent_cost": 0.0010072,
+      "content": "The anchor's supplier is Orvane, and its listed price is 5 quill per unit.\n\nANSWER: 5",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(5.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "easy-02",
+      "tool_calls": [
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 40,
+        "estimated": false,
+        "prompt_tokens": 1119,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0010064000000000002,
+      "content": "The listed price of one grommet is 7 sett from supplier Pelling.\n\nANSWER: 7",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(7.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "easy-03",
+      "tool_calls": [
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 38,
+        "estimated": false,
+        "prompt_tokens": 1125,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0010016,
+      "content": "The shim is supplied by Pelling at a listed price of 2 sett per unit.\n\nANSWER: 2",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(2.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "easy-04",
+      "tool_calls": [
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 38,
+        "estimated": false,
+        "prompt_tokens": 1119,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0009960000000000001,
+      "content": "The listed price of one lead from supplier Kestrel is 12 marr.\n\nANSWER: 12",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(12.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "easy-05",
+      "tool_calls": [
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 36,
+        "estimated": false,
+        "prompt_tokens": 1119,
+        "reasoning_tokens": 23
+      }
+    },
+    {
+      "agent_cost": 0.001026,
+      "content": "The tube's supplier is Tamsin, and the listed price is 9 ovo per tube.\n\nANSWER: 9",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(9.0)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_item')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "easy-06",
+      "tool_calls": [
+        "get_item"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 47,
+        "estimated": false,
+        "prompt_tokens": 1118,
+        "reasoning_tokens": 7
+      }
+    }
+  ],
+  "config": {
+    "budget": {
+      "amount": 1.0,
+      "currency": "CNY"
+    },
+    "concurrency": 2,
+    "extra_params": {
+      "reasoning_effort": "low"
+    },
+    "llm": "openai",
+    "meta": {
+      "experiment": "exp_c1_reflect",
+      "level": "1",
+      "run_date": "2026-11-19",
+      "system": "c1_baseline",
+      "trial": "true"
+    },
+    "model": "glm-5.3-flash",
+    "price_table": {
+      "glm-5.3-flash": {
+        "cached_input_per_million": 0.23,
+        "checked_on": "2026-11-17",
+        "currency": "CNY",
+        "input_per_million": 0.8,
+        "note": "List price, limited-time discount ignored. I actually use a free new-user token resource package, so report costs are list-price reference values, not actual spend.",
+        "output_per_million": 2.8,
+        "per": "1M tokens",
+        "source": "https://docs.bigmodel.cn/cn/guide/start/pricing.md"
+      }
+    },
+    "prices_file": "prices.glm.yaml",
+    "prices_sha256": "dad4039c29e0",
+    "repeats": 1,
+    "target": "experiments.targets:c1_baseline"
+  },
+  "schema_version": 1,
+  "summary": {
+    "aborted_by_budget": false,
+    "aborted_jobs": 0,
+    "agent_cost": 0.0564176,
+    "completed_jobs": 24,
+    "cost": 0.0564176,
+    "cost_by_currency": {
+      "CNY": 0.0564176
+    },
+    "cost_complete": true,
+    "cost_per_success": 0.0023507333333333334,
+    "currency": "CNY",
+    "estimated_usage": false,
+    "failed": 0,
+    "fx_applied": [],
+    "judge_cost": 0.0,
+    "judge_usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "estimated": false,
+      "prompt_tokens": 0
+    },
+    "meter_discrepancy": 0.0,
+    "meter_total": 0.0564176,
+    "model_requests": 92,
+    "not_run_jobs": 0,
+    "pass_rate": 1.0,
+    "pass_rate_by_repeat": [
+      1.0
+    ],
+    "pass_rate_mean": 1.0,
+    "pass_rate_std": null,
+    "passed": 24,
+    "planned_jobs": 24,
+    "reasoning_share": 0.25130718954248366,
+    "tasks": [
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "deep-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "deep-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "deep-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "deep-04"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "deep-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "deep-06"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "constraint-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "constraint-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "constraint-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "constraint-04"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "constraint-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "constraint-06"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "trap-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "trap-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "trap-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "trap-04"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "trap-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "trap-06"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "easy-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "easy-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "easy-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "easy-04"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "easy-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 1,
+        "repeats_completed": 1,
+        "task_id": "easy-06"
+      }
+    ],
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 3060,
+      "estimated": false,
+      "prompt_tokens": 59812,
+      "reasoning_tokens": 769
+    }
+  },
+  "taskset": {
+    "hash": "b157870426e93d45ddf893021544e7995dfef62676244e88cf52ed8d414f1d4e",
+    "name": "exp-c1-reflect",
+    "version": "1-level1"
+  }
+}
