@@ -1,0 +1,6039 @@
+{
+ "answers": 840,
+ "judged": 840,
+ "judge_errors": 0,
+ "primary_judge_vs_content_rule": {
+  "n": 840,
+  "both_pass": 770,
+  "both_fail": 69,
+  "first_only": 1,
+  "second_only": 0,
+  "agree_rate": 0.9988095238095238,
+  "kappa": 0.9921568627450981,
+  "kappa_ci": [
+   0.9743570174769138,
+   1.0
+  ],
+  "ci_level": 0.95
+ },
+ "secondary_judge_vs_case_status": {
+  "n": 840,
+  "both_pass": 770,
+  "both_fail": 69,
+  "first_only": 1,
+  "second_only": 0,
+  "agree_rate": 0.9988095238095238,
+  "kappa": 0.9921568627450981,
+  "kappa_ci": [
+   0.9743570174769138,
+   1.0
+  ],
+  "ci_level": 0.95
+ },
+ "by_report": {
+  "exp_a_single": {
+   "n": 150,
+   "both_pass": 148,
+   "both_fail": 2,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": 1.0,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_a_planned": {
+   "n": 150,
+   "both_pass": 149,
+   "both_fail": 1,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": 1.0,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_b_window": {
+   "n": 100,
+   "both_pass": 40,
+   "both_fail": 60,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": 1.0,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_b_memory": {
+   "n": 100,
+   "both_pass": 98,
+   "both_fail": 2,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": 1.0,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_b_full": {
+   "n": 100,
+   "both_pass": 98,
+   "both_fail": 2,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": 1.0,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_c1_baseline": {
+   "n": 120,
+   "both_pass": 120,
+   "both_fail": 0,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": null,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_c1_reflect": {
+   "n": 120,
+   "both_pass": 117,
+   "both_fail": 2,
+   "first_only": 1,
+   "second_only": 0,
+   "agree_rate": 0.9916666666666667,
+   "kappa": 0.7959183673469403,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  }
+ },
+ "disagreement_categories": {
+  "format: right or wrong value, but no ANSWER line": 1
+ },
+ "disagreements": [
+  {
+   "id": "exp_c1_reflect:easy-06#4",
+   "category": "format: right or wrong value, but no ANSWER line",
+   "content": "The item \"tube\" (lamps category) is supplied by Tamsin at a listed price of 9 ovo per unit. ANSWER: 9",
+   "rule_failures": [
+    "number_match: no number after the 'ANSWER:' answer line"
+   ],
+   "judge_reason": "The final answer is 9, which matches the expected value."
+  }
+ ],
+ "consistency": {
+  "answers": 100,
+  "verdicts_per_answer": 3,
+  "all_identical": 100
+ },
+ "note": "Judge = the same model that wrote the answers (glm-5.3-flash, reasoning_effort low): self-preference is possible. No human labels.",
+ "rubric": "Judge only whether the final answer is correct; ignore formatting, length and style. Expected: {expected}. Score 1 if the answer's final answer meets this, otherwise 0.",
+ "answer_set_hash": "c24949e854b67df578812239a921efe336e5a95bc2dd9de76fbd3776af32d7d2",
+ "excluded_error_runs": {},
+ "tokens": 261766,
+ "cost_cny": 0.26882848,
+ "http": {
+  "http_requests": 1040,
+  "model_calls": 1040,
+  "extra_http_requests": 0,
+  "status_counts": {
+   "200": 1040
+  },
+  "rate_limited": 0,
+  "retry_after_seen": [],
+  "max_in_flight": 4,
+  "latency_s": {
+   "mean": 1.404,
+   "p50": 1.154,
+   "p90": 1.82,
+   "p99": 6.639,
+   "max": 23.64
+  }
+ },
+ "wall_s": 370.8,
+ "run_date": "2026-11-20",
+ "verdicts": {
+  "exp_a_single:serial-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 21.0 matches the expected 21 within 0.01.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_a_single:serial-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_single:serial-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected value of 66 within 0.01.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_a_single:serial-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_a_single:serial-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_single:serial-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15.0 matches the expected 15 within 0.01.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:serial-07#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 145.0 matches the expected value of 145 within 0.01.",
+   "error": false,
+   "tokens": 237
+  },
+  "exp_a_single:serial-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 302.0 matches the expected value of 302 within 0.01.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_a_single:fanout-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 17, matching the expected value.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_a_single:fanout-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 13, matching the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_a_single:fanout-03#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer states it cannot retrieve the data and gives 0 instead of the expected total of 14.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_single:fanout-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19 matches the expected value.",
+   "error": false,
+   "tokens": 226
+  },
+  "exp_a_single:fanout-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.5 matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:fanout-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_single:fanout-07#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7.6, which matches the expected value.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_single:fanout-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_a_single:flaky-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected 66.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_a_single:flaky-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_a_single:flaky-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_a_single:flaky-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15, which matches the expected value.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_a_single:flaky-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_a_single:flaky-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_a_single:single-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected unit price.",
+   "error": false,
+   "tokens": 201
+  },
+  "exp_a_single:single-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 21, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_single:single-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-07#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_single:serial-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 21.0 matches the expected value of 21 within 0.01.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_a_single:serial-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_a_single:serial-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66.0, which matches the expected 66 within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_single:serial-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:serial-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_single:serial-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15 krell, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_a_single:serial-07#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 145.0 matches the expected 145 within 0.01.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_single:serial-08#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 302.0, which matches the expected value of 302 within 0.01.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_a_single:fanout-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 17, which matches the expected value.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_a_single:fanout-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 13 gizmos in total.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_a_single:fanout-03#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer states the lookup failed and gives 0 instead of the expected 14.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_a_single:fanout-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19, matching the expected value.",
+   "error": false,
+   "tokens": 227
+  },
+  "exp_a_single:fanout-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.5 matches the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_single:fanout-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_single:fanout-07#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_single:fanout-08#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:flaky-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected 66 within 0.01.",
+   "error": false,
+   "tokens": 252
+  },
+  "exp_a_single:flaky-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_a_single:flaky-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within tolerance.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_a_single:flaky-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15.0 matches the expected value of 15 within 0.01.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_a_single:flaky-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_a_single:flaky-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10, matching the expected value.",
+   "error": false,
+   "tokens": 231
+  },
+  "exp_a_single:single-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 190
+  },
+  "exp_a_single:single-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 21, matching the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:single-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:single-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_single:single-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-07#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-08#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 18 matches the expected unit price of 18.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:serial-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_a_single:serial-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_single:serial-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:serial-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:serial-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.8, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_a_single:serial-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15.0, matching the expected value of 15 within 0.01.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_a_single:serial-07#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, matching the expected value.",
+   "error": false,
+   "tokens": 229
+  },
+  "exp_a_single:serial-08#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 302.0 matches the expected value of 302 within 0.01.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_a_single:fanout-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 17, matching the expected value, and each warehouse was checked.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_single:fanout-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states a total of 13, matching the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_a_single:fanout-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_a_single:fanout-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19, matching the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_a_single:fanout-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.5, matching the expected value.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_single:fanout-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_single:fanout-07#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_a_single:fanout-08#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:flaky-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected value of 66 within 0.01.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_a_single:flaky-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_a_single:flaky-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_a_single:flaky-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15 matches the expected value of 15 within 0.01.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_a_single:flaky-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_single:flaky-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.0, which matches the expected value of 10 within 0.01.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_single:single-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 33 matches the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-07#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-08#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, matching the expected value.",
+   "error": false,
+   "tokens": 201
+  },
+  "exp_a_single:serial-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_a_single:serial-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within tolerance.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_single:serial-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_a_single:serial-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_a_single:serial-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:serial-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15.0, which matches the expected value of 15 within 0.01.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_a_single:serial-07#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 226
+  },
+  "exp_a_single:serial-08#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 302 matches the expected value.",
+   "error": false,
+   "tokens": 232
+  },
+  "exp_a_single:fanout-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly reports a total of 17 widgets across Harbor, Summit, and Delta.",
+   "error": false,
+   "tokens": 227
+  },
+  "exp_a_single:fanout-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13, matching the expected value.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_a_single:fanout-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_a_single:fanout-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19, matching the expected total.",
+   "error": false,
+   "tokens": 228
+  },
+  "exp_a_single:fanout-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.5, matching the expected value.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_single:fanout-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_a_single:fanout-07#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value exactly.",
+   "error": false,
+   "tokens": 229
+  },
+  "exp_a_single:fanout-08#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.3, matching the expected value.",
+   "error": false,
+   "tokens": 205
+  },
+  "exp_a_single:flaky-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, which matches the expected value.",
+   "error": false,
+   "tokens": 228
+  },
+  "exp_a_single:flaky-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within tolerance.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_a_single:flaky-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.8, which matches the expected value.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_a_single:flaky-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15.0 matches the expected value of 15 within 0.01.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_a_single:flaky-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_single:flaky-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_a_single:single-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 205
+  },
+  "exp_a_single:single-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 208
+  },
+  "exp_a_single:single-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected unit price within 0.01.",
+   "error": false,
+   "tokens": 209
+  },
+  "exp_a_single:single-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, matching the expected value.",
+   "error": false,
+   "tokens": 201
+  },
+  "exp_a_single:single-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-07#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-08#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, matching the expected value.",
+   "error": false,
+   "tokens": 201
+  },
+  "exp_a_single:serial-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 21.0 matches the expected value 21 within 0.01.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_a_single:serial-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_single:serial-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, matching the expected value.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_a_single:serial-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 252
+  },
+  "exp_a_single:serial-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_a_single:serial-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 229
+  },
+  "exp_a_single:serial-07#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145.0, which matches the expected value of 145 within 0.01.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_a_single:serial-08#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 302, which matches the expected value.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_single:fanout-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 17, matching the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_a_single:fanout-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 13 total gizmos across the warehouses.",
+   "error": false,
+   "tokens": 232
+  },
+  "exp_a_single:fanout-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 226
+  },
+  "exp_a_single:fanout-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19, which matches the expected value.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_a_single:fanout-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.5 matches the expected value.",
+   "error": false,
+   "tokens": 229
+  },
+  "exp_a_single:fanout-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_a_single:fanout-07#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:fanout-08#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:flaky-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:flaky-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_a_single:flaky-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_a_single:flaky-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15.0 matches the expected value of 15.",
+   "error": false,
+   "tokens": 245
+  },
+  "exp_a_single:flaky-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within tolerance.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_a_single:flaky-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10, matching the expected value.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_a_single:single-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_single:single-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_single:single-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 33 matches the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_single:single-07#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_single:single-08#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_planned:serial-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 21 matches the expected value.",
+   "error": false,
+   "tokens": 241
+  },
+  "exp_a_planned:serial-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value exactly.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:serial-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_a_planned:serial-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:serial-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_planned:serial-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15, matching the expected value.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_planned:serial-07#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, matching the expected value.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_a_planned:serial-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 302, matching the expected value.",
+   "error": false,
+   "tokens": 238
+  },
+  "exp_a_planned:fanout-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 17, matching the expected value.",
+   "error": false,
+   "tokens": 225
+  },
+  "exp_a_planned:fanout-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13 matches the expected total.",
+   "error": false,
+   "tokens": 201
+  },
+  "exp_a_planned:fanout-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value.",
+   "error": false,
+   "tokens": 266
+  },
+  "exp_a_planned:fanout-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19 matches the expected value.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_a_planned:fanout-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.5 matches the expected value.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_a_planned:fanout-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 8.8, matching the expected value.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_a_planned:fanout-07#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 228
+  },
+  "exp_a_planned:fanout-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.3, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 211
+  },
+  "exp_a_planned:flaky-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected value of 66 within 0.01.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_planned:flaky-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_a_planned:flaky-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.8, which matches the expected value.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_a_planned:flaky-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15, which matches the expected value.",
+   "error": false,
+   "tokens": 213
+  },
+  "exp_a_planned:flaky-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_planned:flaky-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.0, which matches the expected value of 10 within 0.01.",
+   "error": false,
+   "tokens": 269
+  },
+  "exp_a_planned:single-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 190
+  },
+  "exp_a_planned:single-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_planned:single-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 21, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_planned:single-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, which matches the expected unit price within 0.01.",
+   "error": false,
+   "tokens": 198
+  },
+  "exp_a_planned:single-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 33 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_planned:single-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, which matches the expected value.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_a_planned:single-07#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 27 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 192
+  },
+  "exp_a_planned:single-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, which matches the expected value.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:serial-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 21 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_a_planned:serial-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 16.8, which matches the expected value.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_a_planned:serial-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66 zorin, matching the expected value.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_planned:serial-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_a_planned:serial-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.8, matching the expected value.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:serial-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_a_planned:serial-07#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, which matches the expected value.",
+   "error": false,
+   "tokens": 226
+  },
+  "exp_a_planned:serial-08#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 302, matching the expected value.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_a_planned:fanout-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 17 matches the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_a_planned:fanout-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer's final line correctly states 13, matching the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_planned:fanout-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 14 matches the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_planned:fanout-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19, matching the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_a_planned:fanout-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.5 matches the expected value.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_a_planned:fanout-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 228
+  },
+  "exp_a_planned:fanout-07#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7.6, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 210
+  },
+  "exp_a_planned:fanout-08#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_planned:flaky-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected 66 within 0.01.",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_a_planned:flaky-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value exactly.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_planned:flaky-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_a_planned:flaky-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15, matching the expected value.",
+   "error": false,
+   "tokens": 212
+  },
+  "exp_a_planned:flaky-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value exactly.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_planned:flaky-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_planned:single-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_planned:single-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_planned:single-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:single-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:single-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_planned:single-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, which matches the expected value.",
+   "error": false,
+   "tokens": 194
+  },
+  "exp_a_planned:single-07#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, which matches the expected value.",
+   "error": false,
+   "tokens": 190
+  },
+  "exp_a_planned:single-08#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, which matches the expected value.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:serial-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_a_planned:serial-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:serial-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66.0, which matches the expected value of 66 within 0.01.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_a_planned:serial-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_a_planned:serial-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:serial-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_a_planned:serial-07#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, which matches the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_planned:serial-08#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 302, matching the expected value.",
+   "error": false,
+   "tokens": 227
+  },
+  "exp_a_planned:fanout-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 17 matches the expected value, with each warehouse (Harbor 12, Summit 0, Delta 5) checked and summed correctly.",
+   "error": false,
+   "tokens": 237
+  },
+  "exp_a_planned:fanout-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly totals 13 gizmos across Harbor, Summit, and Delta, matching the expected value.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_a_planned:fanout-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value.",
+   "error": false,
+   "tokens": 237
+  },
+  "exp_a_planned:fanout-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly totals 19 valves across the three warehouses.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_a_planned:fanout-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.5, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_a_planned:fanout-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value.",
+   "error": false,
+   "tokens": 227
+  },
+  "exp_a_planned:fanout-07#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 233
+  },
+  "exp_a_planned:fanout-08#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.3, which matches the expected value.",
+   "error": false,
+   "tokens": 230
+  },
+  "exp_a_planned:flaky-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected value of 66 within 0.01.",
+   "error": false,
+   "tokens": 270
+  },
+  "exp_a_planned:flaky-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:flaky-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:flaky-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15 matches the expected value.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_a_planned:flaky-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 267
+  },
+  "exp_a_planned:flaky-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.0 matches the expected value of 10 within 0.01.",
+   "error": false,
+   "tokens": 269
+  },
+  "exp_a_planned:single-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, which matches the expected value.",
+   "error": false,
+   "tokens": 207
+  },
+  "exp_a_planned:single-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value.",
+   "error": false,
+   "tokens": 189
+  },
+  "exp_a_planned:single-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, which matches the expected unit price.",
+   "error": false,
+   "tokens": 193
+  },
+  "exp_a_planned:single-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 5 matches the expected unit price within 0.01.",
+   "error": false,
+   "tokens": 207
+  },
+  "exp_a_planned:single-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, which matches the expected value exactly.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_planned:single-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, which matches the expected value.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_a_planned:single-07#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, which matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_planned:single-08#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_planned:serial-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_a_planned:serial-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 268
+  },
+  "exp_a_planned:serial-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_a_planned:serial-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value.",
+   "error": false,
+   "tokens": 252
+  },
+  "exp_a_planned:serial-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_a_planned:serial-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_planned:serial-07#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, which matches the expected value.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_a_planned:serial-08#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 302 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_planned:fanout-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 17 matches the expected total.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_a_planned:fanout-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13, matching the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_planned:fanout-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with 'ANSWER: 14', which matches the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_planned:fanout-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly totals 19 valves across Harbor, Summit, and Delta, ending with 'ANSWER: 19'.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_planned:fanout-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.5, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_a_planned:fanout-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 8.8, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_a_planned:fanout-07#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_planned:fanout-08#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.3, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_a_planned:flaky-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected value of 66.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_planned:flaky-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_a_planned:flaky-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value exactly.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_a_planned:flaky-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15.0 matches the expected value of 15 within 0.01.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_a_planned:flaky-05#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The final answer is 20.25, not the expected 13.5.",
+   "error": false,
+   "tokens": 239
+  },
+  "exp_a_planned:flaky-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 10.0, which matches the expected value of 10 within 0.01.",
+   "error": false,
+   "tokens": 245
+  },
+  "exp_a_planned:single-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 14.00 matches the expected value 14 within 0.01.",
+   "error": false,
+   "tokens": 198
+  },
+  "exp_a_planned:single-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value.",
+   "error": false,
+   "tokens": 201
+  },
+  "exp_a_planned:single-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 21 matches the expected unit price exactly.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:single-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 5 matches the expected unit price.",
+   "error": false,
+   "tokens": 190
+  },
+  "exp_a_planned:single-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 33, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_planned:single-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_planned:single-07#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, matching the expected value.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_a_planned:single-08#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_planned:serial-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21 krell, which matches the expected value.",
+   "error": false,
+   "tokens": 252
+  },
+  "exp_a_planned:serial-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 16.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 269
+  },
+  "exp_a_planned:serial-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 66, matching the expected value.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_a_planned:serial-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 13.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_planned:serial-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:serial-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 15, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 239
+  },
+  "exp_a_planned:serial-07#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 145, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_a_planned:serial-08#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 302.0, which matches the expected value of 302 within 0.01.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_a_planned:fanout-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 17, matching the expected value.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_a_planned:fanout-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13, matching the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_a_planned:fanout-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 14 matches the expected value.",
+   "error": false,
+   "tokens": 231
+  },
+  "exp_a_planned:fanout-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19 matches the expected total.",
+   "error": false,
+   "tokens": 225
+  },
+  "exp_a_planned:fanout-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.5 matches the expected value.",
+   "error": false,
+   "tokens": 229
+  },
+  "exp_a_planned:fanout-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer's final answer is 8.8, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 212
+  },
+  "exp_a_planned:fanout-07#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.6 matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_a_planned:fanout-08#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_a_planned:flaky-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 66.0 matches the expected value of 66 within 0.01.",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_a_planned:flaky-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, which matches the expected value.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_a_planned:flaky-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_a_planned:flaky-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 15 matches the expected value exactly.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_a_planned:flaky-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 13.5, matching the expected value.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_a_planned:flaky-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.0 matches the expected value of 10 within 0.01.",
+   "error": false,
+   "tokens": 266
+  },
+  "exp_a_planned:single-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 14, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 194
+  },
+  "exp_a_planned:single-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected value.",
+   "error": false,
+   "tokens": 190
+  },
+  "exp_a_planned:single-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, matching the expected value.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:single-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_a_planned:single-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, which matches the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_a_planned:single-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 211
+  },
+  "exp_a_planned:single-07#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 27, which matches the expected value.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_a_planned:single-08#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 18, matching the expected unit price.",
+   "error": false,
+   "tokens": 191
+  },
+  "exp_b_window:allergy-01#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'kelpberry', which was explicitly provided in the task.",
+   "error": false,
+   "tokens": 269
+  },
+  "exp_b_window:allergy-02#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'zandal nut' and instead claims not to have the information.",
+   "error": false,
+   "tokens": 271
+  },
+  "exp_b_window:allergy-03#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'moonroot', which was the ingredient named as the allergy in the task.",
+   "error": false,
+   "tokens": 291
+  },
+  "exp_b_window:allergy-04#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to identify 'fenwick plum' as the allergen, instead incorrectly claiming the allergy information wasn't provided.",
+   "error": false,
+   "tokens": 300
+  },
+  "exp_b_window:allergy-05#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to identify ashgrain, which was stated in the task, and instead claims the allergies were not provided.",
+   "error": false,
+   "tokens": 303
+  },
+  "exp_b_window:allergy-06#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'tarn seed', which was explicitly given in the task.",
+   "error": false,
+   "tokens": 303
+  },
+  "exp_b_window:deadline-01#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state June 19, instead claiming no deadline was provided.",
+   "error": false,
+   "tokens": 312
+  },
+  "exp_b_window:deadline-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states July 2 and not May 8.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:deadline-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states May 30 as required.",
+   "error": false,
+   "tokens": 278
+  },
+  "exp_b_window:deadline-05#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the deadline 'August 11' and incorrectly claims no deadline was provided.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_b_window:deadline-06#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the deadline September 3 and instead claims not to know it.",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_b_window:refund-zh-01#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer failed to state 'RF-4821', incorrectly claiming no refund number was provided.",
+   "error": false,
+   "tokens": 275
+  },
+  "exp_b_window:refund-zh-02#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "最终回答未给出退款单号RF-7305,而是错误地说没有提到过。",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_b_window:refund-zh-03#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer incorrectly claims no refund number was mentioned instead of stating 'RF-1196'.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_b_window:fits-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_window:fits-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'brack leaf', matching the expected ingredient.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_b_window:fits-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry' as the allergic ingredient.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_window:irrelevant-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, matching the expected result.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_window:irrelevant-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, which matches the expected result.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_window:irrelevant-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 63.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_b_window:allergy-01#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'kelpberry', which was explicitly given in the task.",
+   "error": false,
+   "tokens": 272
+  },
+  "exp_b_window:allergy-02#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'zandal nut', which is the required correct final answer.",
+   "error": false,
+   "tokens": 268
+  },
+  "exp_b_window:allergy-03#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to identify 'moonroot', which was stated in the task record.",
+   "error": false,
+   "tokens": 283
+  },
+  "exp_b_window:allergy-04#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'fenwick plum'.",
+   "error": false,
+   "tokens": 280
+  },
+  "exp_b_window:allergy-05#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'ashgrain', which was given in the task.",
+   "error": false,
+   "tokens": 305
+  },
+  "exp_b_window:allergy-06#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'tarn seed', which was given in the task.",
+   "error": false,
+   "tokens": 302
+  },
+  "exp_b_window:deadline-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:deadline-02#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer claims no deadline was mentioned instead of stating July 2.",
+   "error": false,
+   "tokens": 302
+  },
+  "exp_b_window:deadline-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'May 30' and does not give 'April 22'.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_b_window:deadline-05#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the deadline 'August 11' which was provided in the task.",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_b_window:deadline-06#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'September 3' as the deadline.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_b_window:refund-zh-01#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'RF-4821', incorrectly claiming no refund number was provided.",
+   "error": false,
+   "tokens": 272
+  },
+  "exp_b_window:refund-zh-02#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "正确答案应为RF-7305,但回答称未提及退款单号。",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_b_window:refund-zh-03#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to recall the refund number RF-1196 that was mentioned earlier in the conversation.",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_b_window:fits-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'quillnut'.",
+   "error": false,
+   "tokens": 200
+  },
+  "exp_b_window:fits-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'brack leaf'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_window:fits-03#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to identify 'dun berry' as the allergy ingredient despite it being stated in the record.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_b_window:irrelevant-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, matching the expected value.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_window:irrelevant-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, matching the expected result.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_window:irrelevant-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, which matches the expected result.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_window:allergy-01#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'kelpberry' and instead asks for context, ignoring the allergy note in the task.",
+   "error": false,
+   "tokens": 275
+  },
+  "exp_b_window:allergy-02#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'zandal nut' as the allergic ingredient.",
+   "error": false,
+   "tokens": 268
+  },
+  "exp_b_window:allergy-03#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'moonroot' as the allergic ingredient, instead asking for more information.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_window:allergy-04#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'fenwick plum', which was mentioned in the prompt's opening line.",
+   "error": false,
+   "tokens": 296
+  },
+  "exp_b_window:allergy-05#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'ashgrain', so it fails the rubric.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:allergy-06#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'tarn seed' as required.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_b_window:deadline-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states June 19 and not March 4.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:deadline-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'July 2' and does not mention 'May 8'.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:deadline-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states the deadline as May 30, matching the correction.",
+   "error": false,
+   "tokens": 319
+  },
+  "exp_b_window:deadline-05#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer failed to state the deadline 'August 11' and instead asked for the information.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_b_window:deadline-06#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state September 3, which was explicitly provided in the task.",
+   "error": false,
+   "tokens": 274
+  },
+  "exp_b_window:refund-zh-01#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer failed to state 'RF-4821' and incorrectly claimed the refund number was never mentioned.",
+   "error": false,
+   "tokens": 275
+  },
+  "exp_b_window:refund-zh-02#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "回答未给出单号 RF-7305，错误地称未提及过退款单号。",
+   "error": false,
+   "tokens": 270
+  },
+  "exp_b_window:refund-zh-03#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state RF-1196, incorrectly claiming the number was never provided.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_b_window:fits-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut' as the allergen.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_window:fits-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Brack leaf', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_window:fits-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'dun berry', which matches the expected ingredient.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_window:irrelevant-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer line correctly states 42.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_window:irrelevant-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, which matches the expected value.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:irrelevant-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 63.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_b_window:allergy-01#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'kelpberry', claiming no allergy information was provided despite the task explicitly stating it.",
+   "error": false,
+   "tokens": 276
+  },
+  "exp_b_window:allergy-02#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'zandal nut', which was provided in the task context.",
+   "error": false,
+   "tokens": 276
+  },
+  "exp_b_window:allergy-03#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'moonroot' despite it being provided in the task context.",
+   "error": false,
+   "tokens": 279
+  },
+  "exp_b_window:allergy-04#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'fenwick plum', instead asking for clarification.",
+   "error": false,
+   "tokens": 293
+  },
+  "exp_b_window:allergy-05#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'ashgrain', which was explicitly provided in the task.",
+   "error": false,
+   "tokens": 299
+  },
+  "exp_b_window:allergy-06#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'tarn seed' as the ingredient.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_window:deadline-01#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state June 19 as the deadline, which was corrected in the task.",
+   "error": false,
+   "tokens": 317
+  },
+  "exp_b_window:deadline-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_b_window:deadline-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states May 30 and does not mention April 22.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_window:deadline-05#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the report deadline of August 11, which was given in the task.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_b_window:deadline-06#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the September 3 deadline that was given in the task.",
+   "error": false,
+   "tokens": 268
+  },
+  "exp_b_window:refund-zh-01#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "回答未能提供单号RF-4821，错误地声称未提到过退款单号。",
+   "error": false,
+   "tokens": 274
+  },
+  "exp_b_window:refund-zh-02#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "用户在第一条消息中已提供了退款单号 RF-7305，回答声称未提供过因此错误。",
+   "error": false,
+   "tokens": 273
+  },
+  "exp_b_window:refund-zh-03#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the refund number RF-1196 that appeared earlier in the conversation.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_b_window:fits-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'quillnut', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 205
+  },
+  "exp_b_window:fits-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Brack leaf', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_window:fits-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry' as the allergen.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_window:irrelevant-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, which is correct.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_b_window:irrelevant-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 67.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_window:irrelevant-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states that 36 plus 27 equals 63, ending with 'ANSWER: 63'.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_b_window:allergy-01#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer does not state 'kelpberry' as the allergen, failing the rubric.",
+   "error": false,
+   "tokens": 268
+  },
+  "exp_b_window:allergy-02#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to identify the allergy as 'zandal nut', which was stated in the conversation.",
+   "error": false,
+   "tokens": 272
+  },
+  "exp_b_window:allergy-03#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'moonroot', asking the user for details instead.",
+   "error": false,
+   "tokens": 277
+  },
+  "exp_b_window:allergy-04#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'fenwick plum', which was mentioned in the user's own message.",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_b_window:allergy-05#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'ashgrain', instead asking for clarification, so it does not meet the rubric.",
+   "error": false,
+   "tokens": 307
+  },
+  "exp_b_window:allergy-06#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'tarn seed' despite it being provided in the task context.",
+   "error": false,
+   "tokens": 312
+  },
+  "exp_b_window:deadline-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 296
+  },
+  "exp_b_window:deadline-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states July 2 and not May 8, satisfying the rubric.",
+   "error": false,
+   "tokens": 294
+  },
+  "exp_b_window:deadline-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states May 30 and does not give April 22.",
+   "error": false,
+   "tokens": 283
+  },
+  "exp_b_window:deadline-05#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the deadline of August 11.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_b_window:deadline-06#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'September 3' and instead claims the deadline is unknown.",
+   "error": false,
+   "tokens": 271
+  },
+  "exp_b_window:refund-zh-01#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the refund number RF-4821, which was provided in the conversation.",
+   "error": false,
+   "tokens": 271
+  },
+  "exp_b_window:refund-zh-02#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to provide the expected refund number RF-7305, which was mentioned earlier in the conversation.",
+   "error": false,
+   "tokens": 275
+  },
+  "exp_b_window:refund-zh-03#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer failed to recall the refund number RF-1196 stated earlier in the conversation.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_b_window:fits-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut', matching the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 207
+  },
+  "exp_b_window:fits-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'brack leaf'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_window:fits-03#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer failed to identify 'dun berry' despite it being stated in the context.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_b_window:irrelevant-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 42 correctly satisfies 17 plus 25.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_b_window:irrelevant-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, which matches the expected result.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_window:irrelevant-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, which matches the expected result.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_memory:allergy-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'kelpberry', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:allergy-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'zandal nut' as the allergen, matching the expected ingredient.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_b_memory:allergy-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'moonroot'.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_b_memory:allergy-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Fenwick plum', matching the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_memory:allergy-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Ashgrain' (case irrelevant), satisfying the rubric.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_b_memory:allergy-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed' as the ingredient.",
+   "error": false,
+   "tokens": 285
+  },
+  "exp_b_memory:deadline-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states June 19 and not March 4.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_memory:deadline-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states July 2 and not May 8, satisfying the rubric.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_memory:deadline-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline of May 30 without mentioning April 22.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_b_memory:deadline-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states the report deadline as August 11.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_memory:deadline-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the report deadline as 'September 3', matching the expected date.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:refund-zh-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-4821', matching the expected refund number.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_b_memory:refund-zh-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-7305.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:refund-zh-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "答案正确地给出了RF-1196，符合预期。",
+   "error": false,
+   "tokens": 245
+  },
+  "exp_b_memory:fits-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'quillnut', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 205
+  },
+  "exp_b_memory:fits-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Brack leaf', matching the expected allergy.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_memory:fits-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry' as the allergen.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_memory:irrelevant-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, which matches the expected result.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_b_memory:irrelevant-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 67 is correct.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_b_memory:irrelevant-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 63 is correct.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_b_memory:allergy-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'kelpberry', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:allergy-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'zandal nut'.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_memory:allergy-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'moonroot' as the allergen, matching the expected answer regardless of case.",
+   "error": false,
+   "tokens": 269
+  },
+  "exp_b_memory:allergy-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'fenwick plum'.",
+   "error": false,
+   "tokens": 274
+  },
+  "exp_b_memory:allergy-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Ashgrain', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 285
+  },
+  "exp_b_memory:allergy-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed' as the allergen, matching the expected answer regardless of case.",
+   "error": false,
+   "tokens": 294
+  },
+  "exp_b_memory:deadline-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'June 19' as the updated deadline and does not mention 'March 4'.",
+   "error": false,
+   "tokens": 309
+  },
+  "exp_b_memory:deadline-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline as July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 296
+  },
+  "exp_b_memory:deadline-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states the updated deadline as May 30 and does not mention April 22.",
+   "error": false,
+   "tokens": 288
+  },
+  "exp_b_memory:deadline-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states the deadline is August 11, matching the expected answer.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:deadline-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'September 3', matching the expected date.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_memory:refund-zh-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "答案正确给出了退款单号 RF-4821。",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_b_memory:refund-zh-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-7305 as required.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_memory:refund-zh-03#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer failed to state the refund number RF-1196 that appeared in the conversation.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_memory:fits-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut' as the allergen.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_memory:fits-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Brack leaf'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_memory:fits-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry'.",
+   "error": false,
+   "tokens": 195
+  },
+  "exp_b_memory:irrelevant-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, which matches the expected value.",
+   "error": false,
+   "tokens": 293
+  },
+  "exp_b_memory:irrelevant-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 67 is correct.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_memory:irrelevant-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, which matches the expected value.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_memory:allergy-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'Kelpberry', which matches the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_b_memory:allergy-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'zandal nut'.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_memory:allergy-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Moonroot', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_b_memory:allergy-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Fenwick plum' as the allergen, matching the expected answer regardless of letter case.",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_b_memory:allergy-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'ashgrain' as the allergen.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_memory:allergy-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 289
+  },
+  "exp_b_memory:deadline-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 296
+  },
+  "exp_b_memory:deadline-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline, July 2.",
+   "error": false,
+   "tokens": 288
+  },
+  "exp_b_memory:deadline-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states May 30 and does not give April 22, satisfying the rubric.",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_b_memory:deadline-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states the correct date, August 11.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_memory:deadline-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'September 3', matching the expected date.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_memory:refund-zh-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-4821', matching the expected refund number.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_b_memory:refund-zh-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-7305' as required.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_b_memory:refund-zh-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-1196' as required by the rubric.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_memory:fits-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut' as the allergen.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_memory:fits-02#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer says 'Bay leaf' instead of the correct 'brack leaf'.",
+   "error": false,
+   "tokens": 205
+  },
+  "exp_b_memory:fits-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Dun berry' as the allergen, matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 207
+  },
+  "exp_b_memory:irrelevant-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, matching the expected result of 17 plus 25.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:irrelevant-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final line correctly states 67, matching the expected answer.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_memory:irrelevant-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 63.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_b_memory:allergy-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'kelpberry', which matches the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:allergy-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'zandal nut'.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_memory:allergy-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Moonroot', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_b_memory:allergy-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Fenwick plum', matching the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_memory:allergy-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'ashgrain'.",
+   "error": false,
+   "tokens": 278
+  },
+  "exp_b_memory:allergy-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed' as the allergen, matching the expected answer.",
+   "error": false,
+   "tokens": 291
+  },
+  "exp_b_memory:deadline-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states June 19.",
+   "error": false,
+   "tokens": 290
+  },
+  "exp_b_memory:deadline-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_b_memory:deadline-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states May 30 and does not mention April 22.",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_b_memory:deadline-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the report deadline as August 11, matching the rubric's expectation.",
+   "error": false,
+   "tokens": 279
+  },
+  "exp_b_memory:deadline-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the report deadline as September 3.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_b_memory:refund-zh-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund order number RF-4821 as required.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_b_memory:refund-zh-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-7305 as required.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_memory:refund-zh-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-1196' as required.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_memory:fits-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_memory:fits-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Brack leaf', matching the expected allergy (case-insensitive).",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_memory:fits-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry'.",
+   "error": false,
+   "tokens": 195
+  },
+  "exp_b_memory:irrelevant-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, matching the expected result.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_memory:irrelevant-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 67, satisfying the rubric.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_memory:irrelevant-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, matching the expected value.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_b_memory:allergy-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'Kelpberry', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_b_memory:allergy-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'zandal nut'.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_memory:allergy-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'moonroot', matching the expected ingredient.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_b_memory:allergy-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'fenwick plum' (case-insensitive), matching the expected ingredient.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_memory:allergy-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Ashgrain', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 285
+  },
+  "exp_b_memory:allergy-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Tarn seed'.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_memory:deadline-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 296
+  },
+  "exp_b_memory:deadline-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline, July 2, and does not mention May 8.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_b_memory:deadline-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states May 30, matching the corrected deadline.",
+   "error": false,
+   "tokens": 283
+  },
+  "exp_b_memory:deadline-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'August 11', matching the expected deadline.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_b_memory:deadline-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'September 3', matching the expected date.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_memory:refund-zh-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-4821 as required.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_b_memory:refund-zh-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund order number RF-7305 as expected.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_b_memory:refund-zh-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-1196'.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_b_memory:fits-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_memory:fits-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'brack leaf' as the allergen.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_memory:fits-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies 'dun berry' as the allergen.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_memory:irrelevant-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 42.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_memory:irrelevant-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 48 + 19 = 67.",
+   "error": false,
+   "tokens": 252
+  },
+  "exp_b_memory:irrelevant-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 63 is correct.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_b_full:allergy-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'kelpberry', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_b_full:allergy-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'Zandal nut'.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_full:allergy-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Moonroot', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_b_full:allergy-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'fenwick plum'.",
+   "error": false,
+   "tokens": 273
+  },
+  "exp_b_full:allergy-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'ashgrain'.",
+   "error": false,
+   "tokens": 278
+  },
+  "exp_b_full:allergy-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed' as the allergic ingredient.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_b_full:deadline-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_full:deadline-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states July 2 and not May 8, satisfying the rubric.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_b_full:deadline-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states May 30 and does not mention April 22.",
+   "error": false,
+   "tokens": 283
+  },
+  "exp_b_full:deadline-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'August 11', which matches the expected deadline.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_b_full:deadline-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'September 3', matching the expected date.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:refund-zh-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund order number 'RF-4821' as expected.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_b_full:refund-zh-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-7305 as required.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_full:refund-zh-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-1196 as required.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_b_full:fits-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Quillnut', which matches the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 207
+  },
+  "exp_b_full:fits-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'brack leaf', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_full:fits-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry' as the ingredient the user is allergic to.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_full:irrelevant-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, matching the expected result.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:irrelevant-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, which is correct.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_b_full:irrelevant-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, which is correct.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_b_full:allergy-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'kelpberry'.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_full:allergy-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'zandal nut' (case-insensitive match).",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_full:allergy-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 'moonroot', which matches the expected ingredient.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_b_full:allergy-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'fenwick plum'.",
+   "error": false,
+   "tokens": 273
+  },
+  "exp_b_full:allergy-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'ashgrain' as the allergen, matching the expected answer.",
+   "error": false,
+   "tokens": 288
+  },
+  "exp_b_full:allergy-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed' as the allergen, matching the expected answer.",
+   "error": false,
+   "tokens": 291
+  },
+  "exp_b_full:deadline-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 328
+  },
+  "exp_b_full:deadline-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_b_full:deadline-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states May 30 and does not give the outdated April 22.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_b_full:deadline-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'August 11', matching the expected date.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_full:deadline-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'September 3', matching the expected deadline.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:refund-zh-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-4821.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_full:refund-zh-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'RF-7305' as expected by the rubric.",
+   "error": false,
+   "tokens": 260
+  },
+  "exp_b_full:refund-zh-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-1196' as the refund order number.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_b_full:fits-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_full:fits-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Brack leaf', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_full:fits-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry'.",
+   "error": false,
+   "tokens": 195
+  },
+  "exp_b_full:irrelevant-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, matching the expected value.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:irrelevant-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, matching the expected value.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:irrelevant-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 63.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_b_full:allergy-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'kelpberry' as the allergen.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_full:allergy-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'zandal nut'.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_full:allergy-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Moonroot', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_b_full:allergy-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'fenwick plum'.",
+   "error": false,
+   "tokens": 273
+  },
+  "exp_b_full:allergy-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'ashgrain' as the allergic ingredient.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_full:allergy-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 289
+  },
+  "exp_b_full:deadline-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline, June 19, and does not mention March 4.",
+   "error": false,
+   "tokens": 301
+  },
+  "exp_b_full:deadline-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline as July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_b_full:deadline-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states May 30 as the updated deadline.",
+   "error": false,
+   "tokens": 280
+  },
+  "exp_b_full:deadline-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states the date 'August 11'.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_full:deadline-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'September 3'.",
+   "error": false,
+   "tokens": 247
+  },
+  "exp_b_full:refund-zh-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund order number 'RF-4821' as required.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_b_full:refund-zh-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-7305 as required.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_full:refund-zh-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-1196' as required by the rubric.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:fits-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'quillnut', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 207
+  },
+  "exp_b_full:fits-02#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer says 'Basil' instead of 'brack leaf', so it does not match the expected ingredient.",
+   "error": false,
+   "tokens": 211
+  },
+  "exp_b_full:fits-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Dun berry', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_b_full:irrelevant-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 42 is correct.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:irrelevant-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 67, matching the expected result.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:irrelevant-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 63 is correct.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_b_full:allergy-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 'Kelpberry', which matches the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:allergy-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'zandal nut' as the allergen.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:allergy-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Moonroot'.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_b_full:allergy-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies 'fenwick plum' as the ingredient, matching the expected response.",
+   "error": false,
+   "tokens": 281
+  },
+  "exp_b_full:allergy-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'ashgrain' as the allergen.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_b_full:allergy-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'Tarn seed' (case-insensitive match).",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_b_full:deadline-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states June 19 and does not mention March 4.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_b_full:deadline-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_b_full:deadline-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states May 30 as the updated deadline, matching the rubric.",
+   "error": false,
+   "tokens": 285
+  },
+  "exp_b_full:deadline-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states the report deadline as August 11, matching the expected date.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_full:deadline-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states the report deadline as September 3.",
+   "error": false,
+   "tokens": 276
+  },
+  "exp_b_full:refund-zh-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund order number 'RF-4821' as required.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_b_full:refund-zh-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number RF-7305.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:refund-zh-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund order number 'RF-1196' as expected.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:fits-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'quillnut', which matches the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 206
+  },
+  "exp_b_full:fits-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Brack leaf', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 205
+  },
+  "exp_b_full:fits-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry' as the allergen.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_full:irrelevant-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, which matches the expected result.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_b_full:irrelevant-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 67 is correct.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_full:irrelevant-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, which matches the expected result.",
+   "error": false,
+   "tokens": 248
+  },
+  "exp_b_full:allergy-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'kelpberry', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:allergy-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'zandal nut' as the allergen.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_b_full:allergy-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'moonroot' as the allergen.",
+   "error": false,
+   "tokens": 261
+  },
+  "exp_b_full:allergy-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'fenwick plum' as the allergic ingredient.",
+   "error": false,
+   "tokens": 277
+  },
+  "exp_b_full:allergy-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Ashgrain', which matches the expected allergen regardless of case.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_b_full:allergy-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'tarn seed', matching the expected ingredient regardless of case.",
+   "error": false,
+   "tokens": 289
+  },
+  "exp_b_full:deadline-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states June 19 and not March 4.",
+   "error": false,
+   "tokens": 294
+  },
+  "exp_b_full:deadline-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states July 2 and does not mention May 8.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_b_full:deadline-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the updated deadline of May 30 without mentioning April 22.",
+   "error": false,
+   "tokens": 284
+  },
+  "exp_b_full:deadline-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the report deadline as August 11.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_full:deadline-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 'September 3'.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_b_full:refund-zh-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'RF-4821' as required.",
+   "error": false,
+   "tokens": 257
+  },
+  "exp_b_full:refund-zh-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is exactly RF-7305, matching the expected refund number.",
+   "error": false,
+   "tokens": 258
+  },
+  "exp_b_full:refund-zh-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is exactly 'RF-1196', matching the expected refund number.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:fits-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'quillnut'.",
+   "error": false,
+   "tokens": 199
+  },
+  "exp_b_full:fits-02#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer says 'Bay leaf' instead of the correct 'brack leaf'.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_b_full:fits-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 'dun berry' as the ingredient the user is allergic to.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_b_full:irrelevant-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states 42.",
+   "error": false,
+   "tokens": 250
+  },
+  "exp_b_full:irrelevant-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 48 + 19 = 67.",
+   "error": false,
+   "tokens": 251
+  },
+  "exp_b_full:irrelevant-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 63, matching the expected result.",
+   "error": false,
+   "tokens": 241
+  },
+  "exp_c1_baseline:deep-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value exactly.",
+   "error": false,
+   "tokens": 220
+  },
+  "exp_c1_baseline:deep-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162, matching the expected value.",
+   "error": false,
+   "tokens": 273
+  },
+  "exp_c1_baseline:deep-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 matches the expected value.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_c1_baseline:deep-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value.",
+   "error": false,
+   "tokens": 277
+  },
+  "exp_c1_baseline:deep-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12.8 marr, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 265
+  },
+  "exp_c1_baseline:deep-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19.2 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 299
+  },
+  "exp_c1_baseline:constraint-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer gives 24, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 332
+  },
+  "exp_c1_baseline:constraint-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies grommet as the cheapest qualifying item with a cost of 35.",
+   "error": false,
+   "tokens": 308
+  },
+  "exp_c1_baseline:constraint-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 321
+  },
+  "exp_c1_baseline:constraint-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 330
+  },
+  "exp_c1_baseline:constraint-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 32, matching the expected value.",
+   "error": false,
+   "tokens": 304
+  },
+  "exp_c1_baseline:constraint-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 316
+  },
+  "exp_c1_baseline:trap-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 72, which matches the expected value.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_c1_baseline:trap-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly computes 50 units as 75 and ends with ANSWER: 75.",
+   "error": false,
+   "tokens": 253
+  },
+  "exp_c1_baseline:trap-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 120 as the cost before discount.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_c1_baseline:trap-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, which matches the expected value.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_c1_baseline:trap-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 60 matches the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_c1_baseline:trap-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value.",
+   "error": false,
+   "tokens": 241
+  },
+  "exp_c1_baseline:easy-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 3 matches the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_c1_baseline:easy-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_baseline:easy-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 7, which matches the expected value.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_c1_baseline:easy-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_baseline:easy-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer correctly states the price as 12.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_baseline:easy-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 9 matches the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_baseline:deep-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value exactly.",
+   "error": false,
+   "tokens": 303
+  },
+  "exp_c1_baseline:deep-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 162 matches the expected value.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_c1_baseline:deep-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 quill matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_c1_baseline:deep-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_c1_baseline:deep-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 12.8 matches the expected value.",
+   "error": false,
+   "tokens": 325
+  },
+  "exp_c1_baseline:deep-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19.2, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 317
+  },
+  "exp_c1_baseline:constraint-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 24, matching the expected value.",
+   "error": false,
+   "tokens": 317
+  },
+  "exp_c1_baseline:constraint-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 35, matching the expected value.",
+   "error": false,
+   "tokens": 320
+  },
+  "exp_c1_baseline:constraint-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 306
+  },
+  "exp_c1_baseline:constraint-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 330
+  },
+  "exp_c1_baseline:constraint-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies the bulb as the qualifying item and the final answer is 32, matching the expected value.",
+   "error": false,
+   "tokens": 304
+  },
+  "exp_c1_baseline:constraint-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 320
+  },
+  "exp_c1_baseline:trap-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly computes 36 units at 2 quill each for a total of 72.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_baseline:trap-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 75, matching the expected value.",
+   "error": false,
+   "tokens": 240
+  },
+  "exp_c1_baseline:trap-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 120, matching the expected value.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_baseline:trap-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, matching the expected value.",
+   "error": false,
+   "tokens": 233
+  },
+  "exp_c1_baseline:trap-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, which matches the expected value.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_c1_baseline:trap-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_c1_baseline:easy-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 3, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_c1_baseline:easy-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_c1_baseline:easy-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states 7, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_c1_baseline:easy-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, which matches the expected value.",
+   "error": false,
+   "tokens": 211
+  },
+  "exp_c1_baseline:easy-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with 'ANSWER: 12', matching the expected value of 12.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_c1_baseline:easy-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_c1_baseline:deep-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value.",
+   "error": false,
+   "tokens": 278
+  },
+  "exp_c1_baseline:deep-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 162 ovo matches the expected value.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_c1_baseline:deep-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 matches the expected value.",
+   "error": false,
+   "tokens": 298
+  },
+  "exp_c1_baseline:deep-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_c1_baseline:deep-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12.8 marr, matching the expected value.",
+   "error": false,
+   "tokens": 298
+  },
+  "exp_c1_baseline:deep-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19.2 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 271
+  },
+  "exp_c1_baseline:constraint-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 24, matching the expected value.",
+   "error": false,
+   "tokens": 308
+  },
+  "exp_c1_baseline:constraint-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 35, matching the expected value.",
+   "error": false,
+   "tokens": 291
+  },
+  "exp_c1_baseline:constraint-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_c1_baseline:constraint-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_c1_baseline:constraint-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer concludes with 32, matching the expected value.",
+   "error": false,
+   "tokens": 315
+  },
+  "exp_c1_baseline:constraint-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 333
+  },
+  "exp_c1_baseline:trap-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 72 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_baseline:trap-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 75, matching the expected value.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_c1_baseline:trap-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 120, matching the expected value.",
+   "error": false,
+   "tokens": 231
+  },
+  "exp_c1_baseline:trap-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, matching the expected value.",
+   "error": false,
+   "tokens": 252
+  },
+  "exp_c1_baseline:trap-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, matching the expected value.",
+   "error": false,
+   "tokens": 245
+  },
+  "exp_c1_baseline:trap-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_c1_baseline:easy-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the listed price of 3 in the supplier's currency.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_c1_baseline:easy-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, which matches the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_c1_baseline:easy-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states a listed price of 7, matching the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_c1_baseline:easy-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_baseline:easy-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 212
+  },
+  "exp_c1_baseline:easy-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_baseline:deep-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 291
+  },
+  "exp_c1_baseline:deep-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162, matching the expected value.",
+   "error": false,
+   "tokens": 302
+  },
+  "exp_c1_baseline:deep-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 308
+  },
+  "exp_c1_baseline:deep-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value.",
+   "error": false,
+   "tokens": 285
+  },
+  "exp_c1_baseline:deep-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12.8, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_c1_baseline:deep-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19.2, matching the expected value.",
+   "error": false,
+   "tokens": 267
+  },
+  "exp_c1_baseline:constraint-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 24 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 254
+  },
+  "exp_c1_baseline:constraint-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 35, matching the expected value.",
+   "error": false,
+   "tokens": 295
+  },
+  "exp_c1_baseline:constraint-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 304
+  },
+  "exp_c1_baseline:constraint-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 20, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 263
+  },
+  "exp_c1_baseline:constraint-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 32, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 331
+  },
+  "exp_c1_baseline:constraint-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 20, matching the expected value.",
+   "error": false,
+   "tokens": 314
+  },
+  "exp_c1_baseline:trap-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 72, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 245
+  },
+  "exp_c1_baseline:trap-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 75, matching the expected value.",
+   "error": false,
+   "tokens": 232
+  },
+  "exp_c1_baseline:trap-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 120, matching the expected value.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_c1_baseline:trap-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 270 matches the expected value.",
+   "error": false,
+   "tokens": 238
+  },
+  "exp_c1_baseline:trap-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 60 matches the expected value.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_c1_baseline:trap-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value.",
+   "error": false,
+   "tokens": 226
+  },
+  "exp_c1_baseline:easy-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 3, which matches the expected value.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_c1_baseline:easy-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_baseline:easy-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7, which matches the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_baseline:easy-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_baseline:easy-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the price as 12, matching the expected value.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_baseline:easy-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 9 matches the expected value.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_baseline:deep-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value.",
+   "error": false,
+   "tokens": 293
+  },
+  "exp_c1_baseline:deep-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162 ovo, matching the expected value.",
+   "error": false,
+   "tokens": 283
+  },
+  "exp_c1_baseline:deep-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7.5, matching the expected value.",
+   "error": false,
+   "tokens": 280
+  },
+  "exp_c1_baseline:deep-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, which matches the expected value.",
+   "error": false,
+   "tokens": 286
+  },
+  "exp_c1_baseline:deep-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 12.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_c1_baseline:deep-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19.2, which matches the expected value.",
+   "error": false,
+   "tokens": 290
+  },
+  "exp_c1_baseline:constraint-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 24, matching the expected value.",
+   "error": false,
+   "tokens": 314
+  },
+  "exp_c1_baseline:constraint-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 35, matching the expected value.",
+   "error": false,
+   "tokens": 309
+  },
+  "exp_c1_baseline:constraint-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 300
+  },
+  "exp_c1_baseline:constraint-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies shim as the cheapest qualifying item and ends with ANSWER: 20, matching the expected value.",
+   "error": false,
+   "tokens": 310
+  },
+  "exp_c1_baseline:constraint-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with 32, matching the expected value.",
+   "error": false,
+   "tokens": 335
+  },
+  "exp_c1_baseline:constraint-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 20, matching the expected value of 20.",
+   "error": false,
+   "tokens": 332
+  },
+  "exp_c1_baseline:trap-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 72 matches the expected value exactly.",
+   "error": false,
+   "tokens": 255
+  },
+  "exp_c1_baseline:trap-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 75, matching the expected value.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_baseline:trap-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 120, matching the expected value.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_c1_baseline:trap-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 270, which matches the expected value.",
+   "error": false,
+   "tokens": 225
+  },
+  "exp_c1_baseline:trap-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, which matches the expected value.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_c1_baseline:trap-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 96 matches the expected value.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_baseline:easy-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer states the price is 3, matching the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_c1_baseline:easy-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_c1_baseline:easy-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7, matching the expected value.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_baseline:easy-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_baseline:easy-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_c1_baseline:easy-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value.",
+   "error": false,
+   "tokens": 216
+  },
+  "exp_c1_reflect:deep-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 sett matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_c1_reflect:deep-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162, matching the expected value.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_c1_reflect:deep-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 quill matches the expected value.",
+   "error": false,
+   "tokens": 270
+  },
+  "exp_c1_reflect:deep-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value.",
+   "error": false,
+   "tokens": 282
+  },
+  "exp_c1_reflect:deep-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12.8, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_c1_reflect:deep-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19.2 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 308
+  },
+  "exp_c1_reflect:constraint-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 24 matches the expected value.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_c1_reflect:constraint-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 35 matches the expected value.",
+   "error": false,
+   "tokens": 289
+  },
+  "exp_c1_reflect:constraint-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 326
+  },
+  "exp_c1_reflect:constraint-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 307
+  },
+  "exp_c1_reflect:constraint-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 32, matching the expected value.",
+   "error": false,
+   "tokens": 309
+  },
+  "exp_c1_reflect:constraint-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 324
+  },
+  "exp_c1_reflect:trap-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 72, which matches the expected value.",
+   "error": false,
+   "tokens": 203
+  },
+  "exp_c1_reflect:trap-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 75, which matches the expected value.",
+   "error": false,
+   "tokens": 245
+  },
+  "exp_c1_reflect:trap-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 120, which matches the expected value.",
+   "error": false,
+   "tokens": 233
+  },
+  "exp_c1_reflect:trap-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, matching the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_c1_reflect:trap-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, matching the expected value.",
+   "error": false,
+   "tokens": 238
+  },
+  "exp_c1_reflect:trap-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 96 matches the expected value.",
+   "error": false,
+   "tokens": 223
+  },
+  "exp_c1_reflect:easy-01#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 3, matching the expected value.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_c1_reflect:easy-02#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer '5' matches the expected value of 5 within 0.01.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_c1_reflect:easy-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_reflect:easy-04#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 213
+  },
+  "exp_c1_reflect:easy-05#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 213
+  },
+  "exp_c1_reflect:easy-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 220
+  },
+  "exp_c1_reflect:deep-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer arrives at 345.6 sett, matching the expected value.",
+   "error": false,
+   "tokens": 307
+  },
+  "exp_c1_reflect:deep-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162 ovo, matching the expected value.",
+   "error": false,
+   "tokens": 281
+  },
+  "exp_c1_reflect:deep-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7.5, matching the expected value.",
+   "error": false,
+   "tokens": 268
+  },
+  "exp_c1_reflect:deep-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360 ovo, which matches the expected value.",
+   "error": false,
+   "tokens": 271
+  },
+  "exp_c1_reflect:deep-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12.8, matching the expected value.",
+   "error": false,
+   "tokens": 287
+  },
+  "exp_c1_reflect:deep-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19.2 matches the expected value.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_c1_reflect:constraint-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 24, matching the expected value.",
+   "error": false,
+   "tokens": 284
+  },
+  "exp_c1_reflect:constraint-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 35, matching the expected value.",
+   "error": false,
+   "tokens": 345
+  },
+  "exp_c1_reflect:constraint-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 45, matching the expected value.",
+   "error": false,
+   "tokens": 289
+  },
+  "exp_c1_reflect:constraint-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies 20 as the cheapest qualifying purchase cost.",
+   "error": false,
+   "tokens": 304
+  },
+  "exp_c1_reflect:constraint-05#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The final answer is 150, which does not match the expected value of 32.",
+   "error": false,
+   "tokens": 335
+  },
+  "exp_c1_reflect:constraint-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 334
+  },
+  "exp_c1_reflect:trap-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 72 matches the expected value.",
+   "error": false,
+   "tokens": 226
+  },
+  "exp_c1_reflect:trap-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 75 matches the expected value.",
+   "error": false,
+   "tokens": 227
+  },
+  "exp_c1_reflect:trap-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 120 matches the expected value.",
+   "error": false,
+   "tokens": 237
+  },
+  "exp_c1_reflect:trap-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, which matches the expected value.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_c1_reflect:trap-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 60 matches the expected value.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_c1_reflect:trap-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_c1_reflect:easy-01#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 3, matching the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_reflect:easy-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 5, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_reflect:easy-03#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7, matching the expected value.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_c1_reflect:easy-04#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with 'ANSWER: 2', matching the expected value.",
+   "error": false,
+   "tokens": 220
+  },
+  "exp_c1_reflect:easy-05#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, which matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_c1_reflect:easy-06#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states the price is 9, matching the expected value.",
+   "error": false,
+   "tokens": 221
+  },
+  "exp_c1_reflect:deep-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value exactly.",
+   "error": false,
+   "tokens": 308
+  },
+  "exp_c1_reflect:deep-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162, which matches the expected value.",
+   "error": false,
+   "tokens": 299
+  },
+  "exp_c1_reflect:deep-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 matches the expected value.",
+   "error": false,
+   "tokens": 273
+  },
+  "exp_c1_reflect:deep-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360 ovo, matching the expected value.",
+   "error": false,
+   "tokens": 292
+  },
+  "exp_c1_reflect:deep-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 12.8 matches the expected value.",
+   "error": false,
+   "tokens": 289
+  },
+  "exp_c1_reflect:deep-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 19.2, matching the expected value.",
+   "error": false,
+   "tokens": 288
+  },
+  "exp_c1_reflect:constraint-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 24, matching the expected value.",
+   "error": false,
+   "tokens": 300
+  },
+  "exp_c1_reflect:constraint-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies grommet as the cheapest qualifying item and gives 35 as the cost.",
+   "error": false,
+   "tokens": 336
+  },
+  "exp_c1_reflect:constraint-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies the cheapest qualifying item and ends with ANSWER: 45, matching the expected value.",
+   "error": false,
+   "tokens": 323
+  },
+  "exp_c1_reflect:constraint-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 20 matches the expected value.",
+   "error": false,
+   "tokens": 326
+  },
+  "exp_c1_reflect:constraint-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer line ends with ANSWER: 32, matching the expected value of 32.",
+   "error": false,
+   "tokens": 318
+  },
+  "exp_c1_reflect:constraint-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, which matches the expected value.",
+   "error": false,
+   "tokens": 300
+  },
+  "exp_c1_reflect:trap-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 72, matching the expected value.",
+   "error": false,
+   "tokens": 243
+  },
+  "exp_c1_reflect:trap-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 75, matching the expected value.",
+   "error": false,
+   "tokens": 224
+  },
+  "exp_c1_reflect:trap-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 120 matches the expected value.",
+   "error": false,
+   "tokens": 238
+  },
+  "exp_c1_reflect:trap-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, matching the expected value.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_c1_reflect:trap-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, matching the expected value.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_reflect:trap-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value.",
+   "error": false,
+   "tokens": 231
+  },
+  "exp_c1_reflect:easy-01#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 3 matches the expected value.",
+   "error": false,
+   "tokens": 212
+  },
+  "exp_c1_reflect:easy-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 5 matches the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_reflect:easy-03#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 'ANSWER: 7' matches the expected value of 7 within 0.01.",
+   "error": false,
+   "tokens": 229
+  },
+  "exp_c1_reflect:easy-04#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 210
+  },
+  "exp_c1_reflect:easy-05#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value.",
+   "error": false,
+   "tokens": 222
+  },
+  "exp_c1_reflect:easy-06#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer ends with ANSWER: 9, matching the expected value.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_c1_reflect:deep-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 sett matches the expected value exactly.",
+   "error": false,
+   "tokens": 301
+  },
+  "exp_c1_reflect:deep-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162, which matches the expected value.",
+   "error": false,
+   "tokens": 262
+  },
+  "exp_c1_reflect:deep-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 quill matches the expected value exactly.",
+   "error": false,
+   "tokens": 293
+  },
+  "exp_c1_reflect:deep-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value.",
+   "error": false,
+   "tokens": 291
+  },
+  "exp_c1_reflect:deep-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12.8, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 315
+  },
+  "exp_c1_reflect:deep-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19.2 matches the expected value.",
+   "error": false,
+   "tokens": 300
+  },
+  "exp_c1_reflect:constraint-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 24 matches the expected value.",
+   "error": false,
+   "tokens": 318
+  },
+  "exp_c1_reflect:constraint-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly identifies the grommet as the cheapest qualifying item and ends with ANSWER: 35, matching the expected value.",
+   "error": false,
+   "tokens": 313
+  },
+  "exp_c1_reflect:constraint-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 311
+  },
+  "exp_c1_reflect:constraint-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 325
+  },
+  "exp_c1_reflect:constraint-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 32, matching the expected value.",
+   "error": false,
+   "tokens": 343
+  },
+  "exp_c1_reflect:constraint-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 315
+  },
+  "exp_c1_reflect:trap-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 72 matches the expected value.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_c1_reflect:trap-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states 75 (5 packs × 15 quill) as the cost before discount.",
+   "error": false,
+   "tokens": 244
+  },
+  "exp_c1_reflect:trap-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 120 matches the expected value.",
+   "error": false,
+   "tokens": 234
+  },
+  "exp_c1_reflect:trap-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, matching the expected value.",
+   "error": false,
+   "tokens": 246
+  },
+  "exp_c1_reflect:trap-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, which matches the expected value.",
+   "error": false,
+   "tokens": 231
+  },
+  "exp_c1_reflect:trap-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 96, matching the expected value.",
+   "error": false,
+   "tokens": 225
+  },
+  "exp_c1_reflect:easy-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 3, matching the expected value.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_c1_reflect:easy-02#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 219
+  },
+  "exp_c1_reflect:easy-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_reflect:easy-04#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_reflect:easy-05#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer's final line correctly states 12, matching the expected value.",
+   "error": false,
+   "tokens": 220
+  },
+  "exp_c1_reflect:easy-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer gives 9, matching the expected value.",
+   "error": false,
+   "tokens": 211
+  },
+  "exp_c1_reflect:deep-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 345.6 matches the expected value.",
+   "error": false,
+   "tokens": 271
+  },
+  "exp_c1_reflect:deep-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 162, which matches the expected value.",
+   "error": false,
+   "tokens": 387
+  },
+  "exp_c1_reflect:deep-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 7.5 quill matches the expected value.",
+   "error": false,
+   "tokens": 298
+  },
+  "exp_c1_reflect:deep-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 360, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 358
+  },
+  "exp_c1_reflect:deep-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 12.8 matches the expected value.",
+   "error": false,
+   "tokens": 310
+  },
+  "exp_c1_reflect:deep-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 19.2 matches the expected value exactly.",
+   "error": false,
+   "tokens": 308
+  },
+  "exp_c1_reflect:constraint-01#4": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer gives 50, not the expected 24.",
+   "error": false,
+   "tokens": 355
+  },
+  "exp_c1_reflect:constraint-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 35, matching the expected value.",
+   "error": false,
+   "tokens": 296
+  },
+  "exp_c1_reflect:constraint-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 45, matching the expected value.",
+   "error": false,
+   "tokens": 327
+  },
+  "exp_c1_reflect:constraint-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 300
+  },
+  "exp_c1_reflect:constraint-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 32 matches the expected value.",
+   "error": false,
+   "tokens": 328
+  },
+  "exp_c1_reflect:constraint-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 20, matching the expected value.",
+   "error": false,
+   "tokens": 328
+  },
+  "exp_c1_reflect:trap-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 72 matches the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_c1_reflect:trap-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 75 matches the expected value.",
+   "error": false,
+   "tokens": 235
+  },
+  "exp_c1_reflect:trap-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 120, matching the expected value.",
+   "error": false,
+   "tokens": 237
+  },
+  "exp_c1_reflect:trap-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 270, matching the expected value.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_c1_reflect:trap-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 60, which matches the expected value.",
+   "error": false,
+   "tokens": 236
+  },
+  "exp_c1_reflect:trap-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 96 matches the expected value.",
+   "error": false,
+   "tokens": 238
+  },
+  "exp_c1_reflect:easy-01#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 3, matching the expected value.",
+   "error": false,
+   "tokens": 215
+  },
+  "exp_c1_reflect:easy-02#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 5, matching the expected value.",
+   "error": false,
+   "tokens": 213
+  },
+  "exp_c1_reflect:easy-03#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 7, matching the expected value.",
+   "error": false,
+   "tokens": 217
+  },
+  "exp_c1_reflect:easy-04#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 2, matching the expected value.",
+   "error": false,
+   "tokens": 214
+  },
+  "exp_c1_reflect:easy-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 12, matching the expected value within 0.01.",
+   "error": false,
+   "tokens": 218
+  },
+  "exp_c1_reflect:easy-06#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 9, which matches the expected value.",
+   "error": false,
+   "tokens": 224
+  }
+ }
+}

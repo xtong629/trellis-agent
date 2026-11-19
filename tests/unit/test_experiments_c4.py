@@ -88,3 +88,16 @@ def test_the_answer_set_is_frozen() -> None:
     entry = frozen["v0.2"]["exp_c4_judge"]
     assert c4_judge._hash(data["rows"]) == data["content_hash"] == entry["content_hash"]
     assert len(data["rows"]) == entry["answers"] == 840
+
+
+def test_the_committed_c4_report_matches_the_quoted_numbers() -> None:
+    import json
+
+    report = json.loads((c4_judge.ROOT / "evals" / "reports" / "exp_c4_judge.json").read_text())
+    primary = report["primary_judge_vs_content_rule"]
+    assert (primary["n"], primary["both_pass"], primary["both_fail"]) == (840, 770, 69)
+    assert (primary["first_only"], primary["second_only"]) == (1, 0)
+    assert round(primary["kappa"], 3) == 0.992
+    assert [round(x, 3) for x in primary["kappa_ci"]] == [0.974, 1.0]
+    assert report["judge_errors"] == 0 and report["consistency"]["all_identical"] == 100
+    assert report["answer_set_hash"] == json.loads(c4_judge.ANSWERS.read_text())["content_hash"]
