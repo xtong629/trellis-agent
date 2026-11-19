@@ -171,7 +171,9 @@ class ReflectingAgent:
                 message = f"{type(exc).__name__}: {exc}"
                 trace.append(_event("error", category="reflect_error", message=message))
                 break
-            usage, costs = usage + verdict.usage, [*costs, verdict.cost_usd]
+            usage = usage + verdict.usage
+            if verdict.calls:  # a check without a model call costs nothing; it is not "unknown"
+                costs.append(verdict.cost_usd)
             trace += [_event("model_request", phase="reflect", usage=verdict.usage.to_dict(),
                              cost_usd=verdict.cost_usd) for _ in range(verdict.calls)]  # fmt: skip
             trace.append(_event("reflection", attempt=attempt, ok=verdict.ok,
