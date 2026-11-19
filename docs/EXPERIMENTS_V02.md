@@ -235,6 +235,51 @@ bug was found and nothing was changed. Frozen: `exp-c2-latency` version `1`, 8 t
 The trial ran while the C1 full run was also calling the API; its timings are not used for anything.
 The full run is started only after the C1 full run has finished, so that the two do not share the API.
 
+### C2 results (full run, 2026-11-20; the text above is unchanged)
+
+Reports: `evals/reports/exp_c2_{single,planned}_{l1,l4,l10,l4f0.3}.json` (per-case wall time in
+`timing_ms`) and `exp_c2_http.json`; tables regenerated with `python -m experiments.v02_results c2`.
+8 tasks x 3 repeats per system and cell, one task at a time; all 192 runs passed. 1,405 requests, all
+status 200, no 429, at most 4 in flight.
+
+**Outcome: H2 supported; the smallest tested latency at which the planner won is 10 s.**
+
+| cell | system | runs | passed | median s | mean s | per-repeat mean s | model calls | tokens | cost (CNY, list price) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 s | single | 24 | 24 | 17.53 | 17.47 | 17.2, 19.3, 15.9 | 67 | 27,957 | 0.0280 |
+| 1 s | planner | 24 | 24 | 25.83 | 26.24 | 26.5, 26.7, 25.5 | 264 | 84,080 | 0.0855 |
+| 4 s | single | 24 | 24 | 30.08 | 29.00 | 29.7, 27.4, 29.9 | 71 | 29,837 | 0.0297 |
+| 4 s | planner | 24 | 24 | 28.70 | 29.76 | 29.4, 31.1, 28.8 | 264 | 84,588 | 0.0863 |
+| 10 s | single | 24 | 24 | 48.87 | 49.77 | 50.3, 50.3, 48.7 | 70 | 29,323 | 0.0292 |
+| 10 s | planner | 24 | 24 | 34.50 | 36.08 | 35.9, 34.8, 37.5 | 264 | 84,082 | 0.0853 |
+| 4 s, faults 0.3 | single | 24 | 24 | 39.55 | 40.76 | 40.3, 41.5, 40.4 | 99 | 47,224 | 0.0451 |
+| 4 s, faults 0.3 | planner | 24 | 24 | 41.46 | 38.76 | 38.8, 40.5, 37.0 | 306 | 101,081 | 0.1013 |
+
+| cell | median ratio planner / single | planner's per-repeat mean lower | planner wins (rule) |
+| --- | --- | --- | --- |
+| 1 s | 1.47 | 0 of 3 | no |
+| 4 s | 0.95 | 2 of 3 | no (ratio not below 0.9) |
+| 10 s | 0.71 | 3 of 3 | **yes** |
+| 4 s, faults 0.3 | 1.05 | 3 of 3 | (descriptive only) |
+
+* **The single agent's time grows with tool latency, the planner's much less** (median 17.53, 30.08,
+  48.87 s against 25.83, 28.70, 34.50 s at 1, 4 and 10 s): the single agent waits for each lookup in
+  turn, the planner's workers wait in parallel. At 1 s the planner's fixed overhead (planning and
+  synthesis calls) dominates; around 4 s the two are close; at 10 s the planner is faster.
+* **Cost does not follow time.** The planner cost 2.2 to 3.1 times as much in every cell (for example
+  0.0853 vs 0.0292 CNY at 10 s) and made about 3 to 4 times the model calls. A shorter wall time was
+  bought with more model calls.
+* **Faults (secondary, descriptive):** at 4 s with 30% transient faults both systems slowed down
+  (single median 30.08 -> 39.55 s, planner 28.70 -> 41.46 s) and made more calls (71 -> 99,
+  264 -> 306); both still passed every run. The planner's median was higher but its per-repeat mean
+  lower in all three repeats, so faults show no clear advantage for either system here.
+
+**Limits.** The latency is a simulated `asyncio.sleep`, so this is about the scheduling design, not
+about real tools. 24 runs per system and cell, one model, one evening of API latency (systems
+alternated within each repeat to spread drift). The crossover lies somewhere between 4 s and 10 s on
+these tasks; latencies in between were not tested. The C2 full run used 488,172 tokens (0.4905 CNY at
+list price).
+
 ## C4 (R4): does the LLM judge agree with the rule scorers?
 
 **Question.** Trellis has an LLM judge (`LLMJudge`) that no experiment has used. On answers that
