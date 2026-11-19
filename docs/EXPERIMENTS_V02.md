@@ -131,6 +131,46 @@ Trial reports (baseline only, 1 repeat, 2026-11-19; not results):
   benefit tasks, C1 is reported as **not run as designed** (ceiling not avoided) and H1 is not decided,
   as pre-registered. The trials used 120,427 tokens (0.1096 CNY at list price).
 
+### C1 results (full run, 2026-11-19; the text above is unchanged)
+
+Reports: `evals/reports/exp_c1_baseline.json`, `exp_c1_reflect.json`, `exp_c1_reflect_attempts.json`,
+`exp_c1_http.json`; tables regenerated with `python -m experiments.v02_results c1`. Task set
+`exp-c1-reflect` 1-level2, 24 tasks x 5 repeats per system. 915 requests, all status 200, no 429.
+
+**Outcome: not run as designed.** The full-run baseline passed every benefit task (1.000±0.000), far
+above the pre-registered band [0.3, 0.7]. As pre-registered, H1 is **not decided**; the numbers below
+are reported, not interpreted as evidence for or against reflection.
+
+| system | all | benefit | constraint | deep | trap | easy | cost (CNY, list price) | tokens | model calls | cost per success |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| c1_baseline | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.2538 | 272,797 | 391 | 0.00211 |
+| c1_reflect | 0.975±0.037 | 0.978±0.030 | 0.933±0.091 | 1.000±0.000 | 1.000±0.000 | 0.967±0.075 | 0.3133 | 335,647 | 524 | 0.00268 |
+
+* **Difference on benefit tasks** (reflect minus baseline, per repeat): 0, -0.056, 0, 0, -0.056; mean
+  -0.022. With the baseline at 1.000 there was nothing for reflection to fix in the baseline arm.
+* **Cost of reflection:** about 1.23 times the cost (0.3133 vs 0.2538 CNY) and tokens, and 1.34 times
+  the model calls (524 vs 391). Every one of the 120 reflected runs got one check.
+* **What the checker did** (`exp_c1_reflect_attempts.json`, pre-registered definitions, scored by each
+  task's `number_match`): 5 rejections, all retried; 0 unreadable verdicts. **Fixes 2**
+  (`constraint-01` r0, `deep-06` r2: the checker named the actual mistake, a wrong pack count and a
+  conversion in the wrong direction, and the retry was right). **Harms 2** (`constraint-01` r4,
+  `constraint-05` r1). **False rejects 3** (those two plus `deep-02` r4, where the retry kept the right
+  answer). **False accepts 1** (`easy-06` r4: the right number, but written inside a sentence instead of
+  on its own `ANSWER:` line, a format failure the checker did not flag).
+* **Both harms have the same cause, found by reading them:** the level-2 `constraint` wording ("I need
+  exactly k single units ... Items sold in packs must be bought in whole packs") can be read as
+  excluding items whose packs give more than k units. The checker read it that way and talked a right
+  answer into a wrong one. This is an ambiguity of the frozen task wording, not a scorer bug; the task
+  set is not changed after the run.
+* **Easy family (harm check):** 0.967 vs 1.000, a drop of 0.033, within the pre-registered 0.05. The one
+  failure is the format failure above; the checker did not cause it.
+
+**What this does and does not show.** It shows the machinery works end to end on a real model (checks
+counted, retries happen, fixes and harms are measurable per run) and what one round costs here
+(about +23%). It does not show whether reflection raises success: the baseline was at ceiling, so
+the experiment could not detect a gain. One model, one effort level, 24 fictional tasks, 5 repeats.
+The C1 runs used 608,444 tokens (0.5671 CNY at list price).
+
 ## C2 (R2): when does the planner's parallelism save time?
 
 **Question.** In v0.1.0 the planner took about twice as long as the single agent per fanout task, with
