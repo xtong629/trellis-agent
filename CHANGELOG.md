@@ -14,7 +14,8 @@ prototype. Experiment method, decision rules and limits: [`docs/EXPERIMENTS_V02.
   answer a `Reflector` checks it and, if rejected, the agent retries with the reason (default: one
   retry, not re-checked). `LLMReflector` sees only the task, the tool steps and the answer. Every check
   and retry is counted in usage, cost and trace; a failing checker never fails the run. Opt-in; the
-  default `Agent` is unchanged. Example: `examples/06_reflection.py`.
+  default `Agent` is unchanged. Example: `examples/06_reflection.py`. A check that makes no model call
+  no longer turns the run's cost into "unknown" (PR #27).
 - **Judge calibration statistics** (`trellis_agent.eval.calibrate`, PR #19): 2x2 counts, agreement rate,
   Cohen's kappa and a seeded bootstrap interval.
 - **v0.2 experiment tooling** (PRs #15-#25): task sets C1 (`exp-c1-reflect`) and C2 (`exp-c2-latency`) and
@@ -27,13 +28,16 @@ prototype. Experiment method, decision rules and limits: [`docs/EXPERIMENTS_V02.
 ### Experiments (one model, `glm-5.3-flash`, `reasoning_effort=low`; costs are list-price reference values)
 - **C1, reflection: not run as designed.** The baseline passed every benefit task (1.000±0.000 over 5
   repeats), above the pre-registered band, so whether reflection helps is not decided. Reflection arm
-  0.978±0.030; cost 0.3133 vs 0.2538 CNY; 2 fixes and 2 harms (`exp_c1_*.json`).
+  0.978±0.030; cost 0.3133 vs 0.2538 CNY (about 1.23x); 2 fixes and 2 harms. Both harms trace to an
+  ambiguous wording in the frozen task set, which is disclosed and not changed (`exp_c1_*.json`).
 - **C2, tool latency: hypothesis supported.** With 10 s simulated tool latency the planner's median time
-  per task was 0.71 times the single agent's (34.50 vs 48.87 s), lower in 3 of 3 repeats; not at 1 s or
-  4 s. The planner cost 2.2 to 3.1 times as much in every cell (`exp_c2_*.json`).
+  per task was 0.71 times the single agent's (34.50 vs 48.87 s), lower in 3 of 3 repeats; it was not
+  faster at 1 s (ratio 1.47) or 4 s (0.95). Only 3 repeats per cell. The planner cost 2.2 to 3.1 times as
+  much in every cell. With 30% transient tool failures (4 s) neither system was clearly better
+  (`exp_c2_*.json`).
 - **C4, judge calibration: hypothesis supported.** On 840 committed answers the judge matched the rule
   scorers on 839 (kappa 0.992, 95% CI 0.974-1.000). No human labels; the judge is the same model as the
-  one under test (`exp_c4_judge.json`).
+  one under test; the answers come from simple tasks that rules can decide (`exp_c4_judge.json`).
 
 ### Unchanged
 - The v2 task sets of experiments A and B and every v0.1.0 report.
