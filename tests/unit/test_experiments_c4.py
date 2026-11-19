@@ -78,3 +78,13 @@ def test_analysis_counts_agreement_and_skips_judge_errors() -> None:
     primary = out["primary_judge_vs_content_rule"]
     assert primary["n"] == 9 and primary["second_only"] == 0 and primary["first_only"] == 1
     assert out["disagreement_categories"] == {"value: the judge accepted what the rule rejects": 1}
+
+
+def test_the_answer_set_is_frozen() -> None:
+    import json
+
+    data = json.loads(c4_judge.ANSWERS.read_text())
+    frozen = json.loads((c4_judge.ROOT / "experiments" / "FROZEN.json").read_text())
+    entry = frozen["v0.2"]["exp_c4_judge"]
+    assert c4_judge._hash(data["rows"]) == data["content_hash"] == entry["content_hash"]
+    assert len(data["rows"]) == entry["answers"] == 840

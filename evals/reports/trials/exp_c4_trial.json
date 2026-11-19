@@ -1,0 +1,260 @@
+{
+ "answers": 20,
+ "judged": 20,
+ "judge_errors": 0,
+ "primary_judge_vs_content_rule": {
+  "n": 20,
+  "both_pass": 10,
+  "both_fail": 10,
+  "first_only": 0,
+  "second_only": 0,
+  "agree_rate": 1.0,
+  "kappa": 1.0,
+  "kappa_ci": [
+   1.0,
+   1.0
+  ],
+  "ci_level": 0.95
+ },
+ "secondary_judge_vs_case_status": {
+  "n": 20,
+  "both_pass": 10,
+  "both_fail": 10,
+  "first_only": 0,
+  "second_only": 0,
+  "agree_rate": 1.0,
+  "kappa": 1.0,
+  "kappa_ci": [
+   1.0,
+   1.0
+  ],
+  "ci_level": 0.95
+ },
+ "by_report": {
+  "exp_a_single": {
+   "n": 5,
+   "both_pass": 3,
+   "both_fail": 2,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": 1.0,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_a_planned": {
+   "n": 2,
+   "both_pass": 2,
+   "both_fail": 0,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": null,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_b_window": {
+   "n": 8,
+   "both_pass": 0,
+   "both_fail": 8,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": null,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_b_memory": {
+   "n": 0,
+   "both_pass": 0,
+   "both_fail": 0,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": null,
+   "kappa": null,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  },
+  "exp_b_full": {
+   "n": 5,
+   "both_pass": 5,
+   "both_fail": 0,
+   "first_only": 0,
+   "second_only": 0,
+   "agree_rate": 1.0,
+   "kappa": null,
+   "kappa_ci": null,
+   "ci_level": 0.95
+  }
+ },
+ "disagreement_categories": {},
+ "disagreements": [],
+ "note": "Judge = the same model that wrote the answers (glm-5.3-flash, reasoning_effort low): self-preference is possible. No human labels.",
+ "rubric": "Judge only whether the final answer is correct; ignore formatting, length and style. Expected: {expected}. Score 1 if the answer's final answer meets this, otherwise 0.",
+ "answer_set_hash": "4af6735d4e55d6c909630071a849195300eed7e0e39827054180da24385c1645",
+ "excluded_error_runs": {},
+ "tokens": 5139,
+ "cost_cny": 0.0052852,
+ "http": {
+  "http_requests": 20,
+  "model_calls": 20,
+  "extra_http_requests": 0,
+  "status_counts": {
+   "200": 20
+  },
+  "rate_limited": 0,
+  "retry_after_seen": [],
+  "max_in_flight": 4,
+  "latency_s": {
+   "mean": 1.739,
+   "p50": 1.294,
+   "p90": 2.45,
+   "p99": 5.293,
+   "max": 5.293
+  }
+ },
+ "wall_s": 11.8,
+ "run_date": "2026-11-19",
+ "verdicts": {
+  "exp_a_single:fanout-03#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer gives 0 instead of the expected total of 14.",
+   "error": false,
+   "tokens": 249
+  },
+  "exp_a_single:fanout-06#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 241
+  },
+  "exp_a_single:fanout-03#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The expected answer is 14, but the response gives 0.",
+   "error": false,
+   "tokens": 259
+  },
+  "exp_a_single:fanout-06#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 8.8 matches the expected value within 0.01.",
+   "error": false,
+   "tokens": 239
+  },
+  "exp_a_single:single-05#4": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 33, which matches the expected value.",
+   "error": false,
+   "tokens": 202
+  },
+  "exp_a_planned:fanout-08#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer 10.3 matches the expected value.",
+   "error": false,
+   "tokens": 204
+  },
+  "exp_a_planned:single-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 21, which matches the expected value.",
+   "error": false,
+   "tokens": 192
+  },
+  "exp_b_window:refund-zh-01#0": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The expected refund number RF-4821 was stated earlier in the conversation, so claiming it was never provided is incorrect.",
+   "error": false,
+   "tokens": 280
+  },
+  "exp_b_window:allergy-01#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'kelpberry' despite it being mentioned in the task.",
+   "error": false,
+   "tokens": 272
+  },
+  "exp_b_window:allergy-06#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'tarn seed', which was explicitly provided in the task.",
+   "error": false,
+   "tokens": 303
+  },
+  "exp_b_window:refund-zh-02#1": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "答案没有给出单号RF-7305,而是错误地称用户未提及退款单号。",
+   "error": false,
+   "tokens": 267
+  },
+  "exp_b_window:allergy-03#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'moonroot', instead asking for clarification.",
+   "error": false,
+   "tokens": 276
+  },
+  "exp_b_window:allergy-04#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'fenwick plum', which was explicitly mentioned in the record.",
+   "error": false,
+   "tokens": 294
+  },
+  "exp_b_window:deadline-06#2": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state 'September 3' even though the date was provided in the task.",
+   "error": false,
+   "tokens": 277
+  },
+  "exp_b_window:deadline-06#3": {
+   "passed": false,
+   "score": 0.0,
+   "reason": "The answer fails to state the deadline 'September 3' that was provided in the task.",
+   "error": false,
+   "tokens": 270
+  },
+  "exp_b_full:allergy-03#0": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states 'Moonroot', matching the expected ingredient regardless of letter case.",
+   "error": false,
+   "tokens": 264
+  },
+  "exp_b_full:refund-zh-02#1": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states the refund number 'RF-7305'.",
+   "error": false,
+   "tokens": 256
+  },
+  "exp_b_full:deadline-02#2": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer states July 2 and does not mention May 8, matching the rubric.",
+   "error": false,
+   "tokens": 297
+  },
+  "exp_b_full:refund-zh-03#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The answer correctly states RF-1196.",
+   "error": false,
+   "tokens": 242
+  },
+  "exp_b_full:irrelevant-01#3": {
+   "passed": true,
+   "score": 1.0,
+   "reason": "The final answer is 42, which matches the expected result.",
+   "error": false,
+   "tokens": 255
+  }
+ }
+}
