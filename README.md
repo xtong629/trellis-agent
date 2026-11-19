@@ -144,9 +144,9 @@ sets; same model and settings, 2026-11-19/20. Details: [`docs/EXPERIMENTS_V02.md
 
 | Experiment | Outcome | Key numbers |
 | --- | --- | --- |
-| C1: reflection | **not run as designed** (baseline at ceiling) | baseline 1.000±0.000 on benefit tasks; reflection 0.978±0.030, cost 0.3133 vs 0.2538 CNY, 2 fixes, 2 harms |
-| C2: planner under tool latency | **supported** at 10 s | median 34.50 vs 48.87 s per task (ratio 0.71); not faster at 1 s or 4 s; 2.2-3.1x the cost |
-| C4: LLM judge vs rules | **supported** | 839 of 840 agree, kappa 0.992 (CI 0.974-1.000); no human labels, same model as judge |
+| C1: reflection | **not run as designed**: the baseline hit the ceiling, so the hypothesis was not decided | baseline 1.000±0.000 on benefit tasks; reflection arm 0.978±0.030; cost 0.3133 vs 0.2538 CNY (about 1.23x); 2 fixes, 2 harms, both harms traced to an ambiguous wording in the frozen tasks (disclosed, not changed) |
+| C2: planner under simulated tool latency | **supported, only at 10 s** | median 34.50 vs 48.87 s per task (ratio 0.71); not faster at 1 s (1.47) or 4 s (0.95); 3 repeats per cell; 2.2-3.1x the cost; with 30% transient tool failures no clear difference either way |
+| C4: LLM judge vs rules | **supported, within narrow bounds** | 839 of 840 agree, kappa 0.992 (CI 0.974-1.000); no human labels; the judge is the same model as the one under test; the answers come from simple tasks that rules can decide |
 
 ![Offline demo: reflection, planner, eval run and regression gate (mock models)](docs/demo/demo.gif)
 
