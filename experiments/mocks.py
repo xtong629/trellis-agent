@@ -11,6 +11,7 @@ import re
 from collections.abc import Callable
 from typing import Any
 
+from experiments.c1_tasks import CATALOG
 from trellis_agent.cost import CostMeter
 from trellis_agent.llm import RuleLLM
 from trellis_agent.types import Message, ToolCall, ToolSchema, Usage
@@ -184,3 +185,16 @@ def conversation_model(messages: list[Message], tools: list[ToolSchema] | None) 
         if marker in question:
             return Message.assistant(known.get(key, "I don't know"))
     return Message.assistant("Sure.")
+
+
+# ------------------------------------------------------------------ v0.2 C1: wiring only
+def c1_solver(messages: list[Message], tools: list[ToolSchema] | None) -> Message:
+    """Looks up the first catalog item named in the task and answers with its listed price.
+    Right on the ``easy`` family only; it exists to exercise the C1 wiring, not to solve tasks."""
+    done = [m for m in messages if m.role == "tool"]
+    if not done:
+        text = _first_user(messages)
+        item = next((i for i in CATALOG if re.search(rf"\b{i}\b", text)), "bolt")
+        return Message.assistant(None, (ToolCall("c0", "get_item", {"item": item}),))
+    price = json.loads(done[-1].content or "{}").get("price", 0)
+    return _answer(float(price))

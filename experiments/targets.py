@@ -12,6 +12,7 @@ from collections.abc import Sequence
 from typing import Any
 
 from experiments import mocks
+from experiments.c1_tasks import make_c1_tools
 from experiments.scenarios import SEPARATOR
 from experiments.tools import make_tools
 from experiments.window import B_SYSTEM_PROMPT
@@ -119,3 +120,19 @@ def b_window(llm: LLMClient) -> Conversation:
 
 def b_memory(llm: LLMClient) -> Conversation:
     return _chat_agent(llm, remember=True)
+
+
+# ------------------------------------------------------------ v0.2, experiment C1 (reflection)
+C1_SYSTEM = "Use the tools to answer. Tool results are the only source of data."
+C1_MAX_STEPS = 12  # the same for every C1 system; deep tasks need more than the default 8 steps
+
+
+def c1_agent(llm: LLMClient) -> Agent:
+    model = mocks.mock(mocks.c1_solver, _meter(llm)) if _is_mock(llm) else llm
+    config = AgentConfig(system_prompt=C1_SYSTEM, max_steps=C1_MAX_STEPS)
+    return Agent(model, tools=ToolRegistry(make_c1_tools()), config=config)
+
+
+def c1_baseline(llm: LLMClient) -> Agent:
+    """C1 without reflection: one agent with all C1 tools."""
+    return c1_agent(llm)
