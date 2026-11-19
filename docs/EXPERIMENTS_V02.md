@@ -282,3 +282,14 @@ rule rejects), *judge rejected an answer the rule accepts*.
 
 **Possible negative results** (reported as they occur): low kappa; the judge accepts wrong values;
 its verdicts change between identical calls; kappa unstable because rule failures are few.
+
+### C4 trial record and freeze (added after the trial; the text above is unchanged)
+
+Trial (2026-11-19; not results): 20 answers from the v0.1.0 reports, 10 that the rule fails and 10 it
+passes; report `evals/reports/trials/exp_c4_trial.json`. The judge agreed with the rule on all 20, with
+no unreadable output; every reason was read and refers to the expected value, so the rubric was not
+changed. The trial used 5,139 tokens (0.0053 CNY at list price).
+Frozen answer set: `evals/exp_c4_judge/answers.json`, 840 answers (600 from v0.1.0, 240 from C1; none
+excluded, as no run in these reports ended with an error), 70 of which fail the content rule; content
+hash `c24949e854b67df578812239a921efe336e5a95bc2dd9de76fbd3776af32d7d2` (`experiments/FROZEN.json`,
+key `v0.2`). The full run starts after the C2 full run, so that the two do not share the API.

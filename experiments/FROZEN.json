@@ -41,6 +41,11 @@
       "tasks": 8,
       "level": 0,
       "content_hash": "b8e281ac3bef63b456dbd3325cf0e18fe7c464d8d511cb6c8bde04e7a2cf5d15"
+    },
+    "exp_c4_judge": {
+      "name": "exp-c4-judge",
+      "answers": 840,
+      "content_hash": "c24949e854b67df578812239a921efe336e5a95bc2dd9de76fbd3776af32d7d2"
     }
   }
 }
