@@ -37,6 +37,9 @@ flowchart TD
     memory --> jsonutil
     eval --> jsonutil
     eval --> env
+    reflect --> llm
+    reflect --> cost
+    reflect --> jsonutil
 ```
 
 Every module also imports `types` (messages, `Usage`, `RunResult`, trace events). `planner` and `eval`
@@ -55,7 +58,8 @@ one task set. `experiments/` (outside `src/`) wires everything together for the 
 | `memory` | working window, episodic and semantic items, admission, supersession, consolidation, forgetting |
 | `retrieval` | SQLite FTS5 BM25 index, jieba tokenizer, optional vector index, RRF fusion |
 | `planner` | LLM planner, task graph validation, event-driven scheduler, retry policy, `PlannedAgent` |
-| `eval` | task sets, scorers, runner, reports, baseline comparison, CLI |
+| `reflect` | `ReflectingAgent` and `LLMReflector`: check a final answer, retry with the reason (v0.2) |
+| `eval` | task sets, scorers, runner, reports, baseline comparison, judge calibration statistics, CLI |
 
 ## One task, input to output
 
@@ -82,6 +86,11 @@ For a `PlannedAgent` (`planner/planned.py`): the `Planner` asks the model for a 
 validates it; the `Scheduler` runs the tasks on worker agents chosen by task kind; a synthesiser call
 writes the final answer from the task results. Cost and usage of planning attempts, repairs and
 replans are included in the `RunResult`.
+
+For a `ReflectingAgent` (`reflect.py`, v0.2): the wrapped `Agent` runs as above. If it ended with a
+final answer, a `Reflector` checks it; if the verdict is "not ok", the reason is sent to the same
+session as a new user turn and the agent answers again. With the default `max_retries=1` the retry's
+answer is final. Usage, cost and trace of every attempt and check are in the one `RunResult`.
 
 ## Design decisions and trade-offs
 
@@ -136,6 +145,15 @@ retention score (recency and importance, no query) is below a threshold, then th
 `max_items`. The working window is a per-turn view: the full history is kept and the window only
 decides what is sent.
 
+**Reflection is a wrapper, not a second loop.** `ReflectingAgent` reuses `Agent.stream` for every
+attempt and only adds a check between attempts, so the one-loop rule above still holds. The checker
+(`LLMReflector`) sees the task, the run's tool calls with their results, and the final answer, never
+expected answers or scoring rules, and its prompt is generic. An unreadable verdict counts as "ok"
+(no retry) and is traced; a checker that raises is traced and the current answer is returned; a check
+that crosses the budget stops the run and is still counted. Trade-off: the retry needs the first
+attempt in the session history, so a `PlannedAgent` (no session history) cannot be wrapped, and the
+checker is usually the same model, which can share the answer's blind spots.
+
 **Hybrid retrieval.** The base is BM25 on SQLite FTS5 with Porter stemming; query terms are OR-ed.
 If a vector index and embedder are given, the BM25 and vector rankings are fused with Reciprocal Rank
 Fusion, `score = sum 1 / (60 + rank)`, which uses ranks only, so the two score scales need no
@@ -189,8 +207,11 @@ does not have, so they were left out on purpose. None is implemented.
   filter.
 * A consolidated summary is not reconciled with later corrections.
 * `RuleExtractor` is a toy; `LLMExtractor` costs tokens and can miss or invent facts.
+* Reflection: the checker can reject right answers and the retry can then break them (2 such cases in
+  120 runs in experiment C1); one round added about 23% to cost there. Whether reflection raises
+  success was not decided, because the baseline was at the ceiling.
 * Experimental limits (one model, fictional tasks, small samples, window-size dependence) are in
-  [`EXPERIMENTS.md`](EXPERIMENTS.md).
+  [`EXPERIMENTS.md`](EXPERIMENTS.md) and [`EXPERIMENTS_V02.md`](EXPERIMENTS_V02.md).
 
 ## Possible extensions
 
@@ -200,9 +221,11 @@ None of these is done; each is a candidate, not a promise.
 * Passing `reasoning_content` back to providers that expect it with tool results, and measuring the
   effect on answer quality.
 * Per-task budgets.
-* Test whether the planner helps when tool calls take much longer. In the fanout timing run the
-  tools were in-process fakes with no delay, so the planner's parallel workers had little tool
-  latency to hide.
+* Real (not simulated) tool latency for the planner. Experiment C2 found the planner faster than the
+  single agent at 10 s simulated latency but not at 1 s or 4 s; latencies between 4 and 10 s, and real
+  slow tools, were not tested.
+* A reflection task set with real headroom (the C1 baseline was at the ceiling), and a checker that is a
+  different model from the answering one.
 * Memory on much longer conversations, where memory could be cheaper than sending the full history
   (not tested; on the short scripts used, full history was cheaper).
 * A real embedding client, and paraphrased test questions for retrieval.

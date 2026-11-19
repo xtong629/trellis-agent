@@ -6,7 +6,8 @@
 
 **Status: research prototype.** The agent core, evaluation harness, planner/scheduler and tiered
 memory are implemented and tested, and a first pair of experiments has been run on one model with
-fictional tasks (see [Results](#results)). Not a production library. See [Roadmap](#roadmap) and
+fictional tasks (see [Results](#results)). v0.2 adds reflection, judge calibration and three
+pre-registered experiments. Not a production library. See [Roadmap](#roadmap) and
 [Limitations](#limitations).
 
 ## Why
@@ -33,6 +34,7 @@ Most agent demos show that something *can* work. Trellis is built around the har
 | Evaluation | task sets, 11 scorer types + `llm_judge`, runner with repeats and concurrency, reports, baseline `compare`, CLI |
 | Memory | working window within a token budget; episodic and semantic memories with relevance + recency decay + importance scoring; newer facts supersede older ones; write admission (duplicates, per-turn limit); consolidation and forgetting; optional, so an agent without memory behaves exactly as before |
 | Retrieval | jieba-segmented Chinese + stemmed English full-text search on SQLite FTS5 (BM25, OR-ed terms); optional vector index fused with RRF |
+| Reflection | `ReflectingAgent`: a checker reviews a final answer against the task and tool results; on rejection the agent retries with the reason; all cost counted (v0.2) |
 | Planning | LLM planner whose plans are validated and sent back for repair; event-driven scheduler with dependencies, parallelism, retry with backoff, failure policies (skip dependents / fail fast / replan), budgets; role-specific worker agents dispatched by task kind |
 
 Details of the evaluation harness, cost rules and the budget mechanism: [`docs/EVAL.md`](docs/EVAL.md).
@@ -81,6 +83,7 @@ python examples/02_tools_agent.py --mock      # a tool-using agent, no API key n
 python examples/03_cost_and_budget.py --mock  # cost accounting and a hard budget
 python examples/04_planned.py --mock          # planner + researcher/calculator worker agents
 python examples/05_memory.py --mock           # recall after the working window, updated facts
+python examples/06_reflection.py --mock       # a checker rejects an answer, the agent retries
 ```
 
 Run the evaluation smoke suite and the regression gate:
@@ -134,6 +137,21 @@ reference values, not actual spend. Full tables, method and limitations:
 * One model, fictional tasks, small samples, no significance tests; read the limitations before
   drawing conclusions. Offline mock runs only exercise the code.
 
+### v0.2 experiments
+
+Pre-registered before any real call (hypothesis and decision rule merged first), on new frozen task
+sets; same model and settings, 2026-11-19/20. Details: [`docs/EXPERIMENTS_V02.md`](docs/EXPERIMENTS_V02.md).
+
+| Experiment | Outcome | Key numbers |
+| --- | --- | --- |
+| C1: reflection | **not run as designed** (baseline at ceiling) | baseline 1.000±0.000 on benefit tasks; reflection 0.978±0.030, cost 0.3133 vs 0.2538 CNY, 2 fixes, 2 harms |
+| C2: planner under tool latency | **supported** at 10 s | median 34.50 vs 48.87 s per task (ratio 0.71); not faster at 1 s or 4 s; 2.2-3.1x the cost |
+| C4: LLM judge vs rules | **supported** | 839 of 840 agree, kappa 0.992 (CI 0.974-1.000); no human labels, same model as judge |
+
+![Offline demo: reflection, planner, eval run and regression gate (mock models)](docs/demo/demo.gif)
+
+The demo uses mock models (offline); it shows the machinery, not model quality.
+
 ## Roadmap
 
 | Milestone | Scope | State |
@@ -144,6 +162,7 @@ reference values, not actual spend. Full tables, method and limitations:
 | M3 | LLM planner + event-driven scheduler with multi-role workers | done |
 | M4 | tiered memory + Chinese/English hybrid retrieval | done |
 | M5 | experiments and write-up | done |
+| v0.2 | reflection, judge calibration, experiments C1/C2/C4, demo | done |
 
 ## Project layout
 
@@ -153,7 +172,8 @@ tests/               unit/ and integration/ (fake OpenAI-compatible HTTP server 
 evals/               smoke task set, experiment task sets, committed reports and baseline, price files
 experiments/         experiment tools, targets, mocks, drivers and the results-table generator
 examples/            runnable examples (all support --mock)
-docs/                ARCHITECTURE.md, EVAL.md, EXPERIMENTS.md
+docs/                ARCHITECTURE.md, EVAL.md, EXPERIMENTS.md, EXPERIMENTS_V02.md, demo/
+scripts/             demo recorder
 ```
 
 ## Limitations
@@ -192,6 +212,9 @@ Not implemented (see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)): hooks, gua
 * **Prices.** Prices are read from files you provide and are only as good as their `source` and
   `checked_on`. There is no tiered pricing, no discount handling, no web updates and no built-in
   exchange rate; a cost in another currency is an error unless the file declares an FX rate.
+* **Reflection.** Opt-in, one retry by default. The checker is usually the same model and can reject
+  right answers (2 harms in 120 runs in C1); its benefit was not shown because C1's baseline was at
+  the ceiling. A `PlannedAgent` cannot be wrapped (it keeps no session history).
 * **Mocks.** All offline runs use rule-based fake models. They exercise the code and say nothing
   about real-model quality; the experiment results above come from live runs on one model.
 
