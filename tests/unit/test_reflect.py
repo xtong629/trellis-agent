@@ -196,3 +196,10 @@ async def test_reflection_with_a_real_agent_and_runner_counts_everything() -> No
     (case,) = report.cases
     assert case.status == "passed" and case.model_requests == 5
     assert case.tool_calls == ["lookup", "lookup"]
+
+
+async def test_a_check_without_a_model_call_keeps_the_run_cost_known() -> None:
+    meter = CostMeter(PriceTable({"mock": ModelPrice(1.0, 1.0, currency="CNY")}))
+    inner = Agent(ScriptedLLM([Message.assistant("ANSWER: 1")], meter=meter))
+    result = await ReflectingAgent(inner, FixedReflector(Verdict(True))).arun("q")
+    assert result.cost_usd is not None and result.cost_usd > 0
