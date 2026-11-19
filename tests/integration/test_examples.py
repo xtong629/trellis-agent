@@ -60,6 +60,14 @@ def test_05_memory() -> None:
     assert "superseded (kept as history, never recalled): 1" in out
 
 
+def test_06_reflection() -> None:
+    out = run_example("06_reflection.py")
+    assert "first answer : ANSWER: 14" in out
+    assert "checker      : ok=False (the task asks for 3 widgets" in out
+    assert "final answer : ANSWER: 42" in out
+    assert "model calls  : 4" in out
+
+
 @pytest.mark.parametrize(
     "name",
     [
@@ -68,6 +76,7 @@ def test_05_memory() -> None:
         "03_cost_and_budget.py",
         "04_planned.py",
         "05_memory.py",
+        "06_reflection.py",
     ],
 )
 def test_examples_without_mock_need_credentials(name: str, tmp_path: Path) -> None:
