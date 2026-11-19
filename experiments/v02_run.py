@@ -21,8 +21,9 @@ import asyncio
 import json
 import sys
 import time
+from collections import Counter
 from collections.abc import Callable, Sequence
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -31,12 +32,20 @@ import httpx
 from experiments.c1_tasks import taskset_c1
 from experiments.full_run import SLOW_CALL_S, merge_reports
 from experiments.pilot import HttpObserver, summarize_http
-from experiments.targets import c1_baseline
+from experiments.targets import c1_baseline, c1_reflect
 from trellis_agent.cost import CostMeter
 from trellis_agent.env import load_dotenv
-from trellis_agent.eval import EvalReport, EvalRunner, parse_taskset, scorer_types
+from trellis_agent.eval import (
+    EvalReport,
+    EvalRunner,
+    TaskSet,
+    build_scorer,
+    parse_taskset,
+    scorer_types,
+)
 from trellis_agent.eval.cli import _prices
 from trellis_agent.llm.openai_compat import OpenAICompatClient
+from trellis_agent.types import Message, RunResult, Usage
 
 ROOT = Path(__file__).resolve().parents[1]
 WARN = 0.8
@@ -48,13 +57,19 @@ INFRA_STOPS = {"llm_error", "target_error"}
 class Experiment:
     key: str  # FROZEN.json "v0.2" key and evals/ directory name
     make: Callable[[int], dict[str, Any]]  # level -> task set document
-    systems: dict[str, Callable[[Any], Any]]
+    systems: dict[str, Callable[..., Any]]
     timing: bool = False
+    recording: frozenset[str] = frozenset()  # systems that take a reflection-record sink
     scheduler_max: dict[str, int] = field(default_factory=dict)
 
 
 EXPERIMENTS: dict[str, Experiment] = {
-    "c1": Experiment("exp_c1_reflect", taskset_c1, {"c1_baseline": c1_baseline}),
+    "c1": Experiment(
+        "exp_c1_reflect",
+        taskset_c1,
+        {"c1_baseline": c1_baseline, "c1_reflect": c1_reflect},
+        recording=frozenset({"c1_reflect"}),
+    ),
 }
 
 
@@ -106,6 +121,58 @@ def _paths(chunks: Path, system: str, repeat: int) -> tuple[Path, Path]:
     return chunks / f"{system}_r{repeat}.json", chunks / f"{system}_r{repeat}.meta.json"
 
 
+def _records_path(chunks: Path, system: str, repeat: int) -> Path:
+    return chunks / f"{system}_r{repeat}.records.json"
+
+
+async def _number_ok(task: Any, answer: str) -> bool:
+    spec = next(s for s in task.scorers if s.type == "number_match")
+    result = RunResult(answer, [Message.assistant(answer)], Usage(), 0.0)
+    return (await build_scorer(spec).score(task, result)).passed
+
+
+async def attempts_report(
+    taskset: TaskSet, per_repeat: list[list[dict[str, Any]]]
+) -> dict[str, Any]:
+    """First answer, verdict and final answer of every reflected run, with the counts the
+    pre-registration defines (fix, harm, false accept, false reject), scored by number_match."""
+    tasks = {t.id: t for t in taskset.tasks}
+    rows = []
+    for repeat, records in enumerate(per_repeat):
+        for rec in records:
+            task = tasks[rec["session_id"].split("#", 1)[0]]
+            first = await _number_ok(task, rec["first_answer"])
+            final = await _number_ok(task, rec["final_answer"])
+            rows.append({"task_id": task.id, "family": task.metadata.get("family"),
+                         "repeat": repeat, **rec, "first_correct": first,
+                         "final_correct": final})  # fmt: skip
+
+    def counts(group: list[dict[str, Any]]) -> dict[str, int]:
+        return {
+            "runs": len(group),
+            "checked": sum(r["checked"] for r in group),
+            "rejected": sum(r["verdict_ok"] is False for r in group),
+            "retried": sum(r["retried"] for r in group),
+            "unparsed_verdicts": sum(r["parsed"] is False for r in group),
+            "first_correct": sum(r["first_correct"] for r in group),
+            "final_correct": sum(r["final_correct"] for r in group),
+            "fix": sum(not r["first_correct"] and r["final_correct"] for r in group),
+            "harm": sum(r["first_correct"] and not r["final_correct"] for r in group),
+            "false_accept": sum(r["verdict_ok"] is True and not r["first_correct"] for r in group),
+            "false_reject": sum(r["verdict_ok"] is False and r["first_correct"] for r in group),
+        }
+
+    families = Counter(r["family"] for r in rows)
+    return {
+        "note": "Scored with each task's number_match rule only (pre-registered definition).",
+        "taskset": {"name": taskset.name, "version": taskset.version,
+                    "content_hash": taskset.content_hash},
+        "totals": counts(rows),
+        "by_family": {f: counts([r for r in rows if r["family"] == f]) for f in sorted(families)},
+        "cases": rows,
+    }  # fmt: skip
+
+
 def _done(chunks: Path, systems: Sequence[str], repeats: int) -> set[tuple[int, str]]:
     return {(r, s) for r in range(repeats) for s in systems if _paths(chunks, s, r)[1].exists()}
 
@@ -135,8 +202,15 @@ async def run_chunk(
     )
     taskset, level = load_taskset(exp, args)
     price = prices.get(llm.model)
+    records: list[Any] = []
+
+    def make() -> Any:
+        if system in exp.recording:
+            return exp.systems[system](llm, records.append)
+        return exp.systems[system](llm)
+
     runner = EvalRunner(
-        lambda: exp.systems[system](llm),
+        make,
         concurrency=args.concurrency,
         budget_usd=remaining,
         meter=meter,
@@ -158,6 +232,9 @@ async def run_chunk(
         await llm.aclose()
     report_path, meta_path = _paths(Path(args.chunks_dir), system, repeat)
     report.save(report_path)
+    if system in exp.recording:
+        rows = [asdict(r) for r in records]
+        _records_path(Path(args.chunks_dir), system, repeat).write_text(json.dumps(rows, indent=1))
     meta = {
         "spent": meter.total,
         "tokens": tokens_of(report),
@@ -178,9 +255,9 @@ def family_rates(report: EvalReport) -> dict[str, str]:
     return {k: f"{p}/{n}" for k, (p, n) in rows.items()}
 
 
-def merge_all(args: argparse.Namespace, exp: Experiment) -> dict[str, Any]:
+async def merge_all(args: argparse.Namespace, exp: Experiment) -> dict[str, Any]:
     chunks, out = Path(args.chunks_dir), Path(args.reports_dir)
-    out.mkdir(parents=True, exist_ok=True)
+    out.mkdir(parents=True, exist_ok=True)  # noqa: ASYNC240
     http: list[dict[str, Any]] = []
     calls = wall = 0.0
     spent_all = 0.0
@@ -203,6 +280,13 @@ def merge_all(args: argparse.Namespace, exp: Experiment) -> dict[str, Any]:
         )  # fmt: skip
         merged.save(out / f"{exp.key.rsplit('_', 1)[0]}_{system.split('_', 1)[1]}.json")
         spent_all += merged.meter_total_usd or 0.0
+        if system in exp.recording:
+            taskset, _ = load_taskset(exp, args)
+            per_repeat = [json.loads(_records_path(chunks, system, r).read_text())
+                          for r in range(args.repeats)]  # fmt: skip
+            sidecar = await attempts_report(taskset, per_repeat)
+            name = f"{exp.key.rsplit('_', 1)[0]}_{system.split('_', 1)[1]}_attempts.json"
+            (out / name).write_text(json.dumps(sidecar, indent=1))
     stats = summarize_http(http, model_calls=int(calls))
     stats |= {"sum_of_chunk_wall_s": wall, "spent_cny": spent_all}
     (out / f"{exp.key.rsplit('_', 1)[0]}_http.json").write_text(json.dumps(stats, indent=1))
@@ -233,7 +317,7 @@ async def run_all(args: argparse.Namespace) -> int:
             return EXIT_STOPPED
     if args.trial:
         return 0
-    print(json.dumps(merge_all(args, exp), indent=1))
+    print(json.dumps(await merge_all(args, exp), indent=1))
     return 0
 
 
