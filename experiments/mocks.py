@@ -205,3 +205,39 @@ def c1_checker(messages: list[Message], tools: list[ToolSchema] | None) -> Messa
     answer = _first_user(messages).rsplit("FINAL ANSWER:", 1)[-1]
     ok = re.search(r"ANSWER:\s*0(?:\.0)?\s*$", answer) is None
     return Message.assistant(json.dumps({"ok": ok} if ok else {"ok": False, "reason": "zero?"}))
+
+
+# ------------------------------------------------------------------ v0.2 C2: wiring only
+_C2_TASK = re.compile(r"units of (\w+) are held in total at the depots (.+?)\? ")
+
+
+def _c2_steps(text: str) -> list[Step]:
+    m = _C2_TASK.search(text)
+    if m is None:
+        raise ValueError(f"the mock does not understand: {text[:60]}")
+    return [("get_units", {"depot": d, "product": m.group(1)}) for d in m.group(2).split(", ")]
+
+
+def c2_solver(messages: list[Message], tools: list[ToolSchema] | None) -> Message:
+    """Looks each depot up in turn (calling again after 'busy'), then answers with the sum."""
+    steps = _c2_steps(_first_user(messages))
+    called, values, busy = _tool_values(messages)
+    if busy or len(values) < len(steps):
+        name, args = steps[len(values)]
+        return Message.assistant(None, (ToolCall(f"c{len(called)}", name, args),))
+    return _answer(sum(values))
+
+
+def c2_planner(messages: list[Message], tools: list[ToolSchema] | None) -> Message:
+    goal = _first_user(messages).split("GOAL:\n", 1)[-1].split("\n\nWORKERS")[0]
+    steps = _c2_steps(goal)
+    tasks: list[dict[str, Any]] = [
+        {"id": f"t{i}", "kind": "research", "goal": f"Call {n} with {json.dumps(a)}."}
+        for i, (n, a) in enumerate(steps, start=1)
+    ]
+    ids = [t["id"] for t in tasks]
+    goal_sum = f"Compute sum over {','.join(ids)} with {{}}."
+    tasks.append(
+        {"id": f"t{len(tasks) + 1}", "kind": "compute", "goal": goal_sum, "depends_on": ids}
+    )
+    return Message.assistant(json.dumps({"tasks": tasks}))

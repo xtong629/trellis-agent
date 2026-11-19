@@ -13,6 +13,7 @@ from typing import Any
 
 from experiments import mocks
 from experiments.c1_tasks import make_c1_tools
+from experiments.c2_tasks import Cell, make_c2_tools
 from experiments.scenarios import SEPARATOR
 from experiments.tools import make_tools
 from experiments.window import B_SYSTEM_PROMPT
@@ -145,3 +146,38 @@ def c1_reflect(
     """C1 with reflection: the same agent, checked by the same model, at most one retry."""
     checker = mocks.mock(mocks.c1_checker, _meter(llm)) if _is_mock(llm) else llm
     return ReflectingAgent(c1_agent(llm), LLMReflector(checker), on_record=on_record)
+
+
+# ------------------------------------------------------------ v0.2, experiment C2 (latency, faults)
+C2_SYSTEM = "Use the tools to answer. If a tool says a service is busy, call it again."
+C2_MAX_STEPS = 12
+_C2_SPECS = [
+    WorkerSpec("research", "looks up how many units of a product a depot holds"),
+    WorkerSpec("compute", "adds up numbers found by other tasks, using the calculator"),
+]
+
+
+def c2_single(llm: LLMClient, cell: Cell) -> Agent:
+    """One agent with every C2 tool; it runs its tool calls one after another."""
+    model = mocks.mock(mocks.c2_solver, _meter(llm)) if _is_mock(llm) else llm
+    config = AgentConfig(system_prompt=C2_SYSTEM, max_steps=C2_MAX_STEPS)
+    return Agent(model, tools=ToolRegistry(make_c2_tools(cell).all), config=config)
+
+
+def c2_planned(llm: LLMClient, cell: Cell) -> PlannedAgent:
+    """Planner + research/compute workers (scheduler default: up to 4 workers in parallel)."""
+    meter = _meter(llm)
+    if _is_mock(llm):
+        plan, res, calc, synth = (
+            mocks.mock(f, meter)
+            for f in (mocks.c2_planner, mocks.researcher, mocks.calculator, mocks.synthesizer)
+        )
+    else:
+        plan = res = calc = synth = llm
+    tools = make_c2_tools(cell)
+    research = _worker(
+        res, tools.lookup, "You are a researcher. Use the lookup tools. If busy, call again."
+    )
+    compute = _worker(calc, tools.calc, "You are a calculator. Use calculate for arithmetic.")
+    scheduler = Scheduler({"research": research, "compute": compute})
+    return PlannedAgent(Planner(plan, _C2_SPECS), scheduler, synth)

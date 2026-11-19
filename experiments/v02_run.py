@@ -18,21 +18,24 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import dataclasses
 import json
 import sys
 import time
 from collections import Counter
 from collections.abc import Callable, Sequence
 from dataclasses import asdict, dataclass, field
+from functools import partial
 from pathlib import Path
 from typing import Any
 
 import httpx
 
 from experiments.c1_tasks import taskset_c1
+from experiments.c2_tasks import CELLS, taskset_c2
 from experiments.full_run import SLOW_CALL_S, merge_reports
 from experiments.pilot import HttpObserver, summarize_http
-from experiments.targets import c1_baseline, c1_reflect
+from experiments.targets import c1_baseline, c1_reflect, c2_planned, c2_single
 from trellis_agent.cost import CostMeter
 from trellis_agent.env import load_dotenv
 from trellis_agent.eval import (
@@ -61,7 +64,13 @@ class Experiment:
     timing: bool = False
     recording: frozenset[str] = frozenset()  # systems that take a reflection-record sink
     scheduler_max: dict[str, int] = field(default_factory=dict)
+    concurrency: int | None = None  # forced job concurrency (timing experiments run one at a time)
 
+
+C2_SYSTEMS: dict[str, Callable[..., Any]] = {}
+for _cell in CELLS:
+    C2_SYSTEMS[f"c2_single_{_cell.label}"] = partial(c2_single, cell=_cell)
+    C2_SYSTEMS[f"c2_planned_{_cell.label}"] = partial(c2_planned, cell=_cell)
 
 EXPERIMENTS: dict[str, Experiment] = {
     "c1": Experiment(
@@ -70,7 +79,23 @@ EXPERIMENTS: dict[str, Experiment] = {
         {"c1_baseline": c1_baseline, "c1_reflect": c1_reflect},
         recording=frozenset({"c1_reflect"}),
     ),
+    "c2": Experiment(
+        "exp_c2_latency",
+        lambda level: taskset_c2(),
+        C2_SYSTEMS,
+        timing=True,
+        scheduler_max={name: 4 for name in C2_SYSTEMS if "planned" in name},
+        concurrency=1,
+    ),
 }
+
+
+def merged_timing(chunks: Sequence[EvalReport]) -> dict[str, float] | None:
+    """Per-case wall time of chunk i (each run as repeat 0) under the merged key task#i."""
+    if any(c.timing is None for c in chunks):
+        return None
+    return {f"{k.split('#', 1)[0]}#{i}": ms for i, c in enumerate(chunks)
+            for k, ms in (c.timing or {}).items()}  # fmt: skip
 
 
 def frozen_entry(key: str) -> dict[str, Any] | None:
@@ -211,7 +236,7 @@ async def run_chunk(
 
     runner = EvalRunner(
         make,
-        concurrency=args.concurrency,
+        concurrency=exp.concurrency or args.concurrency,
         budget_usd=remaining,
         meter=meter,
         include_timing=exp.timing,
@@ -271,13 +296,16 @@ async def merge_all(args: argparse.Namespace, exp: Experiment) -> dict[str, Any]
             http += meta["http"]
             calls, wall = calls + meta["model_calls"], wall + meta["wall_s"]
         inner = exp.scheduler_max.get(system, 1)
+        jobs = exp.concurrency or args.concurrency
         merged = merge_reports(
             reports,
-            concurrency={"jobs": args.concurrency, "scheduler_max_concurrency": inner,
-                         "theoretical_max_in_flight": args.concurrency * inner},
+            concurrency={"jobs": jobs, "scheduler_max_concurrency": inner,
+                         "theoretical_max_in_flight": jobs * inner},
             spent=spent,
             extra_meta={"repeats": str(args.repeats), "reasoning_effort": "low"},
         )  # fmt: skip
+        if exp.timing:
+            merged = dataclasses.replace(merged, timing=merged_timing(reports))
         merged.save(out / f"{exp.key.rsplit('_', 1)[0]}_{system.split('_', 1)[1]}.json")
         spent_all += merged.meter_total_usd or 0.0
         if system in exp.recording:
