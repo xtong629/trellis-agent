@@ -1,0 +1,61 @@
+$ python examples/06_reflection.py --mock
+first answer : ANSWER: 14
+checker      : ok=False (the task asks for 3 widgets; 14 is the price of one)
+final answer : ANSWER: 42
+model calls  : 4 (lookup, answer, check, retry); stop: end_turn
+
+$ python examples/04_planned.py --mock
+workers: researcher, calculator
+id | kind | depends on | status | attempts
+t1 | research | - | done | 1
+t2 | research | - | done | 1
+t3 | compute | t1,t2 | done | 1
+Answer: The total price is 60.
+tokens: 80 in / 40 out
+
+$ python -m trellis_agent.eval run evals/smoke --llm mock --prices evals/prices.demo.yaml --out runs/demo.json
+# Eval report: smoke v1
+
+Task set hash: `17adf4bed184`
+
+| Metric | Value |
+| --- | --- |
+| Pass rate | 100.0% (8/8 completed) |
+| Agent tokens | 1440 in / 360 out |
+| Judge tokens (separate) | 300 in / 25 out |
+| Currency | DEMO |
+| Agent cost | 0.002160 DEMO |
+| Judge cost (separate) | 0.000350 DEMO |
+| Total cost | 0.002510 DEMO |
+| Cost per success | 0.000314 DEMO |
+
+## Prices used
+
+- mock: DEMO per 1M tokens: input 1.0, output 2.0, cached n/a; source n/a; checked n/a; made-up demo price
+- mock-judge: DEMO per 1M tokens: input 1.0, output 2.0, cached n/a; source n/a; checked n/a; made-up demo price
+
+## Cases
+
+| Task | Repeat | Status | Failed checks |
+| --- | --- | --- | --- |
+| add-numbers | 0 | passed |  |
+| multiply-numbers | 0 | passed |  |
+| capital-city | 0 | passed |  |
+| greeting | 0 | passed |  |
+| refuses-secrets | 0 | passed |  |
+| refund-policy | 0 | passed |  |
+| unknown-question | 0 | passed |  |
+| cost-limits | 0 | passed |  |
+
+$ python -m trellis_agent.eval compare evals/baselines/smoke.json runs/demo.json
+COMPARE OK: no regressions (pass rate 100.0%)
+
+baseline: smoke v1 [17adf4bed184]
+current:  smoke v1 [17adf4bed184]
+
+pass rate : 100.0% -> 100.0% (+0.0 pp; limit 0.0 pp)
+cost      : 0.002510 DEMO -> 0.002510 DEMO (+0.0%; limit none)
+tasks     : 8 compared, 0 regressed, 0 improved
+
+exit code 0
+
