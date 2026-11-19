@@ -338,3 +338,34 @@ Frozen answer set: `evals/exp_c4_judge/answers.json`, 840 answers (600 from v0.1
 excluded, as no run in these reports ended with an error), 70 of which fail the content rule; content
 hash `c24949e854b67df578812239a921efe336e5a95bc2dd9de76fbd3776af32d7d2` (`experiments/FROZEN.json`,
 key `v0.2`). The full run starts after the C2 full run, so that the two do not share the API.
+
+### C4 results (full run, 2026-11-20; the text above is unchanged)
+
+Report: `evals/reports/exp_c4_judge.json` (every verdict, the agreement statistics, the disagreements
+and the consistency check). 840 answers judged, 0 unreadable judge outputs; 1,040 requests, all status 200.
+
+**Outcome: H4 supported.** The judge and the content rule agreed on 839 of 840 answers (0.9988);
+Cohen's kappa 0.992, 95% bootstrap interval [0.974, 1.000], above the 0.6 threshold over the whole
+interval.
+
+| comparison | n | both pass | both fail | judge only passes | rule only passes | agreement | kappa (95% CI) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| judge vs content rule (primary) | 840 | 770 | 69 | 1 | 0 | 0.9988 | 0.992 [0.974, 1.000] |
+| judge vs case status (secondary) | 840 | 770 | 69 | 1 | 0 | 0.9988 | 0.992 [0.974, 1.000] |
+
+* **The one disagreement** is in the pre-registered *format* category: `exp_c1_reflect:easy-06#4`
+  ends "... 9 ovo per unit. ANSWER: 9" with the marker inside the sentence, so the rule (which reads
+  the marker only at the start of a line) fails it, while the judge, told to ignore format, passes the
+  right value. It is the same run counted as a format failure in C1.
+* **Per source report** agreement was 1.000 everywhere except `exp_c1_reflect` (0.992, the case above).
+  On `exp_c1_baseline` every answer passed both graders, so kappa is undefined there.
+* **Consistency:** on the fixed 100-answer subset (50 that the rule fails), all three judge verdicts
+  were identical for 100 of 100 answers.
+* **Cost:** 261,766 tokens, 0.2688 CNY at list price, for 1,040 judge calls.
+
+**What this does and does not show.** On these answers (short, with a single expected value or phrase
+taken from the task's own scorers) the judge reproduces the rule almost exactly. That is a narrow
+check: **no human labels are included; the rule is the reference, not ground truth; and the judge is
+the same model that wrote the answers, so self-preference is possible.** Rule failures are few (70 of
+840) and most are the B window's obvious misses, so the check says little about borderline answers or
+open-ended tasks, where a judge would actually be needed.
