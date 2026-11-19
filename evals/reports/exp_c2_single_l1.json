@@ -1,0 +1,1691 @@
+{
+  "cases": [
+    {
+      "agent_cost": 0.0007968000000000001,
+      "content": "Arden: 14, Bexley: 9, Corrin: 0.\n\nANSWER: 23",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(23)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-01",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 86,
+        "estimated": false,
+        "prompt_tokens": 695,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.0012936,
+      "content": "Arden: 6, Bexley: 18, Corrin: 11, Dalby: 4 → total 39.\n\nANSWER: 39",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(39)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-02",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 132,
+        "estimated": false,
+        "prompt_tokens": 1155,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0011808,
+      "content": "Bexley: 7, Corrin: 25, Dalby: 13.\n\nANSWER: 45",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(45)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-03",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 104,
+        "estimated": false,
+        "prompt_tokens": 1112,
+        "reasoning_tokens": 25
+      }
+    },
+    {
+      "agent_cost": 0.0012788,
+      "content": "Arden: 31, Bexley: 2, Corrin: 8, Dalby: 0 — total 41 units.\n\nANSWER: 41",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(41)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-04",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 129,
+        "estimated": false,
+        "prompt_tokens": 1147,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0011768,
+      "content": "Arden: 12, Bexley: 12, Corrin: 5 — total 29 units.\n\nANSWER: 29",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(29)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-05",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 106,
+        "estimated": false,
+        "prompt_tokens": 1100,
+        "reasoning_tokens": 30
+      }
+    },
+    {
+      "agent_cost": 0.0009316000000000001,
+      "content": "Adding the four depots: 3 + 27 + 14 + 6 = 50.\n\nANSWER: 50",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(50)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-06",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 121,
+        "estimated": false,
+        "prompt_tokens": 741,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0012156,
+      "content": "Totals: Bexley 0, Corrin 22, Dalby 9 = 31.\n\nANSWER: 31",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(31)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-07",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 113,
+        "estimated": false,
+        "prompt_tokens": 1124,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0013340000000000001,
+      "content": "Units of hammock: Arden 8, Bexley 15, Corrin 1, Dalby 30 — total 54.\n\nANSWER: 54",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 0,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(54)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-08",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 141,
+        "estimated": false,
+        "prompt_tokens": 1174,
+        "reasoning_tokens": 102
+      }
+    },
+    {
+      "agent_cost": 0.0011936,
+      "content": "Arden has 14, Bexley has 9, and Corrin has 0 units of lantern, for a total of 23.\n\nANSWER: 23",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(23)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-01",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 112,
+        "estimated": false,
+        "prompt_tokens": 1100,
+        "reasoning_tokens": 14
+      }
+    },
+    {
+      "agent_cost": 0.0013232,
+      "content": "Totals: Arden 6, Bexley 18, Corrin 11, Dalby 4 = 39.\n\nANSWER: 39",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(39)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-02",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 138,
+        "estimated": false,
+        "prompt_tokens": 1171,
+        "reasoning_tokens": 16
+      }
+    },
+    {
+      "agent_cost": 0.0012248,
+      "content": "Bexley: 7, Corrin: 25, Dalby: 13.\n\nANSWER: 45",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(45)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-03",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 114,
+        "estimated": false,
+        "prompt_tokens": 1132,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.001262,
+      "content": "Arden 31 + Bexley 2 + Corrin 8 + Dalby 0 = 41\n\nANSWER: 41",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(41)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-04",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 123,
+        "estimated": false,
+        "prompt_tokens": 1147,
+        "reasoning_tokens": 74
+      }
+    },
+    {
+      "agent_cost": 0.0012076,
+      "content": "Arden has 12, Bexley has 12, and Corrin has 5 units of blanket, for a total of 29.\n\nANSWER: 29",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(29)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-05",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 117,
+        "estimated": false,
+        "prompt_tokens": 1100,
+        "reasoning_tokens": 5
+      }
+    },
+    {
+      "agent_cost": 0.0013160000000000001,
+      "content": "Arden: 3, Bexley: 27, Corrin: 14, Dalby: 6 — total 50.\n\nANSWER: 50",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(50)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-06",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 136,
+        "estimated": false,
+        "prompt_tokens": 1169,
+        "reasoning_tokens": 16
+      }
+    },
+    {
+      "agent_cost": 0.0012172,
+      "content": "Bexley has 0, Corrin has 22, and Dalby has 9 units of trowel, for a total of 31.\n\nANSWER: 31",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(31)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-07",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 117,
+        "estimated": false,
+        "prompt_tokens": 1112,
+        "reasoning_tokens": 62
+      }
+    },
+    {
+      "agent_cost": 0.0012904000000000001,
+      "content": "Totals: Arden 8, Bexley 15, Corrin 1, Dalby 30 = 54.\n\nANSWER: 54",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 1,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(54)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-08",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 130,
+        "estimated": false,
+        "prompt_tokens": 1158,
+        "reasoning_tokens": 78
+      }
+    },
+    {
+      "agent_cost": 0.0011740000000000001,
+      "content": "Arden: 14, Bexley: 9, Corrin: 0, total 23.\n\nANSWER: 23",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(23)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-01",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 105,
+        "estimated": false,
+        "prompt_tokens": 1100,
+        "reasoning_tokens": 59
+      }
+    },
+    {
+      "agent_cost": 0.0012936,
+      "content": "Units of kettle: Arden 6, Bexley 18, Corrin 11, Dalby 4 — total 39.\n\nANSWER: 39",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(39)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-02",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 132,
+        "estimated": false,
+        "prompt_tokens": 1155,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0008472,
+      "content": "Bexley: 7, Corrin: 25, Dalby: 13 → total 7 + 25 + 13 = 45.\n\nANSWER: 45",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(45)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-03",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 102,
+        "estimated": false,
+        "prompt_tokens": 702,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.001262,
+      "content": "Totals: Arden 31, Bexley 2, Corrin 8, Dalby 0.\n\nANSWER: 41",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(41)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-04",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 123,
+        "estimated": false,
+        "prompt_tokens": 1147,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "agent_cost": 0.0008080000000000001,
+      "content": "Arden: 12, Bexley: 12, Corrin: 5 → total 29.\n\nANSWER: 29",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(29)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-05",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 90,
+        "estimated": false,
+        "prompt_tokens": 695,
+        "reasoning_tokens": 29
+      }
+    },
+    {
+      "agent_cost": 0.0013160000000000001,
+      "content": "Arden: 3, Bexley: 27, Corrin: 14, Dalby: 6 — total 50.\n\nANSWER: 50",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(50)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-06",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 136,
+        "estimated": false,
+        "prompt_tokens": 1169,
+        "reasoning_tokens": 16
+      }
+    },
+    {
+      "agent_cost": 0.0011920000000000001,
+      "content": "Bexley: 0, Corrin: 22, Dalby: 9 — total 31.\n\nANSWER: 31",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 3,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(31)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-07",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "calculate"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 108,
+        "estimated": false,
+        "prompt_tokens": 1112,
+        "reasoning_tokens": 91
+      }
+    },
+    {
+      "agent_cost": 0.0008600000000000001,
+      "content": "8 + 15 + 1 + 30 = 54\n\nANSWER: 54",
+      "error": null,
+      "judge_calls": 0,
+      "judge_cost": 0.0,
+      "judge_usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 0,
+        "estimated": false,
+        "prompt_tokens": 0
+      },
+      "model_requests": 2,
+      "repeat": 2,
+      "scores": [
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "run_succeeded",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "number_match(54)",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        },
+        {
+          "cost": null,
+          "error": false,
+          "judge": false,
+          "name": "tool_called('get_units')",
+          "passed": true,
+          "reason": "ok",
+          "score": 1.0,
+          "usage": null
+        }
+      ],
+      "status": "passed",
+      "stop_reason": "end_turn",
+      "task_id": "latency-08",
+      "tool_calls": [
+        "get_units",
+        "get_units",
+        "get_units",
+        "get_units"
+      ],
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 100,
+        "estimated": false,
+        "prompt_tokens": 725,
+        "reasoning_tokens": 0
+      }
+    }
+  ],
+  "config": {
+    "budget": {
+      "amount": 2.0,
+      "currency": "CNY"
+    },
+    "concurrency": {
+      "jobs": 1,
+      "scheduler_max_concurrency": 1,
+      "theoretical_max_in_flight": 1
+    },
+    "extra_params": {
+      "reasoning_effort": "low"
+    },
+    "llm": "openai",
+    "meta": {
+      "experiment": "exp_c2_latency",
+      "level": "0",
+      "reasoning_effort": "low",
+      "repeats": "3",
+      "run_date": "2026-11-19",
+      "system": "c2_single_l1",
+      "trial": "false"
+    },
+    "model": "glm-5.3-flash",
+    "price_table": {
+      "glm-5.3-flash": {
+        "cached_input_per_million": 0.23,
+        "checked_on": "2026-11-17",
+        "currency": "CNY",
+        "input_per_million": 0.8,
+        "note": "List price, limited-time discount ignored. I actually use a free new-user token resource package, so report costs are list-price reference values, not actual spend.",
+        "output_per_million": 2.8,
+        "per": "1M tokens",
+        "source": "https://docs.bigmodel.cn/cn/guide/start/pricing.md"
+      }
+    },
+    "prices_file": "prices.glm.yaml",
+    "prices_sha256": "dad4039c29e0",
+    "repeats": 1,
+    "target": "experiments.targets:c2_single_l1"
+  },
+  "schema_version": 1,
+  "summary": {
+    "aborted_by_budget": false,
+    "aborted_jobs": 0,
+    "agent_cost": 0.027995600000000002,
+    "completed_jobs": 24,
+    "cost": 0.027995600000000002,
+    "cost_by_currency": {
+      "CNY": 0.027995600000000002
+    },
+    "cost_complete": true,
+    "cost_per_success": 0.0011664833333333334,
+    "currency": "CNY",
+    "estimated_usage": false,
+    "failed": 0,
+    "fx_applied": [],
+    "judge_cost": 0.0,
+    "judge_usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "estimated": false,
+      "prompt_tokens": 0
+    },
+    "meter_discrepancy": 0.0,
+    "meter_total": 0.027995600000000002,
+    "model_requests": 67,
+    "not_run_jobs": 0,
+    "pass_rate": 1.0,
+    "pass_rate_by_repeat": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "pass_rate_mean": 1.0,
+    "pass_rate_std": 0.0,
+    "passed": 24,
+    "planned_jobs": 24,
+    "reasoning_share": 0.22806394316163411,
+    "tasks": [
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-01"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-02"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-03"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-04"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-05"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-06"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-07"
+      },
+      {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "repeats_completed": 3,
+        "task_id": "latency-08"
+      }
+    ],
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 2815,
+      "estimated": false,
+      "prompt_tokens": 25142,
+      "reasoning_tokens": 642
+    }
+  },
+  "taskset": {
+    "hash": "b8e281ac3bef63b456dbd3325cf0e18fe7c464d8d511cb6c8bde04e7a2cf5d15",
+    "name": "exp-c2-latency",
+    "version": "1"
+  },
+  "timing_ms": {
+    "latency-01#0": 13714.737208967563,
+    "latency-01#1": 17269.542333029676,
+    "latency-01#2": 16645.828082982916,
+    "latency-02#0": 19850.93529202277,
+    "latency-02#1": 19013.70449998649,
+    "latency-02#2": 19051.68274999596,
+    "latency-03#0": 17549.85333303921,
+    "latency-03#1": 17421.498417039402,
+    "latency-03#2": 13309.277541993652,
+    "latency-04#0": 18561.486207996495,
+    "latency-04#1": 19391.92262501456,
+    "latency-04#2": 18632.826499990188,
+    "latency-05#0": 17510.539041017182,
+    "latency-05#1": 25162.65925002517,
+    "latency-05#2": 13449.054249969777,
+    "latency-06#0": 14290.270750003401,
+    "latency-06#1": 21937.79491604073,
+    "latency-06#2": 18710.01283300575,
+    "latency-07#0": 17172.10366699146,
+    "latency-07#1": 15501.058917026967,
+    "latency-07#2": 13619.027667038608,
+    "latency-08#0": 19200.534208968747,
+    "latency-08#1": 18438.986540946644,
+    "latency-08#2": 13924.23050000798
+  }
+}

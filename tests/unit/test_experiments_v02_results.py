@@ -28,3 +28,16 @@ def test_c1_numbers_and_decision() -> None:
         3,
     )
     assert r["easy_harm_check_ok"]
+
+
+def test_c2_numbers_and_decision() -> None:
+    r = v02_results.c2()
+    cells = r["cells"]
+    assert [round(cells[c]["median_ratio"], 2) for c in ("l1", "l4", "l10", "l4f0.3")] == [
+        1.47, 0.95, 0.71, 1.05
+    ]  # fmt: skip
+    assert [cells[c]["planner_wins"] for c in ("l1", "l4", "l10")] == [False, False, True]
+    assert r["decision"] == "H2 supported (smallest winning latency 10 s)"
+    assert all(cells[c][s]["passed"] == 24 for c in cells for s in ("single", "planned"))
+    assert round(cells["l10"]["single"]["median_s"], 2) == 48.87
+    assert round(cells["l10"]["planned"]["median_s"], 2) == 34.50
