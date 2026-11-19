@@ -130,3 +130,56 @@ Trial reports (baseline only, 1 repeat, 2026-11-19; not results):
 * **Consequence, stated before the full run:** if the full-run baseline also stays above 0.7 on the
   benefit tasks, C1 is reported as **not run as designed** (ceiling not avoided) and H1 is not decided,
   as pre-registered. The trials used 120,427 tokens (0.1096 CNY at list price).
+
+## C2 (R2): when does the planner's parallelism save time?
+
+**Question.** In v0.1.0 the planner took about twice as long as the single agent per fanout task, with
+in-process tools that answer instantly (`docs/EXPERIMENTS.md`, supplementary timing). When each lookup
+takes a while, the planner's workers can wait in parallel while the single agent waits one call after
+another. From what tool latency, if any, is the planner faster, and what changes when tools fail
+transiently? C2 supplements experiment A; it does not replace it.
+
+**Systems** (same model and settings as C1):
+
+* `c2_single`: one `Agent` with all C2 tools, `max_steps=12`. It runs its tool calls one after another.
+* `c2_planned`: planner + research and compute workers + synthesiser, built like A's planner; the
+  scheduler runs up to 4 workers in parallel (its default).
+
+**Tools** (`experiments/c2_tasks.py`). `get_units(depot, product)` waits a fixed latency with a real
+`asyncio.sleep` before answering; `calculate` has no delay. The latency is **simulated** (a sleep, not a
+real service), so C2 speaks about the scheduling design, not about any real tool. Transient faults:
+a lookup can fail with "depot service busy, try again"; the decision is a hash of (seed, tool,
+normalised arguments, how many times this exact call was made before in the job), so both systems meet
+the same faults whatever order they call in; one call fails at most twice in a row. A fault reaches the
+model as a tool error in both systems (single agent and planner workers are both `Agent`s); the model
+has to call again.
+
+**Cells** (fixed): latency 1 s, 4 s and 10 s without faults; latency 4 s with fault rate 0.3.
+
+**Task set `exp-c2-latency`**, 8 tasks on fictional data: units of a product at 3 or 4 depots, summed.
+Scored with `number_match` (`which: marked`, tolerance 0.01) and `tool_called get_units` at least once
+per depot. There is no difficulty knob; this experiment is about time, not pass rate.
+
+**Trial.** Both systems, all 8 tasks, 1 repeat, in the cells `l1` and `l4f0.3`; caps 0.5 CNY and 0.2M
+tokens. It checks wiring, the fault path and scoring; every reply is read. Not results. Scoring fixes
+follow the C1 rule (task set only, regression test, documented; never a library scorer).
+
+**Full run.** 3 repeats, every cell, both systems; one task at a time (concurrency 1) so each case's
+wall-clock time is clean; chunks of one (repeat, system, cell) in a fixed alternating order within
+each repeat; caps 2 CNY and 1M tokens. Wall time per case is the eval runner's own measurement
+(`timing_ms` in each report), including failed runs.
+
+**Metrics.** Per system and cell: median and mean wall time per task (24 runs), per-repeat mean, pass
+rate, model calls, tokens and cost.
+
+**H2 and decision rule.** In a fault-free cell, the planner **wins** if its median wall time per task
+is below 0.9 times the single agent's **and** its per-repeat mean is lower in at least 2 of the 3
+repeats. H2 is **supported** if the planner wins in at least one fault-free cell (the smallest such
+latency is reported) and **not supported** if it wins in none.
+**Secondary (descriptive, no decision):** at 4 s, how faults change both systems' times, pass rates
+and model calls. If a system passes fewer than 80% of runs in a cell, its time there is reported with
+that caveat.
+
+**Possible negative results** (reported as they occur): the planner is never faster in the tested
+range; it is faster only at 10 s; faults remove its advantage; its pass rate is lower than the single
+agent's.
