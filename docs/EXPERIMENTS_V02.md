@@ -184,6 +184,17 @@ that caveat.
 range; it is faster only at 10 s; faults remove its advantage; its pass rate is lower than the single
 agent's.
 
+### C2 trial record and freeze (added after the trial; the text above is unchanged)
+
+Trial reports (1 repeat, 2026-11-19; not results): `evals/reports/trials/exp_c2_trial_{single,planned}_{l1,l4f0.3}.json`.
+All 32 runs passed (8 tasks x 2 systems x 2 cells); the fault cell produced busy errors that both
+systems recovered from. Every reply was read: each ends with the expected `ANSWER:` line, so no scoring
+bug was found and nothing was changed. Frozen: `exp-c2-latency` version `1`, 8 tasks, content hash
+`b8e281ac3bef63b456dbd3325cf0e18fe7c464d8d511cb6c8bde04e7a2cf5d15` (`experiments/FROZEN.json`, key
+`v0.2`; file `evals/exp_c2_latency/taskset.yaml`). The trial used 87,449 tokens (0.0875 CNY at list price).
+The trial ran while the C1 full run was also calling the API; its timings are not used for anything.
+The full run is started only after the C1 full run has finished, so that the two do not share the API.
+
 ## C4 (R4): does the LLM judge agree with the rule scorers?
 
 **Question.** Trellis has an LLM judge (`LLMJudge`) that no experiment has used. On answers that

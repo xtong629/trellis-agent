@@ -114,3 +114,18 @@ def test_merged_timing_renumbers_repeats() -> None:
     merged = v02_run.merged_timing(chunks)  # type: ignore[arg-type]
     assert merged == {"t1#0": 5.0, "t2#0": 6.0, "t1#1": 7.0, "t2#1": 8.0}
     assert v02_run.merged_timing([Chunk(None)]) is None  # type: ignore[list-item]
+
+
+def test_c2_is_frozen() -> None:
+    import json
+    from pathlib import Path
+
+    from trellis_agent.eval import load_taskset
+
+    root = Path(__file__).resolve().parents[2]
+    entry = json.loads((root / "experiments" / "FROZEN.json").read_text())["v0.2"]["exp_c2_latency"]
+    committed = load_taskset(root / "evals" / "exp_c2_latency")
+    assert (
+        committed.content_hash == entry["content_hash"] == parse_taskset(taskset_c2()).content_hash
+    )
+    assert (committed.version, len(committed.tasks)) == ("1", entry["tasks"])

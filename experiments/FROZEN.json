@@ -34,6 +34,13 @@
       "tasks": 24,
       "level": 2,
       "content_hash": "5b6967ea267d2b476938483bb5caafc3b0db63d5e3a446ceeda6490be9485291"
+    },
+    "exp_c2_latency": {
+      "name": "exp-c2-latency",
+      "version": "1",
+      "tasks": 8,
+      "level": 0,
+      "content_hash": "b8e281ac3bef63b456dbd3325cf0e18fe7c464d8d511cb6c8bde04e7a2cf5d15"
     }
   }
 }
